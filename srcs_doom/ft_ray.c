@@ -1,0 +1,161 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_ray.c                                         .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/08 17:28:03 by vasalome    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
+#include "../include_doom/doom.h"
+/*
+void	ray_casting_init(t_info *info, int x)
+{
+	info->player.x_camera = 2 * x / (double)(info->win.w) - 1;
+	info->ray.x_ray_position = info->player.x_pos;
+	info->ray.y_ray_position = info->player.y_pos;
+	info->ray.x_ray_direction = info->player.x_dir + info->player.x_plane *\
+		info->player.x_camera;
+	info->ray.y_ray_direction = info->player.y_dir + info->player.y_plane *\
+		info->player.x_camera;
+	info->map.x = (int)info->ray.x_ray_position;
+	info->map.y = (int)info->ray.y_ray_position;
+	wall_detection_init_x(info);
+	wall_detection(info);
+	if (info->wall.side == 0)
+		info->wall.wall_distance = (info->map.x - info->ray.x_ray_position +\
+		(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
+	else
+		info->wall.wall_distance = (info->map.y - info->ray.y_ray_position +\
+		(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
+}
+
+int		ray_casting(t_info *info)
+{
+	info->wall.x = -1;
+	while (++info->wall.x < info->win.w)
+	{
+		ray_casting_init(info, info->wall.x);
+		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
+		info->wall.draw_start = -info->wall.line_height / 2 + info->win.h / 2;
+		if (info->wall.draw_start < 0)
+			info->wall.draw_start = 0;
+		info->wall.draw_end = info->wall.line_height / 2 + info->win.h / 2;
+		if (info->wall.draw_end >= info->win.h)\
+			info->wall.draw_end = info->win.h - 1;
+		choose_texture_1(info);
+		texture_calc(info);
+		draw_wall(info->wall.x, info->wall.draw_start - 1,\
+				info->wall.draw_end, info);
+	}
+	return (0);
+}
+*/
+int		threadAnim(void*	data)
+{
+	t_info *info = data;
+	info->win.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->ii].img);
+		SDL_QueryTexture(info->win.texture2, NULL, NULL, &info->head[2].w, &info->head[2].h);
+		info->head[2].rect.x = info->head[2].w;
+		info->head[2].rect.y = 0;
+		info->head[2].rect.w = info->head[2].w;
+		info->head[2].rect.h = info->head[2].h;
+		if (info->ii > 0)
+			info->ii--;
+		else
+			info->ii = 10;
+	SDL_Delay(10);
+	if (!info->quit)
+		threadAnim((t_info*)info);
+	return (0);
+}
+
+int		threadAnim2(void*	data)
+{
+	t_info *info = data;
+	info->win.texture3 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->iii].img);
+		SDL_QueryTexture(info->win.texture3, NULL, NULL, &info->head[4].w, &info->head[4].h);
+		info->head[4].rect.x = info->head[4].w * 2;
+		info->head[4].rect.y = 0;
+		info->head[4].rect.w = info->head[4].w;
+		info->head[4].rect.h = info->head[4].h;
+		if (info->iii > 0)
+			info->iii--;
+		else
+			info->iii = 10;
+	SDL_Delay(5000);
+	if (!info->quit)
+		threadAnim2((t_info*)info);
+	return (0);
+}
+
+void	hud(t_info *info)
+{
+	
+
+		info->win.texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
+		SDL_QueryTexture(info->win.texture, NULL, NULL, &info->head[3].w, &info->head[3].h);
+		info->head[3].rect.x = 0;
+		info->head[3].rect.y = 0;
+		info->head[3].rect.w = info->head[3].w;
+		info->head[3].rect.h = info->head[3].h;
+		if (info->i < 10)
+			info->i++;
+		else
+			info->i = 0;
+	//mlx_put_image_to_window(info->win.mlx, info->win.win,\
+	//	info->head[info->player.life - 1].img, 0, 0);
+	//mlx_put_image_to_window(info->win.mlx, info->win.win,\
+	//	info->wp[info->w_i].img, info->win.w / 2 - \
+	//	info->wp[info->w_i].img->w / 2 - 4 + (rand() % 8),\
+	//	info->win.h - info->wp[info->w_i].img->h);
+	//mlx_put_image_to_window(info->win.mlx, info->win.win, \
+	//info->wp[info->w_i].icon, 5, 315);
+	//SDL_UpdateWindowSurface(info->win.win);
+	//SDL_Delay(2000);
+	//mlx_destroy_image(info->win.mlx, info->fps.img);
+}
+
+/*void	its_a_trap(t_info *info)
+{
+	if (info->map.map[(int)info->player.x_pos][(int)info->player.y_pos] == '5')
+	{
+		if (info->player.can_trap)
+		{
+			info->player.can_trap = 0;
+			info->player.life -= 1;
+			flash(info);
+		}
+		//mlx_put_image_to_window(info->win.mlx, info->win.win,\
+		//info->wp[10].img, info->win.w / 2 - info->wp[10].img->w\
+		//2, info->win.h / 2 - info->wp[10].img->h / 2);
+	}
+	else
+		info->player.can_trap = 1;
+}
+
+void	ray_casting_image(t_info *info)
+{
+	if (!(info->player.life - 1 <= 0))
+	{
+		skybox(info);
+		create_img(info);
+		ray_casting(info);
+		//mlx_put_image_to_window(info->win.mlx, info->win.win,\
+		//info->fps.img, 0, 0);
+		if (info->map.map[(int)info->player.x_pos]\
+		[(int)info->player.y_pos] == '4')
+			//mlx_put_image_to_window(info->win.mlx, info->win.win,\
+			//info->wp[7].img, info->win.w / 2 - info->wp[7].img->w / 2,\
+			//info->win.h / 2 - info->wp[7].img->h / 2);
+		its_a_trap(info);
+		hud(info);
+	}
+	else
+		game_over(info);
+}
+*/

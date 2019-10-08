@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/09/25 11:19:56 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/08 18:34:49 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,7 +16,7 @@
 ##						##
 
 #	Output:
-NAME		=	wolf3d
+NAME		=	doom_nukem
 
 #	Compiler:
 CC			=	gcc
@@ -24,12 +24,12 @@ CFLAGS		=	-Wall -Wextra -Werror
 MEMFLAGS	=	-ggdb -fsanitize=address
 
 #	Directory:
-SRCS_DIR	=	./srcs_wolf/
-OBJ_DIR		=	./objs_wolf/
-INC_DIR		=	./include/
+SRCS_DIR	=	./srcs_doom/
+OBJ_DIR		=	./objs_doom/
+INC_DIR		=	./include_doom/
 
 #	Sources:
-SRCS		=	main_wolf.c
+SRCS		=	main_doom.c
 SRCS		+=	ft_init.c
 SRCS		+=	ft_init_hub.c
 SRCS		+=	ft_init_weapon.c
@@ -90,7 +90,7 @@ $(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h
 	@printf "\r                                             \r"
 
 all:
-	@echo "$(_ORANGE)$(UNDERLINE)WOLF3D:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION OBJECTS: IN PROGRESS..$(_STOP)\n		OBJECTS DIRECTORY: CREATION || ->\n"
+	@echo "$(_ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION OBJECTS: IN PROGRESS..$(_STOP)\n		OBJECTS DIRECTORY: CREATION || ->\n"
 	@mkdir -p $(OBJ_DIR)
 	@$(MAKE) $(NAME) --no-print-directory
 
@@ -103,7 +103,7 @@ make_libft:
 	#@echo "\n"
 
 $(NAME): $(OBJ) $(INC_DIR) make_libft #make_mlx
-	@echo "$(_ORANGE)$(UNDERLINE)WOLF3D:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION $(NAME): IN PROGRESS..$(_STOP)\n"
+	@echo "$(_ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION $(NAME): IN PROGRESS..$(_STOP)\n"
 	@$(CC) $(CFLAGS) $(OBJ) -I ./libft/includes $(INC) -L lib libft/libft.a -l SDL2 -l SDL2_image -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "$(_ORANGE)| ->		$(NAME):" "$(_STOP)|\033[42m     $(BOLD)L O A D I N G$(R_BOLD)     $(_STOP)|" #| pv -qL 15
 	@echo "		$(_ORANGE)$(BLINK)100%\n$(R_BLINK)$(_STOP)"
@@ -118,15 +118,15 @@ $(NAME): $(OBJ) $(INC_DIR) make_libft #make_mlx
 	@echo "	   __________________$(_STOP)$(BLINK)$(_YELLOW)is ready$(R_BLINK)$(_ORANGE)____$(_STOP)\n"
 
 clean:
-	@echo "$(_ORANGE)$(UNDERLINE)WOLF3D:$(R_UNDERLINE)$(_STOP)		$(BOLD)CLEAN: IN PROGRESS..$(_STOP)\n		DELETING OBJECTS || ->\n"
+	@echo "$(_ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)CLEAN: IN PROGRESS..$(_STOP)\n		DELETING OBJECTS || ->\n"
 	@$(RM_DIR) $(OBJ_DIR)
 	@$(MAKE) clean -C libft/
 	#@$(MAKE) clean -C minilibx_macos/
 	@echo "$(_ORANGE)| ->		CLEAN: DONE\n$(_STOP)"
 
 fclean: clean
-	@echo "$(_ORANGE)$(UNDERLINE)WOLF3D:$(R_UNDERLINE)$(_STOP)		$(BOLD)FCLEAN: IN PROGRESS..$(_STOP)\n		DELETING EXEC || ->\n"
-	@$(RM_DIR) $(NAME) a.out wolf3d.dSYM a.out.dSYM
+	@echo "$(_ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)FCLEAN: IN PROGRESS..$(_STOP)\n		DELETING EXEC || ->\n"
+	@$(RM_DIR) $(NAME) a.out doom_nukem.dSYM a.out.dSYM
 	@$(MAKE) fclean -C libft/
 	@echo "$(_ORANGE)| ->		FCLEAN: DONE\n$(_STOP)"
 
