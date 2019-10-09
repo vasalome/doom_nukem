@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 14:21:39 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 14:49:45 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,7 +79,7 @@ void	init_window(t_info *info)
                                           	SDL_WINDOWPOS_CENTERED,
                                                                 	info->win.w,
                                                                   	info->win.h,
-                                                                  	SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN);
+                                                                  	SDL_WINDOW_SHOWN/* | SDL_WINDOW_FULLSCREEN*/);
 																  
 		info->win.renderer = SDL_CreateRenderer(info->win.win, -1, SDL_RENDERER_ACCELERATED);
 		SDL_SetRenderDrawColor( info->win.renderer, 0xFF, 0xFF, 0xFF, 0xFF );

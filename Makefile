@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/10/09 13:51:49 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/09 14:52:43 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -27,6 +27,7 @@ MEMFLAGS	=	-ggdb -fsanitize=address
 SRCS_DIR	=	./srcs_doom/
 OBJ_DIR		=	./objs_doom/
 INC_DIR		=	./include_doom/
+INC_SDL_DIR	=	./include_sdl/
 
 #	Sources:
 SRCS		=	main_doom.c
@@ -52,6 +53,7 @@ OBJ			=	$(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 
 #	Includes:
 INC			=	$(addprefix -I,$(INC_DIR))
+INC_SDL		=	$(addprefix -I,$(INC_SDL_DIR))
 
 #	Library:
 LIBFT		=	lib/libft.a
@@ -89,9 +91,9 @@ R_UNDERLINE	=	\033[24m
 ##	|	RULES	|	##
 ##					##
 
-$(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h
+$(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h $(INC_SDL_DIR)*.h
 	@printf "$(ORANGE)[CC] $(<:.c=)...$(_STOP)"
-	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC) $(INC_SDL) -c $< -o $@
 	@printf "\r                                             \r"
 
 all:
@@ -102,9 +104,9 @@ all:
 make_libft:
 	@make -C libft/
 
-$(NAME): $(OBJ) $(INC_DIR) make_libft
+$(NAME): $(OBJ) $(INC_DIR) $(INC_SDL_DIR) make_libft
 	@echo "$(ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION $(NAME): IN PROGRESS..$(_STOP)\n"
-	@$(CC) $(CFLAGS) $(OBJ) -I ./libft/includes $(INC) -L lib libft/libft.a -l SDL2 -l SDL2_image -framework OpenGL -framework AppKit -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -I ./libft/includes $(INC) $(INC_SDL) -L lib libft/libft.a -l SDL2 -l SDL2_image -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "$(ORANGE)| ->		$(NAME):" "$(_STOP)|\033[42m     $(BOLD)L O A D I N G$(R_BOLD)     $(_STOP)|" #| pv -qL 15
 	@echo "		$(ORANGE)$(BLINK)100%\n$(R_BLINK)$(_STOP)"
 #	@sleep 1.5
