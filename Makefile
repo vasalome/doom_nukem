@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/10/08 18:34:49 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/09 13:51:49 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -40,11 +40,11 @@ SRCS		+=	ft_keys.c
 SRCS		+=	ft_move.c
 SRCS		+=	ft_teleport.c
 SRCS		+=	ft_ray.c
-#SRCS		+=	ft_wall.c
+SRCS		+=	ft_wall.c
 SRCS		+=	ft_draw_wall.c
 SRCS		+=	ft_spawn.c
-#SRCS		+=	ft_textures.c
-#SRCS		+=	ft_gameover.c
+SRCS		+=	ft_textures.c
+SRCS		+=	ft_gameover.c
 SRCS		+=	ft_usage.c
 
 #	Objects:
@@ -61,13 +61,13 @@ RM			=	/bin/rm -f
 RM_DIR		=	/bin/rm -rf
 
 #	Colors:
-_GREEN		=	\033[38;5;46m
-_VIOLET		=	\033[38;5;141m
-_RED		=	\033[38;5;1m
-_CYAN		=	\033[38;5;45m
-_ORANGE		=	\033[38;5;214m
-_YELLOW		=	\033[38;5;220m
-_PINK		=	\033[38;5;197m
+GREEN		=	\033[38;5;46m
+VIOLET		=	\033[38;5;141m
+RED			=	\033[38;5;1m
+CYAN		=	\033[38;5;45m
+ORANGE		=	\033[38;5;214m
+YELLOW		=	\033[38;5;220m
+PINK		=	\033[38;5;197m
 _STOP		=	\033[0m
 
 #	Fonts:
@@ -79,56 +79,55 @@ R_BLINK		=	\033[25m
 UNDERLINE	=	\033[4m
 R_UNDERLINE	=	\033[24m
 
+##						##
+##	|	SDL INSTALL	 |	##
+##						##
+
+
 
 ##					##
 ##	|	RULES	|	##
 ##					##
 
 $(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h
-	@printf "$(_ORANGE)[CC] $(<:.c=)...$(_STOP)"
+	@printf "$(ORANGE)[CC] $(<:.c=)...$(_STOP)"
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 	@printf "\r                                             \r"
 
 all:
-	@echo "$(_ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION OBJECTS: IN PROGRESS..$(_STOP)\n		OBJECTS DIRECTORY: CREATION || ->\n"
+	@echo "$(ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION OBJECTS: IN PROGRESS..$(_STOP)\n		OBJECTS DIRECTORY: CREATION || ->\n"
 	@mkdir -p $(OBJ_DIR)
 	@$(MAKE) $(NAME) --no-print-directory
 
 make_libft:
 	@make -C libft/
 
-#make_mlx:
-	#echo "$(_ORANGE)$(UNDERLINE)MLX:$(R_UNDERLINE)$(_STOP)		$(BOLD)LIB IN PROGRESS..$(_STOP)\n"
-	#@make -C minilibx_macos/
-	#@echo "\n"
-
-$(NAME): $(OBJ) $(INC_DIR) make_libft #make_mlx
-	@echo "$(_ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION $(NAME): IN PROGRESS..$(_STOP)\n"
+$(NAME): $(OBJ) $(INC_DIR) make_libft
+	@echo "$(ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION $(NAME): IN PROGRESS..$(_STOP)\n"
 	@$(CC) $(CFLAGS) $(OBJ) -I ./libft/includes $(INC) -L lib libft/libft.a -l SDL2 -l SDL2_image -framework OpenGL -framework AppKit -o $(NAME)
-	@echo "$(_ORANGE)| ->		$(NAME):" "$(_STOP)|\033[42m     $(BOLD)L O A D I N G$(R_BOLD)     $(_STOP)|" #| pv -qL 15
-	@echo "		$(_ORANGE)$(BLINK)100%\n$(R_BLINK)$(_STOP)"
+	@echo "$(ORANGE)| ->		$(NAME):" "$(_STOP)|\033[42m     $(BOLD)L O A D I N G$(R_BOLD)     $(_STOP)|" #| pv -qL 15
+	@echo "		$(ORANGE)$(BLINK)100%\n$(R_BLINK)$(_STOP)"
 #	@sleep 1.5
 #	@clear
-	@echo "\n$(_ORANGE)	   _____________________________"
+	@echo "\n$(ORANGE)	   _____________________________"
 	@echo "	|>				 <|"
 	@echo "	|>	   ┬ ┬┌─┐┬  ┌─┐		 <|"
 	@echo "	|>	   ││││ ││  ├┤ 		 <|"
 	@echo "	|>	   └┴┘└─┘┴─┘└  _3D	 <|"
 	@echo "	|>				 <|"
-	@echo "	   __________________$(_STOP)$(BLINK)$(_YELLOW)is ready$(R_BLINK)$(_ORANGE)____$(_STOP)\n"
+	@echo "	   __________________$(_STOP)$(BLINK)$(YELLOW)is ready$(R_BLINK)$(ORANGE)____$(_STOP)\n"
 
 clean:
-	@echo "$(_ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)CLEAN: IN PROGRESS..$(_STOP)\n		DELETING OBJECTS || ->\n"
+	@echo "$(ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)CLEAN: IN PROGRESS..$(_STOP)\n		DELETING OBJECTS || ->\n"
 	@$(RM_DIR) $(OBJ_DIR)
 	@$(MAKE) clean -C libft/
-	#@$(MAKE) clean -C minilibx_macos/
-	@echo "$(_ORANGE)| ->		CLEAN: DONE\n$(_STOP)"
+	@echo "$(ORANGE)| ->		CLEAN: DONE\n$(_STOP)"
 
 fclean: clean
-	@echo "$(_ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)FCLEAN: IN PROGRESS..$(_STOP)\n		DELETING EXEC || ->\n"
+	@echo "$(ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)FCLEAN: IN PROGRESS..$(_STOP)\n		DELETING EXEC || ->\n"
 	@$(RM_DIR) $(NAME) a.out doom_nukem.dSYM a.out.dSYM
 	@$(MAKE) fclean -C libft/
-	@echo "$(_ORANGE)| ->		FCLEAN: DONE\n$(_STOP)"
+	@echo "$(ORANGE)| ->		FCLEAN: DONE\n$(_STOP)"
 
 re:
 	@$(MAKE) fclean --no-print-directory
@@ -137,6 +136,6 @@ re:
 bin: re clean
 
 
-#.SILENT: make_mlx
+#.SILENT:
 #.PRECIOUS:
 .PHONY: all clean fclean re bin make_libft

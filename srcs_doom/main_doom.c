@@ -6,18 +6,30 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 17:24:18 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 14:30:47 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 
+/* Fonction de callback (sera appelée toutes les 30 ms) */
+Uint32 frameDisplay(Uint32 intervalle, void *parametre)
+{
+    t_info *info = parametre;
+    printf("%d FPS\n", info->frame);
+    return intervalle;
+}
+
 int		main(int argc, char **argv)
 {
 	t_info	info;
     
   // SDL_Event evenements = {0};
+    info.frame = 0;
+    SDL_TimerID timer;
+
+    timer = SDL_AddTimer(1, frameDisplay, (t_info*)&info); /* Démarrage du timer */
 
 	if (argc != 2)
 		ft_usage("Mauvais nombre d'arguments !");
@@ -27,8 +39,9 @@ int		main(int argc, char **argv)
     info.ii = 10;
     info.quit = 0;
 	init(&info);
-    SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
-    SDL_Thread* threadID2 = SDL_CreateThread(threadAnim2, "wowThread2", (t_info*)&info);
+
+    //SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
+    //SDL_Thread* threadID2 = SDL_CreateThread(threadAnim2, "wowThread2", (t_info*)&info);
 	//mlx_hook(info.win.win, 17, 0, red_cross, (void *)0);
 	//mlx_hook(info.win.win, 2, (1L << 0), key_press, &info);
 	//mlx_hook(info.win.win, 3, (1L << 1), key_release, &info);
@@ -53,28 +66,55 @@ int		main(int argc, char **argv)
                     // exit if ESCAPE is pressed
                     if (event.key.keysym.sym == SDLK_ESCAPE)
                         info.quit = 1;
+                    else if (event.key.keysym.sym == SDLK_w)
+                        info.player.move_up = 1;
+                    else if (event.key.keysym.sym == SDLK_s)
+                        info.player.move_down = 1;
+                    else if (event.key.keysym.sym == SDLK_d)
+                        info.player.turn_right = 1;
+                    else if (event.key.keysym.sym == SDLK_a)
+                        info.player.turn_left = 1;
+                    break;
+                }
+            
+            case SDL_KEYUP:
+                {
+                    if (event.key.keysym.sym == SDLK_w)
+                        info.player.move_up = 0;
+                    else if (event.key.keysym.sym == SDLK_s)
+                        info.player.move_down = 0;
+                    else if (event.key.keysym.sym == SDLK_d)
+                        info.player.turn_right = 0;
+                    else if (event.key.keysym.sym == SDLK_a)
+                        info.player.turn_left = 0;
                     break;
                 }
         } // end switch
     } // end of message processing
             
-        hud(&info);
+        //hud(&info);
+        SDL_UnlockTexture(info.fps.texture2);
 		SDL_RenderClear(info.win.renderer);
 
-		SDL_RenderCopy(info.win.renderer, info.win.texture, NULL, &info.head[3].rect);
+        SDL_RenderCopy(info.win.renderer, info.fps.texture2, NULL, NULL);
+        
+        //SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.head[3].rect);
 
-        SDL_RenderCopy(info.win.renderer, info.win.texture2, NULL, &info.head[2].rect);
-
-        SDL_RenderCopy(info.win.renderer, info.win.texture3, NULL, &info.head[4].rect);
+        //SDL_RenderCopy(info.win.renderer, info.win.texture3, NULL, &info.head[4].rect);
 
 		SDL_RenderPresent(info.win.renderer);
 
-        SDL_UpdateWindowSurface(info.win.win);
+        //SDL_UpdateWindowSurface(info.win.win);
 
-        SDL_Delay(100);
+        //SDL_Delay(100);
+        SDL_DestroyTexture(info.fps.texture2);
+        info.frame++;
+        move(&info);
+        ray_casting_image(&info);
+        
    }
-   SDL_WaitThread( threadID, NULL );
-   SDL_WaitThread( threadID2, NULL );
+   //SDL_WaitThread( threadID, NULL );
+   //SDL_WaitThread( threadID2, NULL );
    IMG_Quit();
    SDL_Quit();
 }

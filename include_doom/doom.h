@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 17:24:54 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 14:24:26 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,9 @@
 # include <SDL.h>
 # include <SDL_image.h>
 # include <SDL_thread.h>
+# include <SDL_timer.h>
+# include <SDL_ttf.h>
+
 
 
 # define WIDTH 1600
@@ -51,11 +54,18 @@ typedef struct		s_setmap
 
 typedef struct		s_tex
 {
+	SDL_Texture		*texture;
+	SDL_Texture		*texture2;
+	SDL_Texture		*texture3;
+	SDL_PixelFormat *format;
+	void			*tmp;
+	int				pitch;
+	Uint32			*pixels;
 	SDL_Surface		*img;
-	char			*data;
-	int				bpp;
-	int				sizeline;
-	int				endian;
+	//char			*data;
+	//int				bpp;
+	//int				sizeline;
+	//int				endian;
 	int				xhud;
 	int				yhud;
 	int				tex_x;
@@ -103,9 +113,6 @@ typedef struct		s_win
 {
 	int				w;
 	int				h;
-	SDL_Texture		*texture;
-	SDL_Texture		*texture2;
-	SDL_Texture		*texture3;
 	SDL_Renderer	*renderer;
 	SDL_Surface		*screen;
 	SDL_Window		*win;
@@ -176,6 +183,7 @@ typedef struct		s_info
 	int				ii;
 	int				iii;
 	int				quit;
+	int				frame;
 }					t_info;
 
 /*
@@ -231,23 +239,23 @@ void				count_width(t_setmap *set);
 ** srcs:			ft_ray.c
 */
 
-//void				ray_casting_image(t_info *info);
-//void				its_a_trap(t_info *info);
+void				ray_casting_image(t_info *info);
+void				its_a_trap(t_info *info);
 int					threadAnim(void* data);
 int					threadAnim2(void* data);
 void				hud(t_info *info);
-//int					ray_casting(t_info *info);
-//void				ray_casting_init(t_info *info, int x);
+int					ray_casting(t_info *info);
+void				ray_casting_init(t_info *info, int x);
 
 /*
 ** srcs:			ft_wall.c
 */
 
-/*void				wall_detection(t_info *info);
+void				wall_detection(t_info *info);
 void				wall_detection_plus(t_info *info);
 void				wall_detection_init_x(t_info *info);
 void				wall_detection_init_y(t_info *info);
-void				create_img(t_info *info);*/
+void				create_img(t_info *info);
 
 /*
 ** srcs:			ft_draw_wall.c
@@ -299,18 +307,18 @@ void				teleport_2(t_info *info);
 ** srcs:			ft_textures.c
 */
 
-/*void				texture_calc(t_info *info);
+void				texture_calc(t_info *info);
 void				choose_texture_1(t_info *info);
 void				choose_texture_2(t_info *info);
-void				skybox(t_info *info);*/
+//void				skybox(t_info *info);
 
 /*
 ** srcs:			ft_gameover.c
 */
 
-/*void				game_over(t_info *info);
-void				flash(t_info *info);
-void				create_flash(t_info *info);*/
+void				game_over(t_info *info);
+//void				flash(t_info *info);
+//void				create_flash(t_info *info);
 
 /*
 ** srcs:			ft_usage.c

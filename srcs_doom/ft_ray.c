@@ -12,7 +12,7 @@
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
-/*
+
 void	ray_casting_init(t_info *info, int x)
 {
 	info->player.x_camera = 2 * x / (double)(info->win.w) - 1;
@@ -54,8 +54,8 @@ int		ray_casting(t_info *info)
 	}
 	return (0);
 }
-*/
-int		threadAnim(void*	data)
+
+/*int		threadAnim(void*	data)
 {
 	t_info *info = data;
 	info->win.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->ii].img);
@@ -91,14 +91,14 @@ int		threadAnim2(void*	data)
 	if (!info->quit)
 		threadAnim2((t_info*)info);
 	return (0);
-}
+}*/
 
 void	hud(t_info *info)
 {
 	
 
-		info->win.texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
-		SDL_QueryTexture(info->win.texture, NULL, NULL, &info->head[3].w, &info->head[3].h);
+		info->fps.texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
+		SDL_QueryTexture(info->fps.texture, NULL, NULL, &info->head[3].w, &info->head[3].h);
 		info->head[3].rect.x = 0;
 		info->head[3].rect.y = 0;
 		info->head[3].rect.w = info->head[3].w;
@@ -120,7 +120,7 @@ void	hud(t_info *info)
 	//mlx_destroy_image(info->win.mlx, info->fps.img);
 }
 
-/*void	its_a_trap(t_info *info)
+void	its_a_trap(t_info *info)
 {
 	if (info->map.map[(int)info->player.x_pos][(int)info->player.y_pos] == '5')
 	{
@@ -128,8 +128,10 @@ void	hud(t_info *info)
 		{
 			info->player.can_trap = 0;
 			info->player.life -= 1;
-			flash(info);
+			//flash(info);
 		}
+		/* OOF image */
+
 		//mlx_put_image_to_window(info->win.mlx, info->win.win,\
 		//info->wp[10].img, info->win.w / 2 - info->wp[10].img->w\
 		//2, info->win.h / 2 - info->wp[10].img->h / 2);
@@ -142,13 +144,16 @@ void	ray_casting_image(t_info *info)
 {
 	if (!(info->player.life - 1 <= 0))
 	{
-		skybox(info);
+		//skybox(info);
 		create_img(info);
 		ray_casting(info);
+		/* Main frame */
+
 		//mlx_put_image_to_window(info->win.mlx, info->win.win,\
 		//info->fps.img, 0, 0);
 		if (info->map.map[(int)info->player.x_pos]\
 		[(int)info->player.y_pos] == '4')
+		/* Victory image */
 			//mlx_put_image_to_window(info->win.mlx, info->win.win,\
 			//info->wp[7].img, info->win.w / 2 - info->wp[7].img->w / 2,\
 			//info->win.h / 2 - info->wp[7].img->h / 2);
@@ -158,4 +163,3 @@ void	ray_casting_image(t_info *info)
 	else
 		game_over(info);
 }
-*/

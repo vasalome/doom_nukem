@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 17:28:29 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 14:21:39 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,7 +68,7 @@ void	init_window(t_info *info)
 	{
 		printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
 	}
-	if (SDL_Init(SDL_INIT_VIDEO) < 0 )
+	if (SDL_Init(SDL_INIT_VIDEO| SDL_INIT_TIMER) < 0 )
     {
         fprintf(stdout,"Échec de l'initialisation de la SDL (%s)\n",SDL_GetError());
     }
@@ -79,7 +79,7 @@ void	init_window(t_info *info)
                                           	SDL_WINDOWPOS_CENTERED,
                                                                 	info->win.w,
                                                                   	info->win.h,
-                                                                  	SDL_WINDOW_SHOWN);
+                                                                  	SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN);
 																  
 		info->win.renderer = SDL_CreateRenderer(info->win.win, -1, SDL_RENDERER_ACCELERATED);
 		SDL_SetRenderDrawColor( info->win.renderer, 0xFF, 0xFF, 0xFF, 0xFF );
@@ -94,5 +94,5 @@ void	init(t_info *info)
 	init_map(info);
 	init_player(info);
 	icon(info);
-	//ray_casting_image(info);
+	ray_casting_image(info);
 }

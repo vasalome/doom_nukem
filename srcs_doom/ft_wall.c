@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:37:11 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 17:25:02 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 13:55:18 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,9 +15,13 @@
 
 void	create_img(t_info *info)
 {
-	info->fps.img = mlx_new_image(info->win.mlx, WIDTH, HEIGHT);
+	info->fps.texture2 = SDL_CreateTexture(info->win.renderer, SDL_PIXELFORMAT_RGBA8888, \
+		SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT);
+	info->fps.format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
+	SDL_LockTexture(info->fps.texture2, NULL, &info->fps.tmp, &info->fps.pitch);
+	/*info->fps.img = mlx_new_image(info->win.mlx, WIDTH, HEIGHT);
 	info->fps.data = mlx_get_data_addr(info->fps.img, &info->fps.bpp,\
-		&info->fps.sizeline, &info->fps.endian);
+		&info->fps.sizeline, &info->fps.endian);*/
 }
 
 void	wall_detection_init_y(t_info *info)
