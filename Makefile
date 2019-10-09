@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/10/09 14:52:43 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/09 19:12:20 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,6 +17,7 @@
 
 #	Output:
 NAME		=	doom_nukem
+NAME_EDITOR	=	editor
 
 #	Compiler:
 CC			=	gcc
@@ -81,10 +82,9 @@ R_BLINK		=	\033[25m
 UNDERLINE	=	\033[4m
 R_UNDERLINE	=	\033[24m
 
-##						##
-##	|	SDL INSTALL	 |	##
-##						##
+# // SDL VARIABLES // #
 
+###
 
 
 ##					##
@@ -97,7 +97,7 @@ $(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h $(INC_SDL_DIR)*.h
 	@printf "\r                                             \r"
 
 all:
-	@echo "$(ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION OBJECTS: IN PROGRESS..$(_STOP)\n		OBJECTS DIRECTORY: CREATION || ->\n"
+	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION OBJECTS: IN PROGRESS..$(_STOP)\n		OBJECTS DIRECTORY: CREATION || ->\n"
 	@mkdir -p $(OBJ_DIR)
 	@$(MAKE) $(NAME) --no-print-directory
 
@@ -105,28 +105,42 @@ make_libft:
 	@make -C libft/
 
 $(NAME): $(OBJ) $(INC_DIR) $(INC_SDL_DIR) make_libft
-	@echo "$(ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION $(NAME): IN PROGRESS..$(_STOP)\n"
+	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION $(NAME): IN PROGRESS..$(_STOP)\n"
 	@$(CC) $(CFLAGS) $(OBJ) -I ./libft/includes $(INC) $(INC_SDL) -L lib libft/libft.a -l SDL2 -l SDL2_image -framework OpenGL -framework AppKit -o $(NAME)
-	@echo "$(ORANGE)| ->		$(NAME):" "$(_STOP)|\033[42m     $(BOLD)L O A D I N G$(R_BOLD)     $(_STOP)|" #| pv -qL 15
-	@echo "		$(ORANGE)$(BLINK)100%\n$(R_BLINK)$(_STOP)"
+	@echo "$(VIOLET)| ->		$(NAME): $(GREEN)$(BLINK)100%$(R_BLINK)$(_STOP)"
 #	@sleep 1.5
 #	@clear
-	@echo "\n$(ORANGE)	   _____________________________"
-	@echo "	|>				 <|"
-	@echo "	|>	   ┬ ┬┌─┐┬  ┌─┐		 <|"
-	@echo "	|>	   ││││ ││  ├┤ 		 <|"
-	@echo "	|>	   └┴┘└─┘┴─┘└  _3D	 <|"
-	@echo "	|>				 <|"
-	@echo "	   __________________$(_STOP)$(BLINK)$(YELLOW)is ready$(R_BLINK)$(ORANGE)____$(_STOP)\n"
+	@echo  "$(RED)"
+	@echo " *******     *******     *******   ****     ****     "
+	@echo "/**////**   **/////**   **/////** /**/**   **/**     "
+	@echo "/**    /** **     //** **     //**/**//** ** /**     "
+	@echo "/**    /**/**      /**/**      /**/** //***  /**     "
+	@echo "/**    /**/**      /**/**      /**/**  //*   /**     "
+	@echo "/**    ** //**     ** //**     ** /**   /    /**     "
+	@echo "/*******   //*******   //*******  /**        /**     "
+	@echo "///////     ///////     ///////   //         //      "
+	@echo " ****     ** **     ** **   ** ******** ****     ****"
+	@echo "/**/**   /**/**    /**/**  ** /**///// /**/**   **/**"
+	@echo "/**//**  /**/**    /**/** **  /**      /**//** ** /**"
+	@echo "/** //** /**/**    /**/****   /******* /** //***  /**"
+	@echo "/**  //**/**/**    /**/**/**  /**////  /**  //*   /**"
+	@echo "/**   //****/**    /**/**//** /**      /**   /    /**"
+	@echo "/**    //***//******* /** //**/********/**        /**"
+	@echo "//      ///  ///////  //   // //////// //         // "
+	@echo "_________________________________________$(_STOP)$(BLINK)$(VIOLET)is ready$(R_BLINK)$(RED)____$(_STOP)\n"
+
+# // SDL INSTALL // #
+
+
 
 clean:
-	@echo "$(ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)CLEAN: IN PROGRESS..$(_STOP)\n		DELETING OBJECTS || ->\n"
+	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)CLEAN: IN PROGRESS..$(_STOP)\n		DELETING OBJECTS || ->\n"
 	@$(RM_DIR) $(OBJ_DIR)
 	@$(MAKE) clean -C libft/
 	@echo "$(ORANGE)| ->		CLEAN: DONE\n$(_STOP)"
 
 fclean: clean
-	@echo "$(ORANGE)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)FCLEAN: IN PROGRESS..$(_STOP)\n		DELETING EXEC || ->\n"
+	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)FCLEAN: IN PROGRESS..$(_STOP)\n		DELETING EXEC || ->\n"
 	@$(RM_DIR) $(NAME) a.out doom_nukem.dSYM a.out.dSYM
 	@$(MAKE) fclean -C libft/
 	@echo "$(ORANGE)| ->		FCLEAN: DONE\n$(_STOP)"
