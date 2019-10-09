@@ -1,7 +1,7 @@
 exemple: [1,0,6,7,8,9,0,1:10;11]
 
 [ -> ouverture case
-1 -> type de mur
+1 -> type de case
 0 -> 1 ou 0 / cliping ou non
 6 -> Texture NORD
 7 -> Texture EAST
