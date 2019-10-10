@@ -32,6 +32,32 @@
 # define WIDTH 1600
 # define HEIGHT 900
 
+struct SDL_Texture
+{
+    const void *magic;
+    Uint32 format;              /**< The pixel format of the texture */
+    int access;                 /**< SDL_TextureAccess */
+    int w;                      /**< The width of the texture */
+    int h;                      /**< The height of the texture */
+    int modMode;                /**< The texture modulation mode */
+    SDL_BlendMode blendMode;    /**< The texture blend mode */
+    Uint8 r, g, b, a;           /**< Texture modulation values */
+ 
+    SDL_Renderer *renderer;
+ 
+    /* Support for formats not supported directly by the renderer */
+    SDL_Texture *native;
+    void *yuv; // chez moiil connait pas la struture SDL_SW_YUVTexture 
+    void *pixels;
+    int pitch;
+    SDL_Rect locked_rect;
+ 
+    void *driverdata;           /**< Driver specific texture representation */
+ 
+    SDL_Texture *prev;
+    SDL_Texture *next;
+};
+
 typedef struct		s_fillmap
 {
 	int				fd;
@@ -184,6 +210,7 @@ typedef struct		s_info
 	int				iii;
 	int				quit;
 	int				frame;
+	SDL_Color 		rgb;
 }					t_info;
 
 /*

@@ -18,6 +18,7 @@ Uint32 frameDisplay(Uint32 intervalle, void *parametre)
 {
     t_info *info = parametre;
     printf("%d FPS\n", info->frame);
+    info->frame = 0;
     return intervalle;
 }
 
@@ -29,7 +30,7 @@ int		main(int argc, char **argv)
     info.frame = 0;
     SDL_TimerID timer;
 
-    timer = SDL_AddTimer(1, frameDisplay, (t_info*)&info); /* Démarrage du timer */
+    timer = SDL_AddTimer(1000, frameDisplay, (t_info*)&info); /* Démarrage du timer */
 
 	if (argc != 2)
 		ft_usage("Mauvais nombre d'arguments !");
@@ -46,6 +47,11 @@ int		main(int argc, char **argv)
 	//mlx_hook(info.win.win, 2, (1L << 0), key_press, &info);
 	//mlx_hook(info.win.win, 3, (1L << 1), key_release, &info);
 	//mlx_loop_hook(info.win.mlx, move, &info);
+
+    info.win.screen = IMG_Load("head/head1.png");
+
+    SDL_SetWindowIcon(info.win.win, info.win.screen);
+
 	while(!info.quit)
    {
         SDL_Event event;
@@ -93,10 +99,12 @@ int		main(int argc, char **argv)
     } // end of message processing
             
         //hud(&info);
-        SDL_UnlockTexture(info.fps.texture2);
+        SDL_UnlockTexture(info.fps.texture);
+        //SDL_UnlockTexture(info.wt[2].texture);
 		SDL_RenderClear(info.win.renderer);
 
-        SDL_RenderCopy(info.win.renderer, info.fps.texture2, NULL, NULL);
+        SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, NULL);
+        //SDL_RenderCopy(info.win.renderer, info.wt[2].texture, NULL, &info.head[3].rect);
         
         //SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.head[3].rect);
 

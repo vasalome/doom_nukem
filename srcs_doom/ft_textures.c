@@ -103,11 +103,11 @@ void	texture_calc(t_info *info)
 		info->wall.wall_distance * info->ray.x_ray_direction;
 	info->wall.ux -= floor((info->wall.ux));
 	info->wt[info->w_j].tex_x = (int)(info->wall.ux * \
-	(double)info->wt[info->w_j].xhud);
+	(double)info->wt[info->w_j].img->w);
 	if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
-		info->wt[info->w_j].tex_x = info->wt[info->w_j].xhud - \
+		info->wt[info->w_j].tex_x = info->wt[info->w_j].img->w - \
 		info->wt[info->w_j].tex_x - 1;
 	if (info->wall.side == 1 && info->ray.y_ray_direction < 0)
-		info->wt[info->w_j].tex_x = info->wt[info->w_j].xhud - \
+		info->wt[info->w_j].tex_x = info->wt[info->w_j].img->w - \
 		info->wt[info->w_j].tex_x - 1;
 }

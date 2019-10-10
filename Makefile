@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/10/09 19:12:20 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/10 13:48:12 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -129,9 +129,11 @@ $(NAME): $(OBJ) $(INC_DIR) $(INC_SDL_DIR) make_libft
 	@echo "//      ///  ///////  //   // //////// //         // "
 	@echo "_________________________________________$(_STOP)$(BLINK)$(VIOLET)is ready$(R_BLINK)$(RED)____$(_STOP)\n"
 
-# // SDL INSTALL // #
+#	SDL install:
 
 
+
+#	Cleaning rules:
 
 clean:
 	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)CLEAN: IN PROGRESS..$(_STOP)\n		DELETING OBJECTS || ->\n"

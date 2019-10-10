@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 14:49:45 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/10 14:18:13 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,7 +63,7 @@ void	init_window(t_info *info)
 	info->win.w = WIDTH;
 	info->win.h = HEIGHT;
 	
-	int imgFlags = IMG_INIT_PNG;
+	int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
 	if( !( IMG_Init( imgFlags ) & imgFlags ) )
 	{
 		printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );

@@ -15,10 +15,10 @@
 
 void	create_img(t_info *info)
 {
-	info->fps.texture2 = SDL_CreateTexture(info->win.renderer, SDL_PIXELFORMAT_RGBA8888, \
+	info->fps.texture = SDL_CreateTexture(info->win.renderer, SDL_PIXELFORMAT_RGBA8888, \
 		SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT);
 	info->fps.format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
-	SDL_LockTexture(info->fps.texture2, NULL, &info->fps.tmp, &info->fps.pitch);
+	SDL_LockTexture(info->fps.texture, NULL, &info->fps.tmp, &info->fps.pitch);
 	/*info->fps.img = mlx_new_image(info->win.mlx, WIDTH, HEIGHT);
 	info->fps.data = mlx_get_data_addr(info->fps.img, &info->fps.bpp,\
 		&info->fps.sizeline, &info->fps.endian);*/

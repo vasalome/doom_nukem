@@ -97,8 +97,8 @@ void	hud(t_info *info)
 {
 	
 
-		info->fps.texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
-		SDL_QueryTexture(info->fps.texture, NULL, NULL, &info->head[3].w, &info->head[3].h);
+		info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
+		SDL_QueryTexture(info->fps.texture2, NULL, NULL, &info->head[3].w, &info->head[3].h);
 		info->head[3].rect.x = 0;
 		info->head[3].rect.y = 0;
 		info->head[3].rect.w = info->head[3].w;
