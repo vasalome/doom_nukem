@@ -1,0 +1,14 @@
+prefix=/Users/lnieto/sdl/freetype-2.8.1/build
+exec_prefix=/Users/lnieto/sdl/freetype-2.8.1/build
+libdir=/Users/lnieto/sdl/freetype-2.8.1/build/lib
+includedir=/Users/lnieto/sdl/freetype-2.8.1/build/include
+
+Name: FreeType 2
+URL: http://freetype.org
+Description: A free, high-quality, and portable font engine.
+Version: 21.0.15
+Requires:
+Requires.private: 
+Libs: -L${libdir} -lfreetype
+Libs.private: -lz -lbz2 -L/opt/X11/lib -lpng16 -lz
+Cflags: -I${includedir}/freetype2
