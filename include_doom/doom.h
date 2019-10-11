@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 14:24:26 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 14:09:54 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,6 +26,7 @@
 # include <SDL_thread.h>
 # include <SDL_timer.h>
 # include <SDL_ttf.h>
+# include <SDL_mixer.h>
 
 
 
@@ -187,6 +188,22 @@ typedef struct		s_weapon
 	int				icony;*/
 }					t_weapon;
 
+typedef struct		s_music
+{
+	Mix_Music		*sound;
+	Mix_Chunk		*scratch;
+	Mix_Chunk		*high;
+	Mix_Chunk		*medium;
+	Mix_Chunk		*low;
+}					t_music;
+
+/*typedef struct		s_record
+{
+	const int		MAX_RECORDING_DEVICES = 10;
+	const int 		MAX_RECORDING_SECONDS = 5;
+	const int 		RECORDING_BUFFER_SECONDS = MAX_RECORDING_SECONDS + 1;
+}					t_record;*/
+
 typedef struct		s_info
 {
 	t_tex			tex;
@@ -201,6 +218,8 @@ typedef struct		s_info
 	t_tex			fps;
 	t_tex			flash;
 	t_tex			wt[30];
+	t_music			music;
+	//t_record		rec;
 	int				w_i;
 	int				w_j;
 	int				shot;

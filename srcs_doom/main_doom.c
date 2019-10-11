@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 14:30:47 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 12:41:48 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,6 +51,7 @@ int		main(int argc, char **argv)
     info.win.screen = IMG_Load("head/head1.png");
 
     SDL_SetWindowIcon(info.win.win, info.win.screen);
+    //Mix_PlayMusic(info.music.sound, -1);
 
 	while(!info.quit)
    {
@@ -80,6 +81,22 @@ int		main(int argc, char **argv)
                         info.player.turn_right = 1;
                     else if (event.key.keysym.sym == SDLK_a)
                         info.player.turn_left = 1;
+                    else if (event.key.keysym.sym == SDLK_g)
+                    {
+                        Mix_PlayChannel(-1, info.music.high, 0);
+                    }
+                    else if (event.key.keysym.sym == SDLK_h)
+                    {
+                        Mix_PlayChannel(-1, info.music.low, 0);
+                    }
+                    else if (event.key.keysym.sym == SDLK_z)
+                    {
+                        SDL_Delay(10);
+                        info.wt[8].img = IMG_Load("wall/jojo2.png");
+	                    info.wt[9].img = IMG_Load("wall/jojo2.png");
+	                    info.wt[10].img = IMG_Load("wall/jojo2.png");
+	                    info.wt[11].img = IMG_Load("wall/jojo2.png");
+                    }
                     break;
                 }
             
@@ -93,6 +110,14 @@ int		main(int argc, char **argv)
                         info.player.turn_right = 0;
                     else if (event.key.keysym.sym == SDLK_a)
                         info.player.turn_left = 0;
+                    else if (event.key.keysym.sym == SDLK_z)
+                    {
+                        SDL_Delay(10);
+                        info.wt[8].img = IMG_Load("wall/jojo.png");
+	                    info.wt[9].img = IMG_Load("wall/jojo.png");
+	                    info.wt[10].img = IMG_Load("wall/jojo.png");
+	                    info.wt[11].img = IMG_Load("wall/jojo.png");
+                    }
                     break;
                 }
         } // end switch
@@ -118,6 +143,7 @@ int		main(int argc, char **argv)
         SDL_DestroyTexture(info.fps.texture2);
         info.frame++;
         move(&info);
+        
         ray_casting_image(&info);
         
    }

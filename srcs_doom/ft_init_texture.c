@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 14:59:01 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 11:11:09 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,13 +34,13 @@ void	textures_door_1(t_info *info)
 }
 
 void	textures_wall_2(t_info *info)
-{
-	info->wt[8].img = IMG_Load("wall/dirt.jpeg");
-	info->wt[9].img = IMG_Load("wall/dirt.jpeg");
-	info->wt[10].img = IMG_Load("wall/dirt.jpeg");
-	info->wt[11].img = IMG_Load("wall/dirt.jpeg");
-	/*
-	info->wt[8].img = IMG_Load("wall/2/face_c-2.png");
+{					
+	info->wt[8].img = IMG_Load("wall/jojo.png");
+	info->wt[9].img = IMG_Load("wall/jojo.png");
+	info->wt[10].img = IMG_Load("wall/jojo.png");
+	info->wt[11].img = IMG_Load("wall/jojo.png");
+	
+	/*info->wt[8].img = IMG_Load("wall/2/face_c-2.png");
 	info->wt[9].img = IMG_Load("wall/2/face_a-2.png");
 	info->wt[10].img = IMG_Load("wall/2/face_bd-2.png");
 	info->wt[11].img = IMG_Load("wall/2/face_bd-2.png");*/
@@ -52,6 +52,7 @@ void	textures_wall_1(t_info *info)
 	info->wt[1].img = IMG_Load("wall/floor.png");
 	info->wt[2].img = IMG_Load("wall/floor.png");
 	info->wt[3].img = IMG_Load("wall/floor.png");
+	
 	/*info->wt[0].img = IMG_Load("wall/1/face_c.png");
 	info->wt[1].img = IMG_Load("wall/1/face_a.png");
 	info->wt[2].img = IMG_Load("wall/1/face_b.png");

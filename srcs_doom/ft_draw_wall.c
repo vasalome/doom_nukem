@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 14:29:40 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 14:23:28 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -84,7 +84,9 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	y = draw_start - 5;
 	while (++y < info->win.h)
 	{
-		info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, 75, 75, 75, 255);
+		Uint32 data = getpixel(info->wt[info->w_j].img, x , tex_y);
+	SDL_GetRGB(data, info->wt[info->w_j].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
+		info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
 		/*info->fps.data[x * 4 + 4 * WIDTH * y + 1] = (char)120;
 		info->fps.data[x * 4 + 4 * WIDTH * y + 2] = (char)120;
 		info->fps.data[x * 4 + 4 * WIDTH * y + 3] = (char)0;*/

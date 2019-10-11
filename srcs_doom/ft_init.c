@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 14:18:13 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 11:24:09 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,11 +64,8 @@ void	init_window(t_info *info)
 	info->win.h = HEIGHT;
 	
 	int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
-	if( !( IMG_Init( imgFlags ) & imgFlags ) )
-	{
-		printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
-	}
-	if (SDL_Init(SDL_INIT_VIDEO| SDL_INIT_TIMER) < 0 )
+	
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_AUDIO) < 0 )
     {
         fprintf(stdout,"Échec de l'initialisation de la SDL (%s)\n",SDL_GetError());
     }
@@ -84,6 +81,24 @@ void	init_window(t_info *info)
 		info->win.renderer = SDL_CreateRenderer(info->win.win, -1, SDL_RENDERER_ACCELERATED);
 		SDL_SetRenderDrawColor( info->win.renderer, 0xFF, 0xFF, 0xFF, 0xFF );
 	}
+	
+	if	(!(IMG_Init(imgFlags) & imgFlags))
+	{
+		printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+	}
+
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	{
+		printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", IMG_GetError() );
+	}
+}
+
+void	init_music(t_info *info)
+{
+	info->music.sound = Mix_LoadMUS("wall/scream.wav");
+	info->music.high = Mix_LoadWAV("wall/scream.wav");
+	info->music.low = Mix_LoadWAV("wall/elevator.wav");
+	
 }
 
 void	init(t_info *info)
@@ -93,6 +108,7 @@ void	init(t_info *info)
 	load_textures(info);
 	init_map(info);
 	init_player(info);
+	init_music(info);
 	icon(info);
 	ray_casting_image(info);
 }
