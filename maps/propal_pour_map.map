@@ -1,7 +1,7 @@
 [ -> ouverture case
 1 -> type de case
 0 -> 1 ou 0 / cliping ou non
-1 -> 1 ou 0 / ray passe ou non
+1 -> 1 ou 0 / ray passe ou non // overdraw ?
 1.25 -> hauteur du sol
 0 -> 1 ou 0 /plafond ou non
 2.25 -> hauteur plafond
