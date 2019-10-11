@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 11:24:09 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 15:22:42 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -95,9 +95,9 @@ void	init_window(t_info *info)
 
 void	init_music(t_info *info)
 {
-	info->music.sound = Mix_LoadMUS("wall/scream.wav");
-	info->music.high = Mix_LoadWAV("wall/scream.wav");
-	info->music.low = Mix_LoadWAV("wall/elevator.wav");
+	info->music.sound = Mix_LoadMUS("music/scream.wav");
+	info->music.high = Mix_LoadWAV("music/scream.wav");
+	info->music.low = Mix_LoadWAV("music/elevator.wav");
 	
 }
 
