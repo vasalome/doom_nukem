@@ -3,6 +3,7 @@
 0 -> 1 ou 0 / cliping ou non
 1 -> 1 ou 0 / ray passe ou non // overdraw ?
 1.25 -> hauteur du sol
+AJOUTER HAUTEUR DES MURS ?
 0 -> 1 ou 0 /plafond ou non
 2.25 -> hauteur plafond
 N -> Texture NORD
