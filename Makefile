@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/10/17 14:21:04 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/17 18:40:11 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,13 +21,15 @@ NAME_EDITOR	=	editor
 
 #	Compiler:
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra #-Werror
 MEMFLAGS	=	-ggdb -fsanitize=address
+FLAG_SDL	=	$(shell sdl2-config --libs) -lSDL2_ttf -lSDL2_image -lSDL2_mixer -O3
 
 #	Directory:
 SRCS_DIR	=	./srcs_doom/
 OBJ_DIR		=	./objs_doom/
 INC_DIR		=	./include_doom/
+INC_DIR_SDL	=	./SDL_include/
 
 #	Sources:
 SRCS		=	main_doom.c
@@ -51,25 +53,25 @@ SRCS		+=	ft_usage.c
 #####
 PWD := $(shell pwd)
 FRAMEWORKSDIR := $(PWD)/frameworks
-SDL := -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_ttf -framework SDL2_image -framework SDL2_mixer -Wl,-rpath $(FRAMEWORKSDIR)
+SDL := -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_ttf -framework SDL2_image -framework SDL2_mixer -rpath $(FRAMEWORKSDIR)
 #######
 
 #	Sdl:
-#INC_SDL	=	-I ./frameworks/SDL2.framework/Versions/A/Headers \
-#				-I ./frameworks/SDL2_ttf.framework/Versions/A/Headers \
-#				-I ./frameworks/SDL2_image.framework/Versions/A/Headers \
-#				-I ./frameworks/SDL2_mixer.framework/Headers \
-#				-I ./frameworks/SDL2_net.framework/Headers \
-#				-F ./frameworks
-#FRAMEWORKS	=	-F ./frameworks -rpath ./frameworks \
-#				-framework OpenGL \
-#				-framework AppKit \
-#				-framework OpenCl \
-#				-framework SDL2 \
-#				-framework SDL2_ttf \
-#				-framework SDL2_image \
-#				-framework SDL2_mixer \
-#				-framework SDL2_net
+INC_SDL		=	-I ./frameworks/SDL2.framework/Versions/A/Headers \
+				-I ./frameworks/SDL2_ttf.framework/Versions/A/Headers \
+				-I ./frameworks/SDL2_image.framework/Versions/A/Headers \
+				-I ./frameworks/SDL2_mixer.framework/Headers \
+				-I ./frameworks/SDL2_net.framework/Headers \
+				-F ./frameworks
+FRAMEWORKS	=	-F ./frameworks -rpath ./frameworks \
+				-framework OpenGL \
+				-framework AppKit \
+				-framework OpenCl \
+				-framework SDL2 \
+				-framework SDL2_ttf \
+				-framework SDL2_image \
+				-framework SDL2_mixer \
+				-framework SDL2_net
 
 #	Objects:
 OBJ			=	$(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
@@ -109,7 +111,7 @@ R_UNDERLINE	=	\033[24m
 
 $(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h
 	@printf "$(ORANGE)[CC] $(<:.c=)...$(_STOP)"
-	@$(CC) $(CFLAGS) $(INC) $(INC_SDL) $(FRAMEWORKS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(SDL) $(INC_SDL) -c $< -o $@
 	@printf "\r                                             \r"
 
 all:
@@ -122,7 +124,7 @@ make_libft:
 
 $(NAME): $(OBJ) $(INC_DIR) $(INC_SDL_DIR) make_libft
 	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION $(NAME): IN PROGRESS..$(_STOP)\n"
-	@$(CC) $(CFLAGS) $(OBJ) -I ./libft/includes $(INC) $(INC_SDL) -L lib libft/libft.a $(SDL) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -I ./libft/includes $(INC) -L lib libft/libft.a $(SDL) $(INC_SDL) -o $(NAME)
 	@echo "$(VIOLET)| ->		$(NAME): $(GREEN)$(BLINK)100%$(R_BLINK)$(_STOP)"
 #	@sleep 1.5
 #	@clear
