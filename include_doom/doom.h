@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 14:39:46 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 18:22:32 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,12 +21,13 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <time.h>
-# include <SDL.h>
-# include <SDL_image.h>
+# include <SDL2/SDL.h>
+# include <SDL2_image/SDL_image.h>
 # include <SDL_thread.h>
 # include <SDL_timer.h>
-# include <SDL_ttf.h>
-# include <SDL_mixer.h>
+# include <SDL2_ttf/SDL_ttf.h>
+# include <SDL2_mixer/SDL_mixer.h>
+
 
 
 
