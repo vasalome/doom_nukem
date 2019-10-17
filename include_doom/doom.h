@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 14:09:54 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 14:39:46 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -115,7 +115,7 @@ typedef struct		s_player
 {
 	double			x_camera;
 	double			x_pos;
-	double			y_pos;
+	 double			y_pos;
 	double			x_old_position;
 	double			y_old_position;
 	double			x_dir;
@@ -204,6 +204,18 @@ typedef struct		s_music
 	const int 		RECORDING_BUFFER_SECONDS = MAX_RECORDING_SECONDS + 1;
 }					t_record;*/
 
+typedef	struct			s_floor
+{
+	double			dist;
+	double			weight;
+	double			currentFloorX;
+	double			currentFloorY;
+	int				floorTexX;
+	int				floorTexY;
+	double			floorXWall;
+	double			floorYWall;
+}					t_floor;
+
 typedef struct		s_info
 {
 	t_tex			tex;
@@ -219,6 +231,7 @@ typedef struct		s_info
 	t_tex			flash;
 	t_tex			wt[30];
 	t_music			music;
+	t_floor			floor;
 	//t_record		rec;
 	int				w_i;
 	int				w_j;

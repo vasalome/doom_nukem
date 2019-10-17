@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 14:23:28 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 12:15:13 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,11 +81,24 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 		tex_y = ((d * info->wt[info->w_j].img->h) / info->wall.line_height) / 256;
 		draw_wall_plus(x, draw_start, info, tex_y);
 	}
-	y = draw_start - 5;
-	while (++y < info->win.h)
+	y = draw_end - 1;
+	double	perpwall = info->wall.wall_distance;
+	double distplayer = 0.0;
+	while (++y < HEIGHT)
 	{
-		Uint32 data = getpixel(info->wt[info->w_j].img, x , tex_y);
-	SDL_GetRGB(data, info->wt[info->w_j].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
+		info->floor.dist = HEIGHT / (2 * y - HEIGHT);
+		
+		info->floor.weight = (info->floor.dist - distplayer) / (perpwall - distplayer);
+
+		info->floor.currentFloorX = info->floor.weight * info->floor.floorXWall + (1 - info->floor.weight) * info->player.x_pos;
+		info->floor.currentFloorY = info->floor.weight * info->floor.floorYWall + (1 - info->floor.weight) * info->player.y_pos;
+
+		info->floor.floorTexX = (int)(info->floor.currentFloorX * info->wt[4].img->w) % info->wt[4].img->w;
+		info->floor.floorTexY = (int)(info->floor.currentFloorY * info->wt[4].img->h) % info->wt[4].img->h;
+		//printf("%d , %d\n", info->floor.floorTexX, info->floor.floorTexY);
+		Uint32 data = getpixel(info->wt[4].img, info->floor.floorTexX, info->floor.floorTexY);
+		
+		SDL_GetRGB(data, info->wt[4].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
 		info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
 		/*info->fps.data[x * 4 + 4 * WIDTH * y + 1] = (char)120;
 		info->fps.data[x * 4 + 4 * WIDTH * y + 2] = (char)120;

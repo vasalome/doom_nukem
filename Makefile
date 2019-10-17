@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/10/10 13:48:12 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/17 14:21:04 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -28,7 +28,6 @@ MEMFLAGS	=	-ggdb -fsanitize=address
 SRCS_DIR	=	./srcs_doom/
 OBJ_DIR		=	./objs_doom/
 INC_DIR		=	./include_doom/
-INC_SDL_DIR	=	./include_sdl/
 
 #	Sources:
 SRCS		=	main_doom.c
@@ -49,12 +48,34 @@ SRCS		+=	ft_textures.c
 SRCS		+=	ft_gameover.c
 SRCS		+=	ft_usage.c
 
+#####
+PWD := $(shell pwd)
+FRAMEWORKSDIR := $(PWD)/frameworks
+SDL := -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_ttf -framework SDL2_image -framework SDL2_mixer -Wl,-rpath $(FRAMEWORKSDIR)
+#######
+
+#	Sdl:
+#INC_SDL	=	-I ./frameworks/SDL2.framework/Versions/A/Headers \
+#				-I ./frameworks/SDL2_ttf.framework/Versions/A/Headers \
+#				-I ./frameworks/SDL2_image.framework/Versions/A/Headers \
+#				-I ./frameworks/SDL2_mixer.framework/Headers \
+#				-I ./frameworks/SDL2_net.framework/Headers \
+#				-F ./frameworks
+#FRAMEWORKS	=	-F ./frameworks -rpath ./frameworks \
+#				-framework OpenGL \
+#				-framework AppKit \
+#				-framework OpenCl \
+#				-framework SDL2 \
+#				-framework SDL2_ttf \
+#				-framework SDL2_image \
+#				-framework SDL2_mixer \
+#				-framework SDL2_net
+
 #	Objects:
 OBJ			=	$(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 
 #	Includes:
 INC			=	$(addprefix -I,$(INC_DIR))
-INC_SDL		=	$(addprefix -I,$(INC_SDL_DIR))
 
 #	Library:
 LIBFT		=	lib/libft.a
@@ -82,18 +103,13 @@ R_BLINK		=	\033[25m
 UNDERLINE	=	\033[4m
 R_UNDERLINE	=	\033[24m
 
-# // SDL VARIABLES // #
-
-###
-
-
 ##					##
 ##	|	RULES	|	##
 ##					##
 
-$(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h $(INC_SDL_DIR)*.h
+$(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h
 	@printf "$(ORANGE)[CC] $(<:.c=)...$(_STOP)"
-	@$(CC) $(CFLAGS) $(INC) $(INC_SDL) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC) $(INC_SDL) $(FRAMEWORKS) -c $< -o $@
 	@printf "\r                                             \r"
 
 all:
@@ -106,7 +122,7 @@ make_libft:
 
 $(NAME): $(OBJ) $(INC_DIR) $(INC_SDL_DIR) make_libft
 	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION $(NAME): IN PROGRESS..$(_STOP)\n"
-	@$(CC) $(CFLAGS) $(OBJ) -I ./libft/includes $(INC) $(INC_SDL) -L lib libft/libft.a -l SDL2 -l SDL2_image -l SDL2_mixer -framework OpenGL -framework AppKit -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -I ./libft/includes $(INC) $(INC_SDL) -L lib libft/libft.a $(SDL) -o $(NAME)
 	@echo "$(VIOLET)| ->		$(NAME): $(GREEN)$(BLINK)100%$(R_BLINK)$(_STOP)"
 #	@sleep 1.5
 #	@clear

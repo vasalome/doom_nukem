@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 17:28:03 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 12:11:00 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,6 +49,28 @@ int		ray_casting(t_info *info)
 			info->wall.draw_end = info->win.h - 1;
 		choose_texture_1(info);
 		texture_calc(info);
+		if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
+		{
+			info->floor.floorXWall = info->map.x;
+			info->floor.floorYWall = info->map.y + info->wall.x;
+		}
+		else if (info->wall.side == 0 && info->ray.x_ray_direction < 0)
+		{
+			info->floor.floorXWall = info->map.x + 1;
+			info->floor.floorYWall = info->map.y + info->wall.x;
+		}
+		else if (info->wall.side == 1 && info->ray.y_ray_direction > 0)
+		{
+			info->floor.floorXWall = info->map.x + info->wall.x;
+			info->floor.floorYWall = info->map.y;
+		}
+		else
+		{
+			info->floor.floorXWall = info->map.x + info->wall.x;
+			info->floor.floorYWall = info->map.y + 1;
+		}
+
+		//printf("%d %d\n", info->map.x, info->map.y);
 		draw_wall(info->wall.x, info->wall.draw_start - 1,\
 				info->wall.draw_end, info);
 	}

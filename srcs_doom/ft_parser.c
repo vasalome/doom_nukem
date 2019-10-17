@@ -32,7 +32,7 @@ static int	inside(type variable, int i)
 	int	
 	check_inside();
 	while (variable[*i] != ',')
-		if (!variable[*i] >= '1' && variable[*i] <= 'ID MAX DES MURS')
+		if (!(variable[*i] >= '1' && variable[*i] <= 'ID MAX DES MURS'))
 			ft_usage('Invalid case:'variable);
 	{
 		
