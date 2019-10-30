@@ -10,7 +10,7 @@ différents espaces.
 
 • Le sol et le plafond peuvent ne pas être horizontaux, mais des plans inclinés.
 
-• Il y a des textures sur les sols et plafonds.
+//• Il y a des textures sur les sols et plafonds.
 
 • Un ciel peut être présent à la place d’un plafond.
 
@@ -27,7 +27,7 @@ qui fait toujours face au joueur.
 • Chaque espace ou zone dispose d’un réglage de la luminosité ambiante, affectant
 les murs comme les objets qui s’y trouvent.
 
-• Des messages texte peuvent être affichés pendant le jeu en surimpression.
+/• Des messages texte peuvent être affichés pendant le jeu en surimpression.
 
 • Un HUD doit être est présent (vie, monnaie, munitions, objets transportés ...) On
 entend par HUD plusieurs éléments disposés sur la vue du joueur et non pas un
@@ -37,16 +37,16 @@ simple bandeau uniforme.
 
 //Sur le gameplay :
 
-• La vue se fait à la souris de façon fluide, permettant de tourner sur soi-même à
+/• La vue se fait à la souris de façon fluide, permettant de tourner sur soi-même à
 360 et de regarder en haut et en bas.
 
-• Il est possible de straffer.
+/• Il est possible de straffer.
 
 • On interagit correctement avec les murs, les marches d’une hauteur raisonnable.
 
-• On peut courrir, sauter, tomber, se baisser et se relever.
+/• On peut courrir, sauter, tomber, se baisser et se relever.
 
-• Il est possible de voler ou nager (c’est pas bien différent...).
+/• Il est possible de voler ou nager (c’est pas bien différent...).
 
 • Les objets présents peuvent bloquer le passage ou non, de façon proportionelle à
 leur représentation visuelle.
@@ -79,4 +79,4 @@ lui-même.
 • Il y a un histoire avec une mission, un objectif à atteindre, un but (sauver la terre,
 devenir riche, ... même un truc simplissime, regardez Doom).
 
-• Il y a un début et une fin de level.
+//• Il y a un début et une fin de level.
