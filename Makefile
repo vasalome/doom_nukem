@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/10/18 15:48:45 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/31 17:22:45 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,9 +21,10 @@ NAME_EDITOR	=	editor
 
 #	Compiler:
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra #-Werror
+CFLAGS		=	-Wall -Wextra #-Werror -g
 #CFLAGS		+=	-Wunused-command-line-argument
 #CFLAGS		+=	-Wno-error
+#CFLAGS		+=	--cflags --glibs
 MEMFLAGS	=	-ggdb -fsanitize=address
 #FLAG_SDL	=	$(shell sdl2-config --libs) -lSDL2_ttf -lSDL2_image -lSDL2_mixer -O3
 
@@ -52,6 +53,9 @@ SRCS		+=	ft_textures.c
 SRCS		+=	ft_gameover.c
 SRCS		+=	ft_usage.c
 
+HEADERS		=	doom.h
+HEADERS		+=	keys.h
+
 PWD := $(shell pwd)
 
 #	Sdl:
@@ -71,7 +75,8 @@ FRAMEWORKSDIR := $(PWD)/frameworks
 				-framework SDL2_image \
 				-framework SDL2_mixer \
 				-framework SDL2_net
-SDL := -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_ttf -framework SDL2_image -framework SDL2_mixer -rpath $(FRAMEWORKSDIR)
+SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_ttf -framework SDL2_image -framework SDL2_mixer -rpath $(FRAMEWORKSDIR)
+DIRECTORY_SDL	=	~/sdl2#$(shell sdl2-config --libs)
 
 #	Objects:
 OBJ			=	$(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
@@ -81,6 +86,7 @@ INC			=	$(addprefix -I,$(INC_DIR))
 
 #	Library:
 LIBFT		=	lib/libft.a
+LIBFT_INC	=	libft/includes
 
 #	Cleaning:
 RM			=	/bin/rm -f
@@ -115,6 +121,9 @@ $(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h
 	@printf "\r                                             \r"
 
 all:
+	#if [ ! -d $(DIRECTORY_SDL) ]; then
+	#	brew install sdl2
+	#fi
 	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION OBJECTS: IN PROGRESS..$(_STOP)\n		OBJECTS DIRECTORY: CREATION || ->\n"
 	@mkdir -p $(OBJ_DIR)
 	@$(MAKE) $(NAME) --no-print-directory
@@ -124,7 +133,7 @@ make_libft:
 
 $(NAME): $(OBJ) $(INC_DIR) $(INC_SDL_DIR) make_libft
 	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION $(NAME): IN PROGRESS..$(_STOP)\n"
-	@$(CC) $(CFLAGS) $(OBJ) -I ./libft/includes $(INC) -L lib libft/libft.a $(SDL) $(INC_SDL) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -I $(LIBFT_INC) $(INC) -L lib libft/libft.a $(SDL) $(INC_SDL) -o $(NAME)
 	@echo "$(VIOLET)| ->		$(NAME): $(GREEN)$(BLINK)100%$(R_BLINK)$(_STOP)"
 #	@sleep 1.5
 #	@clear
