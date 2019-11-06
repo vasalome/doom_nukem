@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 12:11:00 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/06 13:18:48 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 void	ray_casting_init(t_info *info, int x)
 {
-	info->player.x_camera = 2 * x / (double)(info->win.w) - 1;
+	info->player.x_camera = info->player.fov * x / (double)(info->win.w) - 1;
 	info->ray.x_ray_position = info->player.x_pos;
 	info->ray.y_ray_position = info->player.y_pos;
 	info->ray.x_ray_direction = info->player.x_dir + info->player.x_plane *\
@@ -37,7 +37,8 @@ void	ray_casting_init(t_info *info, int x)
 int		ray_casting(t_info *info)
 {
 	info->wall.x = -1;
-	while (++info->wall.x < info->win.w)
+	while (++info->wall.x < info->w
+	in.w)
 	{
 		ray_casting_init(info, info->wall.x);
 		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
@@ -153,13 +154,22 @@ void	ray_casting_image(t_info *info)
 		//mlx_put_image_to_window(info->win.mlx, info->win.win,\
 		//info->fps.img, 0, 0);
 		if (info->map.map[(int)info->player.x_pos]\
-		[(int)info->player.y_pos] == '4')
+		[(int)info->player.y_pos] == '4' && info->action)
 		/* Victory image */
+		{
+			info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
+			SDL_QueryTexture(info->fps.texture2, NULL, NULL, &info->head[3].w, &info->head[3].h);
+			
+			info->head[3].rect.x = 0;
+			info->head[3].rect.y = 0;
+			info->head[3].rect.w = info->head[3].w;
+			info->head[3].rect.h = info->head[3].h;
+		}
 			//mlx_put_image_to_window(info->win.mlx, info->win.win,\
 			//info->wp[7].img, info->win.w / 2 - info->wp[7].img->w / 2,\
 			//info->win.h / 2 - info->wp[7].img->h / 2);
 		its_a_trap(info);
-		hud(info);
+		//hud(info);
 	}
 	else
 		game_over(info);

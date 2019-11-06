@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 15:22:42 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/06 13:15:56 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,9 +27,12 @@ void	init_player(t_info *info)
 	info->player.y_plane = 0.66;
 	info->player.move_down = 0;
 	info->player.move_up = 0;
+	info->player.move_left = 0;
+	info->player.move_right = 0;
 	info->player.turn_left = 0;
 	info->player.turn_right = 0;
 	info->player.turn_rate = 0.1;
+	info->player.fov = 2;
 	info->player.move_speed = 0.05;
 	info->player.tp_index = 0;
 	info->player.life = 11;
@@ -104,6 +107,7 @@ void	init_music(t_info *info)
 void	init(t_info *info)
 {
 	info->shot = 1;
+	info->action = 0;
 	init_window(info);
 	load_textures(info);
 	init_map(info);

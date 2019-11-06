@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 12:15:13 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/06 12:49:36 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,6 +45,25 @@ switch (bpp)
       }
 }
 
+int		threadAnim(void*	data)
+{
+	t_info *info = data;
+
+	return (0);
+}
+
+void	calc_floor_ceil(t_info *info)
+{
+	info->floor.weight = info->floor.dist / info->wall.wall_distance;
+	
+	info->floor.currentFloorX = info->floor.weight * info->floor.floorXWall + (1.0 - info->floor.weight) * info->player.x_pos;
+	info->floor.currentFloorY = info->floor.weight * info->floor.floorYWall + (1.0 - info->floor.weight) * info->player.y_pos;
+	
+	info->floor.floorTexX = (int)(info->floor.currentFloorX * info->wt[0].img->w) % info->wt[0].img->w;
+	info->floor.floorTexY = (int)(info->floor.currentFloorY * info->wt[0].img->h) % info->wt[0].img->h;	
+	
+}
+
 void	draw_wall_plus(int x, int draw_start, t_info *info, int tex_y)
 {
 
@@ -69,47 +88,45 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	int		y;
 	int		d;
 	int		tex_y;
-
+	double	semiH = HEIGHT * 0.5;
+	
 	y = -1;
 	tex_y = 0;
 	info->fps.pixels = info->fps.tmp;
 	if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
-		{
-			info->floor.floorXWall = info->map.x;
-			info->floor.floorYWall = info->map.y + info->wall.ux;
-		}
-		else if (info->wall.side == 0 && info->ray.x_ray_direction < 0)
-		{
-			info->floor.floorXWall = info->map.x + 1;
-			info->floor.floorYWall = info->map.y + info->wall.ux;
-		}
-		else if (info->wall.side == 1 && info->ray.y_ray_direction > 0)
-		{
-			info->floor.floorXWall = info->map.x + info->wall.ux;
-			info->floor.floorYWall = info->map.y;
-		}
-		else
-		{
-			info->floor.floorXWall = info->map.x + info->wall.ux;
-			info->floor.floorYWall = info->map.y + 1;
-		}
+	{
+		info->floor.floorXWall = info->map.x;
+		info->floor.floorYWall = info->map.y + info->wall.ux;
+	}
+	else if (info->wall.side == 0 && info->ray.x_ray_direction < 0)
+	{
+		info->floor.floorXWall = info->map.x + 1;
+		info->floor.floorYWall = info->map.y + info->wall.ux;
+	}
+	else if (info->wall.side == 1 && info->ray.y_ray_direction > 0)
+	{
+		info->floor.floorXWall = info->map.x + info->wall.ux;
+		info->floor.floorYWall = info->map.y;
+	}
+	else
+	{
+		info->floor.floorXWall = info->map.x + info->wall.ux;
+		info->floor.floorYWall = info->map.y + 1;
+	}
+	
 	while (++y <= draw_start)
-		{
-			info->floor.dist = HEIGHT / (((HEIGHT * 0.5) - y) * 2);
-		
-		info->floor.weight = info->floor.dist / info->wall.wall_distance;
-
-		info->floor.currentFloorX = info->floor.weight * info->floor.floorXWall + (1 - info->floor.weight) * info->player.x_pos;
-		info->floor.currentFloorY = info->floor.weight * info->floor.floorYWall + (1 - info->floor.weight) * info->player.y_pos;
-
-		info->floor.floorTexX = (int)(info->floor.currentFloorX * info->wt[11].img->w) % info->wt[11].img->w;
-		info->floor.floorTexY = (int)(info->floor.currentFloorY * info->wt[11].img->h) % info->wt[11].img->h;
+	{
+		info->floor.dist = HEIGHT / (((semiH) - y) * 2);
+		//SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
+		calc_floor_ceil(info);
+		//SDL_WaitThread( threadID, NULL );
 		//printf("%d , %d\n", info->floor.floorTexX, info->floor.floorTexY);
-		Uint32 data = getpixel(info->wt[11].img, info->floor.floorTexX, info->floor.floorTexY);
+		//SDL_WaitThread( threadID, NULL );
+		Uint32 data = getpixel(info->wt[0].img, info->floor.floorTexX, info->floor.floorTexY);
 		
-		SDL_GetRGB(data, info->wt[11].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
+		SDL_GetRGB(data, info->wt[0].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
 		info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
-		}
+	}
 		//info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, 200, 0, 0, 255);
 	while (++draw_start <= draw_end)
 	{
@@ -118,18 +135,13 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 		draw_wall_plus(x, draw_start, info, tex_y);
 	}
 	y = draw_end - 1;
-
+	
 	while (++y < HEIGHT)
 	{
-		info->floor.dist = HEIGHT / (2 * (y - (HEIGHT * 0.5)));
+		info->floor.dist = HEIGHT / (2 * (y - (semiH)));
 		
-		info->floor.weight = info->floor.dist / info->wall.wall_distance;
+		calc_floor_ceil(info);
 
-		info->floor.currentFloorX = info->floor.weight * info->floor.floorXWall + (1.0 - info->floor.weight) * info->player.x_pos;
-		info->floor.currentFloorY = info->floor.weight * info->floor.floorYWall + (1.0 - info->floor.weight) * info->player.y_pos;
-
-		info->floor.floorTexX = (int)(info->floor.currentFloorX * info->wt[0].img->w) % info->wt[0].img->w;
-		info->floor.floorTexY = (int)(info->floor.currentFloorY * info->wt[0].img->h) % info->wt[0].img->h;
 		//printf("%d , %d\n", info->floor.floorTexX, info->floor.floorTexY);
 		Uint32 data = getpixel(info->wt[0].img, info->floor.floorTexX, info->floor.floorTexY);
 		
@@ -139,7 +151,5 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 		info->fps.data[x * 4 + 4 * WIDTH * y + 2] = (char)120;
 		info->fps.data[x * 4 + 4 * WIDTH * y + 3] = (char)0;*/
 	}
-
-	
 	//SDL_UpdateTexture(info->fps.texture2, NULL, info->fps.pixels, sizeof(Uint32) * HEIGHT);
 }

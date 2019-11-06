@@ -35,10 +35,10 @@ void	textures_door_1(t_info *info)
 
 void	textures_wall_2(t_info *info)
 {					
-	info->wt[8].img = IMG_Load("wall/jojo.png");
-	info->wt[9].img = IMG_Load("wall/jojo.png");
-	info->wt[10].img = IMG_Load("wall/jojo.png");
-	info->wt[11].img = IMG_Load("wall/cheh.png");
+	info->wt[8].img = IMG_Load("wall/bars.png");
+	info->wt[9].img = IMG_Load("wall/bars.png");
+	info->wt[10].img = IMG_Load("wall/bars.png");
+	info->wt[11].img = IMG_Load("wall/bars.png");
 	
 	/*info->wt[8].img = IMG_Load("wall/2/face_c-2.png");
 	info->wt[9].img = IMG_Load("wall/2/face_a-2.png");

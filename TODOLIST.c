@@ -40,7 +40,7 @@ simple bandeau uniforme.
 /• La vue se fait à la souris de façon fluide, permettant de tourner sur soi-même à
 360 et de regarder en haut et en bas.
 
-/• Il est possible de straffer.
+//• Il est possible de straffer.
 
 • On interagit correctement avec les murs, les marches d’une hauteur raisonnable.
 
@@ -53,8 +53,8 @@ leur représentation visuelle.
 
 • Les objets présents peuvent être ramassés ou non, et alimenter un inventaire.
 
-• Des interactions sont possibles avec des éléments du décor (murs, objets... ), à
-la fois par simple proximité (marcher sur une zone dangereuse) comme avec une
+//• Des interactions sont possibles avec des éléments du décor (murs, objets... ), à
+//la fois par simple proximité (marcher sur une zone dangereuse) comme avec une
 action volontaire (appuyer sur un bouton).
 
 • Des actions ou séries d’actions peuvent avoir lieu suite à des interactions, ou suite à

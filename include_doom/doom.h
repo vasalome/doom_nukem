@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 18:22:32 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/06 12:51:23 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -131,6 +131,9 @@ typedef struct		s_player
 	int				turn_left;
 	int				move_up;
 	int				move_down;
+	int				move_left;
+	int				move_right;
+	double			fov;
 	int				tp[9999];
 	int				tp_index;
 	int				life;
@@ -244,6 +247,7 @@ typedef struct		s_info
 	int				quit;
 	int				frame;
 	SDL_Color 		rgb;
+	int				action;
 }					t_info;
 
 /*

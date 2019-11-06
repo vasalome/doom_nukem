@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 17:02:41 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/06 14:18:15 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,6 +56,8 @@ int		main(int argc, char **argv)
 	while(!info.quit)
    {
         SDL_Event event;
+        //printf("xrel -> %d\n", event.motion.xrel);
+        //printf("yrel -> %f\n", info.player.turn_rate);
         while (SDL_PollEvent(&event))
         {
  
@@ -78,9 +80,21 @@ int		main(int argc, char **argv)
                     else if (event.key.keysym.sym == SDLK_s)
                         info.player.move_down = 1;
                     else if (event.key.keysym.sym == SDLK_d)
-                        info.player.turn_right = 1;
+                        info.player.move_right = 1;
                     else if (event.key.keysym.sym == SDLK_a)
+                        info.player.move_left = 1;
+                    else if (event.key.keysym.sym == SDLK_e)
+                        info.player.turn_right = 1;
+                    else if (event.key.keysym.sym == SDLK_q)
                         info.player.turn_left = 1;
+                    else if (event.key.keysym.sym == SDLK_b)
+                        info.player.y_plane  += 0.01;
+                    else if (event.key.keysym.sym == SDLK_n)
+                        info.player.y_plane  -= 0.01;
+                    else if (event.key.keysym.sym == SDLK_LSHIFT)
+                        info.player.move_speed = 0.1;
+                    else if (event.key.keysym.sym == SDLK_f)
+                        info.action = 1;
                     else if (event.key.keysym.sym == SDLK_g)
                     {
                         Mix_PlayChannel(-1, info.music.high, 0);
@@ -107,9 +121,17 @@ int		main(int argc, char **argv)
                     else if (event.key.keysym.sym == SDLK_s)
                         info.player.move_down = 0;
                     else if (event.key.keysym.sym == SDLK_d)
-                        info.player.turn_right = 0;
+                        info.player.move_right = 0;
                     else if (event.key.keysym.sym == SDLK_a)
+                        info.player.move_left = 0;
+                    else if (event.key.keysym.sym == SDLK_e)
+                        info.player.turn_right = 0;
+                    else if (event.key.keysym.sym == SDLK_q)
                         info.player.turn_left = 0;
+                    else if (event.key.keysym.sym == SDLK_LSHIFT)
+                        info.player.move_speed = 0.05;
+                    else if (event.key.keysym.sym == SDLK_f)
+                        info.action = 0;
                     else if (event.key.keysym.sym == SDLK_z)
                     {
                         SDL_Delay(10);
@@ -119,6 +141,37 @@ int		main(int argc, char **argv)
 	                    info.wt[11].img = IMG_Load("wall/jojo.png");
                     }
                     break;
+                }
+            case SDL_MOUSEMOTION:
+                {
+                    SDL_ShowCursor(SDL_DISABLE);
+                    info.player.turn_right = 1;
+                    info.player.turn_rate = -event.motion.xrel * 0.002;
+                    SDL_WarpMouseInWindow(info.win.win, info.win.w/2, info.win.h/2); 
+                }
+            case SDL_MOUSEBUTTONDOWN:
+                {
+                    switch (event.button.button)
+                    {
+                        case SDL_BUTTON_LEFT:
+                            printf("CLICK LEFT\n");
+                            break;
+                        case SDL_BUTTON_RIGHT:
+                            printf("CLICK RIGHT\n");
+                            break;
+                        case SDL_BUTTON_MIDDLE:
+                            printf("CLICK MIDDLE\n");
+                            break;
+                    }
+                }
+            case SDL_MOUSEWHEEL:
+                {
+                    if (event.wheel.y > 0);
+                        //printf("CLICK WHEELUP\n");
+                    //printf("event.wheel.y 111111-> %d\n", event.wheel.y);
+                    if (event.wheel.y < 0);
+                        //printf("CLICK WHEELDOWN\n");
+                    //printf("event.wheel.y 222222-> %d\n", event.wheel.y);
                 }
         } // end switch
     } // end of message processing
@@ -131,7 +184,7 @@ int		main(int argc, char **argv)
         SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, NULL);
         //SDL_RenderCopy(info.win.renderer, info.wt[2].texture, NULL, &info.head[3].rect);
         
-        //SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.head[3].rect);
+        SDL_RenderCopy(info.win.renderer, info.fps.texture2, NULL, &info.head[3].rect);
 
         //SDL_RenderCopy(info.win.renderer, info.win.texture3, NULL, &info.head[4].rect);
 
