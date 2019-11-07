@@ -95,6 +95,8 @@ int		main(int argc, char **argv)
                         info.player.move_speed = 0.1;
                     else if (event.key.keysym.sym == SDLK_f)
                         info.action = 1;
+                    else if (event.key.keysym.sym == SDLK_x)
+                        info.ray.y_ray_direction += 10;
                     else if (event.key.keysym.sym == SDLK_g)
                     {
                         Mix_PlayChannel(-1, info.music.high, 0);
@@ -132,6 +134,8 @@ int		main(int argc, char **argv)
                         info.player.move_speed = 0.05;
                     else if (event.key.keysym.sym == SDLK_f)
                         info.action = 0;
+                    else if (event.key.keysym.sym == SDLK_c)
+                        info.ray.y_ray_direction -= 10;
                     else if (event.key.keysym.sym == SDLK_z)
                     {
                         SDL_Delay(10);

@@ -116,7 +116,7 @@ typedef struct		s_player
 {
 	double			x_camera;
 	double			x_pos;
-	 double			y_pos;
+	double			y_pos;
 	double			x_old_position;
 	double			y_old_position;
 	double			x_dir;

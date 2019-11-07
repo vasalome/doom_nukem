@@ -37,8 +37,7 @@ void	ray_casting_init(t_info *info, int x)
 int		ray_casting(t_info *info)
 {
 	info->wall.x = -1;
-	while (++info->wall.x < info->w
-	in.w)
+	while (++info->wall.x < info->win.w)
 	{
 		ray_casting_init(info, info->wall.x);
 		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
