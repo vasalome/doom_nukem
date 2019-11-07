@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/06 14:18:15 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/06 15:08:35 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@
 Uint32 frameDisplay(Uint32 intervalle, void *parametre)
 {
     t_info *info = parametre;
-    printf("%d FPS\n", info->frame);
+    //printf("%d FPS\n", info->frame);
     info->frame = 0;
     return intervalle;
 }
@@ -168,7 +168,7 @@ int		main(int argc, char **argv)
                             break;
                     }
                 }
-            case SDL_MOUSEWHEEL:
+            /*case SDL_MOUSEWHEEL:
                 {
                     if (event.wheel.y > 0);
                         //printf("CLICK WHEELUP\n");
@@ -176,7 +176,7 @@ int		main(int argc, char **argv)
                     if (event.wheel.y < 0);
                         //printf("CLICK WHEELDOWN\n");
                     //printf("event.wheel.y 222222-> %d\n", event.wheel.y);
-                }
+                }*/
         } // end switch
     } // end of message processing
             

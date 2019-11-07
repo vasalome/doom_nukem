@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/06 12:51:23 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/06 15:17:28 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -276,6 +276,7 @@ void				textures_wall_1(t_info *info);
 void				textures_wall_2(t_info *info);
 void				textures_door_1(t_info *info);
 void				textures_door_2(t_info *info);
+void				textures_floor(t_info *info);
 
 /*
 ** srcs:			ft_init_weapon.c
