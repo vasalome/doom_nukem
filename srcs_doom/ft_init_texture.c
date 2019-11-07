@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/07 13:49:31 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/07 17:27:01 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,8 @@ void	textures_sky(t_info *info)
 	info->wt[28].img = IMG_Load("wall/floor2.png");
 	info->wt[29].img = IMG_Load("wall/floor2.png");
 	info->wt[30].img = IMG_Load("wall/floor2.png");
+
+	
 }
 
 void	textures_floor(t_info *info)
