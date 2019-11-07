@@ -6,12 +6,24 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/06 15:52:20 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/07 13:49:31 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
+
+void	textures_sky(t_info *info)
+{
+	int		i = 25;
+	
+	info->wt[25].img = IMG_Load("wall/floor2.png");
+	info->wt[26].img = IMG_Load("wall/floor2.png");
+	info->wt[27].img = IMG_Load("wall/floor2.png");
+	info->wt[28].img = IMG_Load("wall/floor2.png");
+	info->wt[29].img = IMG_Load("wall/floor2.png");
+	info->wt[30].img = IMG_Load("wall/floor2.png");
+}
 
 void	textures_floor(t_info *info)
 {
@@ -41,10 +53,10 @@ void	textures_door_1(t_info *info)
 
 void	textures_wall_2(t_info *info)
 {					
-	info->wt[8].img = IMG_Load("wall/dirt.jpg");
-	info->wt[9].img = IMG_Load("wall/dirt.jpg");
-	info->wt[10].img = IMG_Load("wall/dirt.jpg");
-	info->wt[11].img = IMG_Load("wall/dirt.jpg");
+	info->wt[8].img = IMG_Load("wall/mur.png");
+	info->wt[9].img = IMG_Load("wall/mur.png");
+	info->wt[10].img = IMG_Load("wall/mur.png");
+	info->wt[11].img = IMG_Load("wall/mur.png");
 	
 	/*info->wt[8].img = IMG_Load("wall/2/face_c-2.png");
 	info->wt[9].img = IMG_Load("wall/2/face_a-2.png");

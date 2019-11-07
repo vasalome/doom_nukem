@@ -115,6 +115,7 @@ typedef struct		s_ray
 typedef struct		s_player
 {
 	double			x_camera;
+	int				height;
 	double			x_pos;
 	double			y_pos;
 	double			x_old_position;

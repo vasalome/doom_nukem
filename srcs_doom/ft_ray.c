@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/06 15:06:01 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/07 14:43:22 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 void	ray_casting_init(t_info *info, int x)
 {
-	info->player.x_camera = info->player.fov * x / (double)(info->win.w) - 1;
+	info->player.x_camera = 2 * x / (double)(info->win.w) - 1;
 	info->ray.x_ray_position = info->player.x_pos;
 	info->ray.y_ray_position = info->player.y_pos;
 	info->ray.x_ray_direction = info->player.x_dir + info->player.x_plane *\

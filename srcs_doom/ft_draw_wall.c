@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/07 11:39:41 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/07 13:46:19 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -90,7 +90,7 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	int		tex_y;
 	double	semiH = HEIGHT * 0.5;
 	
-	y = -1;
+	y = info->player.fov;
 	tex_y = 0;
 	info->fps.pixels = info->fps.tmp;
 	if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
