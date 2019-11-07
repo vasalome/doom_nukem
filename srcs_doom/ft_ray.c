@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/06 13:18:48 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/06 15:06:01 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,8 +37,7 @@ void	ray_casting_init(t_info *info, int x)
 int		ray_casting(t_info *info)
 {
 	info->wall.x = -1;
-	while (++info->wall.x < info->w
-	in.w)
+	while (++info->wall.x < info->win.w)
 	{
 		ray_casting_init(info, info->wall.x);
 		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
