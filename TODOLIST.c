@@ -37,8 +37,8 @@ simple bandeau uniforme.
 
 //Sur le gameplay :
 
-/• La vue se fait à la souris de façon fluide, permettant de tourner sur soi-même à
-360 et de regarder en haut et en bas.
+//• La vue se fait à la souris de façon fluide, permettant de tourner sur soi-même à
+//360 et de regarder en haut et en bas.
 
 //• Il est possible de straffer.
 
@@ -55,7 +55,7 @@ leur représentation visuelle.
 
 //• Des interactions sont possibles avec des éléments du décor (murs, objets... ), à
 //la fois par simple proximité (marcher sur une zone dangereuse) comme avec une
-action volontaire (appuyer sur un bouton).
+//action volontaire (appuyer sur un bouton).
 
 • Des actions ou séries d’actions peuvent avoir lieu suite à des interactions, ou suite à
 des ramassages d’objets, ou bien de façon totalement indépendante, éventuellement

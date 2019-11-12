@@ -148,6 +148,7 @@ void	ray_casting_image(t_info *info)
 		//skybox(info);
 		create_img(info);
 		ray_casting(info);
+		
 		/* Main frame */
 
 		//mlx_put_image_to_window(info->win.mlx, info->win.win,\

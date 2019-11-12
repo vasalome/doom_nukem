@@ -98,6 +98,7 @@ typedef struct		s_tex
 	int				yhud;
 	int				tex_x;
 	int				tex_y;
+	SDL_Rect		rect;
 }					t_tex;
 
 typedef struct		s_ray
@@ -128,6 +129,7 @@ typedef struct		s_player
 	double			x_old_plane;
 	double			move_speed;
 	double			turn_rate;
+	double			turn_rate_y;
 	int				turn_right;
 	int				turn_left;
 	int				move_up;

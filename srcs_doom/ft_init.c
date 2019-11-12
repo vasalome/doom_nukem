@@ -33,6 +33,7 @@ void	init_player(t_info *info)
 	info->player.turn_left = 0;
 	info->player.turn_right = 0;
 	info->player.turn_rate = 0.1;
+	info->player.turn_rate_y = 0.1;
 	info->player.fov = 2;
 	info->player.move_speed = 0.05;
 	info->player.tp_index = 0;

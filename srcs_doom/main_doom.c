@@ -40,6 +40,10 @@ int		main(int argc, char **argv)
     info.ii = 10;
     info.quit = 0;
 	init(&info);
+    info.fps.rect.x = 0;
+	info.fps.rect.y = -200;
+	info.fps.rect.w = WIDTH;
+	info.fps.rect.h = HEIGHT + 400;
 
     //SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
     //SDL_Thread* threadID2 = SDL_CreateThread(threadAnim2, "wowThread2", (t_info*)&info);
@@ -95,10 +99,6 @@ int		main(int argc, char **argv)
                         info.player.move_speed = 0.1;
                     else if (event.key.keysym.sym == SDLK_f)
                         info.action = 1;
-                    else if (event.key.keysym.sym == SDLK_x)
-                        info.player.fov += 1;
-                    else if (event.key.keysym.sym == SDLK_c)
-                        info.player.fov -= 1;
                     else if (event.key.keysym.sym == SDLK_g)
                     {
                         Mix_PlayChannel(-1, info.music.high, 0);
@@ -150,7 +150,10 @@ int		main(int argc, char **argv)
                 {
                     SDL_ShowCursor(SDL_DISABLE);
                     info.player.turn_right = 1;
+                    info.player.turn_left = 1;
                     info.player.turn_rate = -event.motion.xrel * 0.002;
+                    info.player.turn_rate_y = event.motion.yrel * 0.002;
+                    
                     SDL_WarpMouseInWindow(info.win.win, info.win.w/2, info.win.h/2); 
                 }
             case SDL_MOUSEBUTTONDOWN:
@@ -185,7 +188,7 @@ int		main(int argc, char **argv)
         //SDL_UnlockTexture(info.wt[2].texture);
 		SDL_RenderClear(info.win.renderer);
 
-        SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, NULL);
+        SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
         //SDL_RenderCopy(info.win.renderer, info.wt[2].texture, NULL, &info.head[3].rect);
         
         SDL_RenderCopy(info.win.renderer, info.fps.texture2, NULL, &info.head[3].rect);
