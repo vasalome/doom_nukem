@@ -1,6 +1,6 @@
 //Les nouveautés sur le plan graphique :
 
-• Il est possible de regarder vers le haut et vers le bas.
+//• Il est possible de regarder vers le haut et vers le bas.
 
 • Les espaces parcourus ont des formes quelconques, par exemple les pièces ont un
 nombre quelconque de murs avec toutes les orientations possibles.
