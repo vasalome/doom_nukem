@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/10/31 17:22:45 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/13 13:35:26 by ztrouill    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -117,7 +117,7 @@ R_UNDERLINE	=	\033[24m
 
 $(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h
 	@printf "$(ORANGE)[CC] $(<:.c=)...$(_STOP)"
-	@$(CC) $(CFLAGS) $(SDL) $(INC_SDL) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC_SDL) -c $< -o $@
 	@printf "\r                                             \r"
 
 all:
