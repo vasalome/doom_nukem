@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/07 13:46:19 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 15:56:05 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,30 +19,30 @@ Uint32 getpixel(SDL_Surface *surface, int x, int y)
     /*Here p is the address to the pixel we want to retrieve */
   	Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
 
-switch (bpp)
-{
-    case 1:
-        return *p;
-        break;
+	switch (bpp)
+	{
+		case 1:
+			return *p;
+			break;
 
-    case 2:
-        return *(Uint16 *)p;
-        break;
+		case 2:
+			return *(Uint16 *)p;
+			break;
 
-    case 3:
-        if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
-            return p[0] << 16 | p[1] << 8 | p[2];
-        else
-            return p[0] | p[1] << 8 | p[2] << 16;
-            break;
+		case 3:
+			if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
+				return p[0] << 16 | p[1] << 8 | p[2];
+			else
+				return p[0] | p[1] << 8 | p[2] << 16;
+				break;
 
-        case 4:
-            return *(Uint32 *)p;
-            break;
+			case 4:
+				return *(Uint32 *)p;
+				break;
 
-        default:
-            return 0;       /* shouldn't happen, but avoids warnings */
-      }
+			default:
+				return 0;       /* shouldn't happen, but avoids warnings */
+    }
 }
 
 int		threadAnim(void*	data)

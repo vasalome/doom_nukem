@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/12 17:25:49 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 16:27:05 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,15 +15,22 @@
 
 void	textures_sky(t_info *info)
 {
-	int		i = 25;
+	//int		i = 25;
 	
-	info->wt[25].img = IMG_Load("wall/floor2.png");
-	info->wt[26].img = IMG_Load("wall/floor2.png");
-	info->wt[27].img = IMG_Load("wall/floor2.png");
-	info->wt[28].img = IMG_Load("wall/floor2.png");
-	info->wt[29].img = IMG_Load("wall/floor2.png");
-	info->wt[30].img = IMG_Load("wall/floor2.png");
+	// info->wt[25].img = IMG_Load("wall/floor2.png");
+	// info->wt[26].img = IMG_Load("wall/floor2.png");
+	// info->wt[27].img = IMG_Load("wall/floor2.png");
+	// info->wt[28].img = IMG_Load("wall/floor2.png");
+	// info->wt[29].img = IMG_Load("wall/floor2.png");
+	// info->wt[30].img = IMG_Load("wall/floor2.png");
 
+	// SDL_Surface	*ecran, *test;
+	// SDL_Rect	pos_img;
+	// pos_img.x = 0;
+	// pos_img.y = 0;
+	// test = IMG_Load("wall/floor2.png");
+	// ecran = SDL_SetVideoMode(800, 600, 32, SDL_SWSURFACE);
+	// SDL_BlitSurface(test, NULL, ecran, &pos_img);
 }
 
 void	textures_floor(t_info *info)

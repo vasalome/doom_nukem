@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/07 13:18:14 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 17:08:00 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ int		main(int argc, char **argv)
     info.frame = 0;
     SDL_TimerID timer;
 
-    timer = SDL_AddTimer(1000, frameDisplay, (t_info*)&info); /* Démarrage du timer */
+    //timer = SDL_AddTimer(1000, frameDisplay, (t_info*)&info); /* Démarrage du timer */
 
 	if (argc != 2)
 		ft_usage("Mauvais nombre d'arguments !");
@@ -62,6 +62,7 @@ int		main(int argc, char **argv)
         SDL_Event event;
         //printf("xrel -> %d\n", event.motion.xrel);
         //printf("yrel -> %f\n", info.player.turn_rate);
+        
         while (SDL_PollEvent(&event))
         {
  
@@ -205,10 +206,18 @@ int		main(int argc, char **argv)
         move(&info);
         
         ray_casting_image(&info);
-        
+
    }
    //SDL_WaitThread( threadID, NULL );
    //SDL_WaitThread( threadID2, NULL );
+
+
+    int freeme = 0;
+    while (freeme < 30)
+    {
+        SDL_FreeSurface(info.wt[freeme++].img);
+    }
+    
    IMG_Quit();
    SDL_Quit();
 }
