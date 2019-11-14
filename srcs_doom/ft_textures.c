@@ -98,7 +98,7 @@ void	texture_calc(t_info *info)
 	if (info->wall.side == 0)
 		info->wall.ux = info->player.y_pos + \
 		info->wall.wall_distance * info->ray.y_ray_direction;
-	else
+	else 
 		info->wall.ux = info->player.x_pos + \
 		info->wall.wall_distance * info->ray.x_ray_direction;
 	info->wall.ux -= floor((info->wall.ux));
