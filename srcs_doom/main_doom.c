@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/13 17:08:00 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/14 17:09:47 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -192,6 +192,12 @@ int		main(int argc, char **argv)
         SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
         //SDL_RenderCopy(info.win.renderer, info.wt[2].texture, NULL, &info.head[3].rect);
         
+        SDL_RenderCopy(info.win.renderer, info.wt[25].texture, NULL, &info.wt[25].rect);
+        SDL_RenderCopy(info.win.renderer, info.wt[26].texture, NULL, &info.wt[26].rect);
+        //SDL_RenderCopy(info.win.renderer, info.wt[27].texture, NULL, &info.wt[27].rect);
+        //SDL_RenderCopy(info.win.renderer, info.wt[28].texture, NULL, &info.wt[28].rect);
+        // ESPACE SKYBOX
+
         SDL_RenderCopy(info.win.renderer, info.fps.texture2, NULL, &info.head[3].rect);
 
         //SDL_RenderCopy(info.win.renderer, info.win.texture3, NULL, &info.head[4].rect);
