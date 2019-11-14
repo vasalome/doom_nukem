@@ -60,6 +60,20 @@ struct SDL_Texture
     SDL_Texture *next;
 };
 
+typedef	struct		s_intersect
+{
+	double			p0x;
+	double			p0y;
+	double			p1x;
+	double			p1y;
+	double			p2x;
+	double			p2y;
+	double			p3x;
+	double			p3y;
+	double			x;
+	double			y;
+}					t_inter;
+
 typedef struct		s_fillmap
 {
 	int				fd;
