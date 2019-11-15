@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/14 14:25:39 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/15 17:54:43 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -218,7 +218,6 @@ void	ray_casting_image(t_info *info)
 {
 	if (!(info->player.life - 1 <= 0))
 	{
-		//skybox(info);
 		create_img(info);
 		ray_casting(info);
 		draw_skybox(info);

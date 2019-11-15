@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/14 17:09:01 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/15 17:50:49 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,67 +15,80 @@
 
 void	draw_skybox(t_info *info)
 {
-	double	dx, dy, rx, ry, edgevecx, edgevecy, edgex, edgey, distedge, distedge2;
+	/*double dx = 12 - info->player.x_pos;
+	double dy = 12 - info->player.y_pos;
 
-	dx = 12 - info->player.x_pos;
-	dy = 12 - info->player.y_pos;
+	double rx = 12 * info->player.x_pos;
+	double ry = 12 * info->player.y_pos;
 
-	rx = 12 * info->player.x_pos;
-	ry = 12 * info->player.y_pos;
+	double edgevecx = dx + rx;
+	double edgevecy = dy + ry;
 
-	edgevecx = dx + rx;
-	edgevecy = dy + ry;
+	double edgex = info->player.x_pos + edgevecx;
+	double edgey = info->player.y_pos + edgevecy;
 
-	edgex = info->player.x_pos + edgevecx;
-	edgey = info->player.y_pos + edgevecy;
-
-	distedge = sqrt((edgex - info->player.x_pos)*(edgex - info->player.x_pos) + (edgey - info->player.y_pos)*(edgey - info->player.y_pos));
-	distedge2 = distedge + distedge;
+	double distedge = sqrt((edgex - info->player.x_pos)*(edgex - info->player.x_pos) + (edgey - info->player.y_pos)*(edgey - info->player.y_pos));
+	double distedge2 = distedge + distedge;*/
 
 	double dirOffset = (atan2(info->player.y_dir, info->player.x_dir) + M_PI) / M_PI;
 	double foreOffset = floor(dirOffset * WIDTH);
-	double midOffset = floor(foreOffset / 1.5);
-	double backOffset = floor(foreOffset / 2);
+	double frontOffset = floor(foreOffset / 2);
+	double midOffset = floor(foreOffset / 4);
+	double backOffset = floor(foreOffset / 8);
 
-	double hHalf = round(HEIGHT / 2);
-	double midWidth = WIDTH / 1.5;
-	double midHeight = hHalf / 1.5;
-	double mapWidth;
-	double midYPos = (hHalf / 3 - mapWidth) + distedge; // mapWidth is la valeur max de distedge
-	double backWidth = WIDTH / 2;
-	double backHeight = hHalf / 2;
+	//double hHalf = round(HEIGHT / 2);
+	//double midWidth = WIDTH / 1.5;
+	//double midHeight = hHalf / 1.5;
+	//double mapWidth = WIDTH * 4;
+	//double midYPos = (hHalf / 3 - mapWidth) + distedge; // mapWidth is la valeur max de distedge
+	//double backWidth = WIDTH / 2;
+	//double backHeight = hHalf / 2;
 
 
 	info->wt[25].img = IMG_Load("wall/bars.png");
 	info->wt[26].img = IMG_Load("wall/bars.png");
 	info->wt[27].img = IMG_Load("wall/bars.png");
 	info->wt[28].img = IMG_Load("wall/bars.png");
+	info->wt[29].img = IMG_Load("wall/bars.png");
+	info->wt[30].img = IMG_Load("wall/bars.png");
 
 	info->wt[25].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->wt[25].img);
 	info->wt[26].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->wt[26].img);
 	info->wt[27].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->wt[27].img);
 	info->wt[28].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->wt[28].img);
-	printf("camera : %f \n", info->fps.rect.y);
+	info->wt[29].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->wt[29].img);
+	info->wt[30].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->wt[30].img);
+	//printf("frontOffset: %f\nmidOffset: %f\nbackOffset: %f\n", frontOffset, midOffset, backOffset);
 
-	info->wt[25].rect.x = backOffset;
-	info->wt[25].rect.y = (info->fps.rect.y * 0.2) + 40;
+	info->wt[25].rect.x = frontOffset;
+	info->wt[25].rect.y = (info->fps.rect.y * 0.15);// + 40;
 	info->wt[25].rect.w = WIDTH;
 	info->wt[25].rect.h = HEIGHT;
 
-	info->wt[26].rect.x = backOffset - WIDTH;
-	info->wt[26].rect.y = (info->fps.rect.y * 0.2) + 40;
+	info->wt[26].rect.x = frontOffset - WIDTH;
+	info->wt[26].rect.y = (info->fps.rect.y * 0.15);// + 40;
 	info->wt[26].rect.w = WIDTH;
 	info->wt[26].rect.h = HEIGHT;
 
-	info->wt[27].rect.x = backOffset * 1.5;
-	info->wt[27].rect.y = (info->fps.rect.y * 0.1) - 40;
+	info->wt[27].rect.x = midOffset;
+	info->wt[27].rect.y = (info->fps.rect.y * 0.10);// + 40;
 	info->wt[27].rect.w = WIDTH;
 	info->wt[27].rect.h = HEIGHT;
 
-	info->wt[28].rect.x = (backOffset / 1.5) - WIDTH;
-	info->wt[28].rect.y = (info->fps.rect.y * 0.1) - 40;
+	info->wt[28].rect.x = midOffset - WIDTH;
+	info->wt[28].rect.y = (info->fps.rect.y * 0.10);// + 40;
 	info->wt[28].rect.w = WIDTH;
 	info->wt[28].rect.h = HEIGHT;
+
+	info->wt[29].rect.x = backOffset;
+	info->wt[29].rect.y = (info->fps.rect.y * 0.05);// + 40;
+	info->wt[29].rect.w = WIDTH;
+	info->wt[29].rect.h = HEIGHT;
+
+	info->wt[30].rect.x = backOffset - WIDTH;
+	info->wt[30].rect.y = (info->fps.rect.y * 0.05);// + 40;
+	info->wt[30].rect.w = WIDTH;
+	info->wt[30].rect.h = HEIGHT;
 
 
 
