@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/13 13:35:26 by ztrouill    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/14 11:35:37 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -121,9 +121,6 @@ $(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h
 	@printf "\r                                             \r"
 
 all:
-	#if [ ! -d $(DIRECTORY_SDL) ]; then
-	#	brew install sdl2
-	#fi
 	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION OBJECTS: IN PROGRESS..$(_STOP)\n		OBJECTS DIRECTORY: CREATION || ->\n"
 	@mkdir -p $(OBJ_DIR)
 	@$(MAKE) $(NAME) --no-print-directory

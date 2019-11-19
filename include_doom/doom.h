@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/06 15:17:28 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/15 16:27:10 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -409,5 +409,7 @@ void				game_over(t_info *info);
 int					red_cross(void);
 int					f_exist(t_info *info);
 int					ft_usage(char *error);
+
+void				draw_skybox(t_info *info);
 
 #endif
