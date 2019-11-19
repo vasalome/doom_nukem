@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/14 11:35:37 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/19 14:50:14 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -48,6 +48,7 @@ SRCS		+=	ft_teleport.c
 SRCS		+=	ft_ray.c
 SRCS		+=	ft_wall.c
 SRCS		+=	ft_draw_wall.c
+SRCS		+=	ft_skybox.c
 SRCS		+=	ft_spawn.c
 SRCS		+=	ft_textures.c
 SRCS		+=	ft_gameover.c
