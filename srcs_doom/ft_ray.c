@@ -60,8 +60,6 @@ void	ray_casting_init(t_info *info, int x)
 		intersectLine(&inter);
 		if(inter.x >= info->map.x && inter.x <= info->map.x + 1 && inter.y >= info->map.y && inter.y <= info->map.y + 1)
 		{
-			if((info->wall.side == 1 && info->map.y_step < 0) || (info->wall.side == 0 && info->map.x_step < 0))
-				angleSide = 1;
 			info->map.hit = 1;
 			info->wall.side = 2;
 			info->wall.wall_distance = ((inter.x - info->ray.x_ray_position + inter.y - info->ray.y_ray_position) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction) / 2);
@@ -85,8 +83,6 @@ void	ray_casting_init(t_info *info, int x)
 		intersectLine(&inter);
 		if(inter.x >= info->map.x && inter.x <= info->map.x + 1 && inter.y >= info->map.y && inter.y <= info->map.y + 1)
 		{
-			if((info->wall.side == 1 && info->map.y_step < 0) || (info->wall.side == 0 && info->map.x_step < 0))
-				angleSide = 1;
 			info->map.hit = 1;
 			info->wall.side = 2;
 			info->wall.wall_distance = ((inter.x - info->ray.x_ray_position + inter.y - info->ray.y_ray_position) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction) / 2);
@@ -220,7 +216,7 @@ void	ray_casting_image(t_info *info)
 	{
 		create_img(info);
 		ray_casting(info);
-		///////draw_skybox(info);
+		/////////draw_skybox(info);
 		
 		/* Main frame */
 

@@ -47,10 +47,10 @@ void	draw_skybox(t_info *info)
 
 	info->wt[25].img = IMG_Load("wall/bars.png");
 	info->wt[26].img = IMG_Load("wall/bars.png");
-	info->wt[27].img = IMG_Load("wall/bars.png");
-	info->wt[28].img = IMG_Load("wall/bars.png");
-	info->wt[29].img = IMG_Load("wall/bars.png");
-	info->wt[30].img = IMG_Load("wall/bars.png");
+	info->wt[27].img = IMG_Load("wall/skybox1.png");
+	info->wt[28].img = IMG_Load("wall/skybox1.png");
+	info->wt[29].img = IMG_Load("wall/skybox2.png");
+	info->wt[30].img = IMG_Load("wall/skybox2.png");
 
 	info->wt[25].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->wt[25].img);
 	info->wt[26].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->wt[26].img);
