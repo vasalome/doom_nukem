@@ -6,55 +6,55 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/19 14:13:01 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/19 16:11:52 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 
-void	layer_3(double front_offset, t_info *info)
-{
-	info->wt[26].rect.x = front_offset * 4;
-	info->wt[26].rect.y = (info->fps.rect.y * 0.10);
-	info->wt[26].rect.w = WIDTH;
-	info->wt[26].rect.h = HEIGHT;
-	info->wt[27].rect.x = (front_offset * 4) - WIDTH;
-	info->wt[27].rect.y = (info->fps.rect.y * 0.10);
-	info->wt[27].rect.w = WIDTH;
-	info->wt[27].rect.h = HEIGHT;
-	info->wt[28].rect.x = (front_offset * 4) - (WIDTH * 2);
-	info->wt[28].rect.y = (info->fps.rect.y * 0.10);
-	info->wt[28].rect.w = WIDTH;
-	info->wt[28].rect.h = HEIGHT;
-	info->wt[29].rect.x = (front_offset * 4) - (WIDTH * 3);
-	info->wt[29].rect.y = (info->fps.rect.y * 0.10);
-	info->wt[29].rect.w = WIDTH;
-	info->wt[29].rect.h = HEIGHT;
-	info->wt[30].rect.x = (front_offset * 4) - (WIDTH * 4);
-	info->wt[30].rect.y = (info->fps.rect.y * 0.10);
-	info->wt[30].rect.w = WIDTH;
-	info->wt[30].rect.h = HEIGHT;
-}
-
 void	layer_2(double front_offset, t_info *info)
 {
-	info->wt[22].rect.x = front_offset * 2;
-	info->wt[22].rect.y = (info->fps.rect.y * 0.10);
-	info->wt[22].rect.w = WIDTH;
-	info->wt[22].rect.h = HEIGHT;
-	info->wt[23].rect.x = (front_offset * 2) - WIDTH;
-	info->wt[23].rect.y = (info->fps.rect.y * 0.10);
-	info->wt[23].rect.w = WIDTH;
-	info->wt[23].rect.h = HEIGHT;
-	info->wt[24].rect.x = (front_offset * 2) - (WIDTH * 2);
-	info->wt[24].rect.y = (info->fps.rect.y * 0.10);
-	info->wt[24].rect.w = WIDTH;
-	info->wt[24].rect.h = HEIGHT;
-	info->wt[25].rect.x = (front_offset * 2) - (WIDTH * 3);
+	info->wt[25].rect.x = front_offset * 2;
 	info->wt[25].rect.y = (info->fps.rect.y * 0.10);
 	info->wt[25].rect.w = WIDTH;
 	info->wt[25].rect.h = HEIGHT;
+	info->wt[26].rect.x = (front_offset * 2) - WIDTH;
+	info->wt[26].rect.y = (info->fps.rect.y * 0.10);
+	info->wt[26].rect.w = WIDTH;
+	info->wt[26].rect.h = HEIGHT;
+	info->wt[27].rect.x = (front_offset * 2) - (WIDTH * 2);
+	info->wt[27].rect.y = (info->fps.rect.y * 0.10);
+	info->wt[27].rect.w = WIDTH;
+	info->wt[27].rect.h = HEIGHT;
+	info->wt[28].rect.x = (front_offset * 2) - (WIDTH * 3);
+	info->wt[28].rect.y = (info->fps.rect.y * 0.10);
+	info->wt[28].rect.w = WIDTH;
+	info->wt[28].rect.h = HEIGHT;
+}
+
+void	layer_1(double front_offset, t_info *info)
+{
+	info->wt[20].rect.x = front_offset * 4;
+	info->wt[20].rect.y = (info->fps.rect.y * 0.10);
+	info->wt[20].rect.w = WIDTH;
+	info->wt[20].rect.h = HEIGHT;
+	info->wt[21].rect.x = (front_offset * 4) - WIDTH;
+	info->wt[21].rect.y = (info->fps.rect.y * 0.10);
+	info->wt[21].rect.w = WIDTH;
+	info->wt[21].rect.h = HEIGHT;
+	info->wt[22].rect.x = (front_offset * 4) - (WIDTH * 2);
+	info->wt[22].rect.y = (info->fps.rect.y * 0.10);
+	info->wt[22].rect.w = WIDTH;
+	info->wt[22].rect.h = HEIGHT;
+	info->wt[23].rect.x = (front_offset * 4) - (WIDTH * 3);
+	info->wt[23].rect.y = (info->fps.rect.y * 0.10);
+	info->wt[23].rect.w = WIDTH;
+	info->wt[23].rect.h = HEIGHT;
+	info->wt[24].rect.x = (front_offset * 4) - (WIDTH * 4);
+	info->wt[24].rect.y = (info->fps.rect.y * 0.10);
+	info->wt[24].rect.w = WIDTH;
+	info->wt[24].rect.h = HEIGHT;
 }
 
 void	init_sky_2(t_info *info)
@@ -87,13 +87,13 @@ void	init_sky_1(t_info *info)
 {
 	info->wt[20].img = IMG_Load("wall/skybox1.png");
 	info->wt[21].img = IMG_Load("wall/skybox1.png");
-	info->wt[22].img = IMG_Load("wall/skybox2.png");
-	info->wt[23].img = IMG_Load("wall/skybox2.png");
-	info->wt[24].img = IMG_Load("wall/skybox2.png");
+	info->wt[22].img = IMG_Load("wall/skybox1.png");
+	info->wt[23].img = IMG_Load("wall/skybox1.png");
+	info->wt[24].img = IMG_Load("wall/skybox1.png");
 	info->wt[25].img = IMG_Load("wall/skybox2.png");
-	info->wt[26].img = IMG_Load("wall/skybox3.png");
-	info->wt[27].img = IMG_Load("wall/skybox3.png");
-	info->wt[28].img = IMG_Load("wall/skybox3.png");
+	info->wt[26].img = IMG_Load("wall/skybox2.png");
+	info->wt[27].img = IMG_Load("wall/skybox2.png");
+	info->wt[28].img = IMG_Load("wall/skybox2.png");
 	info->wt[29].img = IMG_Load("wall/skybox3.png");
 	info->wt[30].img = IMG_Load("wall/skybox3.png");
 }
@@ -109,14 +109,14 @@ void	draw_skybox(t_info *info)
 	front_offset = floor(fore_offset / 2);
 	init_sky_1(info);
 	init_sky_2(info);
-	info->wt[20].rect.x = front_offset;
-	info->wt[20].rect.y = (info->fps.rect.y * 0.15);
-	info->wt[20].rect.w = WIDTH;
-	info->wt[20].rect.h = HEIGHT;
-	info->wt[21].rect.x = front_offset - WIDTH;
-	info->wt[21].rect.y = (info->fps.rect.y * 0.15);
-	info->wt[21].rect.w = WIDTH;
-	info->wt[21].rect.h = HEIGHT;
+	layer_1(front_offset, info);
 	layer_2(front_offset, info);
-	layer_3(front_offset, info);
+	info->wt[29].rect.x = front_offset;
+	info->wt[29].rect.y = (info->fps.rect.y * 0.15);
+	info->wt[29].rect.w = WIDTH;
+	info->wt[29].rect.h = HEIGHT;
+	info->wt[30].rect.x = front_offset - WIDTH;
+	info->wt[30].rect.y = (info->fps.rect.y * 0.15);
+	info->wt[30].rect.w = WIDTH;
+	info->wt[30].rect.h = HEIGHT;
 }

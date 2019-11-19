@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/19 13:53:39 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/19 16:11:53 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -194,20 +194,19 @@ int		main(int argc, char **argv)
         
         ////// ESPACE SKYBOX : mettre en une fonction
 
-        SDL_RenderCopy(info.win.renderer, info.wt[26].texture, NULL, &info.wt[26].rect);
-        SDL_RenderCopy(info.win.renderer, info.wt[27].texture, NULL, &info.wt[27].rect);
-        SDL_RenderCopy(info.win.renderer, info.wt[28].texture, NULL, &info.wt[28].rect);
         SDL_RenderCopy(info.win.renderer, info.wt[29].texture, NULL, &info.wt[29].rect);
         SDL_RenderCopy(info.win.renderer, info.wt[30].texture, NULL, &info.wt[30].rect);
 
-        SDL_RenderCopy(info.win.renderer, info.wt[22].texture, NULL, &info.wt[22].rect);
-        SDL_RenderCopy(info.win.renderer, info.wt[23].texture, NULL, &info.wt[23].rect);
-        SDL_RenderCopy(info.win.renderer, info.wt[24].texture, NULL, &info.wt[24].rect);
         SDL_RenderCopy(info.win.renderer, info.wt[25].texture, NULL, &info.wt[25].rect);
+        SDL_RenderCopy(info.win.renderer, info.wt[26].texture, NULL, &info.wt[26].rect);
+        SDL_RenderCopy(info.win.renderer, info.wt[27].texture, NULL, &info.wt[27].rect);
+        SDL_RenderCopy(info.win.renderer, info.wt[28].texture, NULL, &info.wt[28].rect);
 
         SDL_RenderCopy(info.win.renderer, info.wt[20].texture, NULL, &info.wt[20].rect);
         SDL_RenderCopy(info.win.renderer, info.wt[21].texture, NULL, &info.wt[21].rect);
-
+        SDL_RenderCopy(info.win.renderer, info.wt[22].texture, NULL, &info.wt[22].rect);
+        SDL_RenderCopy(info.win.renderer, info.wt[23].texture, NULL, &info.wt[23].rect);
+        SDL_RenderCopy(info.win.renderer, info.wt[24].texture, NULL, &info.wt[24].rect);
 
         ////// ESPACE SKYBOX
 
