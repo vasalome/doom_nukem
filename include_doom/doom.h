@@ -193,8 +193,10 @@ typedef struct		s_wall
 	int				b;
 	int				a;
 	double			wall_distance;
+	double			wall_distance2;
 	int				x;
 	double			ux;
+	double			ux2;
 	int				trap;
 }					t_wall;
 
