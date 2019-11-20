@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/19 16:11:52 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/20 13:25:25 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -112,11 +112,11 @@ void	draw_skybox(t_info *info)
 	layer_1(front_offset, info);
 	layer_2(front_offset, info);
 	info->wt[29].rect.x = front_offset;
-	info->wt[29].rect.y = (info->fps.rect.y * 0.15);
+	info->wt[29].rect.y = 0;//(info->fps.rect.y * 0.15);
 	info->wt[29].rect.w = WIDTH;
 	info->wt[29].rect.h = HEIGHT;
 	info->wt[30].rect.x = front_offset - WIDTH;
-	info->wt[30].rect.y = (info->fps.rect.y * 0.15);
+	info->wt[30].rect.y = 0;//(info->fps.rect.y * 0.15);
 	info->wt[30].rect.w = WIDTH;
 	info->wt[30].rect.h = HEIGHT;
 }
