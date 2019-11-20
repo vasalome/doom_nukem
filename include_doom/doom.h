@@ -130,7 +130,7 @@ typedef struct		s_ray
 typedef struct		s_player
 {
 	double			x_camera;
-	int				height;
+	double				height;
 	double			x_pos;
 	double			y_pos;
 	double			x_old_position;
@@ -187,6 +187,7 @@ typedef struct		s_wall
 	int				draw_start;
 	int				draw_end;
 	int				side;
+	int				side2;
 	int				color;
 	int				r;
 	int				g;

@@ -52,9 +52,10 @@ int		threadAnim(void*	data)
 	return (0);
 }
 
+//calc sol plafond
 void	calc_floor_ceil(t_info *info, int idtext)
 {
-	info->floor.weight = info->floor.dist / info->wall.wall_distance;
+	info->floor.weight = info->floor.dist / info->wall.wall_distance2;
 	
 	info->floor.currentFloorX = info->floor.weight * info->floor.floorXWall + (1.0 - info->floor.weight) * info->player.x_pos;
 	info->floor.currentFloorY = info->floor.weight * info->floor.floorYWall + (1.0 - info->floor.weight) * info->player.y_pos;
@@ -93,26 +94,29 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	y = info->player.fov;
 	tex_y = 0;
 	info->fps.pixels = info->fps.tmp;
-	if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
+	
+	//orientation sol plafond
+	if (info->wall.side2 == 0 && info->ray.x_ray_direction > 0)
 	{
 		info->floor.floorXWall = info->map.x;
-		info->floor.floorYWall = info->map.y + info->wall.ux;
+		info->floor.floorYWall = info->map.y + info->wall.ux2;
 	}
-	else if (info->wall.side == 0 && info->ray.x_ray_direction < 0)
+	else if (info->wall.side2 == 0 && info->ray.x_ray_direction < 0)
 	{
 		info->floor.floorXWall = info->map.x + 1;
-		info->floor.floorYWall = info->map.y + info->wall.ux;
+		info->floor.floorYWall = info->map.y + info->wall.ux2;
 	}
-	else if (info->wall.side == 1 && info->ray.y_ray_direction > 0)
+	else if (info->wall.side2 == 1 && info->ray.y_ray_direction > 0)
 	{
-		info->floor.floorXWall = info->map.x + info->wall.ux;
+		info->floor.floorXWall = info->map.x + info->wall.ux2;
 		info->floor.floorYWall = info->map.y;
 	}
 	else
 	{
-		info->floor.floorXWall = info->map.x + info->wall.ux;
+		info->floor.floorXWall = info->map.x + info->wall.ux2;
 		info->floor.floorYWall = info->map.y + 1;
 	}
+
 	
 	while (++y <= draw_start)
 	{

@@ -2,8 +2,8 @@
 
 //• Il est possible de regarder vers le haut et vers le bas.
 
-• Les espaces parcourus ont des formes quelconques, par exemple les pièces ont un
-nombre quelconque de murs avec toutes les orientations possibles.
+//• Les espaces parcourus ont des formes quelconques, par exemple les pièces ont un
+//nombre quelconque de murs avec toutes les orientations possibles.
 
 • Le sol et le plafond ont une hauteur réglable, définissant ainsi des dénivelés entre
 différents espaces.

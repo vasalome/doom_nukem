@@ -45,6 +45,7 @@ void	wall_detection_init_y(t_info *info)
 
 void	wall_detection_init_x(t_info *info)
 {
+	info->map.hit = 0;
 	info->ray.x_delta_distance = sqrt(1 + (info->ray.y_ray_direction *\
 		info->ray.y_ray_direction) / (info->ray.x_ray_direction *\
 		info->ray.x_ray_direction));
@@ -70,7 +71,7 @@ void	wall_detection_plus(t_info *info)
 	else if (info->map.map[info->map.x][info->map.y] == '6')
 		info->wall.trap = 2;
 	else if (info->map.map[info->map.x][info->map.y] == '8')
-		info->wall.trap = 4;
+		info->wall.trap = 3;
 	else if (info->map.map[info->map.x][info->map.y] == '7')
 		info->wall.trap = 3;
 	else
@@ -86,22 +87,19 @@ void	wall_detection(t_info *info)
 		{
 			info->ray.x_side_distance += info->ray.x_delta_distance;
 			info->map.x += info->map.x_step;
-			info->wall.side = 0;
+			info->wall.side2 = 0;
 		}
 		else
 		{
 			info->ray.y_side_distance += info->ray.y_delta_distance;
 			info->map.y += info->map.y_step;
-			info->wall.side = 1;
+			info->wall.side2 = 1;
 		}
 		if (info->map.map[info->map.x][info->map.y] == '1' ||\
 			info->map.map[info->map.x][info->map.y] == '5' ||\
-			info->map.map[info->map.x][info->map.y] == '6' ||\
-			info->map.map[info->map.x][info->map.y] == '7' ||\
-			info->map.map[info->map.x][info->map.y] == '8')
+			info->map.map[info->map.x][info->map.y] == '6')
 		{
 			info->map.hit = 1;
 		}
-		wall_detection_plus(info);
 	}
 }

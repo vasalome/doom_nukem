@@ -21,7 +21,7 @@ void	init_player(t_info *info)
 {
 	info->player.x_pos = info->map.x_spawn;
 	info->player.y_pos = info->map.y_spawn;
-	info->player.height = 65;
+	info->player.height = 1;
 	info->player.x_dir = -1;
 	info->player.y_dir = 0;
 	info->player.x_plane = 0;

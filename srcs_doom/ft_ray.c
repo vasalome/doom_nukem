@@ -40,66 +40,100 @@ void	ray_casting_init(t_info *info, int x)
 	info->map.x = (int)info->ray.x_ray_position;
 	info->map.y = (int)info->ray.y_ray_position;
 	wall_detection_init_x(info);
-	wall_detection(info);
-	int rayTex = info->map.map[info->map.x][info->map.y];
-	if (rayTex == '7')
+	while(info->map.hit == 0)
 	{
-		int wallX1 = info->map.x;
-		int wallY1 = info->map.y + 1;
-		int wallX2 = info->map.x + 1;
-		int wallY2 = info->map.y;
-		t_inter inter;
-		inter.p0x = info->ray.x_ray_position;
-		inter.p0y = info->ray.y_ray_position;
-		inter.p1x = info->ray.x_ray_position + info->ray.x_ray_direction;
-		inter.p1y = info->ray.y_ray_position + info->ray.y_ray_direction;
-		inter.p2x = wallX1;
-		inter.p2y = wallY1;
-		inter.p3x = wallX2;
-		inter.p3y = wallY2;
-		intersectLine(&inter);
-		if(inter.x >= info->map.x && inter.x <= info->map.x + 1 && inter.y >= info->map.y && inter.y <= info->map.y + 1)
+		if (info->ray.x_side_distance < info->ray.y_side_distance)
+			{
+				info->ray.x_side_distance += info->ray.x_delta_distance;
+				info->map.x += info->map.x_step;
+				info->wall.side = 0;
+			}
+			else
+			{
+				info->ray.y_side_distance += info->ray.y_delta_distance;
+				info->map.y += info->map.y_step;
+				info->wall.side = 1;
+			}
+		int rayTex = info->map.map[info->map.x][info->map.y];
+		if (rayTex == '7')
+		{
+			double wallX1 = info->map.x;
+			double wallY1 = info->map.y + 1;
+			double wallX2 = info->map.x + 1;
+			double wallY2 = info->map.y;
+			t_inter inter;
+			inter.p0x = info->ray.x_ray_position;
+			inter.p0y = info->ray.y_ray_position;
+			inter.p1x = info->ray.x_ray_position + info->ray.x_ray_direction;
+			inter.p1y = info->ray.y_ray_position + info->ray.y_ray_direction;
+			inter.p2x = wallX1;
+			inter.p2y = wallY1;
+			inter.p3x = wallX2;
+			inter.p3y = wallY2;
+			intersectLine(&inter);
+			if(inter.x >= info->map.x && inter.x <= info->map.x + 1 && inter.y >= info->map.y && inter.y <= info->map.y + 1)
+			{
+				info->map.hit = 1;
+				info->wall.side = 2;
+				info->wall.wall_distance = ((inter.x - info->ray.x_ray_position + inter.y - info->ray.y_ray_position) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction) / 2);
+			}
+		}
+		else if (rayTex == '8')
+		{
+			double wallX1 = info->map.x;
+			double wallY1 = info->map.y;
+			double wallX2 = info->map.x + 1;
+			double wallY2 = info->map.y + 1;
+			t_inter inter;
+			inter.p0x = info->ray.x_ray_position;
+			inter.p0y = info->ray.y_ray_position;
+			inter.p1x = info->ray.x_ray_position + info->ray.x_ray_direction;
+			inter.p1y = info->ray.y_ray_position + info->ray.y_ray_direction;
+			inter.p2x = wallX1;
+			inter.p2y = wallY1;
+			inter.p3x = wallX2;
+			inter.p3y = wallY2;
+			intersectLine(&inter);
+			if(inter.x >= info->map.x && inter.x <= info->map.x + 1 && inter.y >= info->map.y && inter.y <= info->map.y + 1)
+			{
+				info->map.hit = 1;
+				info->wall.side = 2;
+				info->wall.wall_distance = ((inter.x - info->ray.x_ray_position + inter.y - info->ray.y_ray_position) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction) / 2);
+			}
+		}
+		else if (rayTex == '1')
 		{
 			info->map.hit = 1;
-			info->wall.side = 2;
-			info->wall.wall_distance = ((inter.x - info->ray.x_ray_position + inter.y - info->ray.y_ray_position) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction) / 2);
 		}
 	}
-	else if (rayTex == '8')
-	{
-		int wallX1 = info->map.x;
-		int wallY1 = info->map.y;
-		int wallX2 = info->map.x + 1;
-		int wallY2 = info->map.y + 1;
-		t_inter inter;
-		inter.p0x = info->ray.x_ray_position;
-		inter.p0y = info->ray.y_ray_position;
-		inter.p1x = info->ray.x_ray_position + info->ray.x_ray_direction;
-		inter.p1y = info->ray.y_ray_position + info->ray.y_ray_direction;
-		inter.p2x = wallX1;
-		inter.p2y = wallY1;
-		inter.p3x = wallX2;
-		inter.p3y = wallY2;
-		intersectLine(&inter);
-		if(inter.x >= info->map.x && inter.x <= info->map.x + 1 && inter.y >= info->map.y && inter.y <= info->map.y + 1)
-		{
-			info->map.hit = 1;
-			info->wall.side = 2;
-			info->wall.wall_distance = ((inter.x - info->ray.x_ray_position + inter.y - info->ray.y_ray_position) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction) / 2);
-		}
-	}
-	else
-	{
+	wall_detection_plus(info);
 		if (info->wall.side == 0)
 		{
 			info->wall.wall_distance = (info->map.x - info->ray.x_ray_position +\
 			(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
 		}
-		else
+		else if (info->wall.side == 1)
 		{
 			info->wall.wall_distance = (info->map.y - info->ray.y_ray_position +\
 			(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
 		}
+		else
+		{
+			info->wall.wall_distance2 = (info->map.x - info->ray.x_ray_position +\
+			(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
+		}
+	//sol et plafond
+	wall_detection_init_x(info);
+	wall_detection(info);
+	if (info->wall.side2 == 0)
+	{
+		info->wall.wall_distance2 = (info->map.x - info->ray.x_ray_position +\
+		(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
+	}
+	else if (info->wall.side2 == 1)
+	{
+		info->wall.wall_distance2 = (info->map.y - info->ray.y_ray_position +\
+		(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
 	}
 }
 
@@ -108,7 +142,9 @@ int		ray_casting(t_info *info)
 	info->wall.x = -1;
 	while (++info->wall.x < info->win.w)
 	{
+		
 		ray_casting_init(info, info->wall.x);
+		
 		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
 		info->wall.draw_start = -info->wall.line_height / 2 + info->win.h / 2;
 		if (info->wall.draw_start < 0)
@@ -216,7 +252,7 @@ void	ray_casting_image(t_info *info)
 	{
 		create_img(info);
 		ray_casting(info);
-		draw_skybox(info);
+		//draw_skybox(info);
 		
 		/* Main frame */
 
