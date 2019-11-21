@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/20 18:46:08 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 16:23:48 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,8 +61,7 @@ void	calc_floor_ceil(t_info *info, int idtext)
 	info->floor.currentFloorY = info->floor.weight * info->floor.floorYWall + (1.0 - info->floor.weight) * info->player.y_pos;
 	
 	info->floor.floorTexX = (int)(info->floor.currentFloorX * info->wt[idtext].img->w) % info->wt[idtext].img->w;
-	info->floor.floorTexY = (int)(info->floor.currentFloorY * info->wt[idtext].img->h) % info->wt[idtext].img->h;	
-	
+	info->floor.floorTexY = (int)(info->floor.currentFloorY * info->wt[idtext].img->h) % info->wt[idtext].img->h;
 }
 
 void	draw_wall_plus(int x, int draw_start, t_info *info, int tex_y)
