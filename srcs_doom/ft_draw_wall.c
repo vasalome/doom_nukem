@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/13 15:56:05 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 16:23:48 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,8 +61,7 @@ void	calc_floor_ceil(t_info *info, int idtext)
 	info->floor.currentFloorY = info->floor.weight * info->floor.floorYWall + (1.0 - info->floor.weight) * info->player.y_pos;
 	
 	info->floor.floorTexX = (int)(info->floor.currentFloorX * info->wt[idtext].img->w) % info->wt[idtext].img->w;
-	info->floor.floorTexY = (int)(info->floor.currentFloorY * info->wt[idtext].img->h) % info->wt[idtext].img->h;	
-	
+	info->floor.floorTexY = (int)(info->floor.currentFloorY * info->wt[idtext].img->h) % info->wt[idtext].img->h;
 }
 
 void	draw_wall_plus(int x, int draw_start, t_info *info, int tex_y)
@@ -126,9 +125,12 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 		//SDL_WaitThread( threadID, NULL );
 		//printf("%d , %d\n", info->floor.floorTexX, info->floor.floorTexY);
 		//SDL_WaitThread( threadID, NULL );
-		Uint32 data = getpixel(info->wt[17].img, info->floor.floorTexX, info->floor.floorTexY);
 		
+		
+		Uint32 data = getpixel(info->wt[17].img, info->floor.floorTexX, info->floor.floorTexY);
 		SDL_GetRGB(data, info->wt[17].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
+		
+	
 		info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
 	}
 		//info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, 200, 0, 0, 255);
