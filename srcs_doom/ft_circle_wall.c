@@ -23,8 +23,7 @@ int     ray_circle(t_info *info, double r)
     bb4ac = b * b - 4 * a * c;
     if (bb4ac < 0)
         return(0);
-    intersectDist1 = (-b + sqrt(bb4ac)) / (2 * a);
-    intersectDist2 = (-b - sqrt(bb4ac)) / (2 * a);
-
-   return(intersectDist1, intersectDist2);
+    info->ray.intersectDist1 = (-b + sqrt(bb4ac)) / (2 * a);
+    info->ray.intersectDist2 = (-b - sqrt(bb4ac)) / (2 * a);
+    return(1);
 }

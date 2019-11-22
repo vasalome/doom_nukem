@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/15 16:27:10 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/22 14:55:29 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -125,6 +125,9 @@ typedef struct		s_ray
 	double			y_side_distance;
 	double			x_delta_distance;
 	double			y_delta_distance;
+	//test raycircle
+	double			intersectDist1;
+	double			intersectDist2;
 }					t_ray;
 
 typedef struct		s_player
