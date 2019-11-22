@@ -1,5 +1,7 @@
 //j'esssaye de comprendre son calcul
 
+//mdr
+
 ray_circle({x: info->player.x_pos, y: info->player.y_pos}, {x: info->player.x_pos + info->ray.x_ray_direction, y: info->player.y_pos + info->ray.y_ray_direction}, {x: mapX + 0.5, y: mapY + 0.5}, 0.5);
 
 int     ray_circle(p1, p2, sc, r)
