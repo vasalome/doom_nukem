@@ -62,6 +62,7 @@ void	calc_floor_ceil(t_info *info, int idtext)
 	
 	info->floor.floorTexX = (int)(info->floor.currentFloorX * info->wt[idtext].img->w) % info->wt[idtext].img->w;
 	info->floor.floorTexY = (int)(info->floor.currentFloorY * info->wt[idtext].img->h) % info->wt[idtext].img->h;
+	//printf("%f\n", info->wall.wall_distance2);
 }
 
 void	draw_wall_plus(int x, int draw_start, t_info *info, int tex_y)
@@ -89,11 +90,12 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	int		d;
 	int		tex_y;
 	double	semiH = HEIGHT * 0.5;
+	int		texId;
 	
 	y = info->player.fov;
 	tex_y = 0;
 	info->fps.pixels = info->fps.tmp;
-	
+	//printf("%f\n", info->wall.wall_distance2);
 	//orientation sol plafond
 	if (info->wall.side2 == 0 && info->ray.x_ray_direction > 0)
 	{
@@ -120,15 +122,17 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	while (++y <= draw_start)
 	{
 		info->floor.dist = HEIGHT / (((semiH) - y) * 2);
-		//SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
-		calc_floor_ceil(info, 17);
-		//SDL_WaitThread( threadID, NULL );
-		//printf("%d , %d\n", info->floor.floorTexX, info->floor.floorTexY);
-		//SDL_WaitThread( threadID, NULL );
 		
+		texId = 17;
+		if (info->map.map[(int)info->player.x_pos][(int)info->player.y_pos] == '4')
+		{
+			texId = 16;
+			//printf("%c\n", info->map.map[info->map.x][info->map.y]);
+		}
+		calc_floor_ceil(info, texId);
 		
-		Uint32 data = getpixel(info->wt[17].img, info->floor.floorTexX, info->floor.floorTexY);
-		SDL_GetRGB(data, info->wt[17].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
+		Uint32 data = getpixel(info->wt[texId].img, info->floor.floorTexX, info->floor.floorTexY);
+		SDL_GetRGB(data, info->wt[texId].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
 		
 	
 		info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
