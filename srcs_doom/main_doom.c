@@ -34,6 +34,7 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 		ft_usage("Mauvais nombre d'arguments !");
+    
 	info.map.name = argv[1];
     info.i = 0;
     info.iii = 10;
@@ -93,9 +94,9 @@ int		main(int argc, char **argv)
                     else if (event.key.keysym.sym == SDLK_q)
                         info.player.turn_left = 1;
                     else if (event.key.keysym.sym == SDLK_b)
-                        info.player.y_plane  += 0.01;
+                        info.player.height  += 0.1;
                     else if (event.key.keysym.sym == SDLK_n)
-                        info.player.y_plane  -= 0.01;
+                        info.player.height  -= 0.1;
                     else if (event.key.keysym.sym == SDLK_LSHIFT)
                         info.player.move_speed = 0.1;
                     else if (event.key.keysym.sym == SDLK_f)
