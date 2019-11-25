@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/18 16:35:29 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/25 15:24:34 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -78,11 +78,10 @@ void	init_window(t_info *info)
 	else
 	{
 		info->win.win = SDL_CreateWindow("Ma première application SDL2",
-                                          	SDL_WINDOWPOS_CENTERED,
-                                          	SDL_WINDOWPOS_CENTERED,
-                                                                	info->win.w,
-                                                                  	info->win.h,
-                                                                  	SDL_WINDOW_SHOWN/* | SDL_WINDOW_FULLSCREEN*/);
+            SDL_WINDOWPOS_CENTERED,
+			SDL_WINDOWPOS_CENTERED,
+			info->win.w, info->win.h,
+			SDL_WINDOW_SHOWN/* | SDL_WINDOW_FULLSCREEN*/);
 																  
 		info->win.renderer = SDL_CreateRenderer(info->win.win, -1, SDL_RENDERER_ACCELERATED);
 		SDL_SetRenderDrawColor( info->win.renderer, 0xFF, 0xFF, 0xFF, 0xFF );
@@ -104,7 +103,6 @@ void	init_music(t_info *info)
 	info->music.sound = Mix_LoadMUS("music/scream.wav");
 	info->music.high = Mix_LoadWAV("music/scream.wav");
 	info->music.low = Mix_LoadWAV("music/elevator.wav");
-	
 }
 
 void	init(t_info *info)
