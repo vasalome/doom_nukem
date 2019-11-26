@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 17:27:49 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/26 15:30:48 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -95,6 +95,7 @@ void	choose_texture_1(t_info *info)
 
 void	texture_calc(t_info *info)
 {
+	printf("QRQRRQRQRQR-----> %f\n", info->wall.ux);
 	if (info->wall.side == 0)
 		info->wall.ux = info->ray.y_ray_position + \
 		info->wall.wall_distance * info->ray.y_ray_direction;

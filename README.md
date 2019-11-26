@@ -1,7 +1,7 @@
 # doom_nukem
 
 https://lodev.org/cgtutor/raycasting4.html
-https://almushel.github.io/raycast-demo/
+https://github.com/almushel/raycast-demo
 
 
 

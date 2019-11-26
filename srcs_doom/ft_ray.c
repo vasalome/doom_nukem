@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/25 15:38:55 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/26 17:08:12 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,39 @@ int     ray_circle(t_info *info, double r)
     bb4ac = b * b - 4 * a * c;
 	printf("bb4ac %f\n", bb4ac);
     if (bb4ac < 0)
+	{
+		printf("jejejejejejejejejejeje\n");
     	return(0);
+	}
+	printf("poiuytrewqpoiuytrewq\n");
+    info->ray.intersectDist1 = (-b + sqrt(bb4ac)) / (2 * a);
+    info->ray.intersectDist2 = (-b - sqrt(bb4ac)) / (2 * a);
+    return(1);
+}
+
+int     ray_circ(t_info *info, double p1x, double p1y, double p2x, double p2y, double scx, double scy, double r)
+{
+    double a, b, c;
+    double bb4ac;
+	double dp1 = 0;
+	double dp2 = 0;
+	
+    dp1 = p2x - p1x;
+    dp2 = p2y - p1y;
+    a = dp1 * dp1 + dp2 * dp2;
+    b = 2 * (dp1 * (p1x - scx) + dp2 * (p1y - scy));
+    c = scx * scx + scy * scy;
+    c += p1x * p1x + p1y * p1y;
+    c -= 2 * (scx * p1x + scy * p1y);
+    c -= r * r;
+    bb4ac = b * b - 4 * a * c;
+	printf("bb4ac %f\n", bb4ac);
+    if (bb4ac < 0)
+	{
+		printf("jejejejejejejejejejeje\n");
+    	return(0);
+	}
+	printf("poiuytrewqpoiuytrewq\n");
     info->ray.intersectDist1 = (-b + sqrt(bb4ac)) / (2 * a);
     info->ray.intersectDist2 = (-b - sqrt(bb4ac)) / (2 * a);
     return(1);
@@ -128,20 +160,23 @@ void	ray_casting_init(t_info *info, int x)
 		else if (rayTex == '1')
 		{
 			info->map.hit = 1;
+			printf("-----------> %f\n", info->wall.ux);
+			// segfault a regler: probablement de wall.ux
+			// int intersectDist;
+
+			// intersectDist = ray_circle(info, 0.5);
+			// // intersectDist = ray_circ(info, info->player.x_pos, info->player.y_pos, info->player.x_pos + info->ray.x_ray_direction, info->player.y_pos + info->ray.y_ray_direction, floor(info->player.x_pos) + 0.5, floor(info->player.y_pos) + 0.5, 0.5);
 			
-			/* segfault a regler: probablement de wall.ux
-			int intersectDist;
-			intersectDist = ray_circle(info, 0.5);
-			if (intersectDist != 0)
-			{
-				info->map.hit = 1;
-				info->wall.side = 3;
-				info->wall.wall_distance = (((info->player.x_pos + info->ray.x_ray_direction * info->ray.intersectDist2) - info->player.x_pos + (info->player.y_pos + info->ray.x_ray_direction * info->ray.intersectDist2) - info->player.y_pos) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction)/2);
-				info->wall.ux = atan2((floor(info->player.y_pos) + 0.5) - (info->player.y_pos + info->ray.x_ray_direction * info->ray.intersectDist2), (floor(info->player.x_pos) + 0.5) - (info->player.x_pos + info->ray.x_ray_direction * info->ray.intersectDist2)) / (M_PI * 2);
-				printf("1 %f\n", info->wall.ux);
-				info->wall.ux += info->wall.ux;
-				printf("2 %f\n", info->wall.ux);
-			}*/
+			// if (intersectDist != 0)
+			// {
+			// 	info->map.hit = 1;
+			// 	info->wall.side = 3;
+			// 	info->wall.wall_distance = (((info->player.x_pos + info->ray.x_ray_direction * info->ray.intersectDist2) - info->player.x_pos + (info->player.y_pos + info->ray.x_ray_direction * info->ray.intersectDist2) - info->player.y_pos) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction)/2);
+			// 	info->wall.ux = atan2((floor(info->player.y_pos) + 0.5) - (info->player.y_pos + info->ray.x_ray_direction * info->ray.intersectDist2), (floor(info->player.x_pos) + 0.5) - (info->player.x_pos + info->ray.x_ray_direction * info->ray.intersectDist2)) / (M_PI * 2);
+			// 	//printf("1 %f\n", info->wall.ux);
+			// 	info->wall.ux = fabs(info->wall.ux + info->wall.ux);
+			// 	printf("2 %f\n", info->wall.ux);
+			// }
 		}
 	}
 	wall_detection_plus(info);
