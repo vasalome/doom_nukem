@@ -95,7 +95,7 @@ void	choose_texture_1(t_info *info)
 
 void	texture_calc(t_info *info)
 {
-	printf("QRQRRQRQRQR-----> %f\n", info->wall.ux);
+	//printf("QRQRRQRQRQR-----> %f\n", info->wall.ux);
 	if (info->wall.side == 0)
 		info->wall.ux = info->ray.y_ray_position + \
 		info->wall.wall_distance * info->ray.y_ray_direction;

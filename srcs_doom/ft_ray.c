@@ -99,17 +99,17 @@ void	ray_casting_init(t_info *info, int x)
 	while(info->map.hit == 0)
 	{
 		if (info->ray.x_side_distance < info->ray.y_side_distance)
-			{
-				info->ray.x_side_distance += info->ray.x_delta_distance;
-				info->map.x += info->map.x_step;
-				info->wall.side = 0;
-			}
-			else
-			{
-				info->ray.y_side_distance += info->ray.y_delta_distance;
-				info->map.y += info->map.y_step;
-				info->wall.side = 1;
-			}
+		{
+			info->ray.x_side_distance += info->ray.x_delta_distance;
+			info->map.x += info->map.x_step;
+			info->wall.side = 0;
+		}
+		else
+		{
+			info->ray.y_side_distance += info->ray.y_delta_distance;
+			info->map.y += info->map.y_step;
+			info->wall.side = 1;
+		}
 		int rayTex = info->map.map[info->map.x][info->map.y];
 		if (rayTex == '7')
 		{
@@ -160,7 +160,7 @@ void	ray_casting_init(t_info *info, int x)
 		else if (rayTex == '1')
 		{
 			info->map.hit = 1;
-			printf("-----------> %f\n", info->wall.ux);
+			//printf("-----------> %f\n", info->wall.ux);
 			// segfault a regler: probablement de wall.ux
 			// int intersectDist;
 
