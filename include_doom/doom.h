@@ -241,6 +241,7 @@ typedef	struct			s_floor
 	int				floorTexY;
 	double			floorXWall;
 	double			floorYWall;
+	int				texId;
 }					t_floor;
 
 typedef struct		s_info
