@@ -96,7 +96,7 @@ void	ray_casting_init(t_info *info, int x)
 	info->map.x = (int)info->ray.x_ray_position;
 	info->map.y = (int)info->ray.y_ray_position;
 	wall_detection_init_x(info);
-	while(info->map.hit == 0)
+	while(info->map.hit == 0 /*&& info->map.x > 0 && info->map.x < info->map.width*/)
 	{
 		if (info->ray.x_side_distance < info->ray.y_side_distance)
 		{

@@ -12,7 +12,7 @@ différents espaces.
 
 //• Il y a des textures sur les sols et plafonds.
 
-• Un ciel peut être présent à la place d’un plafond.
+//• Un ciel peut être présent à la place d’un plafond.
 
 • Des murs peuvent être partiellement transparents, permettant d’entrevoir un espace derrière.
 
