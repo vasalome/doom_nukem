@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 14:19:36 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 16:49:52 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,10 +65,12 @@ void	calc_floor_ceil(t_info *info, int idtext)
 
 	//int test = ((int)(info->floor.currentFloorX) + (int)(info->floor.currentFloorY)) % 2;
 	//printf("floorx = %d\n floory = %d\n\n", (int)(info->floor.currentFloorX), (int)(info->floor.currentFloorY));
-	if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '4')
-		info->floor.texId = 18;
+	if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '0')
+		info->floor.texId = 16;
 	else if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '2')
 		info->floor.texId = 1;
+	else if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '4')
+		info->floor.texId = 18;
 	else if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '7')
 		info->floor.texId = 16;
 	else
