@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/22 16:51:43 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 14:19:36 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,7 +66,7 @@ void	calc_floor_ceil(t_info *info, int idtext)
 	//int test = ((int)(info->floor.currentFloorX) + (int)(info->floor.currentFloorY)) % 2;
 	//printf("floorx = %d\n floory = %d\n\n", (int)(info->floor.currentFloorX), (int)(info->floor.currentFloorY));
 	if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '4')
-		info->floor.texId = 16;
+		info->floor.texId = 18;
 	else if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '2')
 		info->floor.texId = 1;
 	else if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '7')
@@ -137,9 +137,11 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 			
 			Uint32 data = getpixel(info->wt[info->floor.texId].img, info->floor.floorTexX, info->floor.floorTexY);
 			SDL_GetRGB(data, info->wt[info->floor.texId].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
-			
 		
-			info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
+			if (info->floor.texId == 18)
+				;
+			else
+				info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
 		}
 		//info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, 200, 0, 0, 255);
 	while (++draw_start <= draw_end)

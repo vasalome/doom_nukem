@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/20 16:44:20 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 14:15:13 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,7 @@ void	textures_floor(t_info *info)
 {
 	info->wt[16].img = IMG_Load("wall/scpfloor2.png");
 	info->wt[17].img = IMG_Load("wall/scpfloor.png");
+	info->wt[18].img = IMG_Load("wall/transparent.png");
 }
 
 void	textures_door_2(t_info *info)

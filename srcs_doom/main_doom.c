@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 15:08:10 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 14:51:53 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -203,16 +203,17 @@ int		main(int argc, char **argv)
     } // end of message processing
             
         //hud(&info);
+        SDL_SetTextureBlendMode(info.fps.texture, SDL_BLENDMODE_BLEND);
         SDL_UnlockTexture(info.fps.texture);
         //SDL_UnlockTexture(info.wt[2].texture);
         
 		SDL_RenderClear(info.win.renderer);
-
+        render_skybox(&info);
         SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
         //SDL_RenderCopy(info.win.renderer, info.wt[2].texture, NULL, &info.head[3].rect);
         
         ////// ESPACE SKYBOX
-        render_skybox(&info);
+        //render_skybox(&info);
 
         SDL_RenderCopy(info.win.renderer, info.fps.texture2, NULL, &info.head[3].rect);
 
