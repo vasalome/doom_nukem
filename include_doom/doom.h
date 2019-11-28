@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/22 14:55:29 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 17:28:55 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -169,7 +169,7 @@ typedef struct		s_win
 	SDL_Window		*win;
 }					t_win;
 
-typedef	struct		s_mapform
+typedef	struct		s_form
 {
 	int				wall;
 	int				floorTexId;
@@ -214,6 +214,10 @@ typedef struct		s_wall
 	double			ux;
 	double			ux2;
 	int				trap;
+	int				w_choice1;
+	int				w_choice2;
+	int				w_choice3;
+	int				w_choice4;
 }					t_wall;
 
 typedef struct		s_weapon
@@ -310,11 +314,7 @@ void				hub_life(t_info *info);
 ** srcs:			ft_init_texture.c
 */
 
-void				textures_wall_1(t_info *info);
-void				textures_wall_2(t_info *info);
-void				textures_door_1(t_info *info);
-void				textures_door_2(t_info *info);
-void				textures_floor(t_info *info);
+void				textures_list(t_info *info);
 
 /*
 ** srcs:			ft_init_weapon.c

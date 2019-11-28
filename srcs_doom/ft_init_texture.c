@@ -6,48 +6,47 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 14:15:13 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 17:04:00 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 
-void	textures_floor(t_info *info)
+void	textures_list(t_info *info)
 {
+	info->wt[0].img = IMG_Load("wall/scpwall.png");
+	info->wt[1].img = IMG_Load("wall/scpwall3.png");
+	info->wt[2].img = IMG_Load("wall/scpwall3-1.png");
+	info->wt[3].img = IMG_Load("wall/scpwall3.png");
+	info->wt[4].img = IMG_Load("wall/floor2.png");
+	// info->wt[5].img = ;
+	// info->wt[6].img = ;
+	// info->wt[7].img = ;
+	// info->wt[8].img = ;
+	// info->wt[9].img = ;
+	// info->wt[10].img = ;
+	// info->wt[11].img = ;
+	// info->wt[12].img = ;
+	// info->wt[13].img = ;
+	// info->wt[14].img = ;
+	// info->wt[15].img = ;
 	info->wt[16].img = IMG_Load("wall/scpfloor2.png");
 	info->wt[17].img = IMG_Load("wall/scpfloor.png");
 	info->wt[18].img = IMG_Load("wall/transparent.png");
-}
+	// info->wt[19].img = ;
 
-void	textures_door_2(t_info *info)
-{
-	info->wt[12].img = IMG_Load("wall/scpwall3-1.png");
-	info->wt[13].img = IMG_Load("wall/scpwall3-1.png");
-	info->wt[14].img = IMG_Load("wall/scpwall3-1.png");
-	info->wt[15].img = IMG_Load("wall/scpwall3-1.png");
-}
+	// 20 a 30 dans skybox pour l'instant
+	// info->wt[20].img = ;
+	// info->wt[21].img = ;
+	// info->wt[22].img = ;
+	// info->wt[23].img = ;
+	// info->wt[24].img = ;
+	// info->wt[25].img = ;
+	// info->wt[26].img = ;
+	// info->wt[27].img = ;
+	// info->wt[28].img = ;
+	// info->wt[29].img = ;
+	// info->wt[30].img = ;
 
-void	textures_door_1(t_info *info)
-{
-	info->wt[4].img = IMG_Load("wall/scpwall3-1.png");
-	info->wt[5].img = IMG_Load("wall/scpwall3-1.png");
-	info->wt[6].img = IMG_Load("wall/scpwall3-1.png");
-	info->wt[7].img = IMG_Load("wall/scpwall3-1.png");
-}
-
-void	textures_wall_2(t_info *info)
-{					
-	info->wt[8].img = IMG_Load("wall/scpwall.png");
-	info->wt[9].img = IMG_Load("wall/scpwall.png");
-	info->wt[10].img = IMG_Load("wall/scpwall.png");
-	info->wt[11].img = IMG_Load("wall/scpwall.png");
-}
-
-void	textures_wall_1(t_info *info)
-{
-	info->wt[0].img = IMG_Load("wall/scpwall3.png");
-	info->wt[1].img = IMG_Load("wall/scpwall3.png");
-	info->wt[2].img = IMG_Load("wall/scpwall3.png");
-	info->wt[3].img = IMG_Load("wall/scpwall3.png");
 }

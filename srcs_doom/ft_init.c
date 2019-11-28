@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 14:00:24 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 16:44:31 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,11 +60,7 @@ void	load_textures(t_info *info)
 	info->w_j = 0;
 	weapons(info);
 	hub_life(info);
-	textures_wall_1(info);
-	textures_wall_2(info);
-	textures_door_1(info);
-	textures_door_2(info);
-	textures_floor(info);
+	textures_list(info);
 }
 
 void	init_window(t_info *info)
