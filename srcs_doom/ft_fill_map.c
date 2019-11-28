@@ -20,9 +20,49 @@ void	fill_map_plus(t_fillmap *fill, t_info *info)
 	|| fill->line[fill->i] == '4' || fill->line[fill->i] == '5'
 	|| fill->line[fill->i] == '6' || fill->line[fill->i] == '7'
 	|| fill->line[fill->i] == '8')
-		info->map.map[fill->x++][fill->y] = fill->line[fill->i];
-	if (fill->line[fill->i] == '3')
-		tp_destination(fill, info, fill->line, &fill->i);
+		info->use = fill->line[fill->i];
+	if (fill->line[fill->i] == '3');
+		//tp_destination(fill, info, fill->line, &fill->i);
+}
+
+int		request_value(t_fillmap *fill, int x)
+{
+	int i;
+	int	count;
+	int	ret;
+
+	i = fill->i;
+	count = 0;
+	ret = 0;
+	x--;
+	while (count != x)
+	{
+		if(fill->line[i++] == ',')
+			count++;
+	}
+	while (fill->line[i] < '0' || fill->line[i] > '9')
+		i++;
+	while (fill->line[i] >= '0' && fill->line[i] <= '9')
+	{
+		ret *= 10;
+		ret += fill->line[i] - 48;
+		i++;
+	}
+	return (ret);
+}
+
+int		parsing(t_fillmap *fill, t_info *info)
+{
+	info->map.map[fill->x][fill->y].wall = request_value(fill, 1);
+	info->map.map[fill->x][fill->y].ceilTexId = request_value(fill, 2);
+	info->map.map[fill->x][fill->y].floorTexId = request_value(fill, 3);
+	
+	//printf("%d ", info->map.map[fill->x][fill->y].wall);
+	while (fill->line[fill->i] != ']')
+		fill->i++;
+	//printf("wall x = %d y = %d -----> %d\n\n", fill->x - 1, fill->y, info->map.map[fill->x][fill->y].wall);
+	fill->x++;
+	return(0);
 }
 
 int		read_map(t_info *info, t_fillmap *fill)
@@ -33,17 +73,16 @@ int		read_map(t_info *info, t_fillmap *fill)
 	{
 		fill->x = 0;
 		fill->i = 0;
-		info->map.map[fill->x++][fill->y] = '1';
 		while (fill->line[fill->i] != '\0')
 		{
-			fill_map_plus(fill, info);
+			//fill_map_plus(fill, info);
+			if (fill->line[fill->i] == '[')
+				parsing(fill, info);
 			fill->i++;
 		}
-		while (fill->x < info->map.width - 1)
-			info->map.map[fill->x++][fill->y] = '1';
-		info->map.map[fill->x++][fill->y] = '\0';
 		ft_strdel(&fill->line);
 		fill->y++;
+		//printf("\n");
 	}
 	if (ret == -1)
 		return (-1);
@@ -56,19 +95,12 @@ int		fill_map(t_info *info)
 
 	fill.i = 0;
 	fill.x = 0;
-	fill.y = 1;
+	fill.y = 0;
 	fill.j = 0;
 	fill.line = NULL;
 	if (!(fill.fd = open(info->map.name, O_RDONLY)))
 		return (-1);
-	while (fill.x < info->map.width - 1)
-		info->map.map[fill.x++][0] = '1';
-	info->map.map[fill.x++][fill.y] = '\0';
 	if (read_map(info, &fill) == -1)
 		return (-1);
-	fill.x = 0;
-	while (fill.x < info->map.width - 1)
-		info->map.map[fill.x++][fill.y] = '1';
-	info->map.map[fill.x][fill.y] = '\0';
 	return (0);
 }

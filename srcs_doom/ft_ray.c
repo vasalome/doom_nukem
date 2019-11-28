@@ -93,8 +93,9 @@ void	ray_casting_init(t_info *info, int x)
 		info->player.x_camera;
 	info->ray.y_ray_direction = info->player.y_dir + info->player.y_plane *\
 		info->player.x_camera;
-	info->map.x = (int)info->ray.x_ray_position;
-	info->map.y = (int)info->ray.y_ray_position;
+	
+	info->map.x = (int)info->player.x_pos;
+	info->map.y = (int)info->player.y_pos;
 	wall_detection_init_x(info);
 	while(info->map.hit == 0 /*&& info->map.x > 0 && info->map.x < info->map.width*/)
 	{
@@ -110,8 +111,9 @@ void	ray_casting_init(t_info *info, int x)
 			info->map.y += info->map.y_step;
 			info->wall.side = 1;
 		}
-		int rayTex = info->map.map[info->map.x][info->map.y];
-		if (rayTex == '7')
+		int rayTex = info->map.map[info->map.x][info->map.y].wall;
+		
+		if (rayTex == 7)
 		{
 			double wallX1 = info->map.x;
 			double wallY1 = info->map.y + 1;
@@ -134,7 +136,7 @@ void	ray_casting_init(t_info *info, int x)
 				info->wall.wall_distance = ((inter.x - info->ray.x_ray_position + inter.y - info->ray.y_ray_position) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction) / 2);
 			}
 		}
-		else if (rayTex == '8')
+		else if (rayTex == 8)
 		{
 			double wallX1 = info->map.x;
 			double wallY1 = info->map.y;
@@ -157,7 +159,7 @@ void	ray_casting_init(t_info *info, int x)
 				info->wall.wall_distance = ((inter.x - info->ray.x_ray_position + inter.y - info->ray.y_ray_position) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction) / 2);
 			}
 		}
-		else if (rayTex == '1')
+		else if (rayTex == 1)
 		{
 			info->map.hit = 1;
 			//printf("-----------> %f\n", info->wall.ux);
@@ -196,8 +198,12 @@ void	ray_casting_init(t_info *info, int x)
 			(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
 		}
 	//sol et plafond
+	
 	wall_detection_init_x(info);
+
 	wall_detection(info);
+	
+	
 	if (info->wall.side2 == 0)
 	{
 		info->wall.wall_distance2 = (info->map.x - info->ray.x_ray_position +\
@@ -215,8 +221,8 @@ int		ray_casting(t_info *info)
 	info->wall.x = -1;
 	while (++info->wall.x < info->win.w)
 	{
-		
 		ray_casting_init(info, info->wall.x);
+		
 		
 		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
 		info->wall.draw_start = -info->wall.line_height / 2 + info->win.h / 2;
@@ -252,7 +258,6 @@ int		ray_casting(t_info *info)
 		threadAnim((t_info*)info);
 	return (0);
 }
-
 int		threadAnim2(void*	data)
 {
 	t_info *info = data;
@@ -301,7 +306,7 @@ void	hud(t_info *info)
 
 void	its_a_trap(t_info *info)
 {
-	if (info->map.map[(int)info->player.x_pos][(int)info->player.y_pos] == '5')
+	if (info->map.map[(int)info->player.x_pos][(int)info->player.y_pos].wall == 5)
 	{
 		if (info->player.can_trap)
 		{
@@ -325,6 +330,8 @@ void	ray_casting_image(t_info *info)
 	{
 		create_img(info);
 		ray_casting(info);
+		//printf("x=%d y=%d\n\n", info->map.x, info->map.y);
+		//fflush(stdout);
 		draw_skybox(info);
 		
 		/* Main frame */
@@ -332,7 +339,7 @@ void	ray_casting_image(t_info *info)
 		//mlx_put_image_to_window(info->win.mlx, info->win.win,\
 		//info->fps.img, 0, 0);
 		if (info->map.map[(int)info->player.x_pos]\
-		[(int)info->player.y_pos] == '4' && info->action)
+		[(int)info->player.y_pos].wall == 4 && info->action)
 		/* Victory image */
 		{
 			info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);

@@ -65,16 +65,8 @@ void	calc_floor_ceil(t_info *info, int idtext)
 
 	//int test = ((int)(info->floor.currentFloorX) + (int)(info->floor.currentFloorY)) % 2;
 	//printf("floorx = %d\n floory = %d\n\n", (int)(info->floor.currentFloorX), (int)(info->floor.currentFloorY));
-	if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '0')
-		info->floor.texId = 16;
-	else if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '2')
-		info->floor.texId = 1;
-	else if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '4')
-		info->floor.texId = 18;
-	else if (info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)] == '7')
-		info->floor.texId = 16;
-	else
-		info->floor.texId = 17;
+	info->floor.texId = info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)].ceilTexId;
+	info->floor.texId2 = info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)].floorTexId;
 	//printf("%f\n", info->wall.wall_distance2);
 }
 
@@ -161,9 +153,9 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 		calc_floor_ceil(info, 16);
 
 		//printf("%d , %d\n", info->floor.floorTexX, info->floor.floorTexY);
-		Uint32 data = getpixel(info->wt[16].img, info->floor.floorTexX, info->floor.floorTexY);
+		Uint32 data = getpixel(info->wt[info->floor.texId2].img, info->floor.floorTexX, info->floor.floorTexY);
 		
-		SDL_GetRGB(data, info->wt[16].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
+		SDL_GetRGB(data, info->wt[info->floor.texId2].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
 		info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
 		/*info->fps.data[x * 4 + 4 * WIDTH * y + 1] = (char)120;
 		info->fps.data[x * 4 + 4 * WIDTH * y + 2] = (char)120;

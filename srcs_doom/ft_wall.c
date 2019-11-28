@@ -66,13 +66,13 @@ void	wall_detection_init_x(t_info *info)
 
 void	wall_detection_plus(t_info *info)
 {
-	if (info->map.map[info->map.x][info->map.y] == '5')
+	if (info->map.map[info->map.x][info->map.y].wall == 5)
 		info->wall.trap = 1;
-	else if (info->map.map[info->map.x][info->map.y] == '6')
+	else if (info->map.map[info->map.x][info->map.y].wall == 6)
 		info->wall.trap = 2;
-	else if (info->map.map[info->map.x][info->map.y] == '8')
+	else if (info->map.map[info->map.x][info->map.y].wall == 8)
 		info->wall.trap = 3;
-	else if (info->map.map[info->map.x][info->map.y] == '7')
+	else if (info->map.map[info->map.x][info->map.y].wall == 7)
 		info->wall.trap = 3;
 	else
 		info->wall.trap = 0;
@@ -83,6 +83,12 @@ void	wall_detection(t_info *info)
 	info->map.hit = 0;
 	while (info->map.hit == 0)
 	{
+		if (info->map.map[info->map.x][info->map.y].wall == 1 ||\
+			info->map.map[info->map.x][info->map.y].wall == 5 ||\
+			info->map.map[info->map.x][info->map.y].wall == 6)
+		{
+			info->map.hit = 1;
+		}
 		if (info->ray.x_side_distance < info->ray.y_side_distance)
 		{
 			info->ray.x_side_distance += info->ray.x_delta_distance;
@@ -95,11 +101,6 @@ void	wall_detection(t_info *info)
 			info->map.y += info->map.y_step;
 			info->wall.side2 = 1;
 		}
-		if (info->map.map[info->map.x][info->map.y] == '1' ||\
-			info->map.map[info->map.x][info->map.y] == '5' ||\
-			info->map.map[info->map.x][info->map.y] == '6')
-		{
-			info->map.hit = 1;
-		}
+		
 	}
 }

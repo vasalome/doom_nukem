@@ -39,6 +39,9 @@ void	init_player(t_info *info)
 	info->player.tp_index = 0;
 	info->player.life = 11;
 	info->player.can_trap = 1;
+	info->floor.texId2 = 16;
+	info->floor.texId = 17;
+	
 }
 
 void	init_map(t_info *info)

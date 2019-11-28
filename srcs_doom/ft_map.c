@@ -15,15 +15,14 @@
 
 void	count_width(t_setmap *set)
 {
-	set->tmp = ft_countchar(set->line, '0');
-	set->tmp += ft_countchar(set->line, '1');
-	set->tmp += ft_countchar(set->line, '2');
-	set->tmp += ft_countchar(set->line, '3');
-	set->tmp += ft_countchar(set->line, '4');
-	set->tmp += ft_countchar(set->line, '5');
-	set->tmp += ft_countchar(set->line, '6');
-	set->tmp += ft_countchar(set->line, '7');
-	set->tmp += ft_countchar(set->line, '8');
+	int	open;
+	int	close;
+
+	open = ft_countchar(set->line, '[');
+	close = ft_countchar(set->line, ']');
+
+	if (open == close)
+		set->tmp = open;
 }
 
 int		set_map_size(t_info *info)
@@ -39,7 +38,7 @@ int		set_map_size(t_info *info)
 	while ((ret = ft_get_next_line(set.fd, &set.line)) > 0)
 	{
 		count_width(&set);
-		set.tp = ft_countchar(set.line, '3');
+		//set.tp = ft_countchar(set.line, '3');
 		if (set.tmp > set.w)
 			set.w = set.tmp;
 		ft_strdel(&set.line);
@@ -47,10 +46,11 @@ int		set_map_size(t_info *info)
 	}
 	if (ret == -1)
 		return (-1);
-	info->map.height = set.h + 4;
-	info->map.width = set.w + 4;
-	if (info->map.height < 4 || info->map.width < 4)
-		ft_usage("La taille de la map est insufisante !");
+	info->map.height = set.h + 1;
+	info->map.width = set.w + 1;
+	/*if (info->map.height < 4 || info->map.width < 4)
+		ft_usage("La taille de la map est insufisante !");*/
+	//printf("w = %d\nh = %d\n\n", info->map.width, info->map.height);
 	return (0);
 }
 
@@ -60,11 +60,11 @@ int		create_map(t_info *info)
 	int		i;
 
 	i = 0;
-	if (!(map = malloc(sizeof(char *) * info->map.width + 1)))
+	if (!(map = malloc(sizeof(t_form *) * info->map.width + 1)))
 		return (-1);
 	while (i < info->map.width)
 	{
-		if (!(map[i++] = malloc(sizeof(char) * info->map.height + 1)))
+		if (!(map[i++] = malloc(sizeof(t_form) * info->map.height + 1)))
 			return (-1);
 	}
 	info->map.map = map;

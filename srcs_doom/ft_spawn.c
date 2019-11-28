@@ -25,13 +25,13 @@ int		def_spawn(t_info *info)
 	y = 0;
 	info->map.x_spawn = 1.5;
 	info->map.y_spawn = 1.5;
-	while (y < info->map.height)
+	while (y < info->map.height - 1)
 	{
 		x = 0;
-		while (x < info->map.width)
+		while (x < info->map.width - 1)
 		{
-			if (info->map.map[x][y] == '0' || info->map.map[x][y] == '4' ||\
-				info->map.map[x][y] == '5' || info->map.map[x][y] == '6')
+			if (info->map.map[x][y].wall == 0 || info->map.map[x][y].wall == 4 ||\
+				info->map.map[x][y].wall == 5 || info->map.map[x][y].wall == 6)
 			{
 				info->map.x_spawn = x + 0.5;
 				info->map.y_spawn = y + 0.5;
@@ -50,13 +50,14 @@ int		get_spawn(t_info *info)
 	int		y;
 
 	def_spawn(info);
+	//printf("x = %f   y = %f\n", info->map.x_spawn, info->map.y_spawn);
 	x = 0;
 	while (x < info->map.width)
 	{
 		y = 0;
 		while (y < info->map.height)
 		{
-			if (info->map.map[x][y] == '2')
+			if (info->map.map[x][y].wall == 2)
 			{
 				info->map.x_spawn = x + 0.5;
 				info->map.y_spawn = y + 0.5;
@@ -66,5 +67,6 @@ int		get_spawn(t_info *info)
 		}
 		x++;
 	}
+	//printf("x = %f   y = %f\n", info->map.x_spawn, info->map.y_spawn);
 	return (0);
 }

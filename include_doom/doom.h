@@ -169,6 +169,18 @@ typedef struct		s_win
 	SDL_Window		*win;
 }					t_win;
 
+typedef	struct		s_mapform
+{
+	int				wall;
+	int				floorTexId;
+	int				ceilTexId;
+	int				n_tex;
+	int				e_tex;
+	int				s_tex;
+	int				w_tex;
+
+}					t_form;
+
 typedef struct		s_map
 {
 	int				x;
@@ -181,7 +193,7 @@ typedef struct		s_map
 	double			x_spawn;
 	double			y_spawn;
 	char			*name;
-	char			**map;
+	t_form			**map;
 }					t_map;
 
 typedef struct		s_wall
@@ -242,6 +254,7 @@ typedef	struct			s_floor
 	double			floorXWall;
 	double			floorYWall;
 	int				texId;
+	int				texId2;
 }					t_floor;
 
 typedef struct		s_info
@@ -272,6 +285,7 @@ typedef struct		s_info
 	int				frame;
 	SDL_Color 		rgb;
 	int				action;
+	char			use;
 }					t_info;
 
 /*
