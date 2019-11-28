@@ -70,13 +70,13 @@ int		main(int argc, char **argv)
 	//mlx_hook(info.win.win, 3, (1L << 1), key_release, &info);
 	//mlx_loop_hook(info.win.mlx, move, &info);
 
-    info.win.screen = IMG_Load("head/head1.png");
+    //info.win.screen = IMG_Load("head/head1.png");
 
-    SDL_SetWindowIcon(info.win.win, info.win.screen);
+    //SDL_SetWindowIcon(info.win.win, info.win.screen);
     //Mix_PlayMusic(info.music.sound, -1);
 
-	while(!info.quit)
-   {
+    while(!info.quit)
+    {
         SDL_Event event;
         //printf("xrel -> %d\n", event.motion.xrel);
         //printf("yrel -> %f\n", info.player.turn_rate);
@@ -190,7 +190,7 @@ int		main(int argc, char **argv)
                             break;
                     }
                 }
-            /*case SDL_MOUSEWHEEL:
+            case SDL_MOUSEWHEEL:
                 {
                     if (event.wheel.y > 0);
                         //printf("CLICK WHEELUP\n");
@@ -198,7 +198,7 @@ int		main(int argc, char **argv)
                     if (event.wheel.y < 0);
                         //printf("CLICK WHEELDOWN\n");
                     //printf("event.wheel.y 222222-> %d\n", event.wheel.y);
-                }*/
+                }
         } // end switch
     } // end of message processing
             
