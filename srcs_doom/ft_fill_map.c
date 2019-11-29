@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:40:07 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 19:49:02 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/29 13:36:26 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,10 +60,10 @@ int		parsing(t_fillmap *fill, t_info *info)
 	// tex sol
 	info->map.map[fill->x][fill->y].floorTexId = request_value(fill, 3);
 	// tex mur  !!  !!
-	info->wall.w_choice1 = request_value(fill, 6); //nord
-	info->wall.w_choice2 = request_value(fill, 4); //est
-	info->wall.w_choice3 = request_value(fill, 5); //sud
-	info->wall.w_choice4 = request_value(fill, 7); //ouest
+	info->wall.w_choice_n = request_value(fill, 6); //nord
+	info->wall.w_choice_e = request_value(fill, 4); //est
+	info->wall.w_choice_s = request_value(fill, 5); //sud
+	info->wall.w_choice_o = request_value(fill, 7); //ouest
 	//cliping
 	//info-> ?? = request_value(fill, 8);
 	// teleport

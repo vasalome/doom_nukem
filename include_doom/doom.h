@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 17:28:55 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/29 13:36:24 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -214,10 +214,10 @@ typedef struct		s_wall
 	double			ux;
 	double			ux2;
 	int				trap;
-	int				w_choice1;
-	int				w_choice2;
-	int				w_choice3;
-	int				w_choice4;
+	int				w_choice_n;
+	int				w_choice_e;
+	int				w_choice_s;
+	int				w_choice_o;
 }					t_wall;
 
 typedef struct		s_weapon

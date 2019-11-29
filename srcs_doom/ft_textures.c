@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 17:29:34 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/29 13:37:01 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,13 +42,13 @@ void	choose_texture_2(t_info *info)
 void	choose_texture_1(t_info *info)
 {
 	if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
-		info->w_j = info->wall.w_choice1;
+		info->w_j = info->wall.w_choice_n;
 	else if (info->wall.side == 0 && info->ray.x_ray_direction < 0)
-		info->w_j = info->wall.w_choice2;
+		info->w_j = info->wall.w_choice_e;
 	else if (info->wall.side == 1 && info->ray.y_ray_direction > 0)
-		info->w_j = info->wall.w_choice3;
+		info->w_j = info->wall.w_choice_s;
 	else
-		info->w_j = info->wall.w_choice4;
+		info->w_j = info->wall.w_choice_o;
 	if (info->wall.trap == 1 || info->wall.trap == 2)
 	{
 		if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
