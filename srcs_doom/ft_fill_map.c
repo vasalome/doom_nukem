@@ -60,10 +60,17 @@ int		parsing(t_fillmap *fill, t_info *info)
 	// tex sol
 	info->map.map[fill->x][fill->y].floorTexId = request_value(fill, 3);
 	// tex mur  !!  !!
-	info->wall.w_choice_n = request_value(fill, 6); //nord
-	info->wall.w_choice_e = request_value(fill, 4); //est
-	info->wall.w_choice_s = request_value(fill, 5); //sud
-	info->wall.w_choice_o = request_value(fill, 7); //ouest
+	
+	info->map.map[fill->x][fill->y].e_tex = 0; //est
+	info->map.map[fill->x][fill->y].s_tex = 0; //sud
+	info->map.map[fill->x][fill->y].n_tex = 0; //nord
+	info->map.map[fill->x][fill->y].w_tex = 0;
+
+	info->map.map[fill->x][fill->y].e_tex = request_value(fill, 4); //est
+	info->map.map[fill->x][fill->y].s_tex = request_value(fill, 5); //sud
+	info->map.map[fill->x][fill->y].n_tex = request_value(fill, 6); //nord
+	info->map.map[fill->x][fill->y].w_tex = request_value(fill, 7); //ouest
+	
 	//cliping
 	//info-> ?? = request_value(fill, 8);
 	// teleport

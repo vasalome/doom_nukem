@@ -202,8 +202,7 @@ void	ray_casting_init(t_info *info, int x)
 	wall_detection_init_x(info);
 
 	wall_detection(info);
-	
-	
+
 	if (info->wall.side2 == 0)
 	{
 		info->wall.wall_distance2 = (info->map.x - info->ray.x_ray_position +\
@@ -222,7 +221,6 @@ int		ray_casting(t_info *info)
 	while (++info->wall.x < info->win.w)
 	{
 		ray_casting_init(info, info->wall.x);
-		
 		
 		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
 		info->wall.draw_start = -info->wall.line_height / 2 + info->win.h / 2;

@@ -41,18 +41,39 @@ void	choose_texture_2(t_info *info)
 
 void	choose_texture_1(t_info *info)
 {
+	printf("x = %d, y = %d\n", (int)info->map.x, (int)info->map.y);
+	printf("ok8\n");
+	printf("n=%d\n", info->map.map[10][5].n_tex);
+	fflush(stdout);
 	if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
-		info->w_j = info->wall.w_choice_n;
+	{
+		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].n_tex;
+		printf("n=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].n_tex);
+	}
 	else if (info->wall.side == 0 && info->ray.x_ray_direction < 0)
-		info->w_j = info->wall.w_choice_e;
+	{
+		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].n_tex;
+		printf("e=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].e_tex);
+	}
 	else if (info->wall.side == 1 && info->ray.y_ray_direction > 0)
-		info->w_j = info->wall.w_choice_s;
+	{
+		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].n_tex;
+		printf("s=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].s_tex);
+	}
 	else
-		info->w_j = info->wall.w_choice_o;
-	if (info->wall.trap == 1 || info->wall.trap == 2)
+	{
+		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].n_tex;
+		
+		printf("w=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].w_tex);
+	}
+	if (info->w_j < 0 || info->w_j > 4)
+		info->w_j = 0;
+	printf("tex=%d\n", info->w_j);
+	fflush(stdout);
+	/*if (info->wall.trap == 1 || info->wall.trap == 2)
 	{
 		if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
-			info->w_j = 2;
+			info->w_j = 18;
 		else if (info->wall.side == 0 && info->ray.x_ray_direction < 0)
 			info->w_j = 2;
 		else if (info->wall.side == 1 && info->ray.y_ray_direction > 0)
@@ -61,7 +82,7 @@ void	choose_texture_1(t_info *info)
 			info->w_j = 2;
 	}
 	else
-		choose_texture_2(info);
+		choose_texture_2(info);*/
 }
 
 void	texture_calc(t_info *info)

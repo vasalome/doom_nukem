@@ -84,10 +84,13 @@ void	wall_detection(t_info *info)
 	while (info->map.hit == 0)
 	{
 		if (info->map.map[info->map.x][info->map.y].wall == 1 ||\
-			info->map.map[info->map.x][info->map.y].wall == 5 ||\
-			info->map.map[info->map.x][info->map.y].wall == 6)
+			info->map.x < 0 || info->map.y < 0)
 		{
 			info->map.hit = 1;
+			if (info->map.x < 0)
+				info->map.x = 0;
+			if (info->map.y < 0)
+				info->map.y = 0;
 		}
 		if (info->ray.x_side_distance < info->ray.y_side_distance)
 		{
@@ -101,6 +104,16 @@ void	wall_detection(t_info *info)
 			info->map.y += info->map.y_step;
 			info->wall.side2 = 1;
 		}
-		
+		if (info->map.x < 0)
+			info->map.x = 0;
+
+		if (info->map.y < 0)
+			info->map.y = 0;
+
+		if (info->map.x >= info->map.width)
+			info->map.x = info->map.width - 2;
+
+		if (info->map.y >= info->map.height)
+			info->map.y = info->map.height - 2;
 	}
 }
