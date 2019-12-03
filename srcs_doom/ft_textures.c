@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/29 13:37:01 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 18:16:34 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,30 +41,32 @@ void	choose_texture_2(t_info *info)
 
 void	choose_texture_1(t_info *info)
 {
-	printf("x = %d, y = %d\n", (int)info->map.x, (int)info->map.y);
-	printf("ok8\n");
-	printf("n=%d\n", info->map.map[10][5].n_tex);
+	// Problème de surimpression des textures
+
+
+	//printf("x = %d, y = %d\n", (int)info->map.x, (int)info->map.y);
+	//printf("ok8\n");
+	//printf("n=%d\n", info->map.map[10][5].n_tex);
 	fflush(stdout);
 	if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
 	{
 		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].n_tex;
-		printf("n=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].n_tex);
+		//printf("n=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].n_tex);
 	}
 	else if (info->wall.side == 0 && info->ray.x_ray_direction < 0)
 	{
-		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].n_tex;
-		printf("e=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].e_tex);
+		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].e_tex;
+		//printf("e=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].e_tex);
 	}
 	else if (info->wall.side == 1 && info->ray.y_ray_direction > 0)
 	{
-		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].n_tex;
-		printf("s=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].s_tex);
+		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].s_tex;
+		//printf("s=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].s_tex);
 	}
 	else
 	{
-		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].n_tex;
-		
-		printf("w=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].w_tex);
+		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].w_tex;
+		//printf("w=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].w_tex);
 	}
 	if (info->w_j < 0 || info->w_j > 4)
 		info->w_j = 0;

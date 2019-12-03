@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:40:07 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/29 13:36:26 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 16:58:23 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,7 @@ int		parsing(t_fillmap *fill, t_info *info)
 	info->map.map[fill->x][fill->y].s_tex = request_value(fill, 5); //sud
 	info->map.map[fill->x][fill->y].n_tex = request_value(fill, 6); //nord
 	info->map.map[fill->x][fill->y].w_tex = request_value(fill, 7); //ouest
-	
+	printf("POURQUOI %d\n", info->map.map[fill->x][fill->y].e_tex);
 	//cliping
 	//info-> ?? = request_value(fill, 8);
 	// teleport
