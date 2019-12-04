@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 18:16:34 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/04 16:23:48 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,7 @@ void	choose_texture_1(t_info *info)
 	}
 	if (info->w_j < 0 || info->w_j > 4)
 		info->w_j = 0;
-	printf("tex=%d\n", info->w_j);
+	//printf("tex=%d\n", info->w_j);
 	fflush(stdout);
 	/*if (info->wall.trap == 1 || info->wall.trap == 2)
 	{
