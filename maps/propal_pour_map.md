@@ -12,7 +12,7 @@
 [] AJOUTER HAUTEUR DES MURS ?
 [] 0 -> 1 ou 0 /plafond ou non
 [] 2.25 -> hauteur plafond
-[] 1 -> 1 ou 0 / teleport ou non
+[/] 1 -> 1 ou 0 / teleport ou non
 [/] 10 11 A -> coordonnees si teleport x;y;direction A:meme_direction si != 'A' -> nouvelle_direction
 [] 1 -> choix du son
 [] 1 -> triggered case / voir interaction
