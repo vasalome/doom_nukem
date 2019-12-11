@@ -162,8 +162,8 @@ void	ray_casting_init(t_info *info, int x)
 		else if (rayTex == 1)
 		{
 			info->map.hit = 1;
-			//printf("-----------> %f\n", info->wall.ux);
-			// segfault a regler: probablement de wall.ux
+			//printf("-----------> %f\n", info->wall.wall_x);
+			// segfault a regler: probablement de wall.wall_x
 			// int intersectDist;
 
 			// intersectDist = ray_circle(info, 0.5);
@@ -174,10 +174,10 @@ void	ray_casting_init(t_info *info, int x)
 			// 	info->map.hit = 1;
 			// 	info->wall.side = 3;
 			// 	info->wall.wall_distance = (((info->player.x_pos + info->ray.x_ray_direction * info->ray.intersectDist2) - info->player.x_pos + (info->player.y_pos + info->ray.x_ray_direction * info->ray.intersectDist2) - info->player.y_pos) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction)/2);
-			// 	info->wall.ux = atan2((floor(info->player.y_pos) + 0.5) - (info->player.y_pos + info->ray.x_ray_direction * info->ray.intersectDist2), (floor(info->player.x_pos) + 0.5) - (info->player.x_pos + info->ray.x_ray_direction * info->ray.intersectDist2)) / (M_PI * 2);
-			// 	//printf("1 %f\n", info->wall.ux);
-			// 	info->wall.ux = fabs(info->wall.ux + info->wall.ux);
-			// 	printf("2 %f\n", info->wall.ux);
+			// 	info->wall.wall_x = atan2((floor(info->player.y_pos) + 0.5) - (info->player.y_pos + info->ray.x_ray_direction * info->ray.intersectDist2), (floor(info->player.x_pos) + 0.5) - (info->player.x_pos + info->ray.x_ray_direction * info->ray.intersectDist2)) / (M_PI * 2);
+			// 	//printf("1 %f\n", info->wall.wall_x);
+			// 	info->wall.wall_x = fabs(info->wall.wall_x + info->wall.wall_x);
+			// 	printf("2 %f\n", info->wall.wall_x);
 			// }
 		}
 	}
@@ -194,7 +194,7 @@ void	ray_casting_init(t_info *info, int x)
 		}
 		else
 		{
-			info->wall.wall_distance2 = (info->map.x - info->ray.x_ray_position +\
+			info->wall.floor_distance = (info->map.x - info->ray.x_ray_position +\
 			(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
 		}
 	//sol et plafond
@@ -203,14 +203,14 @@ void	ray_casting_init(t_info *info, int x)
 
 	wall_detection(info);
 
-	if (info->wall.side2 == 0)
+	if (info->floor.side == 0)
 	{
-		info->wall.wall_distance2 = (info->map.x - info->ray.x_ray_position +\
+		info->wall.floor_distance = (info->map.x - info->ray.x_ray_position +\
 		(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
 	}
-	else if (info->wall.side2 == 1)
+	else if (info->floor.side == 1)
 	{
-		info->wall.wall_distance2 = (info->map.y - info->ray.y_ray_position +\
+		info->wall.floor_distance = (info->map.y - info->ray.y_ray_position +\
 		(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
 	}
 }
@@ -231,7 +231,7 @@ int		ray_casting(t_info *info)
 			info->wall.draw_end = info->win.h - 1;
 		
 		texture_calc(info);
-		//printf("asdfghjkl        %f\n", info->wall.ux);
+		//printf("asdfghjkl        %f\n", info->wall.wall_x);
 		draw_wall(info->wall.x, info->wall.draw_start - 1,\
 				info->wall.draw_end, info);
 	}

@@ -55,7 +55,7 @@ int		threadAnim(void*	data)
 //calc sol plafond
 void	calc_floor_ceil(t_info *info, int idtext)
 {
-	info->floor.weight = info->floor.dist / info->wall.wall_distance2;
+	info->floor.weight = info->floor.dist / info->wall.floor_distance;
 	
 	info->floor.currentFloorX = info->floor.weight * info->floor.floorXWall + (1.0 - info->floor.weight) * info->player.x_pos;
 	info->floor.currentFloorY = info->floor.weight * info->floor.floorYWall + (1.0 - info->floor.weight) * info->player.y_pos;
@@ -67,7 +67,7 @@ void	calc_floor_ceil(t_info *info, int idtext)
 	//printf("floorx = %d\n floory = %d\n\n", (int)(info->floor.currentFloorX), (int)(info->floor.currentFloorY));
 	info->floor.texId = info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)].ceilTexId;
 	info->floor.texId2 = info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)].floorTexId;
-	//printf("%f\n", info->wall.wall_distance2);
+	//printf("%f\n", info->wall.floor_distance);
 }
 
 void	draw_wall_plus(int x, int draw_start, t_info *info, int tex_y)
@@ -99,26 +99,26 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	y = info->player.fov;
 	tex_y = 0;
 	info->fps.pixels = info->fps.tmp;
-	//printf("%f\n", info->wall.wall_distance2);
+	//printf("%f\n", info->wall.floor_distance);
 	//orientation sol plafond
-	if (info->wall.side2 == 0 && info->ray.x_ray_direction > 0)
+	if (info->floor.side == 0 && info->ray.x_ray_direction > 0)
 	{
 		info->floor.floorXWall = info->map.x;
-		info->floor.floorYWall = info->map.y + info->wall.ux2;
+		info->floor.floorYWall = info->map.y + info->wall.floor_x;
 	}
-	else if (info->wall.side2 == 0 && info->ray.x_ray_direction < 0)
+	else if (info->floor.side == 0 && info->ray.x_ray_direction < 0)
 	{
 		info->floor.floorXWall = info->map.x + 1;
-		info->floor.floorYWall = info->map.y + info->wall.ux2;
+		info->floor.floorYWall = info->map.y + info->wall.floor_x;
 	}
-	else if (info->wall.side2 == 1 && info->ray.y_ray_direction > 0)
+	else if (info->floor.side == 1 && info->ray.y_ray_direction > 0)
 	{
-		info->floor.floorXWall = info->map.x + info->wall.ux2;
+		info->floor.floorXWall = info->map.x + info->wall.floor_x;
 		info->floor.floorYWall = info->map.y;
 	}
 	else
 	{
-		info->floor.floorXWall = info->map.x + info->wall.ux2;
+		info->floor.floorXWall = info->map.x + info->wall.floor_x;
 		info->floor.floorYWall = info->map.y + 1;
 	}
 

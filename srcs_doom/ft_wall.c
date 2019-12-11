@@ -96,13 +96,13 @@ void	wall_detection(t_info *info)
 		{
 			info->ray.x_side_distance += info->ray.x_delta_distance;
 			info->map.x += info->map.x_step;
-			info->wall.side2 = 0;
+			info->floor.side = 0;
 		}
 		else
 		{
 			info->ray.y_side_distance += info->ray.y_delta_distance;
 			info->map.y += info->map.y_step;
-			info->wall.side2 = 1;
+			info->floor.side = 1;
 		}
 		if (info->map.x < 0)
 			info->map.x = 0;

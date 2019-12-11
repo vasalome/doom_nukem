@@ -202,17 +202,16 @@ typedef struct		s_wall
 	int				draw_start;
 	int				draw_end;
 	int				side;
-	int				side2;
 	int				color;
 	int				r;
 	int				g;
 	int				b;
 	int				a;
 	double			wall_distance;
-	double			wall_distance2;
+	double			floor_distance;
 	int				x;
-	double			ux;
-	double			ux2;
+	double			wall_x;
+	double			floor_x;
 	int				trap;
 }					t_wall;
 
@@ -253,6 +252,7 @@ typedef	struct			s_floor
 	int				floorTexY;
 	double			floorXWall;
 	double			floorYWall;
+	int				side;
 	int				texId;
 	int				texId2;
 }					t_floor;
