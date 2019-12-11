@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:37:15 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/04 16:23:50 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/11 18:41:32 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,11 +62,14 @@ void	teleport_2(t_info *info)
 
 	info->player.x_pos -= info->player.x_dir * info->player.move_speed;
 	tpx = (int)(info->player.x_pos + 1) * 100 + (int)info->player.y_pos;
-	x = (int)(info->player.tp[tpx] / 100);
-	y = (int)(info->player.tp[tpx] % 100);
+	x = (int)(info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].tp_x);
+	y = (int)(info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].tp_y);
 	if (!(x > info->map.width || y > info->map.height || y < 0 || x < 0)\
 		&& (info->map.map[x][y].wall == 0 || info->map.map[x][y].wall == 4))
 	{
+		//printf("je passe par la\n");
 		info->player.x_pos = x + (info->player.x_pos -\
 			(int)info->player.x_pos);
 		info->player.y_pos = y + (info->player.y_pos -\
@@ -82,11 +85,14 @@ void	teleport(t_info *info)
 
 	info->player.x_pos += info->player.x_dir * info->player.move_speed;
 	tpx = (int)(info->player.x_pos + 1) * 100 + (int)info->player.y_pos;
-	x = (int)(info->player.tp[tpx] / 100);
-	y = (int)(info->player.tp[tpx] % 100);
+	x = (int)(info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].tp_x);
+	y = (int)(info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].tp_y);
 	if (!(x > info->map.width || y > info->map.height || y < 0 || x < 0)\
 		&& (info->map.map[x][y].wall == 0 || info->map.map[x][y].wall == 4))
 	{
+		//printf("je passe ici\n");
 		info->player.x_pos = x + (info->player.x_pos -\
 			(int)info->player.x_pos);
 		info->player.y_pos = y + (info->player.y_pos -\

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:40:07 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/10 14:03:41 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/11 17:32:29 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,20 +70,19 @@ int		parsing(t_fillmap *fill, t_info *info)
 	info->map.map[fill->x][fill->y].s_tex = request_value(fill, 5); //sud
 	info->map.map[fill->x][fill->y].n_tex = request_value(fill, 6); //nord
 	info->map.map[fill->x][fill->y].w_tex = request_value(fill, 7); //ouest
-	printf("EST: %d\nSUD: %d\nNORD: %d\nOUEST: %d\n---------------\n",\
-		info->map.map[fill->x][fill->y].e_tex,\
-		info->map.map[fill->x][fill->y].s_tex,\
-		info->map.map[fill->x][fill->y].n_tex,\
-		info->map.map[fill->x][fill->y].w_tex);
+
 	//cliping
-	//info-> ?? = request_value(fill, 8);
+	//info-> ?? = request_value(fill, 8); 
 	// teleport
 	if (request_value(fill, 9) == 1)
 	{
-		//info-> ?? = request_value(fill, 10);
-		//info-> ?? = request_value(fill, 11);
+		info->map.map[(int)(info->player.x_pos + info->player.y_dir * info->player.move_speed)][(int)(info->player.y_pos)].gg = request_value(fill, 9);
+		info->map.map[(int)(info->player.x_pos + info->player.y_dir * info->player.move_speed)][(int)(info->player.y_pos)].tp_x = request_value(fill, 10);
+		info->map.map[(int)(info->player.x_pos + info->player.y_dir * info->player.move_speed)][(int)(info->player.y_pos)].tp_y = request_value(fill, 11);
+		teleport(info);
 	}
-
+	//request_value(fill, 12);
+	//request_value(fill, 13);
 
 	//printf("%d ", info->map.map[fill->x][fill->y].wall);
 	while (fill->line[fill->i] != ']')
