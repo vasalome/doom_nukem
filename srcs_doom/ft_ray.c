@@ -181,7 +181,7 @@ void	ray_casting_init(t_info *info, int x)
 			// }
 		}
 	}
-	wall_detection_plus(info);
+	choose_texture_1(info);
 		if (info->wall.side == 0)
 		{
 			info->wall.wall_distance = (info->map.x - info->ray.x_ray_position +\
@@ -229,7 +229,7 @@ int		ray_casting(t_info *info)
 		info->wall.draw_end = info->wall.line_height / 2 + info->win.h / 2;
 		if (info->wall.draw_end >= info->win.h)\
 			info->wall.draw_end = info->win.h - 1;
-		choose_texture_1(info);
+		
 		texture_calc(info);
 		//printf("asdfghjkl        %f\n", info->wall.ux);
 		draw_wall(info->wall.x, info->wall.draw_start - 1,\
