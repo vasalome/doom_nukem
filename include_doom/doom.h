@@ -178,6 +178,7 @@ typedef	struct		s_form
 	int				e_tex;
 	int				s_tex;
 	int				w_tex;
+	double			wall_h;
 
 }					t_form;
 
@@ -213,6 +214,7 @@ typedef struct		s_wall
 	double			wall_x;
 	double			floor_x;
 	int				trap;
+	int				alpha;
 }					t_wall;
 
 typedef struct		s_weapon
@@ -284,6 +286,7 @@ typedef struct		s_info
 	int				quit;
 	int				frame;
 	SDL_Color 		rgb;
+	SDL_Color 		rgbbis;
 	int				action;
 	char			use;
 }					t_info;

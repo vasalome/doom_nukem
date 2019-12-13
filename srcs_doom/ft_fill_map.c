@@ -70,11 +70,11 @@ int		parsing(t_fillmap *fill, t_info *info)
 	info->map.map[fill->x][fill->y].s_tex = request_value(fill, 5); //sud
 	info->map.map[fill->x][fill->y].n_tex = request_value(fill, 6); //nord
 	info->map.map[fill->x][fill->y].w_tex = request_value(fill, 7); //ouest
-	printf("EST: %d\nSUD: %d\nNORD: %d\nOUEST: %d\n---------------\n",\
+	/*printf("EST: %d\nSUD: %d\nNORD: %d\nOUEST: %d\n---------------\n",\
 		info->map.map[fill->x][fill->y].e_tex,\
 		info->map.map[fill->x][fill->y].s_tex,\
 		info->map.map[fill->x][fill->y].n_tex,\
-		info->map.map[fill->x][fill->y].w_tex);
+		info->map.map[fill->x][fill->y].w_tex);*/
 	//cliping
 	//info-> ?? = request_value(fill, 8);
 	// teleport
@@ -83,6 +83,8 @@ int		parsing(t_fillmap *fill, t_info *info)
 		//info-> ?? = request_value(fill, 10);
 		//info-> ?? = request_value(fill, 11);
 	}
+
+	info->map.map[fill->x][fill->y].wall_h = (request_value(fill, 12));
 
 
 	//printf("%d ", info->map.map[fill->x][fill->y].wall);

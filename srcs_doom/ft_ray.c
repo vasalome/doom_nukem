@@ -96,9 +96,11 @@ void	ray_casting_init(t_info *info, int x)
 	
 	info->map.x = (int)info->player.x_pos;
 	info->map.y = (int)info->player.y_pos;
+	info->wall.alpha = 0;
 	wall_detection_init_x(info);
-	while(info->map.hit == 0 /*&& info->map.x > 0 && info->map.x < info->map.width*/)
+	while(info->map.hit == 0 /*info->map.hit == 0*/ /*&& info->map.x > 0 && info->map.x < info->map.width*/)
 	{
+		info->map.hit = 0;
 		if (info->ray.x_side_distance < info->ray.y_side_distance)
 		{
 			info->ray.x_side_distance += info->ray.x_delta_distance;
@@ -180,8 +182,9 @@ void	ray_casting_init(t_info *info, int x)
 			// 	printf("2 %f\n", info->wall.wall_x);
 			// }
 		}
+		
 	}
-	choose_texture_1(info);
+		choose_texture_1(info);
 		if (info->wall.side == 0)
 		{
 			info->wall.wall_distance = (info->map.x - info->ray.x_ray_position +\
@@ -223,12 +226,12 @@ int		ray_casting(t_info *info)
 		ray_casting_init(info, info->wall.x);
 		
 		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
-		info->wall.draw_start = -info->wall.line_height / 2 + info->win.h / 2;
-		if (info->wall.draw_start < 0)
-			info->wall.draw_start = 0;
-		info->wall.draw_end = info->wall.line_height / 2 + info->win.h / 2;
+		info->wall.draw_end = info->win.h / 2 + info->wall.line_height / 2 ;
 		if (info->wall.draw_end >= info->win.h)\
 			info->wall.draw_end = info->win.h - 1;
+		info->wall.draw_start = info->win.h / 2 - (info->wall.line_height / 2);
+		if (info->wall.draw_start < 0)
+			info->wall.draw_start = 0;
 		
 		texture_calc(info);
 		//printf("asdfghjkl        %f\n", info->wall.wall_x);

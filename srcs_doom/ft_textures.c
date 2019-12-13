@@ -72,6 +72,7 @@ void	choose_texture_1(t_info *info)
 	if (info->w_j < 0 || info->w_j > 3)
 		if (info->w_j < 16 || info->w_j > 18)
 			info->w_j = 0;
+	info->wall.alpha = info->map.map[(int)info->map.x][(int)info->map.y].wall_h;
 	//printf("tex=%d\n", info->w_j);
 	//fflush(stdout);
 	/*if (info->wall.trap == 1 || info->wall.trap == 2)
