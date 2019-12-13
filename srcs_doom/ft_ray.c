@@ -13,35 +13,7 @@
 
 #include "../include_doom/doom.h"
 
-int     ray_circle(t_info *info, double r)
-{
-    double a, b, c;
-    double bb4ac;
-	double dp1 = 0;
-	double dp2 = 0;
-	
-    dp1 = (info->player.x_pos + info->ray.x_ray_direction) - info->player.x_pos;
-    dp2 = (info->player.y_pos + info->ray.y_ray_direction) - info->player.y_pos;
-    a = dp1 * dp1 + dp2 * dp2;
-    b = 2 * (dp1 * (info->player.x_pos - (floor(info->player.x_pos) + 0.5)) + dp2 * (info->player.y_pos - (floor(info->player.y_pos) + 0.5)));
-    c = (floor(info->player.x_pos) + 0.5) * (floor(info->player.x_pos) + 0.5) + (floor(info->player.y_pos) + 0.5) * (floor(info->player.y_pos) + 0.5);
-    c += info->player.x_pos * info->player.x_pos + info->player.y_pos * info->player.y_pos;
-    c -= 2 * ((floor(info->player.x_pos) + 0.5) * info->player.x_pos + (floor(info->player.y_pos) + 0.5) * info->player.y_pos);
-    c -= r * r;
-    bb4ac = b * b - 4 * a * c;
-	printf("bb4ac %f\n", bb4ac);
-    if (bb4ac < 0)
-	{
-		printf("jejejejejejejejejejeje\n");
-    	return(0);
-	}
-	printf("poiuytrewqpoiuytrewq\n");
-    info->ray.intersectDist1 = (-b + sqrt(bb4ac)) / (2 * a);
-    info->ray.intersectDist2 = (-b - sqrt(bb4ac)) / (2 * a);
-    return(1);
-}
-
-int     ray_circ(t_info *info, double p1x, double p1y, double p2x, double p2y, double scx, double scy, double r)
+int     ray_circ(t_inter *inter, double p1x, double p1y, double p2x, double p2y, double scx, double scy, double r)
 {
     double a, b, c;
     double bb4ac;
@@ -57,15 +29,12 @@ int     ray_circ(t_info *info, double p1x, double p1y, double p2x, double p2y, d
     c -= 2 * (scx * p1x + scy * p1y);
     c -= r * r;
     bb4ac = b * b - 4 * a * c;
-	printf("bb4ac %f\n", bb4ac);
     if (bb4ac < 0)
 	{
-		printf("jejejejejejejejejejeje\n");
     	return(0);
 	}
-	printf("poiuytrewqpoiuytrewq\n");
-    info->ray.intersectDist1 = (-b + sqrt(bb4ac)) / (2 * a);
-    info->ray.intersectDist2 = (-b - sqrt(bb4ac)) / (2 * a);
+    inter->x = (-b + sqrt(bb4ac)) / (2 * a);
+    inter->y = (-b - sqrt(bb4ac)) / (2 * a);
     return(1);
 }
 
@@ -165,6 +134,24 @@ void	ray_casting_init(t_info *info, int x)
 				info->map.hit = 1;
 				info->wall.side = 2;
 				info->wall.wall_distance = ((inter.x - info->ray.x_ray_position + inter.y - info->ray.y_ray_position) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction) / 2);
+			}
+		}
+		else if (rayTex == 9)
+		{
+			int		intersectDist;
+			t_inter inter;
+
+			intersectDist = ray_circ(&inter, info->player.x_pos, info->player.y_pos, info->player.x_pos + info->ray.x_ray_direction, info->player.y_pos + info->ray.y_ray_direction, info->map.x + 0.5, info->map.y + 0.5, 0.5);
+			if (intersectDist != 0)
+			{
+				info->map.hit = 1;
+			 	info->wall.side = 3;
+				t_inter interse;
+				interse.x = info->player.x_pos + info->ray.x_ray_direction * inter.y;
+				interse.y = info->player.y_pos + info->ray.y_ray_direction * inter.y;
+				info->wall.wall_distance = ((interse.x - info->player.x_pos + interse.y - info->player.y_pos) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction) / 2);
+				info->wall.wall_x = atan2(info->map.y + 0.5 - interse.y, info->map.x + 0.5 - interse.x) / (M_PI * 2);
+			 	info->wall.wall_x += info->wall.wall_x;
 			}
 		}
 		else if (rayTex == 1)
