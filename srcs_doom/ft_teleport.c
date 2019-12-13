@@ -58,14 +58,10 @@ void	teleport_2(t_info *info)
 {
 	int		x;
 	int		y;
-	int		tpx;
 
-	info->player.x_pos -= info->player.x_dir * info->player.move_speed;
-	tpx = (int)(info->player.x_pos + 1) * 100 + (int)info->player.y_pos;
-	x = (int)(info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].tp_x);
-	y = (int)(info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].tp_y);
+	//info->player.x_pos -= info->player.x_dir * info->player.move_speed;
+	x = (int)(info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos)].tp_x);
+	y = (int)(info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos)].tp_y);
 	if (!(x > info->map.width || y > info->map.height || y < 0 || x < 0)\
 		&& (info->map.map[x][y].wall == 0 || info->map.map[x][y].wall == 4))
 	{
@@ -81,14 +77,10 @@ void	teleport(t_info *info)
 {
 	int		x;
 	int		y;
-	int		tpx;
 
-	info->player.x_pos += info->player.x_dir * info->player.move_speed;
-	tpx = (int)(info->player.x_pos + 1) * 100 + (int)info->player.y_pos;
-	x = (int)(info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].tp_x);
-	y = (int)(info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].tp_y);
+	//info->player.x_pos += info->player.x_dir * info->player.move_speed;
+	x = (int)(info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos)].tp_x);
+	y = (int)(info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos)].tp_y);
 	if (!(x > info->map.width || y > info->map.height || y < 0 || x < 0)\
 		&& (info->map.map[x][y].wall == 0 || info->map.map[x][y].wall == 4))
 	{

@@ -97,10 +97,13 @@ void	ray_casting_init(t_info *info, int x)
 	info->map.x = (int)info->player.x_pos;
 	info->map.y = (int)info->player.y_pos;
 	info->wall.alpha = 0;
+	
 	wall_detection_init_x(info);
-	while(info->map.hit == 0 /*|| info->wall.alpha != 255*//*&& info->map.x > 0 && info->map.x < info->map.width*/)
+	
+	while((info->map.hit == 0 || info->wall.alpha != 255)/* && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height))*/)
 	{
-		
+		/*printf("pass\n");
+	fflush(stdout);*/
 		info->map.hit = 0;
 		if (info->ray.x_side_distance < info->ray.y_side_distance)
 		{
@@ -114,8 +117,10 @@ void	ray_casting_init(t_info *info, int x)
 			info->map.y += info->map.y_step;
 			info->wall.side = 1;
 		}
+	/*printf("%d %d\n", info->map.x, info->map.y);
+	fflush(stdout);*/
 		int rayTex = info->map.map[info->map.x][info->map.y].wall;
-		
+			
 		if (rayTex == 7)
 		{
 			double wallX1 = info->map.x;
@@ -183,10 +188,20 @@ void	ray_casting_init(t_info *info, int x)
 			// 	printf("2 %f\n", info->wall.wall_x);
 			// }
 		}
-		choose_texture_1(info);	
+		choose_texture_1(info);
+		
 	}
-	
-	
+		if(info->map.hit == 0)
+		info->wall.alpha = 0;
+		if (info->map.x < 0)
+		info->map.x = 0;
+		if (info->map.x >= info->map.width)
+		info->map.x = info->map.width - 1;
+		if (info->map.y < 0)
+		info->map.y = 0;
+		if (info->map.y >= info->map.height)
+		info->map.y = info->map.height - 1;
+		info->map.hit = 1;
 		if (info->wall.side == 0)
 		{
 			info->wall.wall_distance = (info->map.x - info->ray.x_ray_position +\
@@ -203,20 +218,23 @@ void	ray_casting_init(t_info *info, int x)
 			(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
 		}
 	//sol et plafond
-	
+	if (info->min != -1)
+	{
 	wall_detection_init_x(info);
 
 	wall_detection(info);
-
-	if (info->floor.side == 0)
-	{
-		info->wall.floor_distance = (info->map.x - info->ray.x_ray_position +\
-		(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
-	}
-	else if (info->floor.side == 1)
-	{
-		info->wall.floor_distance = (info->map.y - info->ray.y_ray_position +\
-		(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
+	
+	
+		if (info->floor.side == 0)
+		{
+			info->wall.floor_distance = (info->map.x - info->ray.x_ray_position +\
+			(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
+		}
+		else if (info->floor.side == 1)
+		{
+			info->wall.floor_distance = (info->map.y - info->ray.y_ray_position +\
+			(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
+		}
 	}
 
 }
@@ -226,7 +244,7 @@ int		ray_casting(t_info *info)
 	info->wall.x = -1;
 	while (++info->wall.x < info->win.w)
 	{
-		
+		info->min = 255;
 		ray_casting_init(info, info->wall.x);
 			
 		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
@@ -243,6 +261,29 @@ int		ray_casting(t_info *info)
 		draw_wall(info->wall.x, info->wall.draw_start - 1,\
 				info->wall.draw_end, info);
 	}
+
+	/*info->wall.x = -1;
+	while (++info->wall.x < info->win.w)
+	{
+		info->min = -1;
+		
+		ray_casting_init(info, info->wall.x);
+			
+		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
+		info->wall.draw_end = info->win.h / 2 + info->wall.line_height / 2 ;
+		if (info->wall.draw_end >= info->win.h)\
+			info->wall.draw_end = info->win.h - 1;
+		info->wall.draw_start = info->win.h / 2 - (info->wall.line_height / 2);
+		if (info->wall.draw_start < 0)
+			info->wall.draw_start = 0;
+		
+		texture_calc(info);
+		
+		//printf("asdfghjkl        %f\n", info->wall.wall_x);
+		
+		draw_wall(info->wall.x, info->wall.draw_start - 1,\
+				info->wall.draw_end, info);
+	}*/
 	
 	return (0);
 }

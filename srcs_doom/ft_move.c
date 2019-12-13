@@ -73,7 +73,7 @@ void	move_plus_4(t_info *info)
 		info->player.y_pos -= info->player.x_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 3)
+		* info->player.move_speed)][(int)(info->player.y_pos)].gg == 1)
 		teleport_2(info);
 }
 
@@ -96,7 +96,7 @@ void	move_plus_3(t_info *info)
 			info->player.y_pos += info->player.x_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 3)
+		* info->player.move_speed)][(int)(info->player.y_pos)].gg == 1)
 		teleport(info);
 }
 
@@ -119,7 +119,7 @@ void	move_plus_2(t_info *info)
 		info->player.y_pos -= info->player.y_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 3)
+		* info->player.move_speed)][(int)(info->player.y_pos)].gg == 1)
 		teleport_2(info);
 }
 
@@ -130,7 +130,9 @@ void	move_plus_1(t_info *info)
 		&& info->map.map[(int)(info->player.x_pos + info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 7\
 		&& info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 8)
+		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 8/*\
+		&& (info->player.x_pos + info->player.x_dir * info->player.move_speed) >= 0\
+		/*&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height*/)
 		info->player.x_pos += info->player.x_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
@@ -138,11 +140,13 @@ void	move_plus_1(t_info *info)
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.y_dir * info->player.move_speed)].wall != 7\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.y_dir * info->player.move_speed)].wall != 8)
+		+ info->player.y_dir * info->player.move_speed)].wall != 8/*\
+		&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) >= 0\
+		/*&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height*/)
 		info->player.y_pos += info->player.y_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 3)
+		* info->player.move_speed)][(int)(info->player.y_pos)].gg == 1)
 		teleport(info);
 }
 

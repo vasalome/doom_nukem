@@ -75,8 +75,11 @@ void	draw_wall_plus(int x, int draw_start, t_info *info, int tex_y)
 
 	Uint32 data = getpixel(info->wt[info->w_j].img, info->wt[info->w_j].tex_x , tex_y);
 	SDL_GetRGB(data, info->wt[info->w_j].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
-	//printf("%d  %d  %d\n", info->rgb.r, info->rgb.g, info->rgb.b);
+	//Uint32 data = getpixel(info->fps, info->wt[info->w_j].tex_x , tex_y);
+	//SDL_GetRGBA(info->fps.pixels[draw_start * WIDTH + x], info->wt[info->w_j].img->format, &info->rgbbis.r, &info->rgbbis.g, &info->rgbbis.b, &info->rgbbis.a);
+	//printf("%d  %d  %d %d\n", info->rgbbis.r, info->rgbbis.g, info->rgbbis.b, info->rgbbis.a);
 	info->fps.pixels[draw_start * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, info->wall.alpha);//(Uint32 *)info->wt[info->w_j].img->pixels[tex_y * info->wt[info->w_j].img->pitch + x * sizeof(Uint32 *)]; //info->wt[info->w_j].pixels[tex_y * info->wt[info->w_j].texture->w + info->wt[info->w_j].tex_x];
+	//info->fps.pixels[draw_start * WIDTH + x] = SDL_MapRGBA(info->fps.format, ((info->rgb.r + info->rgbbis.r) / 2), ((info->rgb.g + info->rgbbis.g) / 2), ((info->rgb.b + info->rgbbis.b) / 2), ((info->wall.alpha + info->rgbbis.a) / 2));
 	//printf("test");
 		//(char)info->wt[info->w_j].data[info->wt[info->w_j].tex_x * 4 + 4 *\
 		//info->wt[info->w_j].xhud * tex_y];
@@ -101,60 +104,64 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	info->fps.pixels = info->fps.tmp;
 	//printf("%f\n", info->wall.floor_distance);
 	//orientation sol plafond
-	if (info->floor.side == 0 && info->ray.x_ray_direction > 0)
+	
+	if (info->min != -1)
 	{
-		info->floor.floorXWall = info->map.x;
-		info->floor.floorYWall = info->map.y + info->wall.floor_x;
-	}
-	else if (info->floor.side == 0 && info->ray.x_ray_direction < 0)
-	{
-		info->floor.floorXWall = info->map.x + 1;
-		info->floor.floorYWall = info->map.y + info->wall.floor_x;
-	}
-	else if (info->floor.side == 1 && info->ray.y_ray_direction > 0)
-	{
-		info->floor.floorXWall = info->map.x + info->wall.floor_x;
-		info->floor.floorYWall = info->map.y;
-	}
-	else
-	{
-		info->floor.floorXWall = info->map.x + info->wall.floor_x;
-		info->floor.floorYWall = info->map.y + 1;
-	}
-
-	if (info->floor.texId != 0)
-		while (++y <= draw_start)
+		if (info->floor.side == 0 && info->ray.x_ray_direction > 0)
 		{
-			info->floor.dist = HEIGHT / (((semiH) - y) * 2);
-			
-			calc_floor_ceil(info, info->floor.texId);
-			
-			Uint32 data = getpixel(info->wt[info->floor.texId].img, info->floor.floorTexX, info->floor.floorTexY);
-			SDL_GetRGB(data, info->wt[info->floor.texId].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
-		
-			if (info->floor.texId == 18)
-				;
-			else
-				info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
+			info->floor.floorXWall = info->map.x;
+			info->floor.floorYWall = info->map.y + info->wall.floor_x;
 		}
-		//info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, 200, 0, 0, 255);
-	
-	y = draw_end - 1;
-	
-	while (++y < HEIGHT)
-	{
-		info->floor.dist = HEIGHT / (2 * (y - (semiH)));
-		
-		calc_floor_ceil(info, 16);
+		else if (info->floor.side == 0 && info->ray.x_ray_direction < 0)
+		{
+			info->floor.floorXWall = info->map.x + 1;
+			info->floor.floorYWall = info->map.y + info->wall.floor_x;
+		}
+		else if (info->floor.side == 1 && info->ray.y_ray_direction > 0)
+		{
+			info->floor.floorXWall = info->map.x + info->wall.floor_x;
+			info->floor.floorYWall = info->map.y;
+		}
+		else
+		{
+			info->floor.floorXWall = info->map.x + info->wall.floor_x;
+			info->floor.floorYWall = info->map.y + 1;
+		}
 
-		//printf("%d , %d\n", info->floor.floorTexX, info->floor.floorTexY);
-		Uint32 data = getpixel(info->wt[info->floor.texId2].img, info->floor.floorTexX, info->floor.floorTexY);
+		if (info->floor.texId != 0)
+			while (++y <= draw_start)
+			{
+				info->floor.dist = HEIGHT / (((semiH) - y) * 2);
+				
+				calc_floor_ceil(info, info->floor.texId);
+				
+				Uint32 data = getpixel(info->wt[info->floor.texId].img, info->floor.floorTexX, info->floor.floorTexY);
+				SDL_GetRGB(data, info->wt[info->floor.texId].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
+			
+				if (info->floor.texId == 18)
+					;
+				else
+					info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
+			}
+			//info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, 200, 0, 0, 255);
 		
-		SDL_GetRGB(data, info->wt[info->floor.texId2].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
-		info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
-		/*info->fps.data[x * 4 + 4 * WIDTH * y + 1] = (char)120;
-		info->fps.data[x * 4 + 4 * WIDTH * y + 2] = (char)120;
-		info->fps.data[x * 4 + 4 * WIDTH * y + 3] = (char)0;*/
+		y = draw_end - 1;
+		
+		while (++y < HEIGHT)
+		{
+			info->floor.dist = HEIGHT / (2 * (y - (semiH)));
+			
+			calc_floor_ceil(info, 16);
+
+			//printf("%d , %d\n", info->floor.floorTexX, info->floor.floorTexY);
+			Uint32 data = getpixel(info->wt[info->floor.texId2].img, info->floor.floorTexX, info->floor.floorTexY);
+			
+			SDL_GetRGB(data, info->wt[info->floor.texId2].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
+			info->fps.pixels[y * WIDTH + x] = SDL_MapRGBA(info->fps.format, info->rgb.r, info->rgb.g, info->rgb.b, 255);
+			/*info->fps.data[x * 4 + 4 * WIDTH * y + 1] = (char)120;
+			info->fps.data[x * 4 + 4 * WIDTH * y + 2] = (char)120;
+			info->fps.data[x * 4 + 4 * WIDTH * y + 3] = (char)0;*/
+		}
 	}
 	
 	while (++draw_start <= draw_end)
@@ -163,5 +170,6 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 		tex_y = ((d * info->wt[info->w_j].img->h) / info->wall.line_height) / 256;
 		draw_wall_plus(x, draw_start, info, tex_y);
 	}
+	
 	//SDL_UpdateTexture(info->fps.texture2, NULL, info->fps.pixels, sizeof(Uint32) * HEIGHT);
 }

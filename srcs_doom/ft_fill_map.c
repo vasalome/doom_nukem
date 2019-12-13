@@ -80,10 +80,9 @@ int		parsing(t_fillmap *fill, t_info *info)
 	// teleport
 	if (request_value(fill, 9) == 1)
 	{
-		info->map.map[(int)(info->player.x_pos + info->player.y_dir * info->player.move_speed)][(int)(info->player.y_pos)].gg = request_value(fill, 9);
-		info->map.map[(int)(info->player.x_pos + info->player.y_dir * info->player.move_speed)][(int)(info->player.y_pos)].tp_x = request_value(fill, 10);
-		info->map.map[(int)(info->player.x_pos + info->player.y_dir * info->player.move_speed)][(int)(info->player.y_pos)].tp_y = request_value(fill, 11);
-		teleport(info);
+		info->map.map[fill->x][fill->y].gg = request_value(fill, 9);
+		info->map.map[fill->x][fill->y].tp_x = request_value(fill, 10);
+		info->map.map[fill->x][fill->y].tp_y = request_value(fill, 11);
 	}
 
 	info->map.map[fill->x][fill->y].wall_h = (request_value(fill, 12));

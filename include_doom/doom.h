@@ -292,6 +292,7 @@ typedef struct		s_info
 	SDL_Color 		rgbbis;
 	int				action;
 	char			use;
+	int				min;
 }					t_info;
 
 /*
