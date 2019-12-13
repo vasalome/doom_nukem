@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/04 16:23:52 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/11 17:24:24 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -133,7 +133,7 @@ typedef struct		s_ray
 typedef struct		s_player
 {
 	double			x_camera;
-	double				height;
+	double			height;
 	double			x_pos;
 	double			y_pos;
 	double			x_old_position;
@@ -179,6 +179,9 @@ typedef	struct		s_form
 	int				s_tex;
 	int				w_tex;
 	double			wall_h;
+	int				tp_x;
+	int				tp_y;
+	int				gg;
 
 }					t_form;
 
