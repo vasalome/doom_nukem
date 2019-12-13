@@ -206,16 +206,16 @@ int		main(int argc, char **argv)
         SDL_SetTextureBlendMode(info.fps.texture, SDL_BLENDMODE_BLEND);
         SDL_UnlockTexture(info.fps.texture);
         //SDL_UnlockTexture(info.wt[2].texture);
-        
+      
 		SDL_RenderClear(info.win.renderer);
         render_skybox(&info);
         SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
         //SDL_RenderCopy(info.win.renderer, info.wt[2].texture, NULL, &info.head[3].rect);
-        
+          
         ////// ESPACE SKYBOX
         //render_skybox(&info);
 
-        SDL_RenderCopy(info.win.renderer, info.fps.texture2, NULL, &info.head[3].rect);
+        //SDL_RenderCopy(info.win.renderer, info.fps.texture2, NULL, &info.head[3].rect);
 
         //SDL_RenderCopy(info.win.renderer, info.win.texture3, NULL, &info.head[4].rect);
 
@@ -224,7 +224,7 @@ int		main(int argc, char **argv)
         //SDL_UpdateWindowSurface(info.win.win);
 
         //SDL_Delay(100);
-        SDL_DestroyTexture(info.fps.texture2);
+        //SDL_DestroyTexture(info.fps.texture2);
         info.frame++;
         move(&info);
         

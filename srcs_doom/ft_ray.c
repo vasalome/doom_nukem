@@ -98,8 +98,9 @@ void	ray_casting_init(t_info *info, int x)
 	info->map.y = (int)info->player.y_pos;
 	info->wall.alpha = 0;
 	wall_detection_init_x(info);
-	while(info->map.hit == 0 /*info->map.hit == 0*/ /*&& info->map.x > 0 && info->map.x < info->map.width*/)
+	while(info->map.hit == 0 /*|| info->wall.alpha != 255*//*&& info->map.x > 0 && info->map.x < info->map.width*/)
 	{
+		
 		info->map.hit = 0;
 		if (info->ray.x_side_distance < info->ray.y_side_distance)
 		{
@@ -182,9 +183,10 @@ void	ray_casting_init(t_info *info, int x)
 			// 	printf("2 %f\n", info->wall.wall_x);
 			// }
 		}
-		
+		choose_texture_1(info);	
 	}
-		choose_texture_1(info);
+	
+	
 		if (info->wall.side == 0)
 		{
 			info->wall.wall_distance = (info->map.x - info->ray.x_ray_position +\
@@ -216,6 +218,7 @@ void	ray_casting_init(t_info *info, int x)
 		info->wall.floor_distance = (info->map.y - info->ray.y_ray_position +\
 		(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
 	}
+
 }
 
 int		ray_casting(t_info *info)
@@ -223,8 +226,9 @@ int		ray_casting(t_info *info)
 	info->wall.x = -1;
 	while (++info->wall.x < info->win.w)
 	{
-		ray_casting_init(info, info->wall.x);
 		
+		ray_casting_init(info, info->wall.x);
+			
 		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
 		info->wall.draw_end = info->win.h / 2 + info->wall.line_height / 2 ;
 		if (info->wall.draw_end >= info->win.h)\
@@ -234,10 +238,12 @@ int		ray_casting(t_info *info)
 			info->wall.draw_start = 0;
 		
 		texture_calc(info);
+		
 		//printf("asdfghjkl        %f\n", info->wall.wall_x);
 		draw_wall(info->wall.x, info->wall.draw_start - 1,\
 				info->wall.draw_end, info);
 	}
+	
 	return (0);
 }
 
@@ -330,7 +336,9 @@ void	ray_casting_image(t_info *info)
 	if (!(info->player.life - 1 <= 0))
 	{
 		create_img(info);
+		
 		ray_casting(info);
+		
 		//printf("x=%d y=%d\n\n", info->map.x, info->map.y);
 		//fflush(stdout);
 		draw_skybox(info);
