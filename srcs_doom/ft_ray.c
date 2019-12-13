@@ -100,7 +100,7 @@ void	ray_casting_init(t_info *info, int x)
 	
 	wall_detection_init_x(info);
 	
-	while((info->map.hit == 0 || info->wall.alpha != 255)/* && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height))*/)
+	while((info->map.hit == 0 )/* && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height))*/)
 	{
 		/*printf("pass\n");
 	fflush(stdout);*/

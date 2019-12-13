@@ -164,7 +164,7 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 		}
 	}
 	
-	while (++draw_start <= draw_end)
+	while (++draw_start < draw_end)
 	{
 		d = draw_start * 256 - info->win.h * 128 + info->wall.line_height * 128;
 		tex_y = ((d * info->wt[info->w_j].img->h) / info->wall.line_height) / 256;
