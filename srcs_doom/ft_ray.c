@@ -69,16 +69,19 @@ void	ray_casting_init(t_info *info, int x)
 	
 	wall_detection_init_x(info);
 	
-	while((info->map.hit == 0 )/* && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height))*/)
+	while((info->map.hit == 0)/* && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height))*/)
 	{
 		/*printf("pass\n");
 	fflush(stdout);*/
 		info->map.hit = 0;
+		info->map.yOffset = 0;
+		info->map.xOffset = 0;
 		if (info->ray.x_side_distance < info->ray.y_side_distance)
 		{
 			info->ray.x_side_distance += info->ray.x_delta_distance;
 			info->map.x += info->map.x_step;
 			info->wall.side = 0;
+			
 		}
 		else
 		{
@@ -154,6 +157,40 @@ void	ray_casting_init(t_info *info, int x)
 			 	info->wall.wall_x += info->wall.wall_x;
 			}
 		}
+		else if (rayTex == 10)
+		{
+			if (info->wall.side == 1)
+			{
+				if (info->map.y_step = -1)
+					if (info->ray.y_side_distance - (info->ray.y_delta_distance / 2) < info->ray.x_side_distance)
+					{
+						info->map.hit = 1;
+						info->map.yOffset = 0.5 + info->map.y_step;
+					}
+				/*else if (info->map.y_step == 1)
+					if (info->ray.y_side_distance - (info->ray.y_delta_distance / 2) < info->ray.x_side_distance)
+					{
+						info->map.hit = 1;
+						info->map.yOffset = -0.5 + info->map.y_step;
+					}*/
+				
+			}
+			else if (info->wall.side == 0)
+			{
+				if (info->map.x_step = -1)
+					if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
+					{
+						info->map.hit = 1;
+						info->map.xOffset = 0.5 + info->map.x_step;
+					}
+				/*else if (info->map.x_step == 1)
+					if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
+					{
+						info->map.hit = 1;
+						info->map.xOffset = -0.5 + info->map.x_step;
+					}*/
+			}
+		}
 		else if (rayTex == 1)
 		{
 			info->map.hit = 1;
@@ -191,12 +228,12 @@ void	ray_casting_init(t_info *info, int x)
 		info->map.hit = 1;
 		if (info->wall.side == 0)
 		{
-			info->wall.wall_distance = (info->map.x - info->ray.x_ray_position +\
+			info->wall.wall_distance = (info->map.x - info->ray.x_ray_position + info->map.xOffset +\
 			(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
 		}
 		else if (info->wall.side == 1)
 		{
-			info->wall.wall_distance = (info->map.y - info->ray.y_ray_position +\
+			info->wall.wall_distance = (info->map.y - info->ray.y_ray_position + info->map.yOffset +\
 			(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
 		}
 		else
@@ -379,13 +416,13 @@ void	ray_casting_image(t_info *info)
 		[(int)info->player.y_pos].wall == 4 && info->action)
 		/* Victory image */
 		{
-			info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
+			/*info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
 			SDL_QueryTexture(info->fps.texture2, NULL, NULL, &info->head[3].w, &info->head[3].h);
 			
 			info->head[3].rect.x = 0;
 			info->head[3].rect.y = 0;
 			info->head[3].rect.w = info->head[3].w;
-			info->head[3].rect.h = info->head[3].h;
+			info->head[3].rect.h = info->head[3].h;*/;
 		}
 			//mlx_put_image_to_window(info->win.mlx, info->win.win,\
 			//info->wp[7].img, info->win.w / 2 - info->wp[7].img->w / 2,\

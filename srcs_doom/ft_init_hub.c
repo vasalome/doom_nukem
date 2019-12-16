@@ -15,13 +15,13 @@
 
 void	hub_life(t_info *info)
 {
-	info->head[0].img = IMG_Load("hub/0_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
+	info->head[0].img = IMG_Load("hub/doombg.png");/*mlx_xpm_file_to_image(info->win.mlx,\
 		"hub/0_hub_2.xpm", &info->head[0].xhud, &info->head[0].yhud);*/
-	info->head[1].img = IMG_Load("hub/10_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
+	info->head[1].img = IMG_Load("hub/Doom_logo.png");/*mlx_xpm_file_to_image(info->win.mlx,\
 		"hub/10_hub_2.xpm", &info->head[1].xhud, &info->head[1].yhud);*/
-	info->head[2].img = IMG_Load("hub/20_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
+	info->head[2].img = IMG_Load("hub/square.png");/*mlx_xpm_file_to_image(info->win.mlx,\
 		"hub/20_hub_2.xpm", &info->head[2].xhud, &info->head[2].yhud);*/
-	info->head[3].img = IMG_Load("hub/30_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
+	info->head[3].img = IMG_Load("hub/square.png");/*mlx_xpm_file_to_image(info->win.mlx,\
 		"hub/30_hub_2.xpm", &info->head[3].xhud, &info->head[3].yhud);*/
 	info->head[4].img = IMG_Load("hub/40_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
 		"hub/40_hub_2.xpm", &info->head[4].xhud, &info->head[4].yhud);*/

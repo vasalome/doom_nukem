@@ -13,6 +13,7 @@
 
 #include "../include_doom/doom.h"
 
+void    menu(t_info *info);
 void    render_skybox(t_info *info)
 {
     SDL_RenderCopy(info->win.renderer, info->wt[29].texture, NULL, &info->wt[29].rect);
@@ -74,7 +75,7 @@ int		main(int argc, char **argv)
 
     //SDL_SetWindowIcon(info.win.win, info.win.screen);
     //Mix_PlayMusic(info.music.sound, -1);
-
+//    menu(&info);
     while(!info.quit)
     {
         SDL_Event event;
@@ -172,7 +173,6 @@ int		main(int argc, char **argv)
                     info.player.turn_left = 1;
                     info.player.turn_rate = -event.motion.xrel * 0.002;
                     info.player.turn_rate_y = event.motion.yrel * 0.002;
-                    
                     SDL_WarpMouseInWindow(info.win.win, info.win.w/2, info.win.h/2); 
                 }
             case SDL_MOUSEBUTTONDOWN:
@@ -202,29 +202,23 @@ int		main(int argc, char **argv)
         } // end switch
     } // end of message processing
             
-        //hud(&info);
+    
         SDL_SetTextureBlendMode(info.fps.texture, SDL_BLENDMODE_BLEND);
         SDL_UnlockTexture(info.fps.texture);
-        //SDL_UnlockTexture(info.wt[2].texture);
       
 		SDL_RenderClear(info.win.renderer);
         render_skybox(&info);
+      
         SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
-        //SDL_RenderCopy(info.win.renderer, info.wt[2].texture, NULL, &info.head[3].rect);
-          
-        ////// ESPACE SKYBOX
-        //render_skybox(&info);
+        /*SDL_RenderCopy(info.win.renderer, info.head[0].texture, NULL, NULL);  
 
-        //SDL_RenderCopy(info.win.renderer, info.fps.texture2, NULL, &info.head[3].rect);
-
-        //SDL_RenderCopy(info.win.renderer, info.win.texture3, NULL, &info.head[4].rect);
-
+        SDL_RenderCopy(info.win.renderer, info.head[1].texture, NULL, &info.head[1].rect);
+        SDL_RenderCopy(info.win.renderer, info.head[2].texture, NULL, &info.head[2].rect);
+        SDL_RenderCopy(info.win.renderer, info.head[3].texture, NULL, &info.head[3].rect);
+        SDL_RenderCopy(info.win.renderer, info.head[3].texture, NULL, &info.head[4].rect);
+        SDL_RenderCopy(info.win.renderer, info.head[3].texture, NULL, &info.head[5].rect);*/
 		SDL_RenderPresent(info.win.renderer);
 
-        //SDL_UpdateWindowSurface(info.win.win);
-
-        //SDL_Delay(100);
-        //SDL_DestroyTexture(info.fps.texture2);
         info.frame++;
         move(&info);
         
@@ -243,6 +237,67 @@ int		main(int argc, char **argv)
     
    IMG_Quit();
    SDL_Quit();
+}
+
+void    menu(t_info *info)
+{   
+    int     i;
+            //background
+            info->head[0].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[0].img);
+
+            //doom logo
+            i = 1;
+            info->head[i].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[i].img);
+			SDL_QueryTexture(info->head[i].texture, NULL, NULL, &info->head[i].w, &info->head[i].h);
+			
+			info->head[i].rect.x = (WIDTH / 4) * 3 - (info->head[i].w/ 1.5) / 2;
+			info->head[i].rect.y = 0;
+			info->head[i].rect.w = info->head[i].w / 1.5;
+			info->head[i].rect.h = info->head[i].h / 1.5;
+
+            //button
+            i = 2;           
+            info->head[i].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[2].img);
+			SDL_QueryTexture(info->head[i].texture, NULL, NULL, &info->head[i].w, &info->head[i].h);
+			
+			info->head[i].rect.x = (WIDTH / 4) * 3 - (info->head[i].w/ 1.5) / 2;
+			info->head[i].rect.y = info->head[1].h / 1.4;
+			info->head[i].rect.w = info->head[i].w / 1.5;
+			info->head[i].rect.h = info->head[i].h / 5;
+
+            i = 3;           
+            info->head[i].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[2].img);
+			SDL_QueryTexture(info->head[i].texture, NULL, NULL, &info->head[i].w, &info->head[i].h);
+			
+			info->head[i].rect.x = (WIDTH / 4) * 3 - (info->head[i].w/ 1.5) / 2;
+			info->head[i].rect.y = info->head[1].h / 1.4 + info->head[i].h / 5 + 10;
+			info->head[i].rect.w = info->head[i].w / 1.5;
+			info->head[i].rect.h = info->head[i].h / 5;
+
+            i = 4;           
+            info->head[i].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[2].img);
+			SDL_QueryTexture(info->head[i].texture, NULL, NULL, &info->head[i].w, &info->head[i].h);
+			
+			info->head[i].rect.x = (WIDTH / 4) * 3 - (info->head[i].w/ 1.5) / 2;
+			info->head[i].rect.y = info->head[1].h / 1.4 + (info->head[i].h / 5 + 10) * 2;
+			info->head[i].rect.w = info->head[i].w / 1.5;
+			info->head[i].rect.h = info->head[i].h / 5;
+
+            i = 5;           
+            info->head[i].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[2].img);
+			SDL_QueryTexture(info->head[i].texture, NULL, NULL, &info->head[i].w, &info->head[i].h);
+			
+			info->head[i].rect.x = (WIDTH / 4) * 3 - (info->head[i].w/ 1.5) / 2;
+			info->head[i].rect.y = info->head[1].h / 1.4 + (info->head[i].h / 5 + 10) * 3;
+			info->head[i].rect.w = info->head[i].w / 1.5;
+			info->head[i].rect.h = info->head[i].h / 5;
+            /*info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[1].img);
+			SDL_QueryTexture(info->fps.texture2, NULL, NULL, &info->head[1].w, &info->head[1].h);
+			
+			info->head[1].rect.x = 0;
+			info->head[1].rect.y = 0;
+			info->head[1].rect.w = info->head[1].w;
+			info->head[1].rect.h = info->head[1].h;*/
 }
 
 /*int main()

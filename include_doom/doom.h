@@ -196,6 +196,8 @@ typedef struct		s_map
 	int				height;
 	double			x_spawn;
 	double			y_spawn;
+	double			xOffset;
+	double			yOffset;
 	char			*name;
 	t_form			**map;
 }					t_map;
@@ -226,7 +228,8 @@ typedef struct		s_weapon
 	int				w;
 	int				h;
 	SDL_Rect		rect;
-	SDL_Surface		*icon;/*
+	SDL_Surface		*icon;
+	SDL_Texture		*texture;/*
 	int				iconx;
 	int				icony;*/
 }					t_weapon;
