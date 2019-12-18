@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 18:50:31 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/18 18:50:16 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,7 +69,7 @@ void	ray_casting_init(t_info *info, int x)
 	
 	wall_detection_init_x(info);
 	
-	while((info->map.hit == 0)/* && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height))*/)
+	while((info->map.hit == 0) && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height)))
 	{
 		/*printf("pass\n");
 	fflush(stdout);*/
@@ -173,11 +173,10 @@ void	ray_casting_init(t_info *info, int x)
 						info->map.hit = 1;
 						info->map.yOffset = -0.5 + info->map.y_step;
 					}*/
-				
 			}
 			else if (info->wall.side == 0)
 			{
-				if (info->map.x_step = -1)
+				if (info->map.x_step == -1)
 					if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
 					{
 						info->map.hit = 1;
