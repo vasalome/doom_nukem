@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:33:41 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/13 16:31:32 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/19 19:40:26 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,7 +63,9 @@ void	move_plus_4(t_info *info)
 		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9)
+		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9
+		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.x_pos += info->player.y_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
@@ -73,7 +75,9 @@ void	move_plus_4(t_info *info)
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.x_dir * info->player.move_speed)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.x_dir * info->player.move_speed)].wall != 9)
+		- info->player.x_dir * info->player.move_speed)].wall != 9
+		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.y_pos -= info->player.x_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
@@ -90,7 +94,9 @@ void	move_plus_3(t_info *info)
 		&& info->map.map[(int)(info->player.x_pos - info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos - info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9)
+		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9
+		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.x_pos -= info->player.y_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
@@ -100,7 +106,9 @@ void	move_plus_3(t_info *info)
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.x_dir * info->player.move_speed)].wall != 8
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.x_dir * info->player.move_speed)].wall != 9)
+		+ info->player.x_dir * info->player.move_speed)].wall != 9
+		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 			info->player.y_pos += info->player.x_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
@@ -117,7 +125,9 @@ void	move_plus_2(t_info *info)
 		&& info->map.map[(int)(info->player.x_pos - info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9)
+		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9
+		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.x_pos -= info->player.x_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
@@ -127,7 +137,9 @@ void	move_plus_2(t_info *info)
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.y_dir * info->player.move_speed)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.y_dir * info->player.move_speed)].wall != 9)
+		- info->player.y_dir * info->player.move_speed)].wall != 9
+		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.y_pos -= info->player.y_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
@@ -146,7 +158,9 @@ void	move_plus_1(t_info *info)
 		&& info->map.map[(int)(info->player.x_pos + info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9/*\
 		&& (info->player.x_pos + info->player.x_dir * info->player.move_speed) >= 0\
-		/*&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height*/)
+		/*&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height*/
+		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.x_pos += info->player.x_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
@@ -158,7 +172,9 @@ void	move_plus_1(t_info *info)
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.y_dir * info->player.move_speed)].wall != 9/*\
 		&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) >= 0\
-		/*&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height*/)
+		/*&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height*/
+		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.y_pos += info->player.y_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\

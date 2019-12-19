@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:40:07 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/11 17:32:29 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/19 19:40:37 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -76,7 +76,7 @@ int		parsing(t_fillmap *fill, t_info *info)
 		info->map.map[fill->x][fill->y].n_tex,\
 		info->map.map[fill->x][fill->y].w_tex);*/
 	//cliping
-	//info-> ?? = request_value(fill, 8); 
+	info->map.map[fill->x][fill->y].clip = request_value(fill, 8);
 	// teleport
 	if (request_value(fill, 9) == 1)
 	{
