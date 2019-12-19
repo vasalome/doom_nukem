@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:40:07 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/19 19:40:37 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/20 00:03:46 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,18 +64,13 @@ int		parsing(t_fillmap *fill, t_info *info)
 	info->map.map[fill->x][fill->y].e_tex = 0; //est
 	info->map.map[fill->x][fill->y].s_tex = 0; //sud
 	info->map.map[fill->x][fill->y].n_tex = 0; //nord
-	info->map.map[fill->x][fill->y].w_tex = 0;
+	info->map.map[fill->x][fill->y].w_tex = 0; //ouest
 
 	info->map.map[fill->x][fill->y].e_tex = request_value(fill, 4); //est
 	info->map.map[fill->x][fill->y].s_tex = request_value(fill, 5); //sud
 	info->map.map[fill->x][fill->y].n_tex = request_value(fill, 6); //nord
 	info->map.map[fill->x][fill->y].w_tex = request_value(fill, 7); //ouest
-	/*printf("EST: %d\nSUD: %d\nNORD: %d\nOUEST: %d\n---------------\n",\
-		info->map.map[fill->x][fill->y].e_tex,\
-		info->map.map[fill->x][fill->y].s_tex,\
-		info->map.map[fill->x][fill->y].n_tex,\
-		info->map.map[fill->x][fill->y].w_tex);*/
-	//cliping
+	// cliping
 	info->map.map[fill->x][fill->y].clip = request_value(fill, 8);
 	// teleport
 	if (request_value(fill, 9) == 1)
@@ -84,8 +79,13 @@ int		parsing(t_fillmap *fill, t_info *info)
 		info->map.map[fill->x][fill->y].tp_x = request_value(fill, 10);
 		info->map.map[fill->x][fill->y].tp_y = request_value(fill, 11);
 	}
-
+	// alpha
 	info->map.map[fill->x][fill->y].wall_h = (request_value(fill, 12));
+	// sprites
+	// info->? = request_value(fill, 13);
+	// 
+	// info->map.map[fill->x][fill->y]. = request_value(fill, 13);
+
 
 
 	//printf("%d ", info->map.map[fill->x][fill->y].wall);

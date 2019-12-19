@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:33:41 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/19 19:40:26 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/20 00:03:50 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -194,9 +194,9 @@ int		move(t_info *info)
 		move_plus_4(info);
 	turn_right(info);
 
-	//printf("x = %f\nY = %f\n\n", info->player.x_pos, info->player.y_pos);
-	//if ((info->player.move_up || info->player.move_down ||
-	//			info->player.turn_right || info->player.turn_left) == 1)
-		//ray_casting_image(info);
+	// printf("x = %f\nY = %f\n\n", info->player.x_pos, info->player.y_pos);
+	// if ((info->player.move_up || info->player.move_down ||
+	// 			info->player.turn_right || info->player.turn_left) == 1)
+	// 	ray_casting_image(info);
 	return (0);
 }
