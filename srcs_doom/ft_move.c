@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:33:41 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/20 00:03:50 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/20 21:17:33 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,7 +56,7 @@ void	turn_right(t_info *info)
 
 void	move_plus_4(t_info *info)
 {
-	if (info->map.map[(int)(info->player.x_pos + info->player.y_dir
+	if (/*info->map.map[(int)(info->player.x_pos + info->player.y_dir
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 1\
 		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 7\
@@ -64,11 +64,11 @@ void	move_plus_4(t_info *info)
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9
-		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		&&*/ info->map.map[(int)(info->player.x_pos + info->player.y_dir
 		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.x_pos += info->player.y_dir * info->player.move_speed;
 
-	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+	if (/*info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.x_dir * info->player.move_speed)].wall != 1\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.x_dir * info->player.move_speed)].wall != 7\
@@ -76,18 +76,18 @@ void	move_plus_4(t_info *info)
 		- info->player.x_dir * info->player.move_speed)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.x_dir * info->player.move_speed)].wall != 9
-		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
+		&&*/ info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+		- info->player.x_dir * info->player.move_speed)].clip != 0)
 		info->player.y_pos -= info->player.x_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].gg == 1)
+		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
 		teleport_2(info);
 }
 
 void	move_plus_3(t_info *info)
 {
-	if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
+	if (/*info->map.map[(int)(info->player.x_pos - info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 1\
 		&& info->map.map[(int)(info->player.x_pos - info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 7\
@@ -95,11 +95,11 @@ void	move_plus_3(t_info *info)
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos - info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9
-		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		&&*/ info->map.map[(int)(info->player.x_pos - info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.x_pos -= info->player.y_dir * info->player.move_speed;
 
-	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+	if (/*info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.x_dir * info->player.move_speed)].wall != 1\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.x_dir * info->player.move_speed)].wall != 7\
@@ -107,18 +107,18 @@ void	move_plus_3(t_info *info)
 		+ info->player.x_dir * info->player.move_speed)].wall != 8
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.x_dir * info->player.move_speed)].wall != 9
-		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
+		&&*/ info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+		+ info->player.x_dir * info->player.move_speed)].clip != 0)
 			info->player.y_pos += info->player.x_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].gg == 1)
+		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
 		teleport(info);
 }
 
 void	move_plus_2(t_info *info)
 {
-	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir
+	if (/*info->map.map[(int)(info->player.x_pos - info->player.x_dir
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 1\
 		&& info->map.map[(int)(info->player.x_pos - info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 7\
@@ -126,11 +126,11 @@ void	move_plus_2(t_info *info)
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos - info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9
-		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		&&*/ info->map.map[(int)(info->player.x_pos - info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.x_pos -= info->player.x_dir * info->player.move_speed;
 
-	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+	if (/*info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.y_dir * info->player.move_speed)].wall != 1\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.y_dir * info->player.move_speed)].wall != 7\
@@ -138,47 +138,47 @@ void	move_plus_2(t_info *info)
 		- info->player.y_dir * info->player.move_speed)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.y_dir * info->player.move_speed)].wall != 9
-		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
+		&&*/ info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+		- info->player.y_dir * info->player.move_speed)].clip != 0)
 		info->player.y_pos -= info->player.y_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].gg == 1)
+		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
 		teleport_2(info);
 }
 
 void	move_plus_1(t_info *info)
 {
-	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
+	if (//info->map.map[(int)(info->player.x_pos + info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 1\
 		&& info->map.map[(int)(info->player.x_pos + info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 7\
 		&& info->map.map[(int)(info->player.x_pos + info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9/*\
+		* info->player.move_speed)][(int)(info->player.y_pos)].wall != 9//\
 		&& (info->player.x_pos + info->player.x_dir * info->player.move_speed) >= 0\
-		/*&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height*/
-		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
+		&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height
+		/*&&*/ info->map.map[(int)(info->player.x_pos + info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
 		info->player.x_pos += info->player.x_dir * info->player.move_speed;
 
-	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+	if (//info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.y_dir * info->player.move_speed)].wall != 1\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.y_dir * info->player.move_speed)].wall != 7\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.y_dir * info->player.move_speed)].wall != 8\
 		&& info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.y_dir * info->player.move_speed)].wall != 9/*\
+		+ info->player.y_dir * info->player.move_speed)].wall != 9//\
 		&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) >= 0\
-		/*&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height*/
-		&& info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].clip != 0)
+		&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height
+		/*&&*/ info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+		+ info->player.y_dir * info->player.move_speed)].clip != 0)
 		info->player.y_pos += info->player.y_dir * info->player.move_speed;
 
 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].gg == 1)
+		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
 		teleport(info);
 }
 
