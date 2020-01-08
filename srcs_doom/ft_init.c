@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 10:53:55 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 12:23:27 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -147,5 +147,5 @@ void	init(t_info *info)
 	init_doors(info);
 	init_music(info);
 	icon(info);
-	ray_casting_image(info);
+	//ray_casting_image(info);
 }

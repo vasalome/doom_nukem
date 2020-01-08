@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 11:15:47 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 12:23:02 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -300,6 +300,8 @@ typedef struct		s_info
 	int				min;
 	int				door;
 	double			delta_time;
+	int				button;	
+	int				game;		
 }					t_info;
 
 /*
