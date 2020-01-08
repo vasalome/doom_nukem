@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 12:29:56 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 12:30:46 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -244,11 +244,11 @@ int		main(int argc, char **argv)
         info.frame++;
        // move(&info);
       //  ray_casting_image(&info);
-		if (info.game == 2)
+        if (info.game == 2)
         {
-			move(&info);
-			move_doors(&info);
-			ray_casting_image(&info);
+            move(&info);
+            move_doors(&info);
+            ray_casting_image(&info);
         }
          if (info.game == 1)
             info.game = 2;
