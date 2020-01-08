@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/10 15:50:33 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 12:14:26 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,7 @@ void	choose_texture_1(t_info *info)
 		info->w_j = info->map.map[(int)info->map.x][(int)info->map.y].w_tex;
 		//printf("w=%d\n", info->map.map[(int)info->map.x][(int)info->map.y].w_tex);
 	}
-	if (info->w_j < 0 || info->w_j > 3)
+	if (info->w_j < 0 || info->w_j > 7)
 		if (info->w_j < 16 || info->w_j > 18)
 			info->w_j = 0;
 	info->wall.alpha = info->map.map[(int)info->map.x][(int)info->map.y].wall_h;
@@ -102,7 +102,8 @@ void	texture_calc(t_info *info)
 		info->wall.wall_x = info->ray.x_ray_position + \
 		info->wall.wall_distance * info->ray.x_ray_direction;
 	info->wall.wall_x -= floor((info->wall.wall_x));
-
+	if (info->map.map[info->map.x][info->map.y].wall == 11)
+		info->wall.wall_x += info->map.door_offset[info->map.x][info->map.y];
 	//xTexture sol et plafond
 	if (info->floor.side == 0)
 		info->wall.floor_x = info->ray.y_ray_position + \

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/20 21:17:30 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 12:23:02 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -200,6 +200,8 @@ typedef struct		s_map
 	double			yOffset;
 	char			*name;
 	t_form			**map;
+	int				**door_state;
+	double			**door_offset;
 }					t_map;
 
 typedef struct		s_wall
@@ -296,6 +298,8 @@ typedef struct		s_info
 	int				action;
 	char			use;
 	int				min;
+	int				door;
+	double			delta_time;
 	int				button;	
 	int				game;		
 }					t_info;
@@ -441,4 +445,6 @@ int					ft_usage(char *error);
 
 void				draw_skybox(t_info *info);
 
+void				move_doors(t_info *info);
+void				open_doors(t_info *info);
 #endif

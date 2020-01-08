@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/20 21:17:31 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 11:59:51 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -92,7 +92,55 @@ void	ray_casting_init(t_info *info, int x)
 	/*printf("%d %d\n", info->map.x, info->map.y);
 	fflush(stdout);*/
 		int rayTex = info->map.map[info->map.x][info->map.y].wall;
-			
+		
+		if (rayTex == 11)// && info->map.door_state[info->map.x][info->map.y] != 2)// Et que doorState != ouverte // Portes
+		{
+			info->map.hit = 1;
+			if (info->wall.side == 1)
+			{
+				info->map.yOffset = 0.5 * info->map.y_step;
+				info->wall.wall_distance = info->map.y - info->player.y_pos + info->map.yOffset + (1 - info->map.y_step) / 2 / info->ray.y_ray_direction;
+				info->wall.wall_x = info->player.x_pos + info->wall.wall_distance * info->ray.x_ray_direction;
+				info->wall.wall_x -= floor(info->wall.wall_x);
+				if (info->ray.y_side_distance - (info->ray.y_delta_distance / 2) < info->ray.x_side_distance)
+				{
+					if (1 - info->wall.wall_x <= info->map.door_offset[info->map.x][info->map.y])
+					{
+						info->map.hit = 0;
+						info->map.yOffset = 0;
+					}
+				}
+				else // Si superieur alors on fait passer le rayon derriere la porte
+				{
+					info->map.x += info->map.x_step;
+					info->wall.side = 0;
+					rayTex = 1; //door frame = côté des portes // autre texture
+					info->map.yOffset = 0;
+				}
+			}
+			else
+			{
+				info->map.xOffset = 0.5 * info->map.x_step;
+				info->wall.wall_distance = info->map.x - info->player.x_pos + info->map.xOffset + (1 - info->map.x_step) / 2 / info->ray.x_ray_direction;
+				info->wall.wall_x = info->player.y_pos + info->wall.wall_distance * info->ray.y_ray_direction;
+				info->wall.wall_x -= floor(info->wall.wall_x);
+				if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
+				{
+					if (1 - info->wall.wall_x < info->map.door_offset[info->map.x][info->map.y])
+					{
+						info->map.hit = 0;
+						info->map.xOffset = 0;
+					}
+				}
+				else
+				{
+					info->map.y += info->map.y_step;
+					info->wall.side = 1;
+					rayTex = 1;
+					info->map.xOffset = 0;
+				}
+			}
+		}
 		if (rayTex == 7)
 		{
 			double wallX1 = info->map.x;
@@ -161,7 +209,7 @@ void	ray_casting_init(t_info *info, int x)
 		{
 			if (info->wall.side == 1)
 			{
-				if (info->map.y_step = -1)
+				if (info->map.y_step == -1)
 					if (info->ray.y_side_distance - (info->ray.y_delta_distance / 2) < info->ray.x_side_distance)
 					{
 						info->map.hit = 1;
@@ -190,6 +238,15 @@ void	ray_casting_init(t_info *info, int x)
 					}*/
 			}
 		}
+		
+		 /* else if (rayTex == 1)
+		  {
+		 	if (info->wall.side == 1 && info->map.map[info->map.x][info->map.y - info->map.y_step].wall == 11)
+		 		rayTex = 1;
+			 if (info->wall.side == 0 && info->map.map[info->map.x - info->map.x_step][info->map.y].wall == 11)
+		 		rayTex = 1;
+		 	info->map.hit = 1;
+		  }*/
 		else if (rayTex == 1)
 		{
 			info->map.hit = 1;
@@ -210,19 +267,19 @@ void	ray_casting_init(t_info *info, int x)
 		info->map.hit = 1;
 		if (info->wall.side == 0)
 		{
-			info->wall.wall_distance = (info->map.x - info->ray.x_ray_position + info->map.xOffset +\
+			info->wall.wall_distance = (info->map.x - info->ray.x_ray_position + info->map.xOffset +
 			(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
 		}
 		else if (info->wall.side == 1)
 		{
-			info->wall.wall_distance = (info->map.y - info->ray.y_ray_position + info->map.yOffset +\
+			info->wall.wall_distance = (info->map.y - info->ray.y_ray_position + info->map.yOffset +
 			(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
 		}
-		else
+	/*	else
 		{
 			info->wall.floor_distance = (info->map.x - info->ray.x_ray_position +\
 			(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
-		}
+		}*/
 	//sol et plafond
 	if (info->min != -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 16:44:31 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 12:23:27 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -104,6 +104,38 @@ void	init_music(t_info *info)
 	info->music.low = Mix_LoadWAV("music/elevator.wav");
 }
 
+void	init_doors(t_info *info)
+{
+	int			i;
+	int			j;
+
+	j = 0;
+	i = 0;
+	if (!(info->map.door_state = (int**)malloc(sizeof(int*) * info->map.width)) ||
+		!(info->map.door_offset = (double**)malloc(sizeof(double*) * info->map.width)))
+		return ;
+	while (i < info->map.width)
+	{
+		if (!(info->map.door_state[i] = (int*)malloc(sizeof(int) * info->map.height)))
+			return ;
+		if (!(info->map.door_offset[i] = (double*)malloc(sizeof(double) * info->map.height)))
+			return ;
+		i++;
+	}
+	i = 0;
+	while (i < info->map.height)
+	{
+		while (j < info->map.width)
+		{
+			info->map.door_state[i][j] = 0;
+			info->map.door_offset[i][j] = 0;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+
 void	init(t_info *info)
 {
 	info->shot = 1;
@@ -112,6 +144,7 @@ void	init(t_info *info)
 	load_textures(info);
 	init_map(info);
 	init_player(info);
+	init_doors(info);
 	init_music(info);
 	icon(info);
 	//ray_casting_image(info);

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 18:33:49 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 12:22:34 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,9 +48,11 @@ int		main(int argc, char **argv)
   // SDL_Event evenements = {0};
     info.frame = 0;
     SDL_TimerID timer;
-
+	clock_t		start;
+	clock_t		end;
     //timer = SDL_AddTimer(1000, frameDisplay, (t_info*)&info); /* Démarrage du timer */
 
+	start = clock();
 	if (argc != 2)
 		ft_usage("Mauvais nombre d'arguments !");
     
@@ -59,6 +61,7 @@ int		main(int argc, char **argv)
     info.iii = 10;
     info.ii = 10;
     info.quit = 0;
+	info.door = 0;
 	init(&info);
     info.game = 0;
     info.fps.rect.x = 0;
@@ -121,7 +124,9 @@ int		main(int argc, char **argv)
                         info.player.move_speed = 0.1;
                     else if (event.key.keysym.sym == SDLK_f)
                         info.action = 1;
-                    else if (event.key.keysym.sym == SDLK_g)
+					else if (event.key.keysym.sym == SDLK_SPACE)
+						open_doors(&info);
+					else if (event.key.keysym.sym == SDLK_g)
                     {
                         Mix_PlayChannel(-1, info.music.high, 0);
                     }
@@ -237,11 +242,14 @@ int		main(int argc, char **argv)
 		SDL_RenderPresent(info.win.renderer);
 
         info.frame++;
-         
+        
         if (info.game == 2)
         {
             move(&info);
+            move_doors(&info);
             ray_casting_image(&info);
+            end = clock();
+            info.delta_time = ((double)(end - start)) / CLOCKS_PER_SEC;
         }
 
          if (info.game == 1)
