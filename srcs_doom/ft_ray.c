@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 14:13:34 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/20 21:17:31 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,7 +69,7 @@ void	ray_casting_init(t_info *info, int x)
 	
 	wall_detection_init_x(info);
 	
-	while((info->map.hit == 0)/* && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height))*/)
+	while((info->map.hit == 0) && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height)))
 	{
 		/*printf("pass\n");
 	fflush(stdout);*/
@@ -173,11 +173,10 @@ void	ray_casting_init(t_info *info, int x)
 						info->map.hit = 1;
 						info->map.yOffset = -0.5 + info->map.y_step;
 					}*/
-				
 			}
 			else if (info->wall.side == 0)
 			{
-				if (info->map.x_step = -1)
+				if (info->map.x_step == -1)
 					if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
 					{
 						info->map.hit = 1;
@@ -194,23 +193,6 @@ void	ray_casting_init(t_info *info, int x)
 		else if (rayTex == 1)
 		{
 			info->map.hit = 1;
-			//printf("-----------> %f\n", info->wall.wall_x);
-			// segfault a regler: probablement de wall.wall_x
-			// int intersectDist;
-
-			// intersectDist = ray_circle(info, 0.5);
-			// // intersectDist = ray_circ(info, info->player.x_pos, info->player.y_pos, info->player.x_pos + info->ray.x_ray_direction, info->player.y_pos + info->ray.y_ray_direction, floor(info->player.x_pos) + 0.5, floor(info->player.y_pos) + 0.5, 0.5);
-			
-			// if (intersectDist != 0)
-			// {
-			// 	info->map.hit = 1;
-			// 	info->wall.side = 3;
-			// 	info->wall.wall_distance = (((info->player.x_pos + info->ray.x_ray_direction * info->ray.intersectDist2) - info->player.x_pos + (info->player.y_pos + info->ray.x_ray_direction * info->ray.intersectDist2) - info->player.y_pos) / 2) / ((info->ray.x_ray_direction + info->ray.y_ray_direction)/2);
-			// 	info->wall.wall_x = atan2((floor(info->player.y_pos) + 0.5) - (info->player.y_pos + info->ray.x_ray_direction * info->ray.intersectDist2), (floor(info->player.x_pos) + 0.5) - (info->player.x_pos + info->ray.x_ray_direction * info->ray.intersectDist2)) / (M_PI * 2);
-			// 	//printf("1 %f\n", info->wall.wall_x);
-			// 	info->wall.wall_x = fabs(info->wall.wall_x + info->wall.wall_x);
-			// 	printf("2 %f\n", info->wall.wall_x);
-			// }
 		}
 		choose_texture_1(info);
 		
@@ -244,9 +226,9 @@ void	ray_casting_init(t_info *info, int x)
 	//sol et plafond
 	if (info->min != -1)
 	{
-	wall_detection_init_x(info);
+		wall_detection_init_x(info);
 
-	wall_detection(info);
+		wall_detection(info);
 	
 	
 		if (info->floor.side == 0)
