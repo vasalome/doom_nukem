@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 12:22:34 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 12:29:21 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -242,20 +242,20 @@ int		main(int argc, char **argv)
 		SDL_RenderPresent(info.win.renderer);
 
         info.frame++;
-        move(&info);
-		move_doors(&info);
-        ray_casting_image(&info);
-		end = clock();
-		info.delta_time = ((double)(end - start)) / CLOCKS_PER_SEC;
-        if (info.game == 2)
+       // move(&info);
+      //  ray_casting_image(&info);
+		if (info.game == 2)
         {
-            move(&info);
-            ray_casting_image(&info);
+			move(&info);
+			move_doors(&info);
+			ray_casting_image(&info);
         }
-
          if (info.game == 1)
             info.game = 2;
-   }
+		
+		end = clock();
+		info.delta_time = ((double)(end - start)) / CLOCKS_PER_SEC;
+	}
    //SDL_WaitThread( threadID, NULL );
    //SDL_WaitThread( threadID2, NULL );
 
