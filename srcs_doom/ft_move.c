@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:33:41 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 11:36:28 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 14:51:41 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,8 +69,8 @@ void	open_doors(t_info *info)
 	check_y2 = floor(info->player.y_pos + info->player.y_dir * 2); // peut etre pas besoin de ca comme pas de push wall
 	if (info->map.map[check_x][check_y].wall == 11 && info->map.door_state[check_x][check_y] == 0)
 		info->map.door_state[check_x][check_y] = 1;
-//	if (info->map.map[check_x2][check_y2].wall == 11 && info->map.door_state[check_x2][check_y2] == 0)
-//		info->map.door_state[check_x2][check_y2] = 1;
+	if (info->map.map[check_x2][check_y2].wall == 11 && info->map.door_state[check_x2][check_y2] == 0)
+		info->map.door_state[check_x2][check_y2] = 1;
 	if (info->map.map[check_x][check_y].wall == 11 && info->map.door_state[check_x][check_y] == 2)
 		info->map.door_state[check_x][check_y] = 3;
 	if (info->map.door_state[(int)info->player.x_pos][(int)info->player.y_pos] == 3) // en train de se fermer
