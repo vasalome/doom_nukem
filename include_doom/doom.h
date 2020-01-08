@@ -296,6 +296,8 @@ typedef struct		s_info
 	int				action;
 	char			use;
 	int				min;
+	int				button;	
+	int				game;		
 }					t_info;
 
 /*

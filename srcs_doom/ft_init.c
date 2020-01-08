@@ -114,5 +114,5 @@ void	init(t_info *info)
 	init_player(info);
 	init_music(info);
 	icon(info);
-	ray_casting_image(info);
+	//ray_casting_image(info);
 }
