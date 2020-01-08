@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 11:59:51 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 18:19:16 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,14 +93,14 @@ void	ray_casting_init(t_info *info, int x)
 	fflush(stdout);*/
 		int rayTex = info->map.map[info->map.x][info->map.y].wall;
 		
-		if (rayTex == 11)// && info->map.door_state[info->map.x][info->map.y] != 2)// Et que doorState != ouverte // Portes
+		if (rayTex == 11 && info->map.door_state[info->map.x][info->map.y] != 2)// Et que doorState != ouverte // Portes
 		{
 			info->map.hit = 1;
 			if (info->wall.side == 1)
 			{
 				info->map.yOffset = 0.5 * info->map.y_step;
-				info->wall.wall_distance = info->map.y - info->player.y_pos + info->map.yOffset + (1 - info->map.y_step) / 2 / info->ray.y_ray_direction;
-				info->wall.wall_x = info->player.x_pos + info->wall.wall_distance * info->ray.x_ray_direction;
+				info->wall.wall_distance = info->map.y - info->ray.y_ray_position + info->map.yOffset + (1 - info->map.y_step) / 2 / info->ray.y_ray_direction;
+				info->wall.wall_x = info->ray.x_ray_position + info->wall.wall_distance * info->ray.x_ray_direction; // Pour gerer l'ouverture des portes differement c'est ici
 				info->wall.wall_x -= floor(info->wall.wall_x);
 				if (info->ray.y_side_distance - (info->ray.y_delta_distance / 2) < info->ray.x_side_distance)
 				{
@@ -109,34 +109,43 @@ void	ray_casting_init(t_info *info, int x)
 						info->map.hit = 0;
 						info->map.yOffset = 0;
 					}
+					info->w_j = 6;
 				}
 				else // Si superieur alors on fait passer le rayon derriere la porte
 				{
 					info->map.x += info->map.x_step;
 					info->wall.side = 0;
 					rayTex = 1; //door frame = côté des portes // autre texture
+					info->w_j = 1;
 					info->map.yOffset = 0;
 				}
 			}
 			else
 			{
 				info->map.xOffset = 0.5 * info->map.x_step;
-				info->wall.wall_distance = info->map.x - info->player.x_pos + info->map.xOffset + (1 - info->map.x_step) / 2 / info->ray.x_ray_direction;
-				info->wall.wall_x = info->player.y_pos + info->wall.wall_distance * info->ray.y_ray_direction;
+			//	info->wall.wall_distance = fabs((info->map.x - info->ray.x_ray_position+ .5)  / fabs(info->ray.x_ray_direction)); Jean-Michel A peu pres (ouverture inversee dans un cas)
+				info->wall.wall_distance = (info->map.x - info->ray.x_ray_position + info->map.xOffset)  / 2 / info->ray.x_ray_direction;
+				info->wall.wall_x = info->ray.y_ray_position + info->wall.wall_distance * info->ray.y_ray_direction;
+			//	printf("ypos = %f ydir = %f dist = %f\n", info->ray.y_ray_position, info->ray.y_ray_direction, info->wall.wall_distance);
+			//	printf("BEFORE // wallx = %f\n", info->wall.wall_x);
 				info->wall.wall_x -= floor(info->wall.wall_x);
+	//			printf("ypos = %f dist = %f ydir = %f\n", info->ray.y_ray_position, info->wall.wall_distance, info->ray.y_ray_direction);
+			//	printf("AFTER // wall x = %f\n", info->wall.wall_x);
 				if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
 				{
-					if (1 - info->wall.wall_x < info->map.door_offset[info->map.x][info->map.y])
+					if (info->wall.wall_x < info->map.door_offset[info->map.x][info->map.y]) // piti soucy ici
 					{
 						info->map.hit = 0;
 						info->map.xOffset = 0;
 					}
+					info->w_j = 6;
 				}
 				else
 				{
-					info->map.y += info->map.y_step;
+					info->map.y +=  info->map.y_step;
 					info->wall.side = 1;
 					rayTex = 1;
+					info->w_j = 1;
 					info->map.xOffset = 0;
 				}
 			}
@@ -191,7 +200,6 @@ void	ray_casting_init(t_info *info, int x)
 		{
 			int		intersectDist;
 			t_inter inter;
-
 			intersectDist = ray_circ(&inter, info->player.x_pos, info->player.y_pos, info->player.x_pos + info->ray.x_ray_direction, info->player.y_pos + info->ray.y_ray_direction, info->map.x + 0.5, info->map.y + 0.5, 0.5);
 			if (intersectDist != 0)
 			{
@@ -275,6 +283,8 @@ void	ray_casting_init(t_info *info, int x)
 			info->wall.wall_distance = (info->map.y - info->ray.y_ray_position + info->map.yOffset +
 			(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
 		}
+	//	if (info->map.map[info->map.x][info->map.y].wall == 11)
+			//printf("wall distance ap = %f\n", info->wall.wall_distance);
 	/*	else
 		{
 			info->wall.floor_distance = (info->map.x - info->ray.x_ray_position +\

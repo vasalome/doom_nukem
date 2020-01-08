@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/19 19:40:33 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 10:57:38 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ void	textures_list(t_info *info)
 	info->wt[3].img = IMG_Load("wall/scpwall3.png");
 	info->wt[4].img = IMG_Load("wall/floor2.png");
 	// info->wt[5].img = IMG_Load("wall/map_pillar.png");
-	// info->wt[6].img = ;
+	info->wt[6].img = IMG_Load("wall/door.png");
 	// info->wt[7].img = ;
 	// info->wt[8].img = ;
 	// info->wt[9].img = ;
