@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 12:23:02 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 17:24:50 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -182,7 +182,7 @@ typedef	struct		s_form
 	int				tp_x;
 	int				tp_y;
 	int				tp;
-	double			clip;
+	int				clip;
 }					t_form;
 
 typedef struct		s_map

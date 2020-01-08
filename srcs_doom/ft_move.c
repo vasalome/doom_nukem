@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:33:41 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 16:11:49 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 18:16:13 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -122,11 +122,18 @@ void	move_plus_4(t_info *info)
 	else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir
 		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
 	{
+		printf("\nclip = %d\n",info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip);
+		printf("wall = %d\n",info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall);
+		printf("x_pos = %f\n",info->player.x_pos);
+		printf("y_pos = %f\n",info->player.y_pos);
+		printf("x_dir = %f\n",info->player.x_dir);
+		printf("y_dir = %f\n",info->player.y_dir);
+		
 		if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
 		{
 			info->player.x_pos += info->player.y_dir * info->player.move_speed;
-			printf("PASSE 1_4\n");
+			
 		}
 		else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
@@ -154,8 +161,7 @@ void	move_plus_4(t_info *info)
 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.x_dir * info->player.move_speed)].wall == 7)
 		{
-			info->player.x_pos += info->player.y_dir * info->player.move_speed;
-			printf("PASSE 2_4\n");
+			info->player.y_pos -= info->player.x_dir * info->player.move_speed;
 		}
 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.x_dir * info->player.move_speed)].wall == 8)
@@ -187,11 +193,18 @@ void	move_plus_3(t_info *info)
 	else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
 	{
+		printf("\nclip = %d\n",info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip);
+		printf("wall = %d\n",info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall);
+		printf("x_pos = %f\n",info->player.x_pos);
+		printf("y_pos = %f\n",info->player.y_pos);
+		printf("x_dir = %f\n",info->player.x_dir);
+		printf("y_dir = %f\n",info->player.y_dir);
+
 		if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
 		{
 			info->player.x_pos -= info->player.y_dir * info->player.move_speed;
-			printf("PASSE 1_3\n");
+			
 		}
 		else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
@@ -219,8 +232,7 @@ void	move_plus_3(t_info *info)
 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.x_dir * info->player.move_speed)].wall == 7)
 		{
-			info->player.x_pos -= info->player.y_dir * info->player.move_speed;
-			printf("PASSE 2_3\n");
+			info->player.y_pos += info->player.x_dir * info->player.move_speed;
 		}
 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.x_dir * info->player.move_speed)].wall == 8)
@@ -252,11 +264,19 @@ void	move_plus_2(t_info *info)
 	else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
 	{
+		printf("\nclip = %d\n",info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip);
+		printf("wall = %d\n",info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall);
+		printf("x_pos = %f\n",info->player.x_pos);
+		printf("y_pos = %f\n",info->player.y_pos);
+		printf("x_dir = %f\n",info->player.x_dir);
+		printf("y_dir = %f\n",info->player.y_dir);
+
 		if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
 		{
 			info->player.x_pos -= info->player.x_dir * info->player.move_speed;
-			printf("PASSE 1_2\n");
+			
+
 		}
 		else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
@@ -285,7 +305,6 @@ void	move_plus_2(t_info *info)
 		- info->player.y_dir * info->player.move_speed)].wall == 7)
 		{
 			info->player.y_pos -= info->player.y_dir * info->player.move_speed;
-			printf("PASSE 2_2\n");
 		}
 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		- info->player.y_dir * info->player.move_speed)].wall == 8)
@@ -319,11 +338,20 @@ void	move_plus_1(t_info *info)
 	else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
 	{
+		printf("\nclip = %d\n",info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip);
+		printf("wall = %d\n",info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall);
+		printf("x_pos = %f\n",info->player.x_pos);
+		printf("y_pos = %f\n",info->player.y_pos);
+		printf("x_dir = %f\n",info->player.x_dir);
+		printf("y_dir = %f\n",info->player.y_dir);
+		
 		if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
 		{
-			info->player.x_pos += info->player.x_dir * info->player.move_speed;
-			printf("PASSE 1_1\n");
+			while (info->player.x_pos < 6.5)
+				info->player.x_pos += info->player.x_dir * info->player.move_speed;
+
+			// hypotenuse_2 = cote1_2 + cote2_2
 		}
 		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
@@ -352,8 +380,8 @@ void	move_plus_1(t_info *info)
 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.y_dir * info->player.move_speed)].wall == 7)
 		{
-			info->player.y_pos += info->player.y_dir * info->player.move_speed;
-			printf("PASSE 2_1\n");
+			while (info->player.x_pos < 6.5)
+				info->player.x_pos += info->player.x_dir * info->player.move_speed;
 		}
 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.y_dir * info->player.move_speed)].wall == 8)
