@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 17:24:50 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 22:50:51 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -158,6 +158,10 @@ typedef struct		s_player
 	int				tp_index;
 	int				life;
 	int				can_trap;
+
+	//test collision
+	double			x_lim;
+	double			y_lim;
 }					t_player;
 
 typedef struct		s_win

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:33:41 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 19:08:56 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 23:48:32 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -290,7 +290,10 @@ void	move_plus_1(t_info *info)
 		{
 			printf("\n==> x_pos = %f\n",info->player.x_pos);
 			printf("==> y_pos = %f\n",info->player.y_pos);
-			while (info->player.x_pos >= 6.9)
+			info->player.x_lim = (info->player.x_pos - 1) + 0.5;
+			printf("//////////////droit x_pos CALC = %f\n",info->player.x_lim);
+
+			while (info->player.x_pos >= 6.5)
 				info->player.x_pos += info->player.x_dir * info->player.move_speed;
 
 			// hypotenuse_2 = cote1_2 + cote2_2
@@ -308,7 +311,12 @@ void	move_plus_1(t_info *info)
 		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 10)
 		{
-			while (info->player.x_pos >= 6.9)
+			printf("\n==> x_pos = %f\n",info->player.x_pos);
+			printf("==> y_pos = %f\n",info->player.y_pos);
+			info->player.x_lim = (info->player.x_pos - 1) + 0.5;
+			printf("////////////// x_pos CALC = %f\n",info->player.x_lim);
+			
+			while (info->player.x_pos >= 6.5)
 				info->player.x_pos += info->player.x_dir * info->player.move_speed;
 		}
 	}
@@ -325,7 +333,10 @@ void	move_plus_1(t_info *info)
 		{
 			printf("\n==> x_pos = %f\n",info->player.x_pos);
 			printf("==> y_pos = %f\n",info->player.y_pos);
-			while (info->player.x_pos >= 6.9)
+			info->player.x_lim = (info->player.x_pos - 1) + 0.5;
+			printf("//////////////droit2 x_pos CALC = %f\n",info->player.x_lim);
+			
+			while (info->player.x_pos >= 6.5)
 				info->player.x_pos += info->player.x_dir * info->player.move_speed;
 		}
 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
@@ -341,7 +352,12 @@ void	move_plus_1(t_info *info)
 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
 		+ info->player.y_dir * info->player.move_speed)].wall == 10)
 		{
-			while (info->player.x_pos >= 6.9)
+			printf("\n==> x_pos = %f\n",info->player.x_pos);
+			printf("==> y_pos = %f\n",info->player.y_pos);
+			info->player.x_lim = (info->player.x_pos - 1) + 0.5;
+			printf("////////////// x_pos CALC = %f\n",info->player.x_lim);
+			
+			while (info->player.x_pos >= 6.5)
 				info->player.x_pos += info->player.x_dir * info->player.move_speed;
 		}
 	}
