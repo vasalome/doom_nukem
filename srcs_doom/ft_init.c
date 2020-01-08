@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 12:23:27 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/08 12:38:41 by ztrouill    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -123,9 +123,9 @@ void	init_doors(t_info *info)
 		i++;
 	}
 	i = 0;
-	while (i < info->map.height)
+	while (i < info->map.width)
 	{
-		while (j < info->map.width)
+		while (j < info->map.height)
 		{
 			info->map.door_state[i][j] = 0;
 			info->map.door_offset[i][j] = 0;
