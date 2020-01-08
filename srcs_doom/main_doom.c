@@ -237,7 +237,7 @@ int		main(int argc, char **argv)
 		SDL_RenderPresent(info.win.renderer);
 
         info.frame++;
-        
+         
         if (info.game == 2)
         {
             move(&info);
