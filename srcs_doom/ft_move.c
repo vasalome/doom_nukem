@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:33:41 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/09 23:17:21 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/10 18:46:22 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ void	turn_left(t_info *info)
 	if (info->player.turn_left == 1)
 	{
 		info->fps.rect.y += 500 * info->player.turn_rate_y;
-		// printf("Y = %d\n motion = %d\n", info->fps.rect.y, event.motion.yrel);
+		// // printf("Y = %d\n motion = %d\n", info->fps.rect.y, event.motion.yrel);
 		if (info->fps.rect.y > 0)
 			info->fps.rect.y = 0;
 		if (info->fps.rect.y < -400)
@@ -336,8 +336,8 @@ void	move_plus_1(t_info *info)
 			info->player.x_lim = floor(info->player.x_pos) + 0.5;
 			// printf("////////////// x_pos CALC = %f\n",info->player.x_lim);
 			
-			if (1)
-			{
+			/*if (1)
+			{*/
 				if (info->player.x_dir < 0 && info->player.y_dir > 0)
 					while (info->player.x_pos >= 6.5)
 						info->player.x_pos += info->player.x_dir * info->player.move_speed;
@@ -346,14 +346,14 @@ void	move_plus_1(t_info *info)
 						info->player.x_pos += info->player.x_dir * info->player.move_speed;
 			/*}
 			else if ()
-			{*/
+			{
 				if (info->player.x_dir < 0 && info->player.y_dir > 0)
 					while (info->player.y_pos >= 8.5)
 						info->player.y_pos += info->player.y_dir * info->player.move_speed;
 				else if (info->player.x_dir > 0 && info->player.y_dir < 0)
 					while (info->player.y_pos <= 8.5)
 						info->player.y_pos += info->player.y_dir * info->player.move_speed;
-			}
+			}*/
 		}
 	}
 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
@@ -411,8 +411,8 @@ void	move_plus_1(t_info *info)
 			info->player.x_lim = floor(info->player.x_pos) + 0.5;
 			// printf("////////////// x_pos CALC = %f\n",info->player.x_lim);
 			
-			if (1)
-			{
+			/*if (1)
+			{*/
 				if (info->player.x_dir < 0 && info->player.y_dir > 0)
 					while (info->player.x_pos >= 6.5)
 						info->player.x_pos += info->player.x_dir * info->player.move_speed;
@@ -421,14 +421,14 @@ void	move_plus_1(t_info *info)
 						info->player.x_pos += info->player.x_dir * info->player.move_speed;
 			/*}
 			else if ()
-			{*/
+			{
 				if (info->player.x_dir < 0 && info->player.y_dir > 0)
 					while (info->player.y_pos >= 8.5)
 						info->player.y_pos += info->player.y_dir * info->player.move_speed;
 				else if (info->player.x_dir > 0 && info->player.y_dir < 0)
 					while (info->player.y_pos <= 8.5)
 						info->player.y_pos += info->player.y_dir * info->player.move_speed;
-			}
+			}*/
 		}
 	}
 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
@@ -438,8 +438,8 @@ void	move_plus_1(t_info *info)
 
 int		move(t_info *info)
 {
-	// printf("move -- x_dir = %f\n",info->player.x_dir);
-	// printf("move -- y_dir = %f\n",info->player.y_dir);
+	// // printf("move -- x_dir = %f\n",info->player.x_dir);
+	// // printf("move -- y_dir = %f\n",info->player.y_dir);
 	if (info->player.move_up == 1)
 		move_plus_1(info);
 	if (info->player.move_down == 1)
@@ -450,7 +450,7 @@ int		move(t_info *info)
 		move_plus_4(info);
 	turn_right(info);
 
-	// printf("x = %d\nY = %d\n\n", info->player.x_pos, info->player.y_pos);
+	// // printf("x = %d\nY = %d\n\n", info->player.x_pos, info->player.y_pos);
 	// if ((info->player.move_up || info->player.move_down ||
 	// 			info->player.turn_right || info->player.turn_left) == 1)
 	// 	ray_casting_image(info);
