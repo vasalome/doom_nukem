@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/08 18:20:29 by ztrouill    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/13 17:11:09 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,7 +21,7 @@ NAME_EDITOR	=	editor
 
 #	Compiler:
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra #-Werror -g
+CFLAGS		=	-Wall -Wextra -Werror -g
 #CFLAGS		+=	-Wunused-command-line-argument
 #CFLAGS		+=	-Wno-error
 #CFLAGS		+=	--cflags --glibs
@@ -68,15 +68,6 @@ INC_SDL		+=	-I ./frameworks/SDL2_mixer.framework/Headers
 INC_SDL		+=	-I ./frameworks/SDL2_net.framework/Headers
 INC_SDL		+=	-F ./frameworks
 FRAMEWORKSDIR := $(PWD)/frameworks
-#FRAMEWORKS	=	-F ./frameworks -rpath ./frameworks \
-				-framework OpenGL \
-				-framework AppKit \
-				-framework OpenCl \
-				-framework SDL2 \
-				-framework SDL2_ttf \
-				-framework SDL2_image \
-				-framework SDL2_mixer \
-				-framework SDL2_net
 SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_ttf -framework SDL2_image -framework SDL2_mixer -rpath $(FRAMEWORKSDIR)
 DIRECTORY_SDL	=	~/sdl2#$(shell sdl2-config --libs)
 
@@ -154,10 +145,6 @@ $(NAME): $(OBJ) $(INC_DIR) $(INC_SDL_DIR) make_libft
 	@echo "/**    //***//******* /** //**/********/**        /**"
 	@echo "//      ///  ///////  //   // //////// //         // "
 	@echo "_________________________________________$(_STOP)$(BLINK)$(VIOLET)is ready$(R_BLINK)$(RED)____$(_STOP)\n"
-
-#	SDL install:
-
-
 
 #	Cleaning rules:
 
