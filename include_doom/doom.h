@@ -160,6 +160,10 @@ typedef struct		s_player
 	int				can_trap;
 
 	//test collision
+	double			x_bef;
+	double			y_bef;
+	double			x_save;
+	double			y_save;
 	double			x_lim;
 	double			y_lim;
 }					t_player;

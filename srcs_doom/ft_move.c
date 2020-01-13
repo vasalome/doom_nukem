@@ -331,29 +331,51 @@ void	move_plus_1(t_info *info)
 			// printf("x_dir = %f\n",info->player.x_dir);
 			// printf("y_dir = %f\n",info->player.y_dir);
 
-			// printf("\n==> x_pos = %f\n",info->player.x_pos);
-			// printf("==> y_pos = %f\n",info->player.y_pos);
-			info->player.x_lim = floor(info->player.x_pos) + 0.5;
-			// printf("////////////// x_pos CALC = %f\n",info->player.x_lim);
-			
-			/*if (1)
-			{*/
-				if (info->player.x_dir < 0 && info->player.y_dir > 0)
-					while (info->player.x_pos >= 6.5)
-						info->player.x_pos += info->player.x_dir * info->player.move_speed;
-				else if (info->player.x_dir > 0 && info->player.y_dir < 0)
-					while (info->player.x_pos <= 6.5)
-						info->player.x_pos += info->player.x_dir * info->player.move_speed;
-			/*}
-			else if ()
+			// premiere initialisation au coord spawn
+			info->player.x_bef = floor(info->player.x_pos);
+			info->player.y_bef = floor(info->player.y_pos);
+			info->player.x_save = floor(info->player.x_pos);
+			info->player.y_save = floor(info->player.y_pos);
+
+			if (floor(info->player.x_pos) == info->player.x_bef)
+				info->player.x_save = floor(info->player.x_pos);
+			else if (floor(info->player.x_pos) != info->player.x_bef)
 			{
-				if (info->player.x_dir < 0 && info->player.y_dir > 0)
-					while (info->player.y_pos >= 8.5)
-						info->player.y_pos += info->player.y_dir * info->player.move_speed;
-				else if (info->player.x_dir > 0 && info->player.y_dir < 0)
-					while (info->player.y_pos <= 8.5)
-						info->player.y_pos += info->player.y_dir * info->player.move_speed;
-			}*/
+				info->player.x_bef = info->player.x_save;
+				info->player.x_save = floor(info->player.x_pos);
+			}
+
+			info->player.y_save = floor(info->player.y_pos);
+			if (floor(info->player.y_pos) == info->player.y_bef)
+				info->player.y_save = floor(info->player.y_pos);
+			else if (floor(info->player.y_pos) != info->player.y_bef)
+			{
+				info->player.y_bef = info->player.y_save;
+				info->player.y_save = floor(info->player.y_pos);
+			}
+
+			if (floor(info->player.x_save) > info->player.x_bef){
+				info->player.x_lim = floor(info->player.x_pos) + 0.5;
+				while (info->player.x_pos > info->player.x_lim)
+					info->player.x_pos += info->player.x_dir * info->player.move_speed;
+			}
+			else if (floor(info->player.x_save) < info->player.x_bef){
+				info->player.x_lim = floor(info->player.x_pos) - 0.5;
+				while (info->player.x_pos < info->player.x_lim)
+					info->player.x_pos += info->player.x_dir * info->player.move_speed;
+			}
+			if (floor(info->player.y_save) > info->player.y_bef) {
+				info->player.y_lim = floor(info->player.y_pos) + 0.5;
+				while (info->player.y_pos > info->player.y_lim)
+					info->player.y_pos += info->player.y_dir * info->player.move_speed;
+			}
+			else if (floor(info->player.y_save) < info->player.y_bef) {
+				info->player.y_lim = floor(info->player.y_pos) - 0.5;
+				while (info->player.y_pos < info->player.y_lim)
+					info->player.y_pos += info->player.y_dir * info->player.move_speed;
+			}
+
+			// printf("////////////// x_pos CALC = %f\n",info->player.x_lim);
 		}
 	}
 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
@@ -405,30 +427,50 @@ void	move_plus_1(t_info *info)
 			// printf("y_pos = %f\n",info->player.y_pos);
 			// printf("x_dir = %f\n",info->player.x_dir);
 			// printf("y_dir = %f\n",info->player.y_dir);
-			
-			// printf("\n==> x_pos = %f\n",info->player.x_pos);
-			// printf("==> y_pos = %f\n",info->player.y_pos);
-			info->player.x_lim = floor(info->player.x_pos) + 0.5;
-			// printf("////////////// x_pos CALC = %f\n",info->player.x_lim);
-			
-			/*if (1)
-			{*/
-				if (info->player.x_dir < 0 && info->player.y_dir > 0)
-					while (info->player.x_pos >= 6.5)
-						info->player.x_pos += info->player.x_dir * info->player.move_speed;
-				else if (info->player.x_dir > 0 && info->player.y_dir < 0)
-					while (info->player.x_pos <= 6.5)
-						info->player.x_pos += info->player.x_dir * info->player.move_speed;
-			/*}
-			else if ()
+
+			// premiere initialisation au coord spawn
+			info->player.x_bef = floor(info->player.x_pos);
+			info->player.y_bef = floor(info->player.y_pos);
+			info->player.x_save = floor(info->player.x_pos);
+			info->player.y_save = floor(info->player.y_pos);
+
+			if (floor(info->player.x_pos) == info->player.x_bef)
+				info->player.x_save = floor(info->player.x_pos);
+			else if (floor(info->player.x_pos) != info->player.x_bef)
 			{
-				if (info->player.x_dir < 0 && info->player.y_dir > 0)
-					while (info->player.y_pos >= 8.5)
-						info->player.y_pos += info->player.y_dir * info->player.move_speed;
-				else if (info->player.x_dir > 0 && info->player.y_dir < 0)
-					while (info->player.y_pos <= 8.5)
-						info->player.y_pos += info->player.y_dir * info->player.move_speed;
-			}*/
+				info->player.x_bef = info->player.x_save;
+				info->player.x_save = floor(info->player.x_pos);
+			}
+
+			info->player.y_save = floor(info->player.y_pos);
+			if (floor(info->player.y_pos) == info->player.y_bef)
+				info->player.y_save = floor(info->player.y_pos);
+			else if (floor(info->player.y_pos) != info->player.y_bef)
+			{
+				info->player.y_bef = info->player.y_save;
+				info->player.y_save = floor(info->player.y_pos);
+			}
+
+			if (floor(info->player.x_save) > info->player.x_bef){
+				info->player.x_lim = floor(info->player.x_pos) + 0.5;
+				while (info->player.x_pos > info->player.x_lim)
+					info->player.x_pos += info->player.x_dir * info->player.move_speed;
+			}
+			else if (floor(info->player.x_save) < info->player.x_bef){
+				info->player.x_lim = floor(info->player.x_pos) - 0.5;
+				while (info->player.x_pos < info->player.x_lim)
+					info->player.x_pos += info->player.x_dir * info->player.move_speed;
+			}
+			if (floor(info->player.y_save) > info->player.y_bef) {
+				info->player.y_lim = floor(info->player.y_pos) + 0.5;
+				while (info->player.y_pos > info->player.y_lim)
+					info->player.y_pos += info->player.y_dir * info->player.move_speed;
+			}
+			else if (floor(info->player.y_save) < info->player.y_bef) {
+				info->player.y_lim = floor(info->player.y_pos) - 0.5;
+				while (info->player.y_pos < info->player.y_lim)
+					info->player.y_pos += info->player.y_dir * info->player.move_speed;
+			}
 		}
 	}
 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
