@@ -343,7 +343,7 @@ void	move_plus_1(t_info *info)
 			// printf("y_pos = %f\n",info->player.y_pos);
 			// printf("x_dir = %f\n",info->player.x_dir);
 			// printf("y_dir = %f\n",info->player.y_dir);
-
+/*
 			if (floor(info->player.x_pos) == info->player.x_bef)
 				info->player.x_save = floor(info->player.x_pos);
 			else if (floor(info->player.x_pos) != info->player.x_bef)
@@ -380,7 +380,7 @@ void	move_plus_1(t_info *info)
 				info->player.y_lim = floor(info->player.y_pos) - 0.5;
 				while (info->player.y_pos < info->player.y_lim)
 					info->player.y_pos += info->player.y_dir * info->player.move_speed;
-			}
+			}*/
 
 			// printf("////////////// x_pos CALC = %f\n",info->player.x_lim);
 		}
@@ -434,7 +434,7 @@ void	move_plus_1(t_info *info)
 			// printf("y_pos = %f\n",info->player.y_pos);
 			// printf("x_dir = %f\n",info->player.x_dir);
 			// printf("y_dir = %f\n",info->player.y_dir);
-
+/*
 			if (floor(info->player.x_pos) == info->player.x_bef)
 				info->player.x_save = floor(info->player.x_pos);
 			else if (floor(info->player.x_pos) != info->player.x_bef)
@@ -471,7 +471,7 @@ void	move_plus_1(t_info *info)
 				info->player.y_lim = floor(info->player.y_pos) - 0.5;
 				while (info->player.y_pos < info->player.y_lim)
 					info->player.y_pos += info->player.y_dir * info->player.move_speed;
-			}
+			}*/
 		}
 	}
 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
