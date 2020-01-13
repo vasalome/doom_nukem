@@ -455,4 +455,7 @@ void				draw_skybox(t_info *info);
 
 void				move_doors(t_info *info);
 void				open_doors(t_info *info);
+
+void				init_clip(t_info *info);
+
 #endif

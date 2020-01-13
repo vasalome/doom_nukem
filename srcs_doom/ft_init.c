@@ -144,6 +144,7 @@ void	init(t_info *info)
 	load_textures(info);
 	init_map(info);
 	init_player(info);
+	init_clip(info);
 	init_doors(info);
 	init_music(info);
 	icon(info);
