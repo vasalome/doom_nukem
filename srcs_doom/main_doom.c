@@ -64,6 +64,9 @@ int		main(int argc, char **argv)
 	info.door = 0;
 	init(&info);
     info.game = 0;
+    info.xOffsetMenu = 0;
+    info.yOffsetMenu = 0;
+    info.zoom = 1;
     info.fps.rect.x = 0;
 	info.fps.rect.y = -200;
 	info.fps.rect.w = WIDTH;
@@ -184,35 +187,85 @@ int		main(int argc, char **argv)
                         info.player.turn_rate_y = event.motion.yrel * 0.002;
                         SDL_WarpMouseInWindow(info.win.win, info.win.w/2, info.win.h/2);
                     }
+                    else if(info.game == 3)
+                    {
+                        info.xrel = event.motion.xrel;
+                        info.yrel = event.motion.yrel;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    
                 }
             case SDL_MOUSEBUTTONDOWN:
                 {
                     switch (event.button.button)
                     {
                         case SDL_BUTTON_LEFT:
-                            if (info.button == 0 && info.game != 2)
+                            if (info.button == 0 && info.game != 2 && info.game != 3)
                             {
                                 info.game = 1;
                                 SDL_ShowCursor(SDL_DISABLE);
                                 SDL_WarpMouseInWindow(info.win.win, info.win.w/2, info.win.h/2);
+                            }
+                            else if (info.button == 1 && info.game != 2)
+                            {
+                                info.game = 3;
                             }
                             break;
                         case SDL_BUTTON_RIGHT:
                             printf("CLICK RIGHT\n");
                             break;
                         case SDL_BUTTON_MIDDLE:
-                            printf("CLICK MIDDLE\n");
+                            info.xOffsetMenu += info.xrel;
+                            info.yOffsetMenu += info.yrel;
+                            printf("xrel = %f\nyrel = %f\n\n", info.xOffsetMenu, info.yOffsetMenu);
                             break;
                     }
+                    break;
+                }
+             case SDL_MOUSEBUTTONUP:
+                {
+                    switch (event.button.button)
+                    {
+                        /*case SDL_BUTTON_WHEELUP:
+                            if (info.game == 3)
+                            {
+                                info.zoom += 0.1;
+                            }
+                            break;
+                        case SDL_BUTTON_WHEELDOWN:
+                            if (info.game == 3)
+                            {
+                                info.zoom -= 0.1;
+                            }
+                            break;*/
+                    }
+                    break;
                 }
             case SDL_MOUSEWHEEL:
                 {
-                    if (event.wheel.y > 0);
-                        //printf("CLICK WHEELUP\n");
+                    if (info.game == 3)
+                    {
+                        if (event.wheel.y > 0)
+                        {
+                            if (info.zoom < 3)
+                                info.zoom += 0.1;
+                        }
+                        else if (event.wheel.y < 0)
+                        {
+                            if (info.zoom > 0.2)
+                                info.zoom -= 0.1;
+                        }
+                    }
+                    /*if (event.wheel.y > 0)
+                        printf("CLICK WHEELUP\n");
                     //printf("event.wheel.y 111111-> %d\n", event.wheel.y);
-                    if (event.wheel.y < 0);
-                        //printf("CLICK WHEELDOWN\n");
+                    if (event.wheel.y < 0)
+                        printf("CLICK WHEELDOWN\n");*/
                     //printf("event.wheel.y 222222-> %d\n", event.wheel.y);
+                    break;
                 }
         } // end switch
     } // end of message processing
@@ -227,10 +280,17 @@ int		main(int argc, char **argv)
         
             SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
         }
+        else if (info.game == 3)
+        {
+            menu(&info);
+            SDL_RenderClear(info.win.renderer);
+            SDL_RenderCopy(info.win.renderer, info.head[1].texture, NULL, &info.head[1].rect);
+        }
         else
         {    
             info.button = -1;
             menu(&info);
+            SDL_RenderClear(info.win.renderer);
             SDL_RenderCopy(info.win.renderer, info.head[0].texture, NULL, NULL);  
 
             SDL_RenderCopy(info.win.renderer, info.head[1].texture, NULL, &info.head[1].rect);
@@ -309,10 +369,10 @@ void    menu(t_info *info)
     info->head[i].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[i].img);
     SDL_QueryTexture(info->head[i].texture, NULL, NULL, &info->head[i].w, &info->head[i].h);
     
-    info->head[i].rect.x = (WIDTH / 4) * 3 - (info->head[i].w/ 1.5) / 2;
-    info->head[i].rect.y = 0;
-    info->head[i].rect.w = info->head[i].w / 1.5;
-    info->head[i].rect.h = info->head[i].h / 1.5;
+    info->head[i].rect.x = ((WIDTH / 4) * 3 - (info->head[i].w/ 1.5) / 2) + info->xOffsetMenu;
+    info->head[i].rect.y = 0 + info->yOffsetMenu;
+    info->head[i].rect.w = (info->head[i].w / 1.5) * info->zoom;
+    info->head[i].rect.h = (info->head[i].h / 1.5) * info->zoom;
 
     //button
     i = 2;

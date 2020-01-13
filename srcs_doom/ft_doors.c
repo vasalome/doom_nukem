@@ -33,6 +33,7 @@ void	move_doors(t_info *info)
 					{
 						info->map.door_offset[x][y] = 1;
 						info->map.door_state[x][y] = 2; // ma porte est ouverte
+						info->map.map[x][y].clip = 1;
 					}
 				}
 				else if (info->map.door_state[x][y] == 3) // en train de se fermer
@@ -42,6 +43,7 @@ void	move_doors(t_info *info)
 					{
 						info->map.door_offset[x][y] = 0;
 						info->map.door_state[x][y] = 0;
+						info->map.map[x][y].clip = 0;
 					}
 				}
 			}

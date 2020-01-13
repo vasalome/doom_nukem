@@ -309,7 +309,12 @@ typedef struct		s_info
 	int				door;
 	double			delta_time;
 	int				button;	
-	int				game;		
+	int				game;	
+	double			xOffsetMenu;
+	double			yOffsetMenu;
+	double			xrel;
+	double			yrel;
+	double			zoom;
 }					t_info;
 
 /*

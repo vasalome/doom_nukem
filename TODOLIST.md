@@ -16,9 +16,9 @@
 
 - [ ] Des éléments de décor peuvent être disposés sur les murs au dessus de la texture principale (tableaux, posters ... ).
 
-- [ ] Des objets/personnages peuvent être disposés dans l’univers, sous forme de sprite qui fait toujours face au joueur.
+- [X] Des objets/personnages peuvent être disposés dans l’univers, sous forme de sprite qui fait toujours face au joueur.
 
-- [ ] Des objets/personnages peuvent être disposés dans l’univers, sous forme de multiples sprites affichés selon l’orientation entre l’objet et le joueur (voir un personnage de dos puis de profil lorsqu’on tourne autour).
+- [X] Des objets/personnages peuvent être disposés dans l’univers, sous forme de multiples sprites affichés selon l’orientation entre l’objet et le joueur (voir un personnage de dos puis de profil lorsqu’on tourne autour).
 
 - [ ] Chaque espace ou zone dispose d’un réglage de la luminosité ambiante, affectant les murs comme les objets qui s’y trouvent.
 
