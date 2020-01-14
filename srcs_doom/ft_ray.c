@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 18:19:16 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/14 11:42:13 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,7 @@ void	intersectLine(t_inter *inter)
 
 void	ray_casting_init(t_info *info, int x)
 {
-	int angleSide = 0;
+	//int angleSide = 0;
 	info->player.x_camera = 2 * x / (double)(info->win.w) - 1;
 	info->ray.x_ray_position = info->player.x_pos;
 	info->ray.y_ray_position = info->player.y_pos;

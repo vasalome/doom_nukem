@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:33:41 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/13 22:05:09 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/14 14:23:27 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ void	init_clip(t_info *info) {
 
 void	bef_save(t_info *info)
 {
-	printf("wall x = %d\n",info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall);
+	/*printf("wall x = %d\n",info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall);
 	printf("wall y = %d\n",info->map.map[(int)(info->player.y_pos + info->player.y_dir * info->player.move_speed)][(int)(info->player.x_pos)].wall);
 	printf("x_pos = %f\n",info->player.x_pos);
 	printf("y_pos = %f\n",info->player.y_pos);
@@ -35,7 +35,7 @@ void	bef_save(t_info *info)
 	printf("x_bef = %f\n",info->player.x_bef);
 	printf("y_bef = %f\n",info->player.y_bef);
 	printf("x_lim = %f\n",info->player.x_lim);
-	printf("y_lim = %f\n = = = = = = = = = \n",info->player.y_lim);
+	printf("y_lim = %f\n = = = = = = = = = \n",info->player.y_lim);*/
 
 	if (info->player.x_save == info->player.x_bef)
 		info->player.x_save = floor(info->player.x_pos);
@@ -52,7 +52,7 @@ void	bef_save(t_info *info)
 		info->player.y_bef = info->player.y_save;
 		info->player.y_save = floor(info->player.y_pos);
 	}
-
+/*
 	printf("- x_pos = %f\n",info->player.x_pos);
 	printf("- y_pos = %f\n",info->player.y_pos);
 	printf("- x_save = %f\n",info->player.x_save);
@@ -60,7 +60,7 @@ void	bef_save(t_info *info)
 	printf("- x_bef = %f\n",info->player.x_bef);
 	printf("- y_bef = %f\n",info->player.y_bef);
 	printf("- x_lim = %f\n",info->player.x_lim);
-	printf("- y_lim = %f\n\n",info->player.y_lim);
+	printf("- y_lim = %f\n\n",info->player.y_lim);*/
 }
 
 /*

@@ -6,13 +6,13 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:40:07 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/20 21:17:34 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/14 11:35:34 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
-
+/*
 void	fill_map_plus(t_fillmap *fill, t_info *info)
 {
 	if (fill->line[fill->i] == '0' || fill->line[fill->i] == '1'
@@ -23,7 +23,7 @@ void	fill_map_plus(t_fillmap *fill, t_info *info)
 		info->use = fill->line[fill->i];
 	if (fill->line[fill->i] == '3');
 		//tp_destination(fill, info, fill->line, &fill->i);
-}
+}*/
 
 int		request_value(t_fillmap *fill, int x)
 {
