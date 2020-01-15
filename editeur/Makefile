@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/15 17:30:31 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/15 17:34:23 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -97,14 +97,8 @@ libft.a:
 	@make -C ./libft/
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(SDL) $(INC_SDL) $(LDLIBS) $^ -o $@
+	@$(CC) $(CFLAGS) $(SDL) $(INC_SDL) libft/libft.a $^ -o $@
 	@printf "\n$(BLUE)> $@ : $(GREEN)Success !$(END)\n\n"
-
-#dl:
-#	brew update && brew reinstall sdl2 sdl2_image
-#	cp -R ~/.brew/Cellar/sdl2 ./
-#	cp -R ~/.brew/Cellar/sdl2_image ./ 
-#	cp sdl/SDL_image.h sdl2_image/2.0.5/include/SDL2/SDL_image.h
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 	@mkdir -p $(OBJ_PATH)
@@ -120,10 +114,9 @@ clean:
 fclean: clean
 	@make -C libft fclean
 	@rm -rf $(NAME)
-	@rm -rf sdl2 sdl2_image
 	@printf "$(BLUE)> Deleted : $(RED)$(NAME)$(END)\n"
 
-re: fclean sdl all
+re: fclean all
 
 norme:
 	norminette $(SRC_PATH) $(INC_PATH)
