@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 15:59:40 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/15 15:29:57 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -89,6 +89,35 @@ void		make_map(t_env *v)
 	}
 }
 
+void		background_menu(t_env *v)
+{
+	int		i;
+	int		j;
+
+	SDL_SetRenderTarget(v->ren, v->back);
+	j = -1;
+	while (++j < HEIGHT)
+	{
+		i = WIDTH - 30 * 7 + 1;
+		while (++i < WIDTH)
+			pixel_put(v, i, j, make_rgb(204, 203, 205, 255));
+	}
+	while (++j < HEIGHT && !(j = -1))
+	{
+		i = -1;
+		while (++i < WIDTH - 30 * 7)
+			pixel_put(v, i, j, make_rgb(204, 203, 205, 255));
+	}
+	j = -1;
+	while (++j < HEIGHT)
+	{
+		i = -1;
+		while (++i < WIDTH - 30 * 7)
+			pixel_put(v, i, j, make_rgb(191, 190, 193, 255));
+	}
+	SDL_SetRenderTarget(v->ren, NULL);
+}
+
 int			main(int argc, char **argv)
 {
 	t_env	*v;
@@ -103,6 +132,7 @@ int			main(int argc, char **argv)
 	make_map(v);
 	init(v);
 	//editeur_setup(env);
+	background_menu(v);
 	display(v);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/13 09:21:19 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/15 17:30:31 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -43,9 +43,18 @@ CPPFLAGS = -I $(INC_PATH)
 LDFLAGS = -O3 -lpthread -L libft
 LDLIBS = -lft
 
+PWD := $(shell pwd)
 #	SDL
-SDL = -lft -F /Library/Frameworks/ -L sdl2/2.0.10/lib/ -lSDL2 -L sdl2_image/2.0.5/lib/ -lSDL2_image
-PATH_TO_SDL = ./
+#SDL = -lft -F /Library/Frameworks/ -L sdl2/2.0.10/lib/ -lSDL2 -L sdl2_image/2.0.5/lib/ -lSDL2_image
+#PATH_TO_SDL = ./
+INC_SDL		=	-I ../frameworks/SDL2.framework/Versions/A/Headers
+INC_SDL		+=	-I ../frameworks/SDL2_ttf.framework/Versions/A/Headers
+INC_SDL		+=	-I ../frameworks/SDL2_image.framework/Versions/A/Headers
+INC_SDL		+=	-I ../frameworks/SDL2_mixer.framework/Headers
+INC_SDL		+=	-I ../frameworks/SDL2_net.framework/Headers
+INC_SDL		+=	-F ../frameworks
+FRAMEWORKSDIR := ../frameworks
+SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_ttf -framework SDL2_image -framework SDL2_mixer -rpath $(FRAMEWORKSDIR)
 
 #	Compiler
 CC = clang
@@ -78,32 +87,29 @@ SUR=$ \x1b[7m
 # $^ -> représente tout ce qui est apres le :
 # $< -> nom de la dependance
 
-	#@[ -d sdl2 ] && echo "SDL2 exist" || echo "SDL2 does not exist"
-	#@[ -d sdl2_image ] && echo "SDL2_image exist" || echo "SDL2_image does not exist"
-
 # empêche le Makefile de confondre un fichier et une règle en cas de même nom
 .PHONY: all clean fclean re sdl
 
 all: libft.a $(NAME)
 	@printf "$(BLUE)> $(NAME) : $(YELLOW)Project ready !$(END)\n"
 
-$(NAME): $(OBJ)
-	@$(CC) $(LDFLAGS) $(SDL) $(LDLIBS) $^ -o $@
-	@printf "\n$(BLUE)> $@ : $(GREEN)Success !$(END)\n\n"
-
 libft.a:
 	@make -C ./libft/
 
-sdl:
-	brew update && brew reinstall sdl2 sdl2_image
-	cp -R ~/.brew/Cellar/sdl2 ./
-	cp -R ~/.brew/Cellar/sdl2_image ./ 
-	cp sdl/SDL_image.h sdl2_image/2.0.5/include/SDL2/SDL_image.h
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) $(SDL) $(INC_SDL) $(LDLIBS) $^ -o $@
+	@printf "\n$(BLUE)> $@ : $(GREEN)Success !$(END)\n\n"
+
+#dl:
+#	brew update && brew reinstall sdl2 sdl2_image
+#	cp -R ~/.brew/Cellar/sdl2 ./
+#	cp -R ~/.brew/Cellar/sdl2_image ./ 
+#	cp sdl/SDL_image.h sdl2_image/2.0.5/include/SDL2/SDL_image.h
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 	@mkdir -p $(OBJ_PATH)
 	@mkdir -p $(OBJ_PATH)/$(SRC_SUP)
-	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) -o $@ -c $<
 	@printf "\r$(YELLOW)$(BOLD)[COMPILE] $(END) $(<:.c=)..."
 
 clean:

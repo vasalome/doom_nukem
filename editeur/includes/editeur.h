@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 15:59:13 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/15 17:22:02 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,13 +20,16 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <pthread.h>
-# include "../sdl2/2.0.10/include/SDL2/SDL.h"
-# include "../sdl2/2.0.10/include/SDL2/SDL_surface.h"
-# include "../sdl2/2.0.10/include/SDL2/SDL_video.h"
-# include "../sdl2/2.0.10/include/SDL2/SDL_render.h"
-# include "../sdl2/2.0.10/include/SDL2/SDL_pixels.h"
-# include "../sdl2/2.0.10/include/SDL2/SDL_events.h"
-# include "../sdl2_image/2.0.5/include/SDL2/SDL_image.h"
+# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL.h"
+# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_surface.h"
+# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_video.h"
+# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_render.h"
+# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_pixels.h"
+# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_events.h"
+# include "../../frameworks/SDL2_ttf.framework/Versions/A/Headers/SDL_ttf.h"
+# include "../../frameworks/SDL2_image.framework/Versions/A/Headers/SDL_image.h"
+# include "../../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
+# include "../../frameworks/SDL2_net.framework/Headers/SDL_net.h"
 
 # define WIDTH 1200
 # define HEIGHT 900
@@ -96,6 +99,7 @@ typedef struct		s_env
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
 	SDL_Event		e;
+	SDL_Texture		*back;
 	t_draw_circle	center;
 	//t_lst			*point;
 	t_map			**tab;
