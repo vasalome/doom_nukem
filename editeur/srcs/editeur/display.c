@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/15 17:04:43 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/15 18:30:48 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,26 +51,32 @@ void			make_quadrillage(t_env *v, SDL_Event event)
 	}
 }
 
-void			make_menu()
+void			make_menu(t_env *v)
 {
-	
+	TTF_Font	*police;
+	SDL_Color	black = {0, 0, 0};
+	SDL_Color	white = {0, 0, 0};
+	SDL_Surface	*sur;
+
+	police = NULL;
+	police = TTF_OpenFont("polices/hack_regular.ttf", 16);
+	//if (!police)
+	//	ft_error("Police error");
+	if (!police)
+	{
+    	printf("TTF_OpenFont: %s\n", TTF_GetError());
+		exit(0);
+	}
+	sur = TTF_RenderText_Shaded(police, "Coucou", black, white);
+	v->text = SDL_CreateTextureFromSurface(v->ren, sur);
+	TTF_CloseFont(police);
+	TTF_Quit();
 }
 
 void			draw_pro_frame(t_env *v, SDL_Event event)
 {
-	// t_lst		*elem;
-
-	// elem = v->point;
-	make_menu();
+	make_menu(v);
 	make_quadrillage(v, event);
-	// while (elem != NULL)
-	// {
-	// 	if (elem->over == 1)
-	// 		draw_full_circle(v, elem->center_x, elem->center_y, make_rgb(102, 204, 255, 255));
-	// 	else
-	// 		draw_full_circle(v, elem->center_x, elem->center_y, make_rgb(204, 255, 255, 255));
-	// 	elem = elem->next;
-	// }
 }
 
 void			display(t_env *v)
@@ -94,8 +100,10 @@ void			display(t_env *v)
 			break ;
 		draw_pro_frame(v, event);
 		SDL_RenderCopy(v->ren, v->back, NULL, NULL);
+		SDL_RenderCopy(v->ren, v->text, NULL, NULL);
 		SDL_RenderPresent(v->ren);
 	}
+	TTF_Quit();
 	SDL_DestroyRenderer(v->ren);
 	SDL_DestroyWindow(v->win);
 	SDL_Quit();

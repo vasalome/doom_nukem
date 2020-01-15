@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/15 15:29:57 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/15 17:37:47 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,50 +22,13 @@ void		init(t_env *env)
 		ft_error("Could not create the window");
 	if (!(env->ren = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_SOFTWARE)))
 		ft_error("Could not create a renderer");
+	if (TTF_Init() == -1)
+		ft_error("Initialisation error of TFT_Init");
 }
 
 // void			editeur_setup(t_env *v)
 // {
 	
-// }
-
-// static t_lst	*ft_lst_new(int x, int y)
-// {
-// 	t_lst		*elem;
-
-// 	if (!(elem = (t_lst *)malloc(sizeof(t_lst))))
-// 		return (NULL);
-// 	elem->center_x = x;
-// 	elem->center_y = y;
-// 	elem->etat = 1;
-// 	elem->select = 0;
-// 	elem->seg = 0;
-// 	elem->next = NULL;
-// 	return (elem);
-// }
-
-// void			new_elem_lst(t_lst **elem, int x, int y)
-// {
-// 	t_lst		*new;
-// 	t_lst		*tmp;
-
-// 	new = ft_lst_new(x, y);
-// 	if (*elem == NULL)
-// 		*elem = new;
-// 	else
-// 	{
-// 		tmp = *elem;
-// 		while (tmp->next)
-// 			tmp = tmp->next;
-// 		tmp->next = new;
-// 	}
-// }
-
-// void			lstdel(t_lst *lst)
-// {
-// 	if (lst->next)
-// 		lstdel(lst->next);
-// 	free(lst);
 // }
 
 void		make_map(t_env *v)
@@ -128,7 +91,6 @@ int			main(int argc, char **argv)
 		return (0);
 	//if (argc != 2 || (fd = open(argv[1], O_RDONLY)) < 0)
 	//	return (0);
-	//v->point = NULL;
 	make_map(v);
 	init(v);
 	//editeur_setup(env);

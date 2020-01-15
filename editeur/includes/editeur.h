@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/15 17:22:02 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/15 18:25:34 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,17 +77,6 @@ typedef struct	s_bressen
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
 
-// typedef struct		s_lst
-// {
-// 	int				center_x;
-// 	int				center_y;
-// 	int				over;
-// 	int				etat;
-// 	int				select;
-// 	int				seg;
-// 	struct s_lst	*next;
-// }					t_lst;
-
 typedef struct		s_map
 {
 	int				case_x;
@@ -100,8 +89,8 @@ typedef struct		s_env
 	SDL_Renderer	*ren;
 	SDL_Event		e;
 	SDL_Texture		*back;
+	SDL_Texture		*text;
 	t_draw_circle	center;
-	//t_lst			*point;
 	t_map			**tab;
 }					t_env;
 
@@ -129,7 +118,6 @@ void			draw_full_circle(t_env *v, int x, int y, t_rgb color);
 /*
 ** --main--
 */
-//void			new_elem_lst(t_lst **elem, int x, int y);
 void			display(t_env *v);
 
 #endif
