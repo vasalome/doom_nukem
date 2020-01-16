@@ -285,6 +285,7 @@ int		main(int argc, char **argv)
             menu(&info);
             SDL_RenderClear(info.win.renderer);
             SDL_RenderCopy(info.win.renderer, info.head[1].texture, NULL, &info.head[1].rect);
+            SDL_RenderCopy(info.win.renderer, info.head[2].texture, NULL, &info.head[2].rect);
         }
         else
         {    
@@ -339,10 +340,10 @@ void    loadButton(t_info *info, int i)
     info->head[i].texture = SDL_CreateTextureFromSurface(info->win.renderer, info->head[2].img);
     SDL_QueryTexture(info->head[i].texture, NULL, NULL, &info->head[i].w, &info->head[i].h);
     
-    info->head[i].rect.x = (WIDTH / 4) * 3 - (info->head[i].w/ 1.5) / 2;
-    info->head[i].rect.y = info->head[1].h / 1.4  + ((info->head[i].h / 5 + 10) * (i - 2));
-    info->head[i].rect.w = info->head[i].w / 1.5;
-    info->head[i].rect.h = info->head[i].h / 5; 
+    info->head[i].rect.x = ((WIDTH / 4) * 3 - (info->head[i].w/ 1.5) / 2) + info->xOffsetMenu;
+    info->head[i].rect.y = (info->head[1].h / 1.4  + ((info->head[i].h / 5 + 10) * (i - 2))) + info->yOffsetMenu;
+    info->head[i].rect.w = (info->head[i].w / 1.5) * info->zoom;
+    info->head[i].rect.h = (info->head[i].h / 5) * info->zoom; 
     
     if (x > info->head[i].rect.x && x < (info->head[i].rect.x + info->head[i].rect.w))
     {
