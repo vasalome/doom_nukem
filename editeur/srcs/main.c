@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/15 17:37:47 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/16 14:23:54 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,8 +22,6 @@ void		init(t_env *env)
 		ft_error("Could not create the window");
 	if (!(env->ren = SDL_CreateRenderer(env->win, -1, SDL_RENDERER_SOFTWARE)))
 		ft_error("Could not create a renderer");
-	if (TTF_Init() == -1)
-		ft_error("Initialisation error of TFT_Init");
 }
 
 // void			editeur_setup(t_env *v)

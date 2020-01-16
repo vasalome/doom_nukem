@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/15 17:34:23 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/16 14:26:31 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -54,7 +54,7 @@ INC_SDL		+=	-I ../frameworks/SDL2_mixer.framework/Headers
 INC_SDL		+=	-I ../frameworks/SDL2_net.framework/Headers
 INC_SDL		+=	-F ../frameworks
 FRAMEWORKSDIR := ../frameworks
-SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_ttf -framework SDL2_image -framework SDL2_mixer -rpath $(FRAMEWORKSDIR)
+SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -framework SDL2_mixer -rpath $(FRAMEWORKSDIR)
 
 #	Compiler
 CC = clang

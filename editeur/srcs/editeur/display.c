@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/15 18:30:48 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/16 14:50:06 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,21 +54,19 @@ void			make_quadrillage(t_env *v, SDL_Event event)
 void			make_menu(t_env *v)
 {
 	TTF_Font	*police;
-	SDL_Color	black = {0, 0, 0};
-	SDL_Color	white = {0, 0, 0};
+	SDL_Color	fond = {204, 203, 205, 255};
+	SDL_Color	police_color = {0, 0, 0, 255};
 	SDL_Surface	*sur;
 
+	if (TTF_Init() == -1)
+		ft_error("Initialisation error of TFT_Init");
 	police = NULL;
-	police = TTF_OpenFont("polices/hack_regular.ttf", 16);
-	//if (!police)
-	//	ft_error("Police error");
+	police = TTF_OpenFont("/srcs/editeur/h.ttf", 20);
 	if (!police)
-	{
-    	printf("TTF_OpenFont: %s\n", TTF_GetError());
-		exit(0);
-	}
-	sur = TTF_RenderText_Shaded(police, "Coucou", black, white);
+		ft_error("Police error");
+	sur = TTF_RenderText_Shaded(police, "Formes", police_color, fond);
 	v->text = SDL_CreateTextureFromSurface(v->ren, sur);
+	SDL_FreeSurface(sur);
 	TTF_CloseFont(police);
 	TTF_Quit();
 }
@@ -83,6 +81,9 @@ void			display(t_env *v)
 {
 	SDL_Event	event;
 	const Uint8	*keyboard_state;
+	SDL_Rect position;
+	position.x = WIDTH - 30 * 6;
+	position.y = 30;
 
 	while (1)
 	{
@@ -100,10 +101,10 @@ void			display(t_env *v)
 			break ;
 		draw_pro_frame(v, event);
 		SDL_RenderCopy(v->ren, v->back, NULL, NULL);
-		SDL_RenderCopy(v->ren, v->text, NULL, NULL);
+		SDL_QueryTexture(v->text, NULL, NULL, &position.w, &position.h);
+		SDL_RenderCopy(v->ren, v->text, NULL, &position);
 		SDL_RenderPresent(v->ren);
 	}
-	TTF_Quit();
 	SDL_DestroyRenderer(v->ren);
 	SDL_DestroyWindow(v->win);
 	SDL_Quit();
