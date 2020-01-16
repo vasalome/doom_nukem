@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/16 14:50:06 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/16 17:58:07 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,9 +36,9 @@ void			make_quadrillage(t_env *v, SDL_Event event)
 			while (++k <= CASES)
 			{
 				if (i < (WIDTH - 30 * 7) / CASES)
-					pixel_put(v, i * CASES + k, j * CASES, make_rgb(63, 62, 65, 200));
+					pixel_put(v, i * CASES + k, j * CASES, make_rgb(63, 62, 65, 100));
 				if (j < HEIGHT / CASES)
-					pixel_put(v, i * CASES, j * CASES + k, make_rgb(63, 62, 65, 200));
+					pixel_put(v, i * CASES, j * CASES + k, make_rgb(63, 62, 65, 100));
 			}
 			if (event.motion.x > 0 && event.motion.x < WIDTH - 30 * 7 && event.motion.y > 0 && event.motion.y < HEIGHT)
 			{
@@ -51,12 +51,11 @@ void			make_quadrillage(t_env *v, SDL_Event event)
 	}
 }
 
-void			make_menu(t_env *v)
+SDL_Texture		*write_text(t_env *v, char *text, SDL_Color fond, SDL_Color police_color)
 {
 	TTF_Font	*police;
-	SDL_Color	fond = {204, 203, 205, 255};
-	SDL_Color	police_color = {0, 0, 0, 255};
 	SDL_Surface	*sur;
+	SDL_Texture	*texture;
 
 	if (TTF_Init() == -1)
 		ft_error("Initialisation error of TFT_Init");
@@ -64,26 +63,70 @@ void			make_menu(t_env *v)
 	police = TTF_OpenFont("/srcs/editeur/h.ttf", 20);
 	if (!police)
 		ft_error("Police error");
-	sur = TTF_RenderText_Shaded(police, "Formes", police_color, fond);
-	v->text = SDL_CreateTextureFromSurface(v->ren, sur);
+	sur = TTF_RenderText_Shaded(police, text, police_color, fond);
+	texture = SDL_CreateTextureFromSurface(v->ren, sur);
 	SDL_FreeSurface(sur);
 	TTF_CloseFont(police);
 	TTF_Quit();
+	return (texture);
+}
+
+void			make_text(t_env *v, SDL_Texture *tex, int x, int y)
+{
+	SDL_Rect	pos;
+
+	pos.x = WIDTH - 30 * 6;
+	pos.y = 30;
+	SDL_QueryTexture(tex, NULL, NULL, &pos.w, &pos.h);
+	SDL_RenderCopy(v->ren, tex, NULL, &pos);
+}
+
+void			make_form_cube(t_env *v)
+{
+	int			i;
+	int			j;
+
+	j = 65;
+	while (++j < 68)
+	{
+		i = WIDTH - 30 * 6 + 5;
+		while (++i < WIDTH - 30 * 5 - 5)
+			pixel_put(v, i, j, make_rgb(0, 0, 153, 255));
+	}
+	j = 84;
+	while (++j < 87)
+	{
+		i = WIDTH - 30 * 6 + 5;
+		while (++i < WIDTH - 30 * 5 - 5)
+			pixel_put(v, i, j, make_rgb(0, 0, 153, 255));
+	}
+	i = WIDTH - 30 * 6 + 5;
+	while (++i < WIDTH - 30 * 6 + 8)
+	{
+		j = 65;
+		while (++j < 85)
+			pixel_put(v, i, j, make_rgb(0, 0, 153, 255));
+	}
+	i = WIDTH - 30 * 5 - 8;
+	while (++i < WIDTH - 30 * 5 - 5)
+	{
+		j = 65;
+		while (++j < 85)
+			pixel_put(v, i, j, make_rgb(0, 0, 153, 255));
+	}
 }
 
 void			draw_pro_frame(t_env *v, SDL_Event event)
 {
-	make_menu(v);
 	make_quadrillage(v, event);
+	make_text(v, write_text(v, "Forme", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}), WIDTH - 30 * 6, 30);
+	make_form_cube(v);
 }
 
 void			display(t_env *v)
 {
 	SDL_Event	event;
 	const Uint8	*keyboard_state;
-	SDL_Rect position;
-	position.x = WIDTH - 30 * 6;
-	position.y = 30;
 
 	while (1)
 	{
@@ -101,8 +144,6 @@ void			display(t_env *v)
 			break ;
 		draw_pro_frame(v, event);
 		SDL_RenderCopy(v->ren, v->back, NULL, NULL);
-		SDL_QueryTexture(v->text, NULL, NULL, &position.w, &position.h);
-		SDL_RenderCopy(v->ren, v->text, NULL, &position);
 		SDL_RenderPresent(v->ren);
 	}
 	SDL_DestroyRenderer(v->ren);
