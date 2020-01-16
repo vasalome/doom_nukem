@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 12:30:46 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/14 11:33:43 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +47,7 @@ int		main(int argc, char **argv)
     
   // SDL_Event evenements = {0};
     info.frame = 0;
-    SDL_TimerID timer;
+    //SDL_TimerID timer;
 	clock_t		start;
 	clock_t		end;
     //timer = SDL_AddTimer(1000, frameDisplay, (t_info*)&info); /* Démarrage du timer */

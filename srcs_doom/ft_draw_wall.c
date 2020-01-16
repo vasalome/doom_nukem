@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 15:20:31 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/14 11:42:11 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,14 +44,15 @@ Uint32 getpixel(SDL_Surface *surface, int x, int y)
 				return 0;       /* shouldn't happen, but avoids warnings */
     }
 }
-
+/*
 int		threadAnim(void*	data)
 {
 	t_info *info = data;
 
+
 	return (0);
 }
-
+*/
 //calc sol plafond
 void	calc_floor_ceil(t_info *info, int idtext)
 {
