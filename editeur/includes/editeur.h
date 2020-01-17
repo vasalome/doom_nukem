@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/15 18:25:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/17 17:02:47 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,6 +81,7 @@ typedef struct		s_map
 {
 	int				case_x;
 	int				case_y;
+	int				form;
 }					t_map;
 
 typedef struct		s_env
@@ -92,6 +93,7 @@ typedef struct		s_env
 	SDL_Texture		*text;
 	t_draw_circle	center;
 	t_map			**tab;
+	int				form;
 }					t_env;
 
 /*
@@ -114,6 +116,7 @@ t_rgb			make_rgb(int r, int g, int b, int a);
 void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
 void			draw_void_circle(t_env *v, int x, int y, t_rgb color);
 void			draw_full_circle(t_env *v, int x, int y, t_rgb color);
+void			make_form_cube(t_env *v, int start_x, int start_y, int square);
 
 /*
 ** --main--
