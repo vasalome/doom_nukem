@@ -334,29 +334,6 @@ int		ray_casting(t_info *info)
 		draw_wall(info->wall.x, info->wall.draw_start - 1,\
 				info->wall.draw_end, info);
 	}
-
-	/*info->wall.x = -1;
-	while (++info->wall.x < info->win.w)
-	{
-		info->min = -1;
-		
-		ray_casting_init(info, info->wall.x);
-			
-		info->wall.line_height = (int)(info->win.h / info->wall.wall_distance);
-		info->wall.draw_end = info->win.h / 2 + info->wall.line_height / 2 ;
-		if (info->wall.draw_end >= info->win.h)\
-			info->wall.draw_end = info->win.h - 1;
-		info->wall.draw_start = info->win.h / 2 - (info->wall.line_height / 2);
-		if (info->wall.draw_start < 0)
-			info->wall.draw_start = 0;
-		
-		texture_calc(info);
-		
-		//printf("asdfghjkl        %f\n", info->wall.wall_x);
-		
-		draw_wall(info->wall.x, info->wall.draw_start - 1,\
-				info->wall.draw_end, info);
-	}*/
 	
 	return (0);
 }
@@ -412,17 +389,8 @@ void	hud(t_info *info)
 			info->i++;
 		else
 			info->i = 0;
-	//mlx_put_image_to_window(info->win.mlx, info->win.win,\
-	//	info->head[info->player.life - 1].img, 0, 0);
-	//mlx_put_image_to_window(info->win.mlx, info->win.win,\
-	//	info->wp[info->w_i].img, info->win.w / 2 - \
-	//	info->wp[info->w_i].img->w / 2 - 4 + (rand() % 8),\
-	//	info->win.h - info->wp[info->w_i].img->h);
-	//mlx_put_image_to_window(info->win.mlx, info->win.win, \
-	//info->wp[info->w_i].icon, 5, 315);
 	//SDL_UpdateWindowSurface(info->win.win);
 	//SDL_Delay(2000);
-	//mlx_destroy_image(info->win.mlx, info->fps.img);
 }
 
 void	its_a_trap(t_info *info)
@@ -436,10 +404,6 @@ void	its_a_trap(t_info *info)
 			//flash(info);
 		}
 		/* OOF image */
-
-		//mlx_put_image_to_window(info->win.mlx, info->win.win,\
-		//info->wp[10].img, info->win.w / 2 - info->wp[10].img->w\
-		//2, info->win.h / 2 - info->wp[10].img->h / 2);
 	}
 	else
 		info->player.can_trap = 1;
@@ -452,15 +416,12 @@ void	ray_casting_image(t_info *info)
 		create_img(info);
 		
 		ray_casting(info);
-		
-		//printf("x=%d y=%d\n\n", info->map.x, info->map.y);
-		//fflush(stdout);
-		draw_skybox(info);
+
+		//move_doors(info);
+		//draw_skybox(info);
 		
 		/* Main frame */
 
-		//mlx_put_image_to_window(info->win.mlx, info->win.win,\
-		//info->fps.img, 0, 0);
 		if (info->map.map[(int)info->player.x_pos]\
 		[(int)info->player.y_pos].wall == 4 && info->action)
 		/* Victory image */
@@ -473,10 +434,7 @@ void	ray_casting_image(t_info *info)
 			info->head[3].rect.w = info->head[3].w;
 			info->head[3].rect.h = info->head[3].h;*/;
 		}
-			//mlx_put_image_to_window(info->win.mlx, info->win.win,\
-			//info->wp[7].img, info->win.w / 2 - info->wp[7].img->w / 2,\
-			//info->win.h / 2 - info->wp[7].img->h / 2);
-		its_a_trap(info);
+		//its_a_trap(info);
 		//hud(info);
 
 	}

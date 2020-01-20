@@ -29,6 +29,7 @@ void	move_doors(t_info *info)
 				if (info->map.door_state[x][y] == 1) // Si ma porte est en train de s'ouvrir
 				{
 					info->map.door_offset[x][y] += info->delta_time / 100;
+					info->raycast = 1;
 					if (info->map.door_offset[x][y] > 1)
 					{
 						info->map.door_offset[x][y] = 1;
@@ -39,6 +40,7 @@ void	move_doors(t_info *info)
 				else if (info->map.door_state[x][y] == 3) // en train de se fermer
 				{
 					info->map.door_offset[x][y] -= info->delta_time / 100;
+					info->raycast = 1;
 					if (info->map.door_offset[x][y] < 0)
 					{
 						info->map.door_offset[x][y] = 0;

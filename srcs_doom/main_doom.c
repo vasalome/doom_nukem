@@ -83,7 +83,7 @@ int		main(int argc, char **argv)
 
     //SDL_SetWindowIcon(info.win.win, info.win.screen);
     //Mix_PlayMusic(info.music.sound, -1);
-    
+    menu(&info);
     while(!info.quit)
     {
         SDL_Event event;
@@ -180,22 +180,31 @@ int		main(int argc, char **argv)
                 {
                     if (info.game == 2)
                     {
+                        
                         SDL_ShowCursor(SDL_DISABLE);
                         info.player.turn_right = 1;
                         info.player.turn_left = 1;
                         info.player.turn_rate = -event.motion.xrel * 0.002;
                         info.player.turn_rate_y = event.motion.yrel * 0.002;
                         SDL_WarpMouseInWindow(info.win.win, info.win.w/2, info.win.h/2);
+                        info.raycast = 1;
                     }
                     else if(info.game == 3)
                     {
                         info.xrel = event.motion.xrel;
                         info.yrel = event.motion.yrel;
+                        break;
                     }
                     else
                     {
+                        int i = 2;
+                        while (i <= 5)
+                        {
+                            loadButton(&info, i);
+                            i++;
+                        }
                         break;
-                    }
+                    }                 
                     
                 }
             case SDL_MOUSEBUTTONDOWN:
@@ -203,6 +212,7 @@ int		main(int argc, char **argv)
                     switch (event.button.button)
                     {
                         case SDL_BUTTON_LEFT:
+                        {
                             if (info.button == 0 && info.game != 2 && info.game != 3)
                             {
                                 info.game = 1;
@@ -213,21 +223,30 @@ int		main(int argc, char **argv)
                             {
                                 info.game = 3;
                             }
+                            else
+                            {
+                                
+                            }
                             break;
+                        }
                         case SDL_BUTTON_RIGHT:
+                        {
                             printf("CLICK RIGHT\n");
                             break;
+                        }
                         case SDL_BUTTON_MIDDLE:
+                        {
                             info.xOffsetMenu += info.xrel;
                             info.yOffsetMenu += info.yrel;
                             printf("xrel = %f\nyrel = %f\n\n", info.xOffsetMenu, info.yOffsetMenu);
                             break;
+                        }
                     }
                     break;
                 }
-             case SDL_MOUSEBUTTONUP:
+            case SDL_MOUSEBUTTONUP:
                 {
-                    switch (event.button.button)
+                    /*switch (event.button.button)
                     {
                         /*case SDL_BUTTON_WHEELUP:
                             if (info.game == 3)
@@ -240,8 +259,8 @@ int		main(int argc, char **argv)
                             {
                                 info.zoom -= 0.1;
                             }
-                            break;*/
-                    }
+                            break;
+                    }*/
                     break;
                 }
             case SDL_MOUSEWHEEL:
@@ -282,18 +301,20 @@ int		main(int argc, char **argv)
         }
         else if (info.game == 3)
         {
-            menu(&info);
+            //menu(&info);
             SDL_RenderClear(info.win.renderer);
             SDL_RenderCopy(info.win.renderer, info.head[1].texture, NULL, &info.head[1].rect);
             SDL_RenderCopy(info.win.renderer, info.head[2].texture, NULL, &info.head[2].rect);
         }
         else
         {    
-            info.button = -1;
-            menu(&info);
+            
+            
             SDL_RenderClear(info.win.renderer);
+            //menu(&info);
+            
             SDL_RenderCopy(info.win.renderer, info.head[0].texture, NULL, NULL);  
-
+            
             SDL_RenderCopy(info.win.renderer, info.head[1].texture, NULL, &info.head[1].rect);
             SDL_RenderCopy(info.win.renderer, info.head[2].texture, NULL, &info.head[2].rect);
             SDL_RenderCopy(info.win.renderer, info.head[3].texture, NULL, &info.head[3].rect);
@@ -309,13 +330,18 @@ int		main(int argc, char **argv)
         {
             move(&info);
             move_doors(&info);
-            ray_casting_image(&info);
+            if(info.raycast)
+            {
+                ray_casting_image(&info);
+                end = clock();
+		        info.delta_time = ((double)(end - start)) / CLOCKS_PER_SEC;
+                info.raycast = 0;
+            }
+            
         }
          if (info.game == 1)
             info.game = 2;
-		
-		end = clock();
-		info.delta_time = ((double)(end - start)) / CLOCKS_PER_SEC;
+		SDL_Delay(10);
 	}
    //SDL_WaitThread( threadID, NULL );
    //SDL_WaitThread( threadID2, NULL );
