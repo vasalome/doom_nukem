@@ -6,12 +6,12 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/12 15:04:07 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/13 16:17:06 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 13:24:41 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/editeur.h"
+#include "../../includes/editeur.h"
 
 void		draw_void_circle(t_env *v, int x, int y, t_rgb color)
 {

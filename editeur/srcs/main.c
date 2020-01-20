@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 17:18:02 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 11:09:55 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,9 +40,9 @@ void		make_map(t_env *v)
 	while (++j < HEIGHT / CASES)
 	{
 		i = -1;
-		if (!(v->tab[j] = malloc(sizeof(t_map) * ((WIDTH - 30 * 7) / CASES))))
+		if (!(v->tab[j] = malloc(sizeof(t_map) * ((WIDTH - CASES * 7) / CASES))))
 			return ;
-		while (++i < (WIDTH - 30 * 7) / CASES)
+		while (++i < (WIDTH - CASES * 7) / CASES)
 		{
 			v->tab[j][i].case_x = i;
 			v->tab[j][i].case_y = j;

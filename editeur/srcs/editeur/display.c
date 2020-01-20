@@ -6,12 +6,12 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 17:40:54 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 13:31:42 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/editeur.h"
+#include "../../includes/editeur.h"
 
 void			pixel_put(t_env *v, int x, int y, t_rgb color)
 {
@@ -98,11 +98,28 @@ void			make_text(t_env *v, SDL_Texture *tex, int x, int y)
 	SDL_RenderCopy(v->ren, tex, NULL, &pos);
 }
 
-void			menu(t_env *v)
-{
-	make_text(v, write_text(v, "Forme", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}), WIDTH - 30 * 6, 30);
-	make_form_cube(v, WIDTH - 30 * 6 + 5, 65, 20);
-}
+// void				make_spawn(t_env *v, int start_x, int start_y, int taille)
+// {
+// 	t_tga			*spawn;
+// 	unsigned int	i;
+// 	int				y;
+// 	int				x;
+
+// 	i = -1;
+// 	y = start_y;
+// 	spawn = tga_parser("/Users/nrivoire/Documents/doom_nukem/editeur/srcs/editeur/spawn.tga");
+// 	if (!spawn)
+// 		ft_error("tga_parser did not work");
+// 	while (++y < start_y + 33)
+// 	{
+// 		x = start_x;
+// 		while (++x < start_x + 30 && ++i < spawn->h.width * spawn->h.height)
+// 		{
+// 			SDL_SetRenderDrawColor(v->ren, spawn->px[i].r, spawn->px[i].g, spawn->px[i].b, spawn->px[i].a);
+// 			SDL_RenderDrawPoint(v->ren, x, y);
+// 		}
+// 	}
+// }
 
 void			draw_in_quadrillage(t_env *v, SDL_Event event)
 {
@@ -113,15 +130,24 @@ void			draw_in_quadrillage(t_env *v, SDL_Event event)
 	while (++t < HEIGHT / CASES)
 	{
 		g = -1;
-		while (++g < (WIDTH - 30 * 7) / CASES)
+		while (++g < (WIDTH - CASES * 7) / CASES)
 		{
 			if (v->tab[t][g].form != 0)
 			{
 				if (v->tab[t][g].form == 1)
-					make_form_cube(v, g * CASES + 5, t * CASES + 5, 20);
+					make_form_cube(v, g * CASES + 5, t * CASES + 5, CASES - 10);
+				//if (v->tab[t][g].form == 2)
+				//	make_spawn(v, g * CASES + 5, t * CASES + 5, CASES - 10);
 			}
 		}
 	}
+}
+
+void			menu(t_env *v)
+{
+	make_text(v, write_text(v, "Forme", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}), WIDTH - 30 * 6, 30);
+	make_form_cube(v, WIDTH - 30 * 6 + 5, 65, 20);
+	//make_spawn(v, WIDTH - 30 * 5 + 5, 65, 20);
 }
 
 void			draw_pro_frame(t_env *v, SDL_Event event)
@@ -131,11 +157,17 @@ void			draw_pro_frame(t_env *v, SDL_Event event)
 	draw_in_quadrillage(v, event);
 }
 
+void			make_tga(t_env *v)
+{
+	
+}
+
 void			display(t_env *v)
 {
 	SDL_Event	event;
 	const Uint8	*keyboard_state;
 
+	SDL_RenderCopy(v->ren, v->back, NULL, NULL);
 	while (1)
 	{
 		while (SDL_PollEvent(&event))
@@ -151,7 +183,6 @@ void			display(t_env *v)
 		if (event.type == SDL_QUIT || key_event(keyboard_state, v))
 			break ;
 		draw_pro_frame(v, event);
-		SDL_RenderCopy(v->ren, v->back, NULL, NULL);
 		SDL_RenderPresent(v->ren);
 	}
 	SDL_DestroyRenderer(v->ren);

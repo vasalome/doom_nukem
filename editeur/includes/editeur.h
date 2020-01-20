@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 17:02:47 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 13:21:57 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,14 +27,13 @@
 # include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_pixels.h"
 # include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_events.h"
 # include "../../frameworks/SDL2_ttf.framework/Versions/A/Headers/SDL_ttf.h"
-# include "../../frameworks/SDL2_image.framework/Versions/A/Headers/SDL_image.h"
-# include "../../frameworks/SDL2_mixer.framework/Headers/SDL_mixer.h"
-# include "../../frameworks/SDL2_net.framework/Headers/SDL_net.h"
+//# include "../../frameworks/SDL2_image.framework/Versions/A/Headers/SDL_image.h"
+# include "tga_parser.h"
 
 # define WIDTH 1200
 # define HEIGHT 900
 # define RADIUS 10
-# define CASES 30
+# define CASES 30 //pas en dessous de 15
 
 /*
 ** -----------------------------EDITEUR---------------------------------
