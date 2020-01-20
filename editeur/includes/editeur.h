@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 16:06:17 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 16:46:39 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -127,6 +127,8 @@ void			make_form_cube(t_env *v, int start_x, int start_y, int square);
 /*
 ** --main--
 */
+void			free_tab(t_env *v, t_map **tab);
+void			make_map(t_env *v);
 void			display(t_env *v);
 
 #endif

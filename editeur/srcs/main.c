@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 16:23:01 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 17:29:26 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,6 +65,16 @@ void		background_map(t_env *v)
 			pixel_put(v, i, j, make_rgb(191, 190, 193, 255));
 	}
 	SDL_SetRenderTarget(v->ren, NULL);
+}
+
+void		free_tab(t_env *v, t_map **tab)
+{
+	int		i;
+
+	i = -1;
+	while (++i < HEIGHT / v->cases)
+		free(tab[i]);
+	free(tab);
 }
 
 void		make_map(t_env *v)

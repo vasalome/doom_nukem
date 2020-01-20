@@ -34,7 +34,7 @@
 
 - [X] Il est possible de straffer.
 
-- On interagit correctement avec les murs, les marches d’une hauteur raisonnable.
+- [ ] On interagit correctement avec les murs, les marches d’une hauteur raisonnable.
 
 - [/] On peut courrir, sauter, tomber, se baisser et se relever.
 

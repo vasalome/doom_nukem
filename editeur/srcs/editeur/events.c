@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 17:14:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 16:07:50 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 17:28:32 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,15 +56,19 @@ void		mouse_button_event(SDL_Event event, t_env *v)
 		v->form = 2;
 		press_button(v, WIDTH - 30 * 5, 60, 32);
 	}
-	if (v->cases > 15 && event.button.x > WIDTH - 45 && event.button.x < WIDTH - 35 && event.button.y > 15 && event.button.y < 20)
+	if (v->cases > 15 && v->cases <= 30 && event.button.x > WIDTH - 45 && event.button.x < WIDTH - 35 && event.button.y > 15 && event.button.y < 20)
 	{
+		free_tab(v, v->tab);
 		v->cases -= 3;
 		background_map(v);
+		make_map(v);
 	}
-	if (v->cases >= 15 && event.button.x > WIDTH - 15 && event.button.x < WIDTH - 5 && event.button.y > 15 && event.button.y < 20)
+	if (v->cases >= 15 && v->cases < 30 && event.button.x > WIDTH - 15 && event.button.x < WIDTH - 5 && event.button.y > 15 && event.button.y < 20)
 	{
+		free_tab(v, v->tab);
 		v->cases += 3;
 		background_map(v);
+		make_map(v);
 	}
 	if (event.button.x > 0 && event.button.x < WIDTH - 30 * 7 && event.button.y > 0 && event.button.y < HEIGHT)
 	{
