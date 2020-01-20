@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 11:09:55 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 16:23:01 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,35 +29,13 @@ void		init(t_env *env)
 	
 // }
 
-void		make_map(t_env *v)
-{
-	int		i;
-	int		j;
-
-	j = -1;
-	if (!(v->tab = malloc(sizeof(t_map *) * (HEIGHT / CASES))))
-		return ;
-	while (++j < HEIGHT / CASES)
-	{
-		i = -1;
-		if (!(v->tab[j] = malloc(sizeof(t_map) * ((WIDTH - CASES * 7) / CASES))))
-			return ;
-		while (++i < (WIDTH - CASES * 7) / CASES)
-		{
-			v->tab[j][i].case_x = i;
-			v->tab[j][i].case_y = j;
-			v->tab[j][i].form = 0;
-		}
-	}
-}
-
 void		background_menu(t_env *v)
 {
 	int		i;
 	int		j;
 
-	SDL_SetRenderTarget(v->ren, v->back);
 	j = -1;
+	SDL_SetRenderTarget(v->ren, v->back_menu);
 	while (++j < HEIGHT)
 	{
 		i = WIDTH - 30 * 7 + 1;
@@ -70,7 +48,16 @@ void		background_menu(t_env *v)
 		while (++i < WIDTH - 30 * 7)
 			pixel_put(v, i, j, make_rgb(204, 203, 205, 255));
 	}
+	SDL_SetRenderTarget(v->ren, NULL);
+}
+
+void		background_map(t_env *v)
+{
+	int		j;
+	int		i;
+
 	j = -1;
+	SDL_SetRenderTarget(v->ren, v->back);
 	while (++j < HEIGHT)
 	{
 		i = -1;
@@ -78,6 +65,28 @@ void		background_menu(t_env *v)
 			pixel_put(v, i, j, make_rgb(191, 190, 193, 255));
 	}
 	SDL_SetRenderTarget(v->ren, NULL);
+}
+
+void		make_map(t_env *v)
+{
+	int		i;
+	int		j;
+
+	j = -1;
+	if (!(v->tab = malloc(sizeof(t_map *) * (HEIGHT / v->cases))))
+		return ;
+	while (++j < HEIGHT / v->cases)
+	{
+		i = -1;
+		if (!(v->tab[j] = malloc(sizeof(t_map) * ((WIDTH - v->cases * 7) / v->cases))))
+			return ;
+		while (++i < (WIDTH - v->cases * 7) / v->cases)
+		{
+			v->tab[j][i].case_x = i;
+			v->tab[j][i].case_y = j;
+			v->tab[j][i].form = 0;
+		}
+	}
 }
 
 int			main(int argc, char **argv)
@@ -90,9 +99,14 @@ int			main(int argc, char **argv)
 		return (0);
 	//if (argc != 2 || (fd = open(argv[1], O_RDONLY)) < 0)
 	//	return (0);
+	argc = 1;
+	(void)argv;
+	v->form = 0;
+	v->cases = 15;
 	make_map(v);
 	init(v);
 	//editeur_setup(env);
+	background_map(v);
 	background_menu(v);
 	display(v);
 	return (0);

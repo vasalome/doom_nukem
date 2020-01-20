@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 13:21:57 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 16:06:17 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,13 +27,13 @@
 # include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_pixels.h"
 # include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_events.h"
 # include "../../frameworks/SDL2_ttf.framework/Versions/A/Headers/SDL_ttf.h"
-//# include "../../frameworks/SDL2_image.framework/Versions/A/Headers/SDL_image.h"
+# include "../../frameworks/SDL2_image.framework/Versions/A/Headers/SDL_image.h"
 # include "tga_parser.h"
 
 # define WIDTH 1200
 # define HEIGHT 900
 # define RADIUS 10
-# define CASES 30 //pas en dessous de 15
+//# define CASES 30 //pas en dessous de 15
 
 /*
 ** -----------------------------EDITEUR---------------------------------
@@ -87,12 +87,16 @@ typedef struct		s_env
 {
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
+	SDL_Surface		*sur;
 	SDL_Event		e;
 	SDL_Texture		*back;
+	SDL_Texture		*back_menu;
 	SDL_Texture		*text;
+	SDL_Texture		*spawn;
 	t_draw_circle	center;
 	t_map			**tab;
 	int				form;
+	int				cases;
 }					t_env;
 
 /*
@@ -102,9 +106,12 @@ typedef struct		s_env
 /*
 ** --events--
 */
+void			background_map(t_env *v);
+void			background_menu(t_env *v);
+
 void			mouse_button_event(SDL_Event event, t_env *v);
 void			mouse_motion_event(SDL_Event event, t_env *v);
-int				key_event(const Uint8 *keyboard_state, t_env *v);
+int				key_event(const Uint8 *keyboard_state);
 
 /*
 ** --draw--

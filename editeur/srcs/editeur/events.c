@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 17:14:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 13:24:33 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 16:07:50 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,17 +56,27 @@ void		mouse_button_event(SDL_Event event, t_env *v)
 		v->form = 2;
 		press_button(v, WIDTH - 30 * 5, 60, 32);
 	}
+	if (v->cases > 15 && event.button.x > WIDTH - 45 && event.button.x < WIDTH - 35 && event.button.y > 15 && event.button.y < 20)
+	{
+		v->cases -= 3;
+		background_map(v);
+	}
+	if (v->cases >= 15 && event.button.x > WIDTH - 15 && event.button.x < WIDTH - 5 && event.button.y > 15 && event.button.y < 20)
+	{
+		v->cases += 3;
+		background_map(v);
+	}
 	if (event.button.x > 0 && event.button.x < WIDTH - 30 * 7 && event.button.y > 0 && event.button.y < HEIGHT)
 	{
 		if (event.button.button == SDL_BUTTON_LEFT)
 		{
 			t = - 1;
-			while (++t < HEIGHT / CASES)
+			while (++t < HEIGHT / v->cases)
 			{
 				g = -1;
-				while (++g < (WIDTH - CASES * 7) / CASES)
+				while (++g < (WIDTH - v->cases * 7) / v->cases)
 				{
-					if (event.button.x / CASES == g && event.button.y / CASES == t)
+					if (event.button.x / v->cases == g && event.button.y / v->cases == t)
 						v->tab[t][g].form = v->form;
 				}
 			}
@@ -86,7 +96,7 @@ void		mouse_motion_event(SDL_Event event, t_env *v)
 		is_it_over_the_button(v, WIDTH - 30 * 5, 60, 32, make_rgb(204, 203, 205, 255));
 }
 
-int			key_event(const Uint8 *keyboard_state, t_env *v)
+int			key_event(const Uint8 *keyboard_state)
 {
 	if (keyboard_state[SDL_SCANCODE_ESCAPE])
 		return (1);
