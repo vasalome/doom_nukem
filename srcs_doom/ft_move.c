@@ -499,13 +499,25 @@ int		move(t_info *info)
 	bef_save(info);
 
 	if (info->player.move_up == 1)
+	{
 		move_plus_1(info);
+		info->raycast = 1;
+	}
 	if (info->player.move_down == 1)
+	{
 		move_plus_2(info);
+		info->raycast = 1;
+	}
 	if (info->player.move_left == 1)
+	{
 		move_plus_3(info);
+		info->raycast = 1;
+	}
 	if (info->player.move_right == 1)
+	{
 		move_plus_4(info);
+		info->raycast = 1;
+	}
 	turn_right(info);
 
 	// // printf("x = %d\nY = %d\n\n", info->player.x_pos, info->player.y_pos);
