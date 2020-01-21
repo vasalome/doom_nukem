@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 22:50:51 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/21 17:40:29 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,6 @@
 # define DOOM_H
 
 # include "../libft/includes/libft.h"
-# include <Tk/X11/X.h>
 # include <stdio.h>
 # include <math.h>
 # include <fcntl.h>

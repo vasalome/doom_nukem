@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:33:41 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 19:32:00 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/21 18:26:13 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -475,8 +475,8 @@ void	move_plus_1(t_info *info)
 
 int		move(t_info *info)
 {
-	printf("move -- x_pos = %.20f\n",info->player.x_pos);
-	printf("move -- y_pos = %.20f\n",info->player.y_pos);
+	// printf("move -- x_pos = %.20f\n",info->player.x_pos);
+	// printf("move -- y_pos = %.20f\n",info->player.y_pos);
 
 	// printf("test x ========== %f\n",floor(info->player.x_pos));
 	// printf("test y ========== %f\n",floor(info->player.y_pos));
