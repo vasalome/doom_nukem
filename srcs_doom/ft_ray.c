@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 11:42:13 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 15:24:29 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -215,6 +215,24 @@ void	ray_casting_init(t_info *info, int x)
 		}
 		else if (rayTex == 10)
 		{
+			if (info->wall.side == 0)
+			{
+				if (info->map.x_step == -1)
+					if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
+					{
+						info->map.hit = 1;
+						info->map.xOffset = 0.5 + info->map.x_step;
+					}
+				/*else if (info->map.x_step == 1)
+					if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
+					{
+						info->map.hit = 1;
+						info->map.xOffset = -0.5 + info->map.x_step;
+					}*/
+			}
+		}
+		else if (rayTex == 12)
+		{
 			if (info->wall.side == 1)
 			{
 				if (info->map.y_step == -1)
@@ -228,21 +246,6 @@ void	ray_casting_init(t_info *info, int x)
 					{
 						info->map.hit = 1;
 						info->map.yOffset = -0.5 + info->map.y_step;
-					}*/
-			}
-			else if (info->wall.side == 0)
-			{
-				if (info->map.x_step == -1)
-					if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
-					{
-						info->map.hit = 1;
-						info->map.xOffset = 0.5 + info->map.x_step;
-					}
-				/*else if (info->map.x_step == 1)
-					if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
-					{
-						info->map.hit = 1;
-						info->map.xOffset = -0.5 + info->map.x_step;
 					}*/
 			}
 		}

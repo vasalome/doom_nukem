@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 12:39:45 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 13:26:28 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,6 @@ void	init_player(t_info *info)
 	info->player.can_trap = 1;
 	info->floor.texId2 = 16;
 	info->floor.texId = 17;
-	
 }
 
 void	init_map(t_info *info)
