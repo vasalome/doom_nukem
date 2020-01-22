@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 15:45:24 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 17:18:03 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -114,14 +114,24 @@ void			mouse_motion_event(SDL_Event event, t_env *v);
 int				key_event(const Uint8 *keyboard_state);
 
 /*
+** --draw_form--
+*/
+void			draw_void_circle(t_env *v, int x, int y, int radius);
+void			draw_full_circle(t_env *v, int x, int y, int radius);
+void			draw_form_cube(t_env *v, int start_x, int start_y, int size);
+void            put_picture(t_env *v, int start_x, int start_y, int size, char *picture);
+void			draw_diagonal_d(t_env *v, int x, int y, int size);
+void			draw_diagonal_g(t_env *v, int x, int y, int size);
+void			draw_horizontal_wall(t_env *v, int x, int y, int size);
+void			draw_vertical_wall(t_env *v, int x, int y, int size);
+
+/*
 ** --draw--
 */
 void			pixel_put(t_env *v, int x, int y, t_rgb color);
 t_point			make_point(int x, int y);
 t_rgb			make_rgb(int r, int g, int b, int a);
 void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
-void			draw_void_circle(t_env *v, int x, int y, int radius);
-void			draw_full_circle(t_env *v, int x, int y, int radius);
 void			make_form_cube(t_env *v, int start_x, int start_y, int square);
 
 /*

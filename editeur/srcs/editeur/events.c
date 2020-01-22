@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 17:14:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 16:36:51 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 17:06:31 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -141,6 +141,11 @@ void		mouse_button_event(SDL_Event event, t_env *v)
 			v->form = 8;
 			press_button(v, WIDTH - 30 * 6, 270, 32);
 		}
+		if (event.button.x > WIDTH - 30 * 6 + 5 && event.button.x < WIDTH - 30 * 6 + 20 && event.button.y > 305 && event.button.y < 335)
+		{
+			v->form = 9;
+			press_button(v, WIDTH - 30 * 6, 300, 32);
+		}
 		choose_the_size_of_your_map(v, event);
 		if (event.button.x > 0 && event.button.x < WIDTH - 30 * 7 && event.button.y > 0 && event.button.y < HEIGHT)
 			which_form(v, event);
@@ -181,6 +186,10 @@ void		mouse_motion_event(SDL_Event event, t_env *v)
 		is_it_over_the_button(v, WIDTH - 30 * 6, 270, 32, make_rgb(191, 191, 191, 255));
 	else
 		is_it_over_the_button(v, WIDTH - 30 * 6, 270, 32, make_rgb(204, 203, 205, 255));
+	if (event.motion.x > WIDTH - 30 * 6 + 5 && event.motion.x < WIDTH - 30 * 6 + 20 && event.motion.y > 305 && event.motion.y < 335)
+		is_it_over_the_button(v, WIDTH - 30 * 6, 300, 32, make_rgb(191, 191, 191, 255));
+	else
+		is_it_over_the_button(v, WIDTH - 30 * 6, 300, 32, make_rgb(204, 203, 205, 255));
 }
 
 int			key_event(const Uint8 *keyboard_state)
