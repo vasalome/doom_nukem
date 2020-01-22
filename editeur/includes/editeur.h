@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 12:02:12 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 15:45:24 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -91,6 +91,7 @@ typedef struct		s_env
 	SDL_Texture		*back_menu;
 	SDL_Texture		*text;
 	SDL_Texture		*spawn;
+	SDL_Texture		*door;
 	t_draw_circle	center;
 	t_map			**tab;
 	int				form;
