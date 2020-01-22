@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 16:16:32 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 17:17:58 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,18 +17,6 @@ void			pixel_put(t_env *v, int x, int y, t_rgb color)
 {
 	SDL_RenderDrawPoint(v->ren, x, y);
 	SDL_SetRenderDrawColor(v->ren, color.r, color.g, color.b, color.a);
-}
-
-void			make_form_cube(t_env *v, int start_x, int start_y, int square)
-{
-	drawline(make_point(start_x, start_y), make_point(start_x + square, start_y), make_rgb(0, 0, 153, 255), v);
-	drawline(make_point(start_x, start_y + 1), make_point(start_x + square, start_y + 1), make_rgb(0, 0, 153, 255), v);
-	drawline(make_point(start_x, start_y), make_point(start_x, start_y + square), make_rgb(0, 0, 153, 255), v);
-	drawline(make_point(start_x + 1, start_y), make_point(start_x + 1, start_y + square), make_rgb(0, 0, 153, 255), v);
-	drawline(make_point(start_x + square, start_y), make_point(start_x + square, start_y + square + 1), make_rgb(0, 0, 153, 255), v);
-	drawline(make_point(start_x + square + 1, start_y), make_point(start_x + square + 1, start_y + square + 1), make_rgb(0, 0, 153, 255), v);
-	drawline(make_point(start_x, start_y + square), make_point(start_x + square, start_y + square), make_rgb(0, 0, 153, 255), v);
-	drawline(make_point(start_x, start_y + square + 1), make_point(start_x + square, start_y + square + 1), make_rgb(0, 0, 153, 255), v);
 }
 
 void			make_quadrillage(t_env *v, SDL_Event event)
@@ -48,9 +36,9 @@ void			make_quadrillage(t_env *v, SDL_Event event)
 			while (++k <= v->cases)
 			{
 				if (i < (WIDTH - 30 * 7) / v->cases)
-					pixel_put(v, i * v->cases + k, j * v->cases, make_rgb(63, 62, 65, 100));
+					pixel_put(v, i * v->cases + k, j * v->cases, make_rgb(63, 62, 65, 150));
 				if (j < HEIGHT / v->cases)
-					pixel_put(v, i * v->cases, j * v->cases + k, make_rgb(63, 62, 65, 100));
+					pixel_put(v, i * v->cases, j * v->cases + k, make_rgb(63, 62, 65, 150));
 			}
 			if (event.motion.x > 0 && event.motion.x < WIDTH - 30 * 7 && event.motion.y > 0 && event.motion.y < HEIGHT)
 			{
@@ -59,31 +47,31 @@ void			make_quadrillage(t_env *v, SDL_Event event)
 					while (++l < v->cases)
 					{
 						if (event.button.button == SDL_BUTTON_LEFT)
-							pixel_put(v, i * v->cases + k, j * v->cases + l, make_rgb(event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 0 : 191, event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 102 : 190, event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 0 : 193, 255));
+							pixel_put(v, i * v->cases + k, j * v->cases + l, make_rgb(event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 0 : 191, event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 102 : 190, event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 0 : 193, 200));
 						else
-							pixel_put(v, i * v->cases + k, j * v->cases + l, make_rgb(event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 0 : 191, event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 179 : 190, event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 0 : 193, 255));
+							pixel_put(v, i * v->cases + k, j * v->cases + l, make_rgb(event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 0 : 191, event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 179 : 190, event.motion.x / v->cases == i && event.motion.y / v->cases == j ? 0 : 193, 200));
 					}
 			}
 		}
 	}
 }
 
-SDL_Texture		*write_text(t_env *v, char *text, SDL_Color fond, SDL_Color police_color, int taille_police)
+SDL_Texture		*write_text(t_env *v, char *text, SDL_Color background, SDL_Color font_color, int size_font)
 {
-	TTF_Font	*police;
+	TTF_Font	*font;
 	SDL_Surface	*sur;
 	SDL_Texture	*texture;
 
 	if (TTF_Init() == -1)
 		ft_error("Initialisation error of TFT_Init");
-	police = NULL;
-	police = TTF_OpenFont("/srcs/editeur/h.ttf", taille_police);
-	if (!police)
-		ft_error("Police error");
-	sur = TTF_RenderText_Shaded(police, text, police_color, fond);
+	font = NULL;
+	font = TTF_OpenFont("./srcs/font/h.ttf", size_font);
+	if (!font)
+		ft_error("font error");
+	sur = TTF_RenderText_Shaded(font, text, font_color, background);
 	texture = SDL_CreateTextureFromSurface(v->ren, sur);
 	SDL_FreeSurface(sur);
-	TTF_CloseFont(police);
+	TTF_CloseFont(font);
 	TTF_Quit();
 	return (texture);
 }
@@ -98,25 +86,6 @@ void			make_text(t_env *v, SDL_Texture *tex, int x, int y)
 	SDL_RenderCopy(v->ren, tex, NULL, &pos);
 }
 
-void			make_spawn(t_env *v, int start_x, int start_y, int taille)
-{
-	SDL_Rect	pos;
-
-	pos.x = start_x;
-	pos.y = start_y;
-	pos.w = taille;
-	pos.h = taille;
-	if (!(v->sur = IMG_Load("./srcs/editeur/spawn.tga")))
-		ft_error((char*)SDL_GetError());
-	v->spawn = SDL_CreateTextureFromSurface(v->ren, v->sur);
-	SDL_RenderCopy(v->ren, v->spawn, NULL, &pos);
-}
-
-// void			make_colonne()
-// {
-	
-// }
-
 void			draw_in_quadrillage(t_env *v)
 {
 	int			g;
@@ -127,29 +96,55 @@ void			draw_in_quadrillage(t_env *v)
 	{
 		g = -1;
 		while (++g < (WIDTH - v->cases * 7) / v->cases)
-		{
 			if (v->tab[t][g].form != 0)
 			{
 				if (v->tab[t][g].form == 1)
-					make_form_cube(v, g * v->cases + 5, t * v->cases + 5, v->cases - 10);
+					draw_form_cube(v, g * v->cases + 5, t * v->cases + 5, v->cases - 10);
 				if (v->tab[t][g].form == 2)
-					make_spawn(v, g * v->cases + 5, t * v->cases + 5, v->cases - 10);
-				//if (v->tab[t][g].form == 3)
-				//	make_colonne();
+					draw_horizontal_wall(v, g * v->cases + 5, t * v->cases + 5, v->cases - 10);
+				if (v->tab[t][g].form == 3)
+					draw_vertical_wall(v, g * v->cases + 5, t * v->cases + 5, v->cases - 10);
+				if (v->tab[t][g].form == 4)
+					draw_diagonal_d(v, g * v->cases + 5, t * v->cases + 5, v->cases - 10);
+				if (v->tab[t][g].form == 5)
+					draw_diagonal_g(v, g * v->cases + 5, t * v->cases + 5, v->cases - 10);
+				if (v->tab[t][g].form == 6)
+					draw_void_circle(v, g * v->cases + (v->cases / 2), t * v->cases + (v->cases / 2), v->cases / 3);
+				if (v->tab[t][g].form == 7)
+					put_picture(v, g * v->cases + 5, t * v->cases + 5, v->cases - 7, "./srcs/images/door.xpm");
+				if (v->tab[t][g].form == 8)
+					put_picture(v, g * v->cases + 5, t * v->cases + 5, v->cases - 7, "./srcs/images/stickman.xpm");
+				if (v->tab[t][g].form == 9)
+					v->tab[t][g].form = 0;
 			}
-		}
 	}
 }
 
 void			menu(t_env *v)
 {
-	make_text(v, write_text(v, "Nombre de cases:", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 10), WIDTH - 30 * 5, 10);
+	make_text(v, write_text(v, "Taille des cases:", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 10), WIDTH - 30 * 5, 10);
 	make_text(v, write_text(v, "-", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 10), WIDTH - 45, 10);
 	make_text(v, write_text(v, ft_itoa(v->cases), (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 10), WIDTH - 33, 10);
 	make_text(v, write_text(v, "+", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 10), WIDTH - 15, 10);
 	make_text(v, write_text(v, "Forme", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 20), WIDTH - 30 * 6, 30);
-	make_form_cube(v, WIDTH - 30 * 6 + 5, 65, 20);
-	make_spawn(v, WIDTH - 30 * 5 + 5, 65, 22);
+	draw_form_cube(v, WIDTH - 30 * 6 + 4, 65, 20);
+	make_text(v, write_text(v, "Cube", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 12), WIDTH - 30 * 5 + 5, 70);
+	draw_horizontal_wall(v, WIDTH - 30 * 6 + 5, 95, 20);
+	make_text(v, write_text(v, "Mur plat horizontal", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 12), WIDTH - 30 * 5 + 5, 100);
+	draw_vertical_wall(v, WIDTH - 30 * 6 + 5, 125, 20);
+	make_text(v, write_text(v, "Mur plat vertical", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 12), WIDTH - 30 * 5 + 5, 130);
+	draw_diagonal_d(v, WIDTH - 30 * 6 + 5, 155, 20);
+	make_text(v, write_text(v, "Mur plat diagonale", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 12), WIDTH - 30 * 5 + 5, 160);
+	draw_diagonal_g(v, WIDTH - 30 * 6 + 5, 185, 20);
+	make_text(v, write_text(v, "Mur plat diagonale", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 12), WIDTH - 30 * 5 + 5, 190);
+	draw_void_circle(v, WIDTH - 30 * 6 + 15, 215 + 11, 10);
+	make_text(v, write_text(v, "Pillier", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 12), WIDTH - 30 * 5 + 5, 220);
+	put_picture(v, WIDTH - 30 * 6 + 2, 245, 25, "./srcs/images/door.xpm");
+	make_text(v, write_text(v, "Porte", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 12), WIDTH - 30 * 5 + 5, 250);
+	put_picture(v, WIDTH - 30 * 6 + 5, 275, 22, "./srcs/images/stickman.xpm");
+	make_text(v, write_text(v, "Spawn", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 12), WIDTH - 30 * 5 + 5, 280);
+	put_picture(v, WIDTH - 30 * 6 + 2, 302, 27, "./srcs/images/gomme.xpm");
+	make_text(v, write_text(v, "Gomme", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 12), WIDTH - 30 * 5 + 5, 310);
 }
 
 void			draw_pro_frame(t_env *v, SDL_Event event)

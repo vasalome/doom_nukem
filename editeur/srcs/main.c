@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 17:29:26 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 12:01:32 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -112,7 +112,8 @@ int			main(int argc, char **argv)
 	argc = 1;
 	(void)argv;
 	v->form = 0;
-	v->cases = 15;
+	v->cases = 30;
+	v->spawn_count = 0;
 	make_map(v);
 	init(v);
 	//editeur_setup(env);
