@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 16:46:39 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 12:02:12 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,8 +32,6 @@
 
 # define WIDTH 1200
 # define HEIGHT 900
-# define RADIUS 10
-//# define CASES 30 //pas en dessous de 15
 
 /*
 ** -----------------------------EDITEUR---------------------------------
@@ -97,6 +95,7 @@ typedef struct		s_env
 	t_map			**tab;
 	int				form;
 	int				cases;
+	int				spawn_count;
 }					t_env;
 
 /*
@@ -120,8 +119,8 @@ void			pixel_put(t_env *v, int x, int y, t_rgb color);
 t_point			make_point(int x, int y);
 t_rgb			make_rgb(int r, int g, int b, int a);
 void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
-void			draw_void_circle(t_env *v, int x, int y, t_rgb color);
-void			draw_full_circle(t_env *v, int x, int y, t_rgb color);
+void			draw_void_circle(t_env *v, int x, int y, int radius);
+void			draw_full_circle(t_env *v, int x, int y, int radius);
 void			make_form_cube(t_env *v, int start_x, int start_y, int square);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 16:16:32 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 12:05:37 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -108,14 +108,11 @@ void			make_spawn(t_env *v, int start_x, int start_y, int taille)
 	pos.h = taille;
 	if (!(v->sur = IMG_Load("./srcs/editeur/spawn.tga")))
 		ft_error((char*)SDL_GetError());
+	//if (!(v->sur = IMG_Load("./srcs/editeur/stickman.xpm")))
+	//	ft_error((char*)SDL_GetError());
 	v->spawn = SDL_CreateTextureFromSurface(v->ren, v->sur);
 	SDL_RenderCopy(v->ren, v->spawn, NULL, &pos);
 }
-
-// void			make_colonne()
-// {
-	
-// }
 
 void			draw_in_quadrillage(t_env *v)
 {
@@ -134,8 +131,8 @@ void			draw_in_quadrillage(t_env *v)
 					make_form_cube(v, g * v->cases + 5, t * v->cases + 5, v->cases - 10);
 				if (v->tab[t][g].form == 2)
 					make_spawn(v, g * v->cases + 5, t * v->cases + 5, v->cases - 10);
-				//if (v->tab[t][g].form == 3)
-				//	make_colonne();
+				if (v->tab[t][g].form == 3)
+					draw_void_circle(v, g * v->cases + (v->cases / 2), t * v->cases + (v->cases / 2), v->cases / 3);
 			}
 		}
 	}
@@ -143,13 +140,14 @@ void			draw_in_quadrillage(t_env *v)
 
 void			menu(t_env *v)
 {
-	make_text(v, write_text(v, "Nombre de cases:", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 10), WIDTH - 30 * 5, 10);
+	make_text(v, write_text(v, "Taille des cases:", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 10), WIDTH - 30 * 5, 10);
 	make_text(v, write_text(v, "-", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 10), WIDTH - 45, 10);
 	make_text(v, write_text(v, ft_itoa(v->cases), (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 10), WIDTH - 33, 10);
 	make_text(v, write_text(v, "+", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 10), WIDTH - 15, 10);
 	make_text(v, write_text(v, "Forme", (SDL_Color){204, 203, 205, 255}, (SDL_Color){0, 0, 0, 255}, 20), WIDTH - 30 * 6, 30);
 	make_form_cube(v, WIDTH - 30 * 6 + 5, 65, 20);
 	make_spawn(v, WIDTH - 30 * 5 + 5, 65, 22);
+	draw_void_circle(v, WIDTH - 30 * 4 + 15, 65 + 11, 10);
 }
 
 void			draw_pro_frame(t_env *v, SDL_Event event)
