@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/14 11:42:09 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/22 18:24:38 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -44,6 +44,7 @@ SRCS		+=	ft_fill_map.c
 SRCS		+=	ft_map.c
 SRCS		+=	ft_keys.c
 SRCS		+=	ft_move.c
+SRCS		+=	ft_mouse.c
 SRCS		+=	ft_teleport.c
 SRCS		+=	ft_ray.c
 SRCS		+=	ft_wall.c
