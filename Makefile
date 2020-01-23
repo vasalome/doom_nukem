@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/22 18:24:38 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/23 18:56:40 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -55,6 +55,7 @@ SRCS		+=	ft_textures.c
 SRCS		+=	ft_gameover.c
 SRCS		+=	ft_usage.c
 SRCS		+=	ft_doors.c
+SRCS		+=	ft_clip.c
 
 HEADERS		=	doom.h
 HEADERS		+=	keys.h

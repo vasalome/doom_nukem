@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 15:13:38 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/23 18:56:33 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@
 
 
 
-
+# define SKY 3.14159265
 # define WIDTH 1600
 # define HEIGHT 900
 
@@ -461,5 +461,8 @@ void				move_doors(t_info *info);
 void				open_doors(t_info *info);
 
 void				init_clip(t_info *info);
+
+void	clip_10(t_info *info);
+void	clip_12(t_info *info);
 
 #endif
