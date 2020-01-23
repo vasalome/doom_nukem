@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/22 17:13:04 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/23 13:43:22 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -24,12 +24,18 @@ SRC_SUP = editeur
 SRC_PATH = srcs
 SRC_NAME =  main.c \
 			editeur/display.c\
-			editeur/events.c\
 			editeur/draw_circle.c\
 			editeur/drawline.c\
 			editeur/tga_parser.c\
 			editeur/draw_form.c\
-			
+			editeur/put_picture.c\
+			editeur/put_text.c\
+			editeur/make_grid_pattern.c\
+			editeur/draw_in_grid_pattern.c\
+			editeur/menu.c\
+			editeur/mouse_button_event.c\
+			editeur/mouse_motion_event.c\
+			editeur/key_event.c\
 
 #	Objects
 OBJ_PATH = .objects
