@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 17:18:03 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/23 13:37:30 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,6 +81,20 @@ typedef struct		s_map
 	int				form;
 }					t_map;
 
+typedef struct		s_start
+{
+	int				x;
+	int				y;
+}					t_start;
+
+typedef struct		s_between
+{
+	int				min_x;
+	int				max_x;
+	int				min_y;
+	int				max_y;
+}					t_between;
+
 typedef struct		s_env
 {
 	SDL_Window		*win;
@@ -104,6 +118,15 @@ typedef struct		s_env
 */
 
 /*
+** --draw_tools--
+*/
+void			pixel_put(t_env *v, int x, int y, t_rgb color);
+t_point			make_point(int x, int y);
+t_rgb			make_rgb(int r, int g, int b, int a);
+void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
+
+
+/*
 ** --events--
 */
 void			background_map(t_env *v);
@@ -119,20 +142,25 @@ int				key_event(const Uint8 *keyboard_state);
 void			draw_void_circle(t_env *v, int x, int y, int radius);
 void			draw_full_circle(t_env *v, int x, int y, int radius);
 void			draw_form_cube(t_env *v, int start_x, int start_y, int size);
-void            put_picture(t_env *v, int start_x, int start_y, int size, char *picture);
 void			draw_diagonal_d(t_env *v, int x, int y, int size);
 void			draw_diagonal_g(t_env *v, int x, int y, int size);
 void			draw_horizontal_wall(t_env *v, int x, int y, int size);
 void			draw_vertical_wall(t_env *v, int x, int y, int size);
+void            put_picture(t_env *v, t_start start, int size, char *picture);
 
 /*
-** --draw--
+** --display_pro_frame--
 */
-void			pixel_put(t_env *v, int x, int y, t_rgb color);
-t_point			make_point(int x, int y);
-t_rgb			make_rgb(int r, int g, int b, int a);
-void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
-void			make_form_cube(t_env *v, int start_x, int start_y, int square);
+void			make_grid_pattern(t_env *v, SDL_Event event);
+void			menu_squares_size(t_env *v);
+void			menu_form_part(t_env *v);
+void			draw_in_grid_pattern(t_env *v);
+
+/*
+** --write--
+*/
+SDL_Texture		*write_text(t_env *v, char *text, int size_font);
+void			put_text(t_env *v, SDL_Texture *tex, int x, int y);
 
 /*
 ** --main--
