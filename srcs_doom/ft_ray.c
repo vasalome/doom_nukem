@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 15:24:29 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/23 18:56:31 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -421,7 +421,7 @@ void	ray_casting_image(t_info *info)
 		ray_casting(info);
 
 		//move_doors(info);
-		//draw_skybox(info);
+		draw_skybox(info);
 		
 		/* Main frame */
 

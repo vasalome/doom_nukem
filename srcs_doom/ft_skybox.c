@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 16:38:50 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/23 18:19:08 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -90,10 +90,10 @@ void	init_sky_1(t_info *info)
 	info->wt[22].img = IMG_Load("wall/skybox1.png");
 	info->wt[23].img = IMG_Load("wall/skybox1.png");
 	info->wt[24].img = IMG_Load("wall/skybox1.png");
-	info->wt[25].img = IMG_Load("wall/skybox2.png");
-	info->wt[26].img = IMG_Load("wall/skybox2.png");
-	info->wt[27].img = IMG_Load("wall/skybox2.png");
-	info->wt[28].img = IMG_Load("wall/skybox2.png");
+	info->wt[25].img = IMG_Load("wall/testciel3.png");
+	info->wt[26].img = IMG_Load("wall/testciel3.png");
+	info->wt[27].img = IMG_Load("wall/testciel3.png");
+	info->wt[28].img = IMG_Load("wall/testciel3.png");
 	info->wt[29].img = IMG_Load("wall/testciel3.png");
 	info->wt[30].img = IMG_Load("wall/testciel3.png");
 }
@@ -104,19 +104,19 @@ void	draw_skybox(t_info *info)
 	double fore_offset;
 	double front_offset;
 
-	dir_offset = (atan2(info->player.y_dir, info->player.x_dir) + M_PI) / M_PI;
+	dir_offset = (atan2(info->player.y_dir, info->player.x_dir) + 3.14159265) / 3.14159265;
 	fore_offset = floor(dir_offset * WIDTH);
 	front_offset = floor(fore_offset / 2);
 	init_sky_1(info);
 	init_sky_2(info);
-	layer_1(front_offset, info);
+	//layer_1(front_offset, info);
 	layer_2(front_offset, info);
-	info->wt[29].rect.x = front_offset;
-	info->wt[29].rect.y = (info->fps.rect.y) - 200;
-	info->wt[29].rect.w = WIDTH;
-	info->wt[29].rect.h = HEIGHT;
-	info->wt[30].rect.x = front_offset - WIDTH;
-	info->wt[30].rect.y = (info->fps.rect.y) - 200;
-	info->wt[30].rect.w = WIDTH;
-	info->wt[30].rect.h = HEIGHT;
+	// info->wt[29].rect.x = front_offset;
+	// info->wt[29].rect.y = (info->fps.rect.y) - 200;
+	// info->wt[29].rect.w = WIDTH;
+	// info->wt[29].rect.h = HEIGHT;
+	// info->wt[30].rect.x = front_offset - WIDTH;
+	// info->wt[30].rect.y = (info->fps.rect.y) - 200;
+	// info->wt[30].rect.w = WIDTH;
+	// info->wt[30].rect.h = HEIGHT;
 }
