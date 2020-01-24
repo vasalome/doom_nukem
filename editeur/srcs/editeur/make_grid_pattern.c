@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:40:17 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/23 15:16:37 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/24 13:41:29 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,8 @@ static void		where_is_the_mouse(t_env *v, SDL_Event e, int i, int j)
 	while (++k < v->cases && !(l = 0))
 		while (++l < v->cases)
 		{
-			if (e.button.button == SDL_BUTTON_LEFT || e.button.button == SDL_BUTTON_RIGHT)
+			if (e.button.button == SDL_BUTTON_LEFT ||
+					e.button.button == SDL_BUTTON_RIGHT)
 				pixel_put(v, i * v->cases + k, j * v->cases + l, make_rgb(
 						pos_x == i && pos_y == j ? 0 : 191,
 						pos_x == i && pos_y == j ? 102 : 190,

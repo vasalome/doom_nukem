@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 12:02:57 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/24 13:39:24 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,8 +97,8 @@ typedef struct		s_between
 
 typedef struct		s_stretch
 {
-	int				start_x;
-	int				start_y;
+	int				x;
+	int				y;
 	int				dir_x;
 	int				dir_y;
 }					t_stretch;
@@ -119,7 +119,7 @@ typedef struct		s_env
 	int				form;
 	int				cases;
 	int				spawn_count;
-	t_stretch		stretch;
+	t_stretch		s;
 }					t_env;
 
 /*
@@ -141,6 +141,7 @@ void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
 void			background_map(t_env *v);
 void			background_menu(t_env *v);
 
+void		    init_button(t_env *v, SDL_Event e);
 void			mouse_button_event(SDL_Event event, t_env *v);
 void			mouse_motion_event(SDL_Event event, t_env *v);
 int				key_event(const Uint8 *keyboard_state);

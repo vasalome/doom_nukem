@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/23 13:43:22 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/24 13:39:21 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -36,6 +36,7 @@ SRC_NAME =  main.c \
 			editeur/mouse_button_event.c\
 			editeur/mouse_motion_event.c\
 			editeur/key_event.c\
+			editeur/init_button.c\
 
 #	Objects
 OBJ_PATH = .objects
