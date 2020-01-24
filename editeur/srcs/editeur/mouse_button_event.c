@@ -6,14 +6,14 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 13:39:25 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/23 14:46:29 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/24 13:13:57 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
 
-void		which_form(t_env *v, SDL_Event e)
+void		which_form(t_env *v)
 {
 	int		t;
 	int		g;
@@ -24,15 +24,51 @@ void		which_form(t_env *v, SDL_Event e)
 		g = -1;
 		while (++g < (WIDTH - v->cases * 7) / v->cases)
 		{
-			if (e.button.x / v->cases == g && e.button.y / v->cases == t
-					&& v->form != 8)
+			if (v->stretch.start_x == g && v->stretch.start_y == t && v->form != 8)
 			{
-				if (v->tab[t][g].form == 8)
-					v->spawn_count = 0;
-				v->tab[t][g].form = v->form;
+				if (v->stretch.start_x == v->stretch.dir_x && v->stretch.start_y == v->stretch.dir_y)
+				{
+					if (v->tab[t][g].form == 8)
+						v->spawn_count = 0;
+					v->tab[t][g].form = v->form;
+					break;
+				}
+				else if (v->stretch.start_x == v->stretch.dir_x && v->stretch.start_y != v->stretch.dir_y)
+				{
+					while (v->stretch.start_y < v->stretch.dir_y)
+					{
+						if (v->tab[v->stretch.start_y][v->stretch.start_x].form == 8)
+							v->spawn_count = 0;
+						v->tab[v->stretch.start_y][v->stretch.start_x].form = v->form;
+						v->stretch.start_y++;
+					}
+					while (v->stretch.start_y >= v->stretch.dir_y)
+					{
+						if (v->tab[v->stretch.start_y][v->stretch.start_x].form == 8)
+							v->spawn_count = 0;
+						v->tab[v->stretch.start_y][v->stretch.start_x].form = v->form;
+						v->stretch.start_y--;
+					}
+				}
+				else if (v->stretch.start_y == v->stretch.dir_y && v->stretch.start_x != v->stretch.dir_x)
+				{
+					while (v->stretch.start_x < v->stretch.dir_x)
+					{
+						if (v->tab[v->stretch.start_y][v->stretch.start_x].form == 8)
+							v->spawn_count = 0;
+						v->tab[v->stretch.start_y][v->stretch.start_x].form = v->form;
+						v->stretch.start_x++;
+					}
+					while (v->stretch.start_x >= v->stretch.dir_x)
+					{
+						if (v->tab[v->stretch.start_y][v->stretch.start_x].form == 8)
+							v->spawn_count = 0;
+						v->tab[v->stretch.start_y][v->stretch.start_x].form = v->form;
+						v->stretch.start_x--;
+					}
+				}
 			}
-			else if (v->spawn_count == 0 && e.button.x / v->cases == g
-					&& e.button.y / v->cases == t)
+			else if (v->spawn_count == 0 && v->stretch.start_x == g && v->stretch.start_y == t)
 			{
 				v->tab[t][g].form = v->form;
 				v->spawn_count = 1;
@@ -124,12 +160,25 @@ void		choose_the_size_of_your_map(t_env *v, SDL_Event e)
 
 void		mouse_button_event(SDL_Event e, t_env *v)
 {
-	if (e.button.button == SDL_BUTTON_LEFT)
+	if (e.type == SDL_MOUSEBUTTONDOWN)
 	{
-		init_form(v, e);
-		choose_the_size_of_your_map(v, e);
+		if (e.button.button == SDL_BUTTON_LEFT)
+		{
+			init_form(v, e);
+			choose_the_size_of_your_map(v, e);
+		}
+		if (e.button.button == SDL_BUTTON_RIGHT)
+			v->form = 9;
+		v->stretch.start_x = e.button.x / v->cases;
+		v->stretch.start_y = e.button.y / v->cases;
+	}
+	else if (e.type == SDL_MOUSEBUTTONUP)
+	{
+		v->stretch.dir_x = e.motion.x / v->cases;
+		v->stretch.dir_y = e.motion.y / v->cases;
 		if (e.button.x > 0 && e.button.x < WIDTH - 30 * 7
 				&& e.button.y > 0 && e.button.y < HEIGHT)
-			which_form(v, e);
+			which_form(v);
 	}
+
 }

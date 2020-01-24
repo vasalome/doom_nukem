@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/23 13:37:30 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/24 12:02:57 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -95,6 +95,14 @@ typedef struct		s_between
 	int				max_y;
 }					t_between;
 
+typedef struct		s_stretch
+{
+	int				start_x;
+	int				start_y;
+	int				dir_x;
+	int				dir_y;
+}					t_stretch;
+
 typedef struct		s_env
 {
 	SDL_Window		*win;
@@ -111,6 +119,7 @@ typedef struct		s_env
 	int				form;
 	int				cases;
 	int				spawn_count;
+	t_stretch		stretch;
 }					t_env;
 
 /*
