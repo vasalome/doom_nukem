@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 13:39:24 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/24 14:09:41 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -134,13 +134,15 @@ t_point			make_point(int x, int y);
 t_rgb			make_rgb(int r, int g, int b, int a);
 void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
 
-
 /*
-** --events--
+** --background--
 */
 void			background_map(t_env *v);
 void			background_menu(t_env *v);
 
+/*
+** --events--
+*/
 void		    init_button(t_env *v, SDL_Event e);
 void			mouse_button_event(SDL_Event event, t_env *v);
 void			mouse_motion_event(SDL_Event event, t_env *v);
@@ -173,10 +175,14 @@ SDL_Texture		*write_text(t_env *v, char *text, int size_font);
 void			put_text(t_env *v, SDL_Texture *tex, int x, int y);
 
 /*
-** --main--
+** --make_map--
 */
 void			free_tab(t_env *v, t_map **tab);
 void			make_map(t_env *v);
+
+/*
+** --main--
+*/
 void			display(t_env *v);
 
 #endif

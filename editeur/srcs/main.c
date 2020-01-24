@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 12:19:05 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/24 14:08:40 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,76 +28,6 @@ void		init(t_env *env)
 // {
 	
 // }
-
-void		background_menu(t_env *v)
-{
-	int		i;
-	int		j;
-
-	j = -1;
-	SDL_SetRenderTarget(v->ren, v->back_menu);
-	while (++j < HEIGHT)
-	{
-		i = WIDTH - 30 * 7 + 1;
-		while (++i < WIDTH)
-			pixel_put(v, i, j, make_rgb(204, 203, 205, 255));
-	}
-	while (++j < HEIGHT && !(j = -1))
-	{
-		i = -1;
-		while (++i < WIDTH - 30 * 7)
-			pixel_put(v, i, j, make_rgb(204, 203, 205, 255));
-	}
-	SDL_SetRenderTarget(v->ren, NULL);
-}
-
-void		background_map(t_env *v)
-{
-	int		j;
-	int		i;
-
-	j = -1;
-	SDL_SetRenderTarget(v->ren, v->back);
-	while (++j < HEIGHT)
-	{
-		i = -1;
-		while (++i < WIDTH - 30 * 7)
-			pixel_put(v, i, j, make_rgb(191, 190, 193, 255));
-	}
-	SDL_SetRenderTarget(v->ren, NULL);
-}
-
-void		free_tab(t_env *v, t_map **tab)
-{
-	int		i;
-
-	i = -1;
-	while (++i < HEIGHT / v->cases)
-		free(tab[i]);
-	free(tab);
-}
-
-void		make_map(t_env *v)
-{
-	int		i;
-	int		j;
-
-	j = -1;
-	if (!(v->tab = malloc(sizeof(t_map *) * (HEIGHT / v->cases))))
-		return ;
-	while (++j < HEIGHT / v->cases)
-	{
-		i = -1;
-		if (!(v->tab[j] = malloc(sizeof(t_map) * ((WIDTH - v->cases * 7) / v->cases))))
-			return ;
-		while (++i < (WIDTH - v->cases * 7) / v->cases)
-		{
-			v->tab[j][i].case_x = i;
-			v->tab[j][i].case_y = j;
-			v->tab[j][i].form = 0;
-		}
-	}
-}
 
 int			main(int argc, char **argv)
 {
