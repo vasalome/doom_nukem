@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 09:31:49 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 13:31:07 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/25 15:09:48 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -124,6 +124,76 @@ t_header			save_header_tga(t_header h, int fd)
 	return (h);
 }
 
+t_px				*invert_order_px(t_tga *tga)
+{
+	int				i;
+	int				v;
+	t_px			*res;
+
+	v = 0;
+	i = tga->h.height * tga->h.width - 1;
+	if (!(res = malloc(sizeof(t_px) * (tga->h.width * tga->h.height))))
+		ft_error("The malloc of the pixel struct didn't work.");
+	while (i >= 0)
+	{
+		res[v].r = tga->px[i].r;
+		res[v].g = tga->px[i].g;
+		res[v].b = tga->px[i].b;
+		res[v].a = tga->px[i].a;
+		v++;
+		i--;
+	}
+	free(tga->px);
+	return (res);
+}
+
+void				swap_rgba(t_px *left, t_px *right)
+{
+	t_px			tmp;
+
+	tmp.r = left->r;
+	tmp.g = left->g;
+	tmp.b = left->b;
+	tmp.a = left->a;
+	left->r = right->r;
+	left->g = right->g;
+	left->b = right->b;
+	left->a = right->a;
+	right->r = tmp.r;
+	right->g = tmp.g;
+	right->b = tmp.b;
+	right->a = tmp.a;
+}
+
+void				mirror(t_tga *tga, int w, int h)
+{
+	int				i;
+	int				j;
+	int				l;
+	int				pair;
+
+	i = -1;
+	l = w - 1;
+	pair = w % 2;
+	pair = 0 ? 0 : 1;
+	if (pair == 0)
+		while (++i < w * 0.5)
+		{
+			j = -1;
+			while (++j < h)
+				swap_rgba(&tga->px[i + w * j], &tga->px[l + w * j]);
+			l--;
+		}
+	else
+		while (++i < w * 0.5 - 1)
+		{
+			j = -1;
+			while (++j < h)
+				swap_rgba(&tga->px[i + w * j], &tga->px[l + w * j]);
+			l--;
+		}
+}
+
 t_tga				*tga_parser(char *img)
 {
 	t_tga			*tga;
@@ -138,75 +208,7 @@ t_tga				*tga_parser(char *img)
 	if (!(tga->px = malloc(sizeof(t_px) * (tga->h.width * tga->h.height))))
 		ft_error("The malloc of the pixel struct didn't work.");
 	tga->px = save_tga_rgba(fd, tga->px, tga->h, tga->h.bitsperpixel / 8);
+	tga->px = invert_order_px(tga);
+	mirror(tga, tga->h.width, tga->h.height);
 	return (tga);
 }
-
-// void				make_spawn(SDL_Renderer *ren, int start_x, int start_y, int taille)
-// {
-// 	t_tga			*spawn;
-// 	unsigned int	i;
-// 	int				y;
-// 	int				x;
-
-// 	i = -1;
-// 	y = start_y;
-// 	spawn = tga_parser("/Users/nrivoire/Documents/doom_nukem/editeur/srcs/editeur/spawn.tga");
-// 	if (!spawn)
-// 		ft_error("tga_parser did not work");
-// 	while (++y < start_y + 33)
-// 	{
-// 		x = start_x;
-// 		while (++x < start_x + 30 && ++i < spawn->h.width * spawn->h.height)
-// 		{
-// 			SDL_SetRenderDrawColor(ren, spawn->px[i].r, spawn->px[i].g, spawn->px[i].b, spawn->px[i].a);
-// 			SDL_RenderDrawPoint(ren, x, y);
-// 		}
-// 	}
-// }
-
-// int		main(int argc, char **argv)
-// {
-// 	SDL_Window		*win;
-// 	SDL_Renderer	*ren;
-// 	t_tga			*tga;
-// 	SDL_Event		event;
-// 	const Uint8		*keyboard_state;
-
-// 	if (argc != 2)
-// 		return (0);
-// 	if (SDL_Init(SDL_INIT_VIDEO))
-// 		ft_error("Couldn't initialize SDL");
-// 	if (!(win = SDL_CreateWindow("wolf3d", SDL_WINDOWPOS_UNDEFINED,
-// 			SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, 0)))
-// 		ft_error("Could not create the window");
-// 	if (!(ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_SOFTWARE)))
-// 		ft_error("Could not create a renderer");
-// 	tga = tga_parser(argv[1]);
-// 	printf("height = %d width = %d\n", tga->h.height, tga->h.width);
-// 	while (1)
-// 	{
-// 		while (SDL_PollEvent(&event))
-// 		{
-// 			keyboard_state = SDL_GetKeyboardState(NULL);
-// 			if (keyboard_state[SDL_SCANCODE_ESCAPE])
-// 				exit(0);
-// 		}
-// 		if (event.type == SDL_QUIT)
-// 			break ;
-// 		// unsigned int i = -1;
-// 		// int y = -1;
-// 		// int x = -1;
-// 		// while (++y < HEIGHT)
-// 		// {
-// 		// 	x = -1;
-// 		// 	while (++x < WIDTH && ++i < tga->h.width * tga->h.height)
-// 		// 	{
-// 		// 		SDL_SetRenderDrawColor(ren, tga->px[i].r, tga->px[i].g, tga->px[i].b, tga->px[i].a);
-// 		// 		SDL_RenderDrawPoint(ren, x, y);
-// 		// 	}
-// 		// }
-// 		make_spawn(ren, 100, 100, 20);
-// 		SDL_RenderPresent(ren);
-// 	}
-// 	return (0);
-// }

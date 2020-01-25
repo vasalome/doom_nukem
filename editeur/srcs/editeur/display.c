@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 13:40:44 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/25 15:04:41 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,9 +22,9 @@ void			pixel_put(t_env *v, int x, int y, t_rgb color)
 void			draw_pro_frame(t_env *v, SDL_Event event)
 {
 	make_grid_pattern(v, event);
+	draw_in_grid_pattern(v);
 	menu_squares_size(v);
 	menu_form_part(v);
-	draw_in_grid_pattern(v);
 }
 
 void			display(t_env *v)
@@ -49,6 +49,7 @@ void			display(t_env *v)
 		if (event.type == SDL_QUIT || key_event(keyboard_state))
 			break ;
 		draw_pro_frame(v, event);
+		make_picture_tga(v, (t_start){100, 100}, 150, "./srcs/images/door.tga");
 		SDL_RenderPresent(v->ren);
 	}
 	SDL_DestroyRenderer(v->ren);

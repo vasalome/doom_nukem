@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/24 14:08:13 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/25 14:57:50 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -69,7 +69,7 @@ SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL
 
 #	Compiler
 CC = clang
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -fsanitize=address
 
 ################
 ##   COLORS   ##

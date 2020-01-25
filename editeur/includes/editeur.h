@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 14:09:41 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/24 18:07:23 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -112,8 +112,7 @@ typedef struct		s_env
 	SDL_Texture		*back;
 	SDL_Texture		*back_menu;
 	SDL_Texture		*text;
-	SDL_Texture		*spawn;
-	SDL_Texture		*door;
+	SDL_Texture		*tex;
 	t_draw_circle	center;
 	t_map			**tab;
 	int				form;
@@ -159,6 +158,7 @@ void			draw_diagonal_g(t_env *v, int x, int y, int size);
 void			draw_horizontal_wall(t_env *v, int x, int y, int size);
 void			draw_vertical_wall(t_env *v, int x, int y, int size);
 void            put_picture(t_env *v, t_start start, int size, char *picture);
+void			make_picture_tga(t_env *v, t_start start, int size, char *pic);
 
 /*
 ** --display_pro_frame--
