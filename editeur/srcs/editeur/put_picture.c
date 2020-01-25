@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:22:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 18:08:03 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/25 16:59:44 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,7 @@ void			make_picture_tga(t_env *v, t_start s, int size, char *pic)
 	int			x;
 	int			px;
 	int			py;
-	
+
 	y = s.y;
 	tga = tga_parser(pic);
 	if (!tga)
@@ -48,9 +48,9 @@ void			make_picture_tga(t_env *v, t_start s, int size, char *pic)
 		{
 			px = (x - s.x) * tga->h.width / size;
 			py = (y - s.y) * tga->h.height / size;
-			SDL_SetRenderDrawColor(v->ren, tga->px[py * tga->h.width + px].r, 
-										tga->px[py * tga->h.width + px].g, 
-										tga->px[py * tga->h.width + px].b, 
+			SDL_SetRenderDrawColor(v->ren, tga->px[py * tga->h.width + px].r,
+										tga->px[py * tga->h.width + px].g,
+										tga->px[py * tga->h.width + px].b,
 										tga->px[py * tga->h.width + px].a);
 			SDL_RenderDrawPoint(v->ren, x + s.x, y + s.y);
 		}

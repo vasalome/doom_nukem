@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/25 15:04:41 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/25 17:05:12 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,6 @@ void			display(t_env *v)
 		if (event.type == SDL_QUIT || key_event(keyboard_state))
 			break ;
 		draw_pro_frame(v, event);
-		make_picture_tga(v, (t_start){100, 100}, 150, "./srcs/images/door.tga");
 		SDL_RenderPresent(v->ren);
 	}
 	SDL_DestroyRenderer(v->ren);

@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/25 14:57:50 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/25 17:04:55 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -27,6 +27,7 @@ SRC_NAME =  main.c \
 			editeur/draw_circle.c\
 			editeur/drawline.c\
 			editeur/tga_parser.c\
+			editeur/tga_parser_body.c\
 			editeur/draw_form.c\
 			editeur/put_picture.c\
 			editeur/put_text.c\
