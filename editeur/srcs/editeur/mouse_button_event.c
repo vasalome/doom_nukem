@@ -6,14 +6,44 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 13:39:25 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/23 14:46:29 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/24 14:06:01 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
 
-void		which_form(t_env *v, SDL_Event e)
+int			stretching(t_env *v, int inc)
+{
+	if (v->tab[v->s.y][v->s.x].form == 8)
+		v->spawn_count = 0;
+	v->tab[v->s.y][v->s.x].form = v->form;
+	if (inc != 0)
+		return (inc);
+	return (0);
+}
+
+void		do_the_user_stretch(t_env *v)
+{
+	if (v->s.x == v->s.dir_x && v->s.y == v->s.dir_y)
+		stretching(v, 0);
+	else if (v->s.x == v->s.dir_x && v->s.y != v->s.dir_y)
+	{
+		while (v->s.y < v->s.dir_y)
+			v->s.y += stretching(v, 1);
+		while (v->s.y >= v->s.dir_y)
+			v->s.y -= stretching(v, 1);
+	}
+	else if (v->s.y == v->s.dir_y && v->s.x != v->s.dir_x)
+	{
+		while (v->s.x < v->s.dir_x)
+			v->s.x += stretching(v, 1);
+		while (v->s.x >= v->s.dir_x)
+			v->s.x -= stretching(v, 1);
+	}
+}
+
+void		which_form(t_env *v)
 {
 	int		t;
 	int		g;
@@ -24,74 +54,15 @@ void		which_form(t_env *v, SDL_Event e)
 		g = -1;
 		while (++g < (WIDTH - v->cases * 7) / v->cases)
 		{
-			if (e.button.x / v->cases == g && e.button.y / v->cases == t
-					&& v->form != 8)
-			{
-				if (v->tab[t][g].form == 8)
-					v->spawn_count = 0;
-				v->tab[t][g].form = v->form;
-			}
-			else if (v->spawn_count == 0 && e.button.x / v->cases == g
-					&& e.button.y / v->cases == t)
+			if (v->s.x == g && v->s.y == t && v->form != 8)
+				do_the_user_stretch(v);
+			else if (v->spawn_count == 0 && v->s.x == g && v->s.y == t)
 			{
 				v->tab[t][g].form = v->form;
 				v->spawn_count = 1;
 			}
 		}
 	}
-}
-
-void		press_button(t_env *v, int start_x, int start_y, int taille)
-{
-	int		i;
-	int		j;
-
-	j = start_y;
-	while (++j < start_y + taille)
-	{
-		i = start_x - 1;
-		while (++i < start_x + taille)
-			pixel_put(v, i, j, make_rgb(166, 166, 166, 255));
-	}
-}
-
-void		click_form(t_env *v, int nb_form, int x, int y)
-{
-	v->form = nb_form;
-	press_button(v, x, y, 32);
-}
-
-int			button_is_between(SDL_Event e, t_between b)
-{
-	if (e.button.x > b.min_x && e.button.x < b.max_x &&
-			e.button.y > b.min_y && e.button.y < b.max_y)
-		return (1);
-	return (0);
-}
-
-void		init_form(t_env *v, SDL_Event e)
-{
-	int		w;
-
-	w = WIDTH - 30 * 6;
-	if (button_is_between(e, (t_between){w, w + 30, 65, 95}))
-		click_form(v, 1, w, 60);
-	else if (button_is_between(e, (t_between){w, w + 30, 95, 125}))
-		click_form(v, 2, w, 90);
-	else if (button_is_between(e, (t_between){w, w + 30, 125, 155}))
-		click_form(v, 3, w, 120);
-	else if (button_is_between(e, (t_between){w, w + 30, 155, 185}))
-		click_form(v, 4, w, 150);
-	else if (button_is_between(e, (t_between){w, w + 30, 185, 215}))
-		click_form(v, 5, w, 180);
-	else if (button_is_between(e, (t_between){w, w + 30, 215, 245}))
-		click_form(v, 6, w, 210);
-	else if (button_is_between(e, (t_between){w, w + 30, 245, 275}))
-		click_form(v, 7, w, 240);
-	else if (button_is_between(e, (t_between){w, w + 30, 275, 305}))
-		click_form(v, 8, w, 270);
-	else if (button_is_between(e, (t_between){w, w + 30, 305, 335}))
-		click_form(v, 9, w, 300);
 }
 
 void		choose_the_size_of_your_map(t_env *v, SDL_Event e)
@@ -124,12 +95,24 @@ void		choose_the_size_of_your_map(t_env *v, SDL_Event e)
 
 void		mouse_button_event(SDL_Event e, t_env *v)
 {
-	if (e.button.button == SDL_BUTTON_LEFT)
+	if (e.type == SDL_MOUSEBUTTONDOWN)
 	{
-		init_form(v, e);
-		choose_the_size_of_your_map(v, e);
+		if (e.button.button == SDL_BUTTON_LEFT)
+		{
+			init_button(v, e);
+			choose_the_size_of_your_map(v, e);
+		}
+		if (e.button.button == SDL_BUTTON_RIGHT)
+			v->form = 9;
+		v->s.x = e.button.x / v->cases;
+		v->s.y = e.button.y / v->cases;
+	}
+	else if (e.type == SDL_MOUSEBUTTONUP)
+	{
+		v->s.dir_x = e.motion.x / v->cases;
+		v->s.dir_y = e.motion.y / v->cases;
 		if (e.button.x > 0 && e.button.x < WIDTH - 30 * 7
 				&& e.button.y > 0 && e.button.y < HEIGHT)
-			which_form(v, e);
+			which_form(v);
 	}
 }

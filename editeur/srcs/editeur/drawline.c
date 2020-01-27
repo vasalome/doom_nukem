@@ -6,23 +6,12 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/12 13:46:28 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 13:24:37 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/25 18:36:08 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
-
-t_rgb			make_rgb(int r, int g, int b, int a)
-{
-	t_rgb		content;
-
-	content.r = r;
-	content.g = g;
-	content.b = b;
-	content.a = a;
-	return (content);
-}
 
 t_point			make_point(int x, int y)
 {

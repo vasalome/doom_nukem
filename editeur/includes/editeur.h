@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/23 13:37:30 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 16:10:12 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -95,6 +95,14 @@ typedef struct		s_between
 	int				max_y;
 }					t_between;
 
+typedef struct		s_stretch
+{
+	int				x;
+	int				y;
+	int				dir_x;
+	int				dir_y;
+}					t_stretch;
+
 typedef struct		s_env
 {
 	SDL_Window		*win;
@@ -104,13 +112,14 @@ typedef struct		s_env
 	SDL_Texture		*back;
 	SDL_Texture		*back_menu;
 	SDL_Texture		*text;
-	SDL_Texture		*spawn;
-	SDL_Texture		*door;
+	SDL_Texture		*tex;
 	t_draw_circle	center;
 	t_map			**tab;
 	int				form;
 	int				cases;
 	int				spawn_count;
+	t_stretch		s;
+	Uint32			*pixels;
 }					t_env;
 
 /*
@@ -120,18 +129,21 @@ typedef struct		s_env
 /*
 ** --draw_tools--
 */
+Uint32			get_pixel(SDL_Surface *surface, int x, int y);
 void			pixel_put(t_env *v, int x, int y, t_rgb color);
 t_point			make_point(int x, int y);
-t_rgb			make_rgb(int r, int g, int b, int a);
 void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
 
-
 /*
-** --events--
+** --background--
 */
 void			background_map(t_env *v);
 void			background_menu(t_env *v);
 
+/*
+** --events--
+*/
+void		    init_button(t_env *v, SDL_Event e);
 void			mouse_button_event(SDL_Event event, t_env *v);
 void			mouse_motion_event(SDL_Event event, t_env *v);
 int				key_event(const Uint8 *keyboard_state);
@@ -147,6 +159,7 @@ void			draw_diagonal_g(t_env *v, int x, int y, int size);
 void			draw_horizontal_wall(t_env *v, int x, int y, int size);
 void			draw_vertical_wall(t_env *v, int x, int y, int size);
 void            put_picture(t_env *v, t_start start, int size, char *picture);
+void			make_picture_tga(t_env *v, t_start start, int size, char *pic);
 
 /*
 ** --display_pro_frame--
@@ -159,14 +172,18 @@ void			draw_in_grid_pattern(t_env *v);
 /*
 ** --write--
 */
-SDL_Texture		*write_text(t_env *v, char *text, int size_font);
-void			put_text(t_env *v, SDL_Texture *tex, int x, int y);
+SDL_Surface		*write_text(char *text, int size_font);
+void			put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
+
+/*
+** --make_map--
+*/
+void			free_tab(t_env *v, t_map **tab);
+void			make_map(t_env *v);
 
 /*
 ** --main--
 */
-void			free_tab(t_env *v, t_map **tab);
-void			make_map(t_env *v);
 void			display(t_env *v);
 
 #endif

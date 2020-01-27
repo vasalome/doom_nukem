@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/23 13:43:22 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/27 14:23:41 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -27,6 +27,7 @@ SRC_NAME =  main.c \
 			editeur/draw_circle.c\
 			editeur/drawline.c\
 			editeur/tga_parser.c\
+			editeur/tga_parser_body.c\
 			editeur/draw_form.c\
 			editeur/put_picture.c\
 			editeur/put_text.c\
@@ -36,6 +37,10 @@ SRC_NAME =  main.c \
 			editeur/mouse_button_event.c\
 			editeur/mouse_motion_event.c\
 			editeur/key_event.c\
+			editeur/init_button.c\
+			editeur/make_map.c\
+			editeur/background.c\
+			editeur/get_pixel.c\
 
 #	Objects
 OBJ_PATH = .objects
@@ -66,7 +71,7 @@ SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL
 
 #	Compiler
 CC = clang
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -fsanitize=address
 
 ################
 ##   COLORS   ##

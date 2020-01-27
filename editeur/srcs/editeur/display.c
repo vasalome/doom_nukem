@@ -6,48 +6,55 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/23 12:21:03 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 16:14:26 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
 
+int				get_hex_rgba(int r, int g, int b, int a)
+{
+	return ((r << 24) | (g << 16) | (b << 8) | (a));
+}
+
 void			pixel_put(t_env *v, int x, int y, t_rgb color)
 {
-	SDL_RenderDrawPoint(v->ren, x, y);
-	SDL_SetRenderDrawColor(v->ren, color.r, color.g, color.b, color.a);
+	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
+		return ;
+	v->pixels[y * WIDTH + x] = get_hex_rgba(color.r, color.g, color.b, color.a);
 }
 
 void			draw_pro_frame(t_env *v, SDL_Event event)
 {
 	make_grid_pattern(v, event);
+	draw_in_grid_pattern(v);
 	menu_squares_size(v);
 	menu_form_part(v);
-	draw_in_grid_pattern(v);
 }
 
 void			display(t_env *v)
 {
-	SDL_Event	event;
+	SDL_Event	e;
 	const Uint8	*keyboard_state;
 
-	SDL_RenderCopy(v->ren, v->back, NULL, NULL);
 	while (1)
 	{
-		while (SDL_PollEvent(&event))
+		while (SDL_PollEvent(&e))
 		{
 			keyboard_state = SDL_GetKeyboardState(NULL);
-			if (event.type == SDL_KEYDOWN)
+			if (e.type == SDL_KEYDOWN)
 				key_event(keyboard_state);
-			if (event.type == SDL_MOUSEBUTTONDOWN)
-				mouse_button_event(event, v);
-			if (event.type == SDL_MOUSEMOTION)
-				mouse_motion_event(event, v);
+			if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
+				mouse_button_event(e, v);
+			if (e.type == SDL_MOUSEMOTION)
+				mouse_motion_event(e, v);
 		}
-		if (event.type == SDL_QUIT || key_event(keyboard_state))
+		if (e.type == SDL_QUIT || key_event(keyboard_state))
 			break ;
-		draw_pro_frame(v, event);
+		draw_pro_frame(v, e);
+		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * WIDTH);
+		SDL_RenderCopy(v->ren, v->tex, NULL, NULL);
 		SDL_RenderPresent(v->ren);
 	}
 	SDL_DestroyRenderer(v->ren);
