@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:40:07 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 11:35:34 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 19:52:36 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,19 @@ void	fill_map_plus(t_fillmap *fill, t_info *info)
 		info->use = fill->line[fill->i];
 	if (fill->line[fill->i] == '3');
 		//tp_destination(fill, info, fill->line, &fill->i);
+}*/
+/*
+int		pars_bin(t_fillmap *fill, t_info *info)
+{
+	info->map.map[fill->x][fill->y].wall = request_bin(fill, 1); //need to code request_bin pour recuperer le binaire d'un fichier
+
+	
+	
+	while (fill->line[fill->i] != ')')
+		fill->i++;
+	
+	fill->x++;
+	return(0);
 }*/
 
 int		request_value(t_fillmap *fill, int x)
@@ -109,6 +122,10 @@ int		read_map(t_info *info, t_fillmap *fill)
 			//fill_map_plus(fill, info);
 			if (fill->line[fill->i] == '[')
 				parsing(fill, info);
+				/* preparation du parsing des fichiers
+			if (fill->line[fill->i] == '(')
+				pars_bin(fill, info);
+				*/
 			fill->i++;
 		}
 		ft_strdel(&fill->line);
