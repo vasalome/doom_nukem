@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:22:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 15:23:03 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 16:17:14 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,8 +30,9 @@ void			put_picture(t_env *v, t_start s, int size, char *picture)
 		{
 			SDL_GetRGBA(get_pixel(sur, x * sur->w / size, y * sur->h / size),
 					sur->format, &col.r, &col.g, &col.b, &col.a);
-			pixel_put(v, s.x + x, s.y + y, (t_rgb){col.r, col.g, col.b, col.a});
-			printf("%d\n", col.a);
+			if (col.a != 0)
+				pixel_put(v, s.x + x, s.y + y, (t_rgb){col.r, col.g, col.b,
+						col.a});
 		}
 	}
 	SDL_FreeSurface(sur);
@@ -56,11 +57,12 @@ void			make_picture_tga(t_env *v, t_start s, int size, char *pic)
 		{
 			px = x * tga->h.width / size;
 			py = y * tga->h.height / size;
-			pixel_put(v, x + s.x, y + s.y,
-					(t_rgb){tga->px[py * tga->h.width + px].r,
-							tga->px[py * tga->h.width + px].g,
-							tga->px[py * tga->h.width + px].b,
-							tga->px[py * tga->h.width + px].a});
+			if (tga->px[py * tga->h.width + px].a != 0)
+				pixel_put(v, x + s.x, y + s.y,
+						(t_rgb){tga->px[py * tga->h.width + px].r,
+								tga->px[py * tga->h.width + px].g,
+								tga->px[py * tga->h.width + px].b,
+								tga->px[py * tga->h.width + px].a});
 		}
 	}
 }

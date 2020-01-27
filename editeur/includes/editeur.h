@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 14:25:24 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 16:10:12 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -172,8 +172,8 @@ void			draw_in_grid_pattern(t_env *v);
 /*
 ** --write--
 */
-SDL_Texture		*write_text(t_env *v, char *text, int size_font);
-void			put_text(t_env *v, SDL_Texture *tex, int x, int y);
+SDL_Surface		*write_text(char *text, int size_font);
+void			put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 
 /*
 ** --make_map--
