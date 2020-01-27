@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 18:07:23 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 14:25:24 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -119,6 +119,7 @@ typedef struct		s_env
 	int				cases;
 	int				spawn_count;
 	t_stretch		s;
+	Uint32			*pixels;
 }					t_env;
 
 /*
@@ -128,9 +129,9 @@ typedef struct		s_env
 /*
 ** --draw_tools--
 */
+Uint32			get_pixel(SDL_Surface *surface, int x, int y);
 void			pixel_put(t_env *v, int x, int y, t_rgb color);
 t_point			make_point(int x, int y);
-t_rgb			make_rgb(int r, int g, int b, int a);
 void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
 
 /*

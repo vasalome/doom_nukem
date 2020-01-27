@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 13:41:22 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 14:05:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/25 18:37:41 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,8 +69,8 @@ void		mouse_motion_event(SDL_Event event, t_env *v)
 	t_rgb	color_click;
 	t_rgb	color;
 
-	color_click = make_rgb(191, 191, 191, 255);
-	color = make_rgb(204, 203, 205, 255);
+	color_click = (t_rgb){191, 191, 191, 255};
+	color = (t_rgb){204, 203, 205, 255};
 	w = WIDTH - 30 * 6;
 	mouse_motion_event_2(event, v, color, color_click);
 	if (mouse_location(event, (t_between){w, w + 30, 210, 240}))

@@ -1,48 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   background.c                                     .::    .:/ .      .::   */
+/*   get_pixel.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/01/24 14:08:24 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/25 18:35:19 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/01/25 18:55:45 by nrivoire     #+#   ##    ##    #+#       */
+/*   Updated: 2020/01/27 14:25:11 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
 
-void		background_menu(t_env *v)
+Uint32		get_pixel(SDL_Surface *surface, int x, int y)
 {
-	int		i;
-	int		j;
+	int			bpp;
+	Uint8		*p;
 
-	j = -1;
-	while (++j < HEIGHT)
-	{
-		i = WIDTH - 30 * 7 + 1;
-		while (++i < WIDTH)
-			pixel_put(v, i, j, (t_rgb){204, 203, 205, 255});
-	}
-	while (++j < HEIGHT && !(j = -1))
-	{
-		i = -1;
-		while (++i < WIDTH - 30 * 7)
-			pixel_put(v, i, j, (t_rgb){204, 203, 205, 255});
-	}
-}
-
-void		background_map(t_env *v)
-{
-	int		j;
-	int		i;
-
-	j = -1;
-	while (++j < HEIGHT)
-	{
-		i = -1;
-		while (++i < WIDTH - 30 * 7)
-			pixel_put(v, i, j, (t_rgb){191, 190, 193, 255});
-	}
+	bpp = surface->format->BytesPerPixel;
+	p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
+	if (bpp == 1)
+		return (*p);
+	else if (bpp == 2)
+		return (*(Uint16 *)p);
+	else if (bpp == 3)
+		return (p[0] | p[1] << 8 | p[2] << 16);
+	else if (bpp == 4)
+		return (*(Uint32 *)p);
+	return (0);
 }

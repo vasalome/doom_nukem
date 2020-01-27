@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 13:37:48 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 13:41:09 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/25 18:36:36 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ static void		press_button(t_env *v, int start_x, int start_y, int taille)
 	{
 		i = start_x - 1;
 		while (++i < start_x + taille)
-			pixel_put(v, i, j, make_rgb(166, 166, 166, 255));
+			pixel_put(v, i, j, (t_rgb){166, 166, 166, 255});
 	}
 }
 

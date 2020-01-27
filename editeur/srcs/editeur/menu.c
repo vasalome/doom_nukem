@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:55:48 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/25 17:05:49 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 15:21:49 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,8 +40,9 @@ void			menu_form_part(t_env *v)
 			WIDTH - 30 * 5 + 5, 190);
 	draw_void_circle(v, WIDTH - 30 * 6 + 15, 215 + 11, 10);
 	put_text(v, write_text(v, "Pillier", 12), WIDTH - 30 * 5 + 5, 220);
-	put_picture(v, (t_start){WIDTH - 30 * 6 + 2, 245}, 25,
-			"./srcs/images/door.xpm");
+	//put_picture(v, (t_start){WIDTH - 30 * 6 + 2, 245}, 25,
+	//		"./srcs/images/door.xpm");
+	make_picture_tga(v, (t_start){WIDTH - 30 * 6 + 2, 245}, 25, "./srcs/images/door.tga");
 	put_text(v, write_text(v, "Porte", 12), WIDTH - 30 * 5 + 5, 250);
 	put_picture(v, (t_start){WIDTH - 30 * 6 + 5, 275}, 22,
 			"./srcs/images/stickman.xpm");
