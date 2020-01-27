@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 14:14:31 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 18:17:01 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,15 +17,15 @@ void		init(t_env *v)
 {
 	if (SDL_Init(SDL_INIT_VIDEO))
 		ft_error("Couldn't initialize SDL");
-	if (!(v->win = SDL_CreateWindow("wolf3d", SDL_WINDOWPOS_UNDEFINED,
-			SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, 0)))
+	if (!(v->win = SDL_CreateWindow("editeur", SDL_WINDOWPOS_UNDEFINED,
+			SDL_WINDOWPOS_UNDEFINED, v->w, v->h, 0)))
 		ft_error("Could not create the window");
 	if (!(v->ren = SDL_CreateRenderer(v->win, -1, SDL_RENDERER_SOFTWARE)))
 		ft_error("Could not create a renderer");
 	if (!(v->tex = SDL_CreateTexture(v->ren, SDL_PIXELFORMAT_RGBA8888,
-			SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT)))
+			SDL_TEXTUREACCESS_STREAMING, v->w, v->h)))
 		ft_error("Could not create a texture");
-	if (!(v->pixels = malloc(sizeof(uint32_t) * (HEIGHT * WIDTH))))
+	if (!(v->pixels = malloc(sizeof(uint32_t) * (v->h * v->w))))
 		ft_error("ALLO CA MARCHE PAS");
 }
 
@@ -47,6 +47,9 @@ int			main(int argc, char **argv)
 	v->form = 0;
 	v->cases = 30;
 	v->spawn_count = 0;
+	v->w = 1200;
+	v->h = 900;
+	v->window = 0;
 	make_map(v);
 	init(v);
 	//editeur_setup(env);

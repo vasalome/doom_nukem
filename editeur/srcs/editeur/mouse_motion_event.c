@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 13:41:22 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/25 18:37:41 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 17:13:00 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,7 @@ void		mouse_motion_event_2(SDL_Event event, t_env *v,
 {
 	int		w;
 
-	w = WIDTH - 30 * 6;
+	w = v->w - 30 * 6;
 	if (mouse_location(event, (t_between){w, w + 30, 60, 90}))
 		is_it_over_the_button(v, (t_start){w, 60}, 32, color_click);
 	else
@@ -71,7 +71,7 @@ void		mouse_motion_event(SDL_Event event, t_env *v)
 
 	color_click = (t_rgb){191, 191, 191, 255};
 	color = (t_rgb){204, 203, 205, 255};
-	w = WIDTH - 30 * 6;
+	w = v->w - 30 * 6;
 	mouse_motion_event_2(event, v, color, color_click);
 	if (mouse_location(event, (t_between){w, w + 30, 210, 240}))
 		is_it_over_the_button(v, (t_start){w, 210}, 32, color_click);
@@ -85,8 +85,4 @@ void		mouse_motion_event(SDL_Event event, t_env *v)
 		is_it_over_the_button(v, (t_start){w, 270}, 32, color_click);
 	else
 		is_it_over_the_button(v, (t_start){w, 270}, 32, color);
-	if (mouse_location(event, (t_between){w, w + 30, 300, 330}))
-		is_it_over_the_button(v, (t_start){w, 300}, 32, color_click);
-	else
-		is_it_over_the_button(v, (t_start){w, 300}, 32, color);
 }

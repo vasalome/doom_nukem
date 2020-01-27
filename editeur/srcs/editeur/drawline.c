@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/12 13:46:28 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/25 18:36:08 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 17:07:24 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,7 @@ void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v)
 	t_bressen	b;
 
 	if ((m1.x < 0 && m1.y < 0 && m2.y < 0 && m2.x < 0) ||
-			(m1.x > WIDTH && m1.y > HEIGHT && m2.y > HEIGHT && m2.x > WIDTH))
+			(m1.x > v->w && m1.y > v->h && m2.y > v->h && m2.x > v->w))
 		return ;
 	b = init_bresen(m1, m2);
 	while (1)

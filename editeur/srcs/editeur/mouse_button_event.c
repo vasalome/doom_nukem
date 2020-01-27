@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 13:39:25 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 14:06:01 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 19:17:34 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,10 +49,10 @@ void		which_form(t_env *v)
 	int		g;
 
 	t = -1;
-	while (++t < HEIGHT / v->cases)
+	while (++t < v->h / v->cases)
 	{
 		g = -1;
-		while (++g < (WIDTH - v->cases * 7) / v->cases)
+		while (++g < (v->w - v->cases * 7) / v->cases)
 		{
 			if (v->s.x == g && v->s.y == t && v->form != 8)
 				do_the_user_stretch(v);
@@ -67,8 +67,8 @@ void		which_form(t_env *v)
 
 void		choose_the_size_of_your_map(t_env *v, SDL_Event e)
 {
-	if (v->cases > 15 && v->cases <= 30 && e.button.x > WIDTH - 45
-			&& e.button.x < WIDTH - 35 && e.button.y > 15 && e.button.y < 20)
+	if (v->cases > 15 && v->cases <= 30 && e.button.x > v->w - 45
+			&& e.button.x < v->w - 35 && e.button.y > 15 && e.button.y < 20)
 	{
 		free_tab(v, v->tab);
 		v->spawn_count = 0;
@@ -79,8 +79,8 @@ void		choose_the_size_of_your_map(t_env *v, SDL_Event e)
 		background_map(v);
 		make_map(v);
 	}
-	if (v->cases >= 15 && v->cases < 30 && e.button.x > WIDTH - 15 &&
-			e.button.x < WIDTH - 5 && e.button.y > 15 && e.button.y < 20)
+	if (v->cases >= 15 && v->cases < 30 && e.button.x > v->w - 15 &&
+			e.button.x < v->w - 5 && e.button.y > 15 && e.button.y < 20)
 	{
 		free_tab(v, v->tab);
 		v->spawn_count = 0;
@@ -95,24 +95,30 @@ void		choose_the_size_of_your_map(t_env *v, SDL_Event e)
 
 void		mouse_button_event(SDL_Event e, t_env *v)
 {
-	if (e.type == SDL_MOUSEBUTTONDOWN)
+	if (v->window == 0)
 	{
-		if (e.button.button == SDL_BUTTON_LEFT)
+		if (e.type == SDL_MOUSEBUTTONDOWN)
 		{
-			init_button(v, e);
-			choose_the_size_of_your_map(v, e);
+			if (e.button.button == SDL_BUTTON_LEFT)
+			{
+				init_button(v, e);
+				choose_the_size_of_your_map(v, e);
+			}
+			if (e.button.button == SDL_BUTTON_RIGHT)
+				v->form = 9;
+			v->s.x = e.button.x / v->cases;
+			v->s.y = e.button.y / v->cases;
 		}
-		if (e.button.button == SDL_BUTTON_RIGHT)
-			v->form = 9;
-		v->s.x = e.button.x / v->cases;
-		v->s.y = e.button.y / v->cases;
+		else if (e.type == SDL_MOUSEBUTTONUP)
+		{
+			v->s.dir_x = e.motion.x / v->cases;
+			v->s.dir_y = e.motion.y / v->cases;
+			if (e.button.x > 0 && e.button.x < v->w - 30 * 7
+					&& e.button.y > 0 && e.button.y < v->h)
+				which_form(v);
+		}
 	}
-	else if (e.type == SDL_MOUSEBUTTONUP)
-	{
-		v->s.dir_x = e.motion.x / v->cases;
-		v->s.dir_y = e.motion.y / v->cases;
-		if (e.button.x > 0 && e.button.x < WIDTH - 30 * 7
-				&& e.button.y > 0 && e.button.y < HEIGHT)
-			which_form(v);
-	}
+	else
+		if (button_is_between(e, (t_between){804, 820, 282, 298}))
+			v->window = 0;
 }

@@ -6,14 +6,14 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/25 18:55:45 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 14:25:11 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 17:07:33 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
 
-Uint32		get_pixel(SDL_Surface *surface, int x, int y)
+Uint32			get_pixel(SDL_Surface *surface, int x, int y)
 {
 	int			bpp;
 	Uint8		*p;

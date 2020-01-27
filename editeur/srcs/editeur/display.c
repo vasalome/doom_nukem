@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 16:14:26 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 19:41:43 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,17 +20,22 @@ int				get_hex_rgba(int r, int g, int b, int a)
 
 void			pixel_put(t_env *v, int x, int y, t_rgb color)
 {
-	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
+	if (x >= v->w || y >= v->h || x < 0 || y < 0)
 		return ;
-	v->pixels[y * WIDTH + x] = get_hex_rgba(color.r, color.g, color.b, color.a);
+	v->pixels[y * v->w + x] = get_hex_rgba(color.r, color.g, color.b, color.a);
 }
 
 void			draw_pro_frame(t_env *v, SDL_Event event)
 {
-	make_grid_pattern(v, event);
-	draw_in_grid_pattern(v);
-	menu_squares_size(v);
-	menu_form_part(v);
+
+	if (v->window == 1)
+		open_window(v);
+	else
+	{
+		make_grid_pattern(v, event);
+		draw_in_grid_pattern(v);
+	}
+	menu_button(v);
 }
 
 void			display(t_env *v)
@@ -38,6 +43,7 @@ void			display(t_env *v)
 	SDL_Event	e;
 	const Uint8	*keyboard_state;
 
+	menu_text(v);
 	while (1)
 	{
 		while (SDL_PollEvent(&e))
@@ -53,7 +59,7 @@ void			display(t_env *v)
 		if (e.type == SDL_QUIT || key_event(keyboard_state))
 			break ;
 		draw_pro_frame(v, e);
-		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * WIDTH);
+		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * v->w);
 		SDL_RenderCopy(v->ren, v->tex, NULL, NULL);
 		SDL_RenderPresent(v->ren);
 	}
