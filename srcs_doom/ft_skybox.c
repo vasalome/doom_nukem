@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/23 18:19:08 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 16:05:29 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -105,6 +105,9 @@ void	draw_skybox(t_info *info)
 	double front_offset;
 
 	dir_offset = (atan2(info->player.y_dir, info->player.x_dir) + 3.14159265) / 3.14159265;
+	printf("atan2 = %f\n",(atan2(info->player.y_dir, info->player.x_dir)));
+	printf("y = %f\n",info->player.y_dir);
+	printf("x = %f\n\n",info->player.x_dir);
 	fore_offset = floor(dir_offset * WIDTH);
 	front_offset = floor(fore_offset / 2);
 	init_sky_1(info);
