@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:40:17 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/25 17:48:15 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 17:10:32 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,23 +47,23 @@ void			make_grid_pattern(t_env *v, SDL_Event event)
 	int			k;
 
 	j = -1;
-	while (++j < HEIGHT / v->cases)
+	while (++j < v->h / v->cases)
 	{
 		i = -1;
-		while (++i < (WIDTH - 30 * 7) / v->cases)
+		while (++i < (v->w - 30 * 7) / v->cases)
 		{
 			k = -1;
 			while (++k <= v->cases)
 			{
-				if (i < (WIDTH - 30 * 7) / v->cases)
+				if (i < (v->w - 30 * 7) / v->cases)
 					pixel_put(v, i * v->cases + k, j * v->cases,
 							(t_rgb){63, 62, 65, 150});
-				if (j < HEIGHT / v->cases)
+				if (j < v->h / v->cases)
 					pixel_put(v, i * v->cases, j * v->cases + k,
 							(t_rgb){63, 62, 65, 150});
 			}
-			if (event.motion.x > 0 && event.motion.x < WIDTH - 30 * 7 &&
-					event.motion.y > 0 && event.motion.y < HEIGHT)
+			if (event.motion.x > 0 && event.motion.x < v->w - 30 * 7 &&
+					event.motion.y > 0 && event.motion.y < v->h)
 				where_is_the_mouse(v, event, i, j);
 		}
 	}

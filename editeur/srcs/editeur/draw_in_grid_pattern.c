@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:55:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 16:59:58 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 17:07:00 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,10 +48,10 @@ void			draw_in_grid_pattern(t_env *v)
 	int			t;
 
 	t = -1;
-	while (++t < HEIGHT / v->cases)
+	while (++t < v->h / v->cases)
 	{
 		g = -1;
-		while (++g < (WIDTH - v->cases * 7) / v->cases)
+		while (++g < (v->w - v->cases * 7) / v->cases)
 			if (v->tab[t][g].form != 0)
 				choose_your_form_from_1_to_9(v, g, t);
 	}

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 16:10:12 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/27 18:37:37 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,9 +29,6 @@
 # include "../../frameworks/SDL2_ttf.framework/Versions/A/Headers/SDL_ttf.h"
 # include "../../frameworks/SDL2_image.framework/Versions/A/Headers/SDL_image.h"
 # include "tga_parser.h"
-
-# define WIDTH 1200
-# define HEIGHT 900
 
 /*
 ** -----------------------------EDITEUR---------------------------------
@@ -120,6 +117,9 @@ typedef struct		s_env
 	int				spawn_count;
 	t_stretch		s;
 	Uint32			*pixels;
+	int				h;
+	int				w;
+	int				window;
 }					t_env;
 
 /*
@@ -143,6 +143,7 @@ void			background_menu(t_env *v);
 /*
 ** --events--
 */
+int				button_is_between(SDL_Event e, t_between b);
 void		    init_button(t_env *v, SDL_Event e);
 void			mouse_button_event(SDL_Event event, t_env *v);
 void			mouse_motion_event(SDL_Event event, t_env *v);
@@ -165,9 +166,10 @@ void			make_picture_tga(t_env *v, t_start start, int size, char *pic);
 ** --display_pro_frame--
 */
 void			make_grid_pattern(t_env *v, SDL_Event event);
-void			menu_squares_size(t_env *v);
-void			menu_form_part(t_env *v);
+void			menu_text(t_env *v);
+void			menu_button(t_env *v);
 void			draw_in_grid_pattern(t_env *v);
+void			open_window(t_env *v);
 
 /*
 ** --write--
