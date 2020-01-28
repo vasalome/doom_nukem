@@ -314,6 +314,7 @@ typedef struct		s_info
 	double			yrel;
 	double			zoom;
 	int				raycast;
+	int				testHeight;
 }					t_info;
 
 /*
