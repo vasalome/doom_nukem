@@ -71,6 +71,7 @@ int		main(int argc, char **argv)
 	info.fps.rect.y = -200;
 	info.fps.rect.w = WIDTH;
 	info.fps.rect.h = HEIGHT + 400;
+    info.testHeight = 0;
 
     //SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
     //SDL_Thread* threadID2 = SDL_CreateThread(threadAnim2, "wowThread2", (t_info*)&info);
@@ -131,11 +132,19 @@ int		main(int argc, char **argv)
 						open_doors(&info);
 					else if (event.key.keysym.sym == SDLK_g)
                     {
-                        Mix_PlayChannel(-1, info.music.high, 0);
+                        if (info.testHeight > -300)
+                        {
+                            
+                            while (info.testHeight != -300)
+                            {
+                                info.testHeight += -30;
+                                ray_casting_image(&info);
+                            }
+                        }
                     }
                     else if (event.key.keysym.sym == SDLK_h)
                     {
-                        Mix_PlayChannel(-1, info.music.low, 0);
+                        info.testHeight -= 10;
                     }
                     else if (event.key.keysym.sym == SDLK_z)
                     {
@@ -166,6 +175,14 @@ int		main(int argc, char **argv)
                         info.player.move_speed = 0.05;
                     else if (event.key.keysym.sym == SDLK_f)
                         info.action = 0;
+                    else if (event.key.keysym.sym == SDLK_g)
+                    {
+                        if (info.testHeight < 0)
+                        {
+                            info.testHeight += 300;
+                            ray_casting_image(&info);
+                        }
+                    }
                     else if (event.key.keysym.sym == SDLK_z)
                     {
                         SDL_Delay(10);
