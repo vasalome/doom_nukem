@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 16:20:15 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 18:19:06 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/28 14:53:53 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,9 +25,9 @@ void	clip_10(t_info *info)
     // {
         printf("oui = %f\n",(floor(info->player.x_pos) + 0.5));
         if (info->player.x_pos + info->player.x_dir * info->player.move_speed\
-                != (floor(info->player.x_pos + 0.5)))\
-                //&& info->player.x_pos + info->player.x_dir * info->player.move_speed \
-                < (floor(info->player.x_pos + 0.6))))
+                != (floor(info->player.x_pos + 0.5)))
+                // && info->player.x_pos + info->player.x_dir * info->player.move_speed
+                // < (floor(info->player.x_pos + 0.6))))
         {
             info->player.x_pos += info->player.x_dir * info->player.move_speed;
             info->player.y_pos += info->player.y_dir * info->player.move_speed;
@@ -65,9 +65,9 @@ void	clip_12(t_info *info)
     // {
         printf("oui = %f\n",(floor(info->player.y_pos) + 0.5));
         if (info->player.y_pos + info->player.y_dir * info->player.move_speed\
-                != (floor(info->player.y_pos + 0.5)))\
-                //&& info->player.y_pos + info->player.y_dir * info->player.move_speed\
-                < (floor(info->player.y_pos + 0.6))))
+                != (floor(info->player.y_pos + 0.5)))
+                //&& info->player.y_pos + info->player.y_dir * info->player.move_speed
+                // < (floor(info->player.y_pos + 0.6))))
         {
             info->player.y_pos += info->player.y_dir * info->player.move_speed;
             info->player.x_pos += info->player.x_dir * info->player.move_speed;

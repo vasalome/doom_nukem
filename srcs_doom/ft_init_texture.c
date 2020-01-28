@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 10:57:38 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/28 16:24:26 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,21 +20,23 @@ void	textures_list(t_info *info)
 	info->wt[2].img = IMG_Load("wall/scpwall3-1.png");
 	info->wt[3].img = IMG_Load("wall/scpwall3.png");
 	info->wt[4].img = IMG_Load("wall/floor2.png");
-	// info->wt[5].img = IMG_Load("wall/map_pillar.png");
+	info->wt[5].img = 0;
 	info->wt[6].img = IMG_Load("wall/door.png");
-	// info->wt[7].img = ;
-	// info->wt[8].img = ;
-	// info->wt[9].img = ;
-	// info->wt[10].img = ;
-	// info->wt[11].img = ;
-	// info->wt[12].img = ;
-	// info->wt[13].img = ;
-	// info->wt[14].img = ;
-	// info->wt[15].img = ;
+	info->wt[7].img = 0;
+	info->wt[8].img = 0;
+	info->wt[9].img = 0;
+	info->wt[10].img = 0;
+	info->wt[11].img = 0;
+	info->wt[12].img = 0;
+	info->wt[13].img = 0;
+	info->wt[14].img = 0;
+	info->wt[15].img = 0;
 	info->wt[16].img = IMG_Load("wall/scpfloor2.png");
 	info->wt[17].img = IMG_Load("wall/scpfloor.png");
 	info->wt[18].img = IMG_Load("wall/transparent.png");
-	// info->wt[19].img = ;
+	
+	// hud
+	// info->wt[19].img = IMG_Load("wall/bars.png");
 
 	// 20 a 30 dans skybox pour l'instant
 	// info->wt[20].img = ;

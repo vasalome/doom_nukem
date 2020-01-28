@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/23 18:56:33 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/28 17:26:16 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -282,11 +282,11 @@ typedef struct		s_info
 	t_map			map;
 	t_wall			wall;
 	t_weapon		wp[11];
-	t_weapon		head[10];
+	t_weapon		head[11];
 	t_weapon		img;
 	t_tex			fps;
 	t_tex			flash;
-	t_tex			wt[30];
+	t_tex			wt[31];
 	t_music			music;
 	t_floor			floor;
 	//t_record		rec;
@@ -465,5 +465,7 @@ void				init_clip(t_info *info);
 
 void	clip_10(t_info *info);
 void	clip_12(t_info *info);
+
+void	draw_hud(t_info *info);
 
 #endif

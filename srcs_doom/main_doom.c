@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 11:33:43 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/28 17:22:37 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,19 +17,20 @@ void    menu(t_info *info);
 void    loadButton(t_info *info, int i);
 void    render_skybox(t_info *info)
 {
-    SDL_RenderCopy(info->win.renderer, info->wt[29].texture, NULL, &info->wt[29].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[30].texture, NULL, &info->wt[30].rect);
+    return ;
+    // SDL_RenderCopy(info->win.renderer, info->wt[29].texture, NULL, &info->wt[29].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[30].texture, NULL, &info->wt[30].rect);
 
-    SDL_RenderCopy(info->win.renderer, info->wt[25].texture, NULL, &info->wt[25].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[26].texture, NULL, &info->wt[26].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[27].texture, NULL, &info->wt[27].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[28].texture, NULL, &info->wt[28].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[25].texture, NULL, &info->wt[25].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[26].texture, NULL, &info->wt[26].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[27].texture, NULL, &info->wt[27].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[28].texture, NULL, &info->wt[28].rect);
 
-    SDL_RenderCopy(info->win.renderer, info->wt[20].texture, NULL, &info->wt[20].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[21].texture, NULL, &info->wt[21].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[22].texture, NULL, &info->wt[22].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[23].texture, NULL, &info->wt[23].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[24].texture, NULL, &info->wt[24].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[20].texture, NULL, &info->wt[20].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[21].texture, NULL, &info->wt[21].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[22].texture, NULL, &info->wt[22].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[23].texture, NULL, &info->wt[23].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[24].texture, NULL, &info->wt[24].rect);
 }
 
 /* Fonction de callback (sera appelée toutes les 30 ms) */
@@ -265,7 +266,7 @@ int		main(int argc, char **argv)
                 {
                     /*switch (event.button.button)
                     {
-                        /*case SDL_BUTTON_WHEELUP:
+                        case SDL_BUTTON_WHEELUP:
                             if (info.game == 3)
                             {
                                 info.zoom += 0.1;
@@ -313,8 +314,10 @@ int		main(int argc, char **argv)
         
             SDL_RenderClear(info.win.renderer);
             render_skybox(&info);
-        
+
             SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
+            // RENDER HUD
+            SDL_RenderCopy(info.win.renderer, info.wt[19].texture, NULL, &info.wt[19].rect);
         }
         else if (info.game == 3)
         {
