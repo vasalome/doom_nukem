@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/28 17:22:37 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 17:55:16 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,6 +74,8 @@ int		main(int argc, char **argv)
 	info.fps.rect.h = HEIGHT + 400;
     info.testHeight = 0;
 
+    info.item.key = 0;
+
     //SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
     //SDL_Thread* threadID2 = SDL_CreateThread(threadAnim2, "wowThread2", (t_info*)&info);
 	//mlx_hook(info.win.win, 17, 0, red_cross, (void *)0);
@@ -129,19 +131,31 @@ int		main(int argc, char **argv)
                         info.player.move_speed = 0.1;
                     else if (event.key.keysym.sym == SDLK_f)
                         info.action = 1;
-					else if (event.key.keysym.sym == SDLK_SPACE)
+					else if (event.key.keysym.sym == SDLK_e)
 						open_doors(&info);
-					else if (event.key.keysym.sym == SDLK_g)
+					else if (event.key.keysym.sym == SDLK_c)
                     {
-                        if (info.testHeight > -300)
-                        {
+                        //if (info.testHeight > -300)
+                        //{
                             
-                            while (info.testHeight != -300)
-                            {
-                                info.testHeight += -30;
+                            //while (info.testHeight != -300)
+                            //{
+                                info.testHeight = -250;
                                 ray_casting_image(&info);
-                            }
-                        }
+                            //}
+                        //}
+                    }
+                    else if (event.key.keysym.sym == SDLK_SPACE)
+					{
+                        //if (info.testHeight < 0)
+                        //{
+                            
+                            //while (info.testHeight != -300)
+                            //{
+                                info.testHeight = 300;
+                                ray_casting_image(&info);
+                            //}
+                        //}
                     }
                     else if (event.key.keysym.sym == SDLK_h)
                     {
@@ -176,13 +190,25 @@ int		main(int argc, char **argv)
                         info.player.move_speed = 0.05;
                     else if (event.key.keysym.sym == SDLK_f)
                         info.action = 0;
-                    else if (event.key.keysym.sym == SDLK_g)
+                    else if (event.key.keysym.sym == SDLK_c)
                     {
-                        if (info.testHeight < 0)
-                        {
-                            info.testHeight += 300;
+                        //if (info.testHeight < 0)
+                        //{
+                            info.testHeight = 0;
                             ray_casting_image(&info);
-                        }
+                        //}
+                    }
+                    else if (event.key.keysym.sym == SDLK_SPACE)
+					{
+                        //if (info.testHeight < 0)
+                        //{
+                            
+                            //while (info.testHeight != -300)
+                            //{
+                                info.testHeight = 0;
+                                ray_casting_image(&info);
+                            //}
+                        //}
                     }
                     else if (event.key.keysym.sym == SDLK_z)
                     {
@@ -249,6 +275,7 @@ int		main(int argc, char **argv)
                         }
                         case SDL_BUTTON_RIGHT:
                         {
+                            info.item.key = 1;
                             printf("CLICK RIGHT\n");
                             break;
                         }
@@ -317,7 +344,8 @@ int		main(int argc, char **argv)
 
             SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
             // RENDER HUD
-            SDL_RenderCopy(info.win.renderer, info.wt[19].texture, NULL, &info.wt[19].rect);
+            //SDL_RenderCopy(info.win.renderer, info.hud[0].texture, NULL, &info.hud[0].rect);
+            render_hud(&info);
         }
         else if (info.game == 3)
         {

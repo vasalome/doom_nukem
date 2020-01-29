@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/28 17:20:03 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 17:36:55 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -377,7 +377,7 @@ int		threadAnim2(void*	data)
 		threadAnim2((t_info*)info);
 	return (0);
 }*/
-
+/*
 void	hud(t_info *info)
 {
 	
@@ -395,7 +395,7 @@ void	hud(t_info *info)
 	//SDL_UpdateWindowSurface(info->win.win);
 	//SDL_Delay(2000);
 }
-
+*/
 void	its_a_trap(t_info *info)
 {
 	if (info->map.map[(int)info->player.x_pos][(int)info->player.y_pos].wall == 5)
@@ -421,7 +421,7 @@ void	ray_casting_image(t_info *info)
 		ray_casting(info);
 
 		//move_doors(info);
-		//draw_skybox(info);
+		// draw_skybox(info);
 		draw_hud(info);
 		
 		/* Main frame */

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/28 16:24:26 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 15:00:59 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,18 +25,19 @@ void	textures_list(t_info *info)
 	info->wt[7].img = 0;
 	info->wt[8].img = 0;
 	info->wt[9].img = 0;
-	info->wt[10].img = 0;
-	info->wt[11].img = 0;
-	info->wt[12].img = 0;
-	info->wt[13].img = 0;
-	info->wt[14].img = 0;
-	info->wt[15].img = 0;
+
+	// info->wt[10].img = 0;
+	// info->wt[11].img = 0;
+	// info->wt[12].img = 0;
+	// info->wt[13].img = 0;
+	// info->wt[14].img = 0;
+	// info->wt[15].img = 0;
+
+	// sol et transparent
 	info->wt[16].img = IMG_Load("wall/scpfloor2.png");
 	info->wt[17].img = IMG_Load("wall/scpfloor.png");
 	info->wt[18].img = IMG_Load("wall/transparent.png");
-	
-	// hud
-	// info->wt[19].img = IMG_Load("wall/bars.png");
+	//info->wt[19].img = 0;
 
 	// 20 a 30 dans skybox pour l'instant
 	// info->wt[20].img = ;
