@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/28 17:26:16 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 15:39:10 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -230,7 +230,7 @@ typedef struct		s_wall
 	int				alpha;
 }					t_wall;
 
-typedef struct		s_weapon
+typedef struct		s_item
 {
 	SDL_Surface		*img;
 	int				w;
@@ -240,7 +240,8 @@ typedef struct		s_weapon
 	SDL_Texture		*texture;/*
 	int				iconx;
 	int				icony;*/
-}					t_weapon;
+	int				key;
+}					t_item;
 
 typedef struct		s_music
 {
@@ -281,12 +282,13 @@ typedef struct		s_info
 	t_win			win;
 	t_map			map;
 	t_wall			wall;
-	t_weapon		wp[11];
-	t_weapon		head[11];
-	t_weapon		img;
+	t_item			wp[11];
+	t_item			head[11];
+	t_item			item;
 	t_tex			fps;
 	t_tex			flash;
 	t_tex			wt[31];
+	t_tex			hud[11];
 	t_music			music;
 	t_floor			floor;
 	//t_record		rec;
@@ -467,5 +469,6 @@ void	clip_10(t_info *info);
 void	clip_12(t_info *info);
 
 void	draw_hud(t_info *info);
+void	render_hud(t_info *info);
 
 #endif
