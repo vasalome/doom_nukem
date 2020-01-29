@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:55:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 17:07:00 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 15:24:11 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,8 @@ static void		choose_your_form_from_1_to_9(t_env *v, int g, int t)
 	x = g * v->cases;
 	y = t * v->cases;
 	if (v->tab[t][g].form == 1)
-		draw_form_cube(v, x + 5, y + 5, v->cases - 10);
+		draw_form_cube(v, (t_start){x + 5, y + 5}, v->cases - 10,
+				(t_rgb){0, 0, 153, 255});
 	if (v->tab[t][g].form == 2)
 		draw_horizontal_wall(v, x + 5, y + 5, v->cases - 10);
 	if (v->tab[t][g].form == 3)

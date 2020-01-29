@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 18:37:37 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 18:26:45 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,48 +34,59 @@
 ** -----------------------------EDITEUR---------------------------------
 */
 
-typedef struct	s_draw_circle
+typedef struct		s_draw_circle
 {
-	int			x;
-	int			y;
-}				t_draw_circle;
+	int				x;
+	int				y;
+}					t_draw_circle;
 
 /*-----------------------------DRAWLINE-------------------------------*/
 
-typedef struct	s_point
+typedef struct		s_point
 {
-	int			x;
-	int			y;
-}				t_point;
+	int				x;
+	int				y;
+}					t_point;
 
-typedef struct	s_rgb
+typedef struct		s_rgb
 {
-	int			r;
-	int			g;
-	int			b;
-	int			a;
-}				t_rgb;
+	int				r;
+	int				g;
+	int				b;
+	int				a;
+}					t_rgb;
 
-typedef struct	s_bressen
+typedef struct		s_bressen
 {
-	int			dx;
-	int			dy;
-	int			sx;
-	int			sy;
-	int			err;
-	int			e2;
-}				t_bressen;
+	int				dx;
+	int				dy;
+	int				sx;
+	int				sy;
+	int				err;
+	int				e2;
+}					t_bressen;
 
 
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
 
+typedef struct		s_tex
+{
+	int				est;
+	int				sud;
+	int				nord;
+	int				ouest;
+	int				flat_wall;
+	int				pillar;
+}					t_tex;
+
 typedef struct		s_map
 {
 	int				case_x;
 	int				case_y;
 	int				form;
+	t_tex			texture;
 }					t_map;
 
 typedef struct		s_start
@@ -105,21 +116,22 @@ typedef struct		s_env
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
 	SDL_Surface		*sur;
-	SDL_Event		e;
-	SDL_Texture		*back;
-	SDL_Texture		*back_menu;
-	SDL_Texture		*text;
 	SDL_Texture		*tex;
 	t_draw_circle	center;
 	t_map			**tab;
+	t_stretch		s;
+	t_tex			chosen_tex;
 	int				form;
 	int				cases;
 	int				spawn_count;
-	t_stretch		s;
 	Uint32			*pixels;
 	int				h;
 	int				w;
 	int				window;
+	int				nb_wall;
+	int				motion;
+	int				button;
+	int				valid;
 }					t_env;
 
 /*
@@ -154,7 +166,7 @@ int				key_event(const Uint8 *keyboard_state);
 */
 void			draw_void_circle(t_env *v, int x, int y, int radius);
 void			draw_full_circle(t_env *v, int x, int y, int radius);
-void			draw_form_cube(t_env *v, int start_x, int start_y, int size);
+void			draw_form_cube(t_env *v, t_start start, int size, t_rgb color);
 void			draw_diagonal_d(t_env *v, int x, int y, int size);
 void			draw_diagonal_g(t_env *v, int x, int y, int size);
 void			draw_horizontal_wall(t_env *v, int x, int y, int size);

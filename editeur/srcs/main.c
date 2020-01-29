@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 18:17:01 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 18:23:14 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,6 +50,15 @@ int			main(int argc, char **argv)
 	v->w = 1200;
 	v->h = 900;
 	v->window = 0;
+	v->nb_wall = 1;
+	v->motion = 0;
+	v->button = 0;
+	v->chosen_tex.est = 0;
+	v->chosen_tex.sud = 0;
+	v->chosen_tex.ouest = 0;
+	v->chosen_tex.nord = 0;
+	v->motion = 0;
+	v->button = 0;
 	make_map(v);
 	init(v);
 	//editeur_setup(env);

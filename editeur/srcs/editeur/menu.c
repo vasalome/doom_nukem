@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:55:48 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 17:21:23 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 15:25:21 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,8 @@ void			menu_text(t_env *v)
 
 void			menu_button(t_env *v)
 {
-	draw_form_cube(v, v->w - 30 * 6 + 4, 65, 20);
+	draw_form_cube(v, (t_start){v->w - 30 * 6 + 4, 65}, 20,
+			(t_rgb){0, 0, 153, 255});
 	draw_horizontal_wall(v, v->w - 30 * 6 + 5, 95, 20);
 	draw_vertical_wall(v, v->w - 30 * 6 + 5, 125, 20);
 	draw_diagonal_d(v, v->w - 30 * 6 + 5, 155, 20);

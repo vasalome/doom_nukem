@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 13:41:22 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 17:13:00 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 18:18:37 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,6 +63,28 @@ void		mouse_motion_event_2(SDL_Event event, t_env *v,
 		is_it_over_the_button(v, (t_start){w, 180}, 32, color);
 }
 
+void		mouse_select_tex(SDL_Event event, t_env *v)
+{
+	if (mouse_location(event, (t_between){420, 455, 370, 395}))
+		v->motion = 1;
+	else if (mouse_location(event, (t_between){420, 458, 420, 458}))
+		v->motion = 2;
+	else if (mouse_location(event, (t_between){520, 558, 370, 398}))
+		v->motion = 3;
+	else if (mouse_location(event, (t_between){520, 558, 420, 458}))
+		v->motion = 4;
+	else if (mouse_location(event, (t_between){620, 658, 370, 398}))
+		v->motion = 5;
+	else if (mouse_location(event, (t_between){620, 658, 420, 458}))
+		v->motion = 6;
+	else if (mouse_location(event, (t_between){720, 758, 370, 398}))
+		v->motion = 7;
+	else if (mouse_location(event, (t_between){720, 758, 420, 458}))
+		v->motion = 8;
+	else
+		v->motion = 0;
+}
+
 void		mouse_motion_event(SDL_Event event, t_env *v)
 {
 	int		w;
@@ -85,4 +107,5 @@ void		mouse_motion_event(SDL_Event event, t_env *v)
 		is_it_over_the_button(v, (t_start){w, 270}, 32, color_click);
 	else
 		is_it_over_the_button(v, (t_start){w, 270}, 32, color);
+	mouse_select_tex(event, v);
 }

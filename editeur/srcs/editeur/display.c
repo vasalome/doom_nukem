@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 19:41:43 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 18:45:40 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,9 +27,16 @@ void			pixel_put(t_env *v, int x, int y, t_rgb color)
 
 void			draw_pro_frame(t_env *v, SDL_Event event)
 {
-
 	if (v->window == 1)
+	{
+		v->chosen_tex.est = 0;
+		v->chosen_tex.sud = 0;
+		v->chosen_tex.est = 0;
+		v->chosen_tex.ouest = 0;
+		v->chosen_tex.flat_wall = 0;
+		v->chosen_tex.pillar = 0;
 		open_window(v);
+	}
 	else
 	{
 		make_grid_pattern(v, event);
