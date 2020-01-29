@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/23 18:19:08 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/28 15:09:36 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -86,16 +86,16 @@ void	init_sky_2(t_info *info)
 void	init_sky_1(t_info *info)
 {
 	info->wt[20].img = IMG_Load("wall/skybox1.png");
-	info->wt[21].img = IMG_Load("wall/skybox1.png");
-	info->wt[22].img = IMG_Load("wall/skybox1.png");
-	info->wt[23].img = IMG_Load("wall/skybox1.png");
-	info->wt[24].img = IMG_Load("wall/skybox1.png");
+	info->wt[21].img = info->wt[20].img;
+	info->wt[22].img = info->wt[20].img;
+	info->wt[23].img = info->wt[20].img;
+	info->wt[24].img = info->wt[20].img;
 	info->wt[25].img = IMG_Load("wall/testciel3.png");
-	info->wt[26].img = IMG_Load("wall/testciel3.png");
-	info->wt[27].img = IMG_Load("wall/testciel3.png");
-	info->wt[28].img = IMG_Load("wall/testciel3.png");
+	info->wt[26].img = info->wt[25].img;
+	info->wt[27].img = info->wt[25].img;
+	info->wt[28].img = info->wt[25].img;
 	info->wt[29].img = IMG_Load("wall/testciel3.png");
-	info->wt[30].img = IMG_Load("wall/testciel3.png");
+	info->wt[30].img = info->wt[29].img;
 }
 
 void	draw_skybox(t_info *info)
@@ -105,6 +105,9 @@ void	draw_skybox(t_info *info)
 	double front_offset;
 
 	dir_offset = (atan2(info->player.y_dir, info->player.x_dir) + 3.14159265) / 3.14159265;
+	printf("atan2 = %f\n",(atan2(info->player.y_dir, info->player.x_dir)));
+	printf("y = %f\n",info->player.y_dir);
+	printf("x = %f\n\n",info->player.x_dir);
 	fore_offset = floor(dir_offset * WIDTH);
 	front_offset = floor(fore_offset / 2);
 	init_sky_1(info);

@@ -98,7 +98,7 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	int		y;
 	int		d;
 	int		tex_y;
-	double	semiH = HEIGHT * 0.5;
+	double	semiH = HEIGHT * (0.5 + (info->testHeight * 0.00111111));
 	
 	y = info->player.fov;
 	tex_y = 0;
@@ -167,7 +167,7 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	
 	while (++draw_start < draw_end)
 	{
-		d = draw_start * 256 - info->win.h * 128 + info->wall.line_height * 128;
+		d = draw_start * 256 - (info->win.h + info->testHeight * 2) * 128 + info->wall.line_height * 128;
 		tex_y = ((d * info->wt[info->w_j].img->h) / info->wall.line_height) / 256;
 		draw_wall_plus(x, draw_start, info, tex_y);
 	}

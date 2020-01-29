@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 11:33:43 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/29 17:55:16 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,19 +17,20 @@ void    menu(t_info *info);
 void    loadButton(t_info *info, int i);
 void    render_skybox(t_info *info)
 {
-    SDL_RenderCopy(info->win.renderer, info->wt[29].texture, NULL, &info->wt[29].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[30].texture, NULL, &info->wt[30].rect);
+    return ;
+    // SDL_RenderCopy(info->win.renderer, info->wt[29].texture, NULL, &info->wt[29].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[30].texture, NULL, &info->wt[30].rect);
 
-    SDL_RenderCopy(info->win.renderer, info->wt[25].texture, NULL, &info->wt[25].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[26].texture, NULL, &info->wt[26].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[27].texture, NULL, &info->wt[27].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[28].texture, NULL, &info->wt[28].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[25].texture, NULL, &info->wt[25].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[26].texture, NULL, &info->wt[26].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[27].texture, NULL, &info->wt[27].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[28].texture, NULL, &info->wt[28].rect);
 
-    SDL_RenderCopy(info->win.renderer, info->wt[20].texture, NULL, &info->wt[20].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[21].texture, NULL, &info->wt[21].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[22].texture, NULL, &info->wt[22].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[23].texture, NULL, &info->wt[23].rect);
-    SDL_RenderCopy(info->win.renderer, info->wt[24].texture, NULL, &info->wt[24].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[20].texture, NULL, &info->wt[20].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[21].texture, NULL, &info->wt[21].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[22].texture, NULL, &info->wt[22].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[23].texture, NULL, &info->wt[23].rect);
+    // SDL_RenderCopy(info->win.renderer, info->wt[24].texture, NULL, &info->wt[24].rect);
 }
 
 /* Fonction de callback (sera appelée toutes les 30 ms) */
@@ -71,6 +72,9 @@ int		main(int argc, char **argv)
 	info.fps.rect.y = -200;
 	info.fps.rect.w = WIDTH;
 	info.fps.rect.h = HEIGHT + 400;
+    info.testHeight = 0;
+
+    info.item.key = 0;
 
     //SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
     //SDL_Thread* threadID2 = SDL_CreateThread(threadAnim2, "wowThread2", (t_info*)&info);
@@ -127,15 +131,35 @@ int		main(int argc, char **argv)
                         info.player.move_speed = 0.1;
                     else if (event.key.keysym.sym == SDLK_f)
                         info.action = 1;
-					else if (event.key.keysym.sym == SDLK_SPACE)
+					else if (event.key.keysym.sym == SDLK_e)
 						open_doors(&info);
-					else if (event.key.keysym.sym == SDLK_g)
+					else if (event.key.keysym.sym == SDLK_c)
                     {
-                        Mix_PlayChannel(-1, info.music.high, 0);
+                        //if (info.testHeight > -300)
+                        //{
+                            
+                            //while (info.testHeight != -300)
+                            //{
+                                info.testHeight = -250;
+                                ray_casting_image(&info);
+                            //}
+                        //}
+                    }
+                    else if (event.key.keysym.sym == SDLK_SPACE)
+					{
+                        //if (info.testHeight < 0)
+                        //{
+                            
+                            //while (info.testHeight != -300)
+                            //{
+                                info.testHeight = 300;
+                                ray_casting_image(&info);
+                            //}
+                        //}
                     }
                     else if (event.key.keysym.sym == SDLK_h)
                     {
-                        Mix_PlayChannel(-1, info.music.low, 0);
+                        info.testHeight -= 10;
                     }
                     else if (event.key.keysym.sym == SDLK_z)
                     {
@@ -166,6 +190,26 @@ int		main(int argc, char **argv)
                         info.player.move_speed = 0.05;
                     else if (event.key.keysym.sym == SDLK_f)
                         info.action = 0;
+                    else if (event.key.keysym.sym == SDLK_c)
+                    {
+                        //if (info.testHeight < 0)
+                        //{
+                            info.testHeight = 0;
+                            ray_casting_image(&info);
+                        //}
+                    }
+                    else if (event.key.keysym.sym == SDLK_SPACE)
+					{
+                        //if (info.testHeight < 0)
+                        //{
+                            
+                            //while (info.testHeight != -300)
+                            //{
+                                info.testHeight = 0;
+                                ray_casting_image(&info);
+                            //}
+                        //}
+                    }
                     else if (event.key.keysym.sym == SDLK_z)
                     {
                         SDL_Delay(10);
@@ -231,6 +275,7 @@ int		main(int argc, char **argv)
                         }
                         case SDL_BUTTON_RIGHT:
                         {
+                            info.item.key = 1;
                             printf("CLICK RIGHT\n");
                             break;
                         }
@@ -248,7 +293,7 @@ int		main(int argc, char **argv)
                 {
                     /*switch (event.button.button)
                     {
-                        /*case SDL_BUTTON_WHEELUP:
+                        case SDL_BUTTON_WHEELUP:
                             if (info.game == 3)
                             {
                                 info.zoom += 0.1;
@@ -296,8 +341,11 @@ int		main(int argc, char **argv)
         
             SDL_RenderClear(info.win.renderer);
             render_skybox(&info);
-        
+
             SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
+            // RENDER HUD
+            //SDL_RenderCopy(info.win.renderer, info.hud[0].texture, NULL, &info.hud[0].rect);
+            render_hud(&info);
         }
         else if (info.game == 3)
         {
