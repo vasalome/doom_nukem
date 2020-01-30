@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 15:39:10 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/30 16:08:14 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -157,6 +157,9 @@ typedef struct		s_player
 	int				life;
 	int				can_trap;
 
+	// test animation head
+	int				head;
+	
 	//test collision
 	double			x_bef;
 	double			y_bef;
@@ -469,6 +472,6 @@ void	clip_10(t_info *info);
 void	clip_12(t_info *info);
 
 void	draw_hud(t_info *info);
-void	render_hud(t_info *info);
+void	render_hud(t_info *info, SDL_Event *event);
 
 #endif

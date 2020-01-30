@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 17:55:16 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/30 15:47:35 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,7 +74,9 @@ int		main(int argc, char **argv)
 	info.fps.rect.h = HEIGHT + 400;
     info.testHeight = 0;
 
+//hud
     info.item.key = 0;
+    info.player.head = 1;
 
     //SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
     //SDL_Thread* threadID2 = SDL_CreateThread(threadAnim2, "wowThread2", (t_info*)&info);
@@ -112,13 +114,25 @@ int		main(int argc, char **argv)
                     if (event.key.keysym.sym == SDLK_ESCAPE)
                         info.quit = 1;
                     else if (event.key.keysym.sym == SDLK_w)
+                    {
                         info.player.move_up = 1;
+                        info.player.head = 1;
+                    }
                     else if (event.key.keysym.sym == SDLK_s)
+                    {
                         info.player.move_down = 1;
+                        info.player.head = 1;
+                    }
                     else if (event.key.keysym.sym == SDLK_d)
+                    {
                         info.player.move_right = 1;
+                        info.player.head = 0;
+                    }
                     else if (event.key.keysym.sym == SDLK_a)
+                    {
                         info.player.move_left = 1;
+                        info.player.head = 2;
+                    }
                     else if (event.key.keysym.sym == SDLK_e)
                         info.player.turn_right = 1;
                     else if (event.key.keysym.sym == SDLK_q)
@@ -345,7 +359,7 @@ int		main(int argc, char **argv)
             SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
             // RENDER HUD
             //SDL_RenderCopy(info.win.renderer, info.hud[0].texture, NULL, &info.hud[0].rect);
-            render_hud(&info);
+            render_hud(&info, &event);
         }
         else if (info.game == 3)
         {
