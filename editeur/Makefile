@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/27 18:15:47 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/30 14:31:43 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,7 +21,7 @@ NAME = editeur
 #	Sources
 # SRC_SUP = {dossiers dans src qui seront separe par une virgule}
 SRC_SUP = editeur
-SRC_PATH = srcs
+SRC_PATH = src
 SRC_NAME =  main.c \
 			editeur/display.c\
 			editeur/draw_circle.c\

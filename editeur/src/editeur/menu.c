@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:55:48 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 15:25:21 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/30 14:32:59 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,9 +44,9 @@ void			menu_button(t_env *v)
 	draw_diagonal_g(v, v->w - 30 * 6 + 5, 185, 20);
 	draw_void_circle(v, v->w - 30 * 6 + 15, 215 + 11, 10);
 	make_picture_tga(v, (t_start){v->w - 30 * 6 + 2, 245}, 25,
-			"./srcs/images/door.tga");
+			"./src/img/door.tga");
 	put_picture(v, (t_start){v->w - 30 * 6 + 5, 275}, 22,
-			"./srcs/images/stickman.xpm");
+			"./src/img/stickman.xpm");
 	make_picture_tga(v, (t_start){v->w - 30 * 6 + 5, 590}, 22,
-			"./srcs/images/gomme.tga");
+			"./src/img/gomme.tga");
 }

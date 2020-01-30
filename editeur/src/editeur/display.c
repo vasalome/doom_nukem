@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 18:45:40 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/30 14:27:49 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,12 +29,18 @@ void			draw_pro_frame(t_env *v, SDL_Event event)
 {
 	if (v->window == 1)
 	{
-		v->chosen_tex.est = 0;
-		v->chosen_tex.sud = 0;
-		v->chosen_tex.est = 0;
-		v->chosen_tex.ouest = 0;
-		v->chosen_tex.flat_wall = 0;
-		v->chosen_tex.pillar = 0;
+		if (v->plus == 2)
+		{
+			v->chosen_tex.est = 0;
+			v->chosen_tex.ouest = 0;
+			v->chosen_tex.nord = 0;
+			v->chosen_tex.sud = 0;
+			v->chosen_tex.flat_wall = 0;
+			v->chosen_tex.pillar = 0;
+			v->nb_wall = 1;
+			v->button = 0;
+			v->plus--;
+		}
 		open_window(v);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 18:26:45 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/30 14:02:34 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -132,6 +132,7 @@ typedef struct		s_env
 	int				motion;
 	int				button;
 	int				valid;
+	int				plus;
 }					t_env;
 
 /*
