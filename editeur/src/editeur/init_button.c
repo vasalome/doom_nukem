@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 13:37:48 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 14:02:26 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/30 14:54:27 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,8 +31,11 @@ static void		click_form(t_env *v, int nb_form, int x, int y)
 {
 	v->form = nb_form;
 	press_button(v, x, y, 32);
-	v->window = 1;
-	v->plus++;
+	if (v->form < 7)
+	{
+		v->window = 1;
+		v->plus++;
+	}
 }
 
 int				button_is_between(SDL_Event e, t_between b)

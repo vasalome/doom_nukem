@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 14:07:12 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 17:11:51 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/30 15:02:39 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,6 +42,7 @@ void		make_map(t_env *v)
 			v->tab[j][i].case_x = i;
 			v->tab[j][i].case_y = j;
 			v->tab[j][i].form = 0;
+			v->tab[j][i].texture = v->chosen_tex;
 		}
 	}
 }

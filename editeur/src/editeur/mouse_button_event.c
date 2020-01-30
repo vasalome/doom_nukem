@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 13:39:25 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 18:35:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/30 14:59:35 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -130,7 +130,7 @@ void		mouse_button_event(SDL_Event e, t_env *v)
 				if (v->form == 1 && v->nb_wall < 4)
 				{
 					v->nb_wall++;
-					v->button = 0;
+					v->button = 1;
 				}
 			}
 			if (button_is_between(e, (t_between){360, 390, 490, 522}))
@@ -138,7 +138,7 @@ void		mouse_button_event(SDL_Event e, t_env *v)
 				if (v->form == 1 && v->nb_wall > 1)
 				{
 					v->nb_wall--;
-					v->button = 0;
+					v->button = 1;
 				}
 			}
 			if (button_is_between(e, (t_between){420, 455, 370, 395}))
