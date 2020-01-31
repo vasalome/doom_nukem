@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/31 16:32:07 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 17:55:58 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -244,6 +244,8 @@ typedef struct		s_item
 	int				iconx;
 	int				icony;*/
 	int				key;
+	int				ammo;
+	int				reload;
 }					t_item;
 
 typedef struct		s_music

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/31 16:37:00 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 19:03:53 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -75,8 +75,11 @@ int		main(int argc, char **argv)
     info.testHeight = 0;
 
 //hud
-    info.item.key = 0;
     info.player.head = 1;
+    info.item.key = 0;
+    info.item.ammo = 12;
+    info.item.reload = 0;
+
 
     //SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
     //SDL_Thread* threadID2 = SDL_CreateThread(threadAnim2, "wowThread2", (t_info*)&info);
@@ -143,6 +146,18 @@ int		main(int argc, char **argv)
                         info.action = 1;
 					else if (event.key.keysym.sym == SDLK_e)
 						open_doors(&info);
+                    else if (event.key.keysym.sym == SDLK_r)
+                    {
+                        if (info.item.reload > 0)
+                        {
+                            if (info.item.ammo != 12)
+                            {
+                                info.item.reload -= 1;
+                                info.item.ammo = 12;
+                            }
+                        }
+	                    //bloquer le total de chargeur à 3 transportables. 
+                    }
 					else if (event.key.keysym.sym == SDLK_c)
                     {
                         //if (info.testHeight > -300)
@@ -281,7 +296,8 @@ int		main(int argc, char **argv)
                         }
                         case SDL_BUTTON_RIGHT:
                         {
-                            info.item.key = 1;
+                            // test d'affichage
+                            info.item.key += 1;
                             info.player.life -= 10;
                             printf("CLICK RIGHT\n");
                             break;

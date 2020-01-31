@@ -6,23 +6,34 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/28 15:54:11 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/31 16:41:42 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 19:04:42 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 
-void    lifebar()
+void	munition(t_info *info)
 {
-    
+	char	*ammo = NULL;
+	
+	ammo = ft_itoa(info->item.ammo);
+	// print les munitions a droite
+}
+
+void	lifebar(t_info *info)
+{
+	char	*life = NULL;
+	
+	life = ft_itoa(info->player.life);
+	//printf("string = %s\n", life);
+	// print la vie a gauche
 }
 
 void	render_hud(t_info *info, SDL_Event *event)
 {
 	static int	backup = 0;
 	static int	hit = 0;
-
 
 	if (info->item.key >= 1)
 		SDL_RenderCopy(info->win.renderer, info->hud[1].texture, NULL, &info->hud[1].rect);
@@ -82,6 +93,8 @@ void	render_hud(t_info *info, SDL_Event *event)
 
 	hit = info->player.life;
 	backup = event->motion.xrel;
+	lifebar(info);
+	munition(info);
 }
 
 void	draw_head_hurt(t_info *info)
