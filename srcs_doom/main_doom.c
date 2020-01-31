@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 15:47:35 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 16:37:00 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -116,31 +116,27 @@ int		main(int argc, char **argv)
                     else if (event.key.keysym.sym == SDLK_w)
                     {
                         info.player.move_up = 1;
-                        info.player.head = 1;
+                        //info.player.head = 1;
                     }
                     else if (event.key.keysym.sym == SDLK_s)
                     {
                         info.player.move_down = 1;
-                        info.player.head = 1;
+                        //info.player.head = 1;
                     }
                     else if (event.key.keysym.sym == SDLK_d)
                     {
                         info.player.move_right = 1;
-                        info.player.head = 0;
+                        //info.player.head = 0;
                     }
                     else if (event.key.keysym.sym == SDLK_a)
                     {
                         info.player.move_left = 1;
-                        info.player.head = 2;
+                        //info.player.head = 2;
                     }
-                    else if (event.key.keysym.sym == SDLK_e)
-                        info.player.turn_right = 1;
-                    else if (event.key.keysym.sym == SDLK_q)
-                        info.player.turn_left = 1;
                     else if (event.key.keysym.sym == SDLK_b)
-                        info.player.height  += 0.1;
+                        info.player.height += 0.1;
                     else if (event.key.keysym.sym == SDLK_n)
-                        info.player.height  -= 0.1;
+                        info.player.height -= 0.1;
                     else if (event.key.keysym.sym == SDLK_LSHIFT)
                         info.player.move_speed = 0.1;
                     else if (event.key.keysym.sym == SDLK_f)
@@ -196,10 +192,6 @@ int		main(int argc, char **argv)
                         info.player.move_right = 0;
                     else if (event.key.keysym.sym == SDLK_a)
                         info.player.move_left = 0;
-                    else if (event.key.keysym.sym == SDLK_e)
-                        info.player.turn_right = 0;
-                    else if (event.key.keysym.sym == SDLK_q)
-                        info.player.turn_left = 0;
                     else if (event.key.keysym.sym == SDLK_LSHIFT)
                         info.player.move_speed = 0.05;
                     else if (event.key.keysym.sym == SDLK_f)
@@ -290,6 +282,7 @@ int		main(int argc, char **argv)
                         case SDL_BUTTON_RIGHT:
                         {
                             info.item.key = 1;
+                            info.player.life -= 10;
                             printf("CLICK RIGHT\n");
                             break;
                         }

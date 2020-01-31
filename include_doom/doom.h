@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 16:08:14 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 16:32:07 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -291,7 +291,7 @@ typedef struct		s_info
 	t_tex			fps;
 	t_tex			flash;
 	t_tex			wt[31];
-	t_tex			hud[11];
+	t_tex			hud[20];
 	t_music			music;
 	t_floor			floor;
 	//t_record		rec;
