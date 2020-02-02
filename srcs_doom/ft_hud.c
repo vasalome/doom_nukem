@@ -266,10 +266,10 @@ void    draw_hud(t_info *info)
 	info->hud[1].img = IMG_Load("hud/hud_key.png");
 	info->hud[1].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
 		info->hud[1].img);
-	info->hud[1].rect.x = 0;
-	info->hud[1].rect.y = 0;
-	info->hud[1].rect.w = WIDTH;
-	info->hud[1].rect.h = HEIGHT;
+	info->hud[1].rect.x = 1010;
+	info->hud[1].rect.y = 790;
+	info->hud[1].rect.w = 109;
+	info->hud[1].rect.h = 89;
 
 	draw_head(info);
 }
