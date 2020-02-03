@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/30 14:31:43 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/03 15:10:55 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -29,6 +29,7 @@ SRC_NAME =  main.c \
 			editeur/tga_parser.c\
 			editeur/tga_parser_body.c\
 			editeur/draw_form.c\
+			editeur/get_pixel.c\
 			editeur/put_picture.c\
 			editeur/put_text.c\
 			editeur/make_grid_pattern.c\
@@ -40,8 +41,10 @@ SRC_NAME =  main.c \
 			editeur/init_button.c\
 			editeur/make_map.c\
 			editeur/background.c\
-			editeur/get_pixel.c\
 			editeur/window_tex.c\
+			editeur/show_tex.c\
+			editeur/button_window.c\
+			editeur/choose_texture.c\
 
 #	Objects
 OBJ_PATH = .objects

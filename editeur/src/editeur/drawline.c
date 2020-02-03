@@ -6,25 +6,16 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/12 13:46:28 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 17:07:24 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 13:45:00 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
 
-t_point			make_point(int x, int y)
+static t_bressen	init_bresen(t_point m1, t_point m2)
 {
-	t_point		content;
-
-	content.x = x;
-	content.y = y;
-	return (content);
-}
-
-t_bressen		init_bresen(t_point m1, t_point m2)
-{
-	t_bressen	b;
+	t_bressen		b;
 
 	b.dx = ft_absolu(m2.x - m1.x);
 	b.dy = ft_absolu(m2.y - m1.y);
@@ -34,9 +25,9 @@ t_bressen		init_bresen(t_point m1, t_point m2)
 	return (b);
 }
 
-void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v)
+void				drawline(t_point m1, t_point m2, t_rgb color, t_env *v)
 {
-	t_bressen	b;
+	t_bressen		b;
 
 	if ((m1.x < 0 && m1.y < 0 && m2.y < 0 && m2.x < 0) ||
 			(m1.x > v->w && m1.y > v->h && m2.y > v->h && m2.x > v->w))

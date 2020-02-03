@@ -6,17 +6,39 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 13:37:48 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 15:55:46 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 15:33:28 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
 
-static void		press_button(t_env *v, int start_x, int start_y, int taille)
+void				button_down(SDL_Event e, t_env *v)
 {
-	int		i;
-	int		j;
+	if (e.button.button == SDL_BUTTON_RIGHT)
+	{
+		if (v->tmp == 0)
+			v->tmp = v->form;
+		v->form = 9;
+	}
+	else if (e.button.button == SDL_BUTTON_LEFT)
+	{
+		if (v->tmp != 0)
+		{
+			v->form = v->tmp;
+			v->tmp = 0;
+		}
+		init_button(v, e);
+		choose_the_size_of_your_map(v, e);
+	}
+	v->s.x = e.button.x / v->cases;
+	v->s.y = e.button.y / v->cases;
+}
+
+static void			press_button(t_env *v, int start_x, int start_y, int taille)
+{
+	int				i;
+	int				j;
 
 	j = start_y;
 	while (++j < start_y + taille)
@@ -27,7 +49,7 @@ static void		press_button(t_env *v, int start_x, int start_y, int taille)
 	}
 }
 
-static void		click_form(t_env *v, int nb_form, int x, int y)
+static void			click_form(t_env *v, int nb_form, int x, int y)
 {
 	v->form = nb_form;
 	press_button(v, x, y, 32);
@@ -38,7 +60,7 @@ static void		click_form(t_env *v, int nb_form, int x, int y)
 	}
 }
 
-int				button_is_between(SDL_Event e, t_between b)
+int					button_is_between(SDL_Event e, t_between b)
 {
 	if (e.button.x > b.min_x && e.button.x < b.max_x &&
 			e.button.y > b.min_y && e.button.y < b.max_y)
@@ -46,9 +68,9 @@ int				button_is_between(SDL_Event e, t_between b)
 	return (0);
 }
 
-void			init_button(t_env *v, SDL_Event e)
+void				init_button(t_env *v, SDL_Event e)
 {
-	int			w;
+	int				w;
 
 	w = v->w - 30 * 6;
 	if (button_is_between(e, (t_between){w, w + 30, 65, 95}))

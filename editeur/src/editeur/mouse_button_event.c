@@ -6,14 +6,14 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 13:39:25 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 12:23:30 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 15:34:20 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
 
-int			stretching(t_env *v, int inc)
+static int		stretching(t_env *v, int inc)
 {
 	if (v->tab[v->s.y][v->s.x].form == 8)
 		v->spawn_count = 0;
@@ -24,7 +24,7 @@ int			stretching(t_env *v, int inc)
 	return (0);
 }
 
-void		do_the_user_stretch(t_env *v)
+static void		do_the_user_stretch(t_env *v)
 {
 	if (v->s.x == v->s.dir_x && v->s.y == v->s.dir_y)
 		stretching(v, 0);
@@ -44,10 +44,10 @@ void		do_the_user_stretch(t_env *v)
 	}
 }
 
-void		which_form(t_env *v)
+static void		which_form(t_env *v)
 {
-	int		t;
-	int		g;
+	int			t;
+	int			g;
 
 	t = -1;
 	while (++t < v->h / v->cases)
@@ -66,7 +66,7 @@ void		which_form(t_env *v)
 	}
 }
 
-void		choose_the_size_of_your_map(t_env *v, SDL_Event e)
+void			choose_the_size_of_your_map(t_env *v, SDL_Event e)
 {
 	if (v->cases > 15 && v->cases <= 30 && e.button.x > v->w - 45
 			&& e.button.x < v->w - 35 && e.button.y > 15 && e.button.y < 20)
@@ -94,29 +94,12 @@ void		choose_the_size_of_your_map(t_env *v, SDL_Event e)
 	}
 }
 
-void		mouse_button_event(SDL_Event e, t_env *v)
+void			mouse_button_event(SDL_Event e, t_env *v)
 {
-	//static int		tmp;
-
 	if (v->window == 0)
 	{
 		if (e.type == SDL_MOUSEBUTTONDOWN)
-		{
-			//if (e.button.button == SDL_BUTTON_RIGHT)
-			//{
-			//	tmp = v->form;
-			//	v->form = 9;
-			//}
-			if (e.button.button == SDL_BUTTON_LEFT)
-			{
-				//if (v->form == 9)
-				//	v->form = tmp;
-				init_button(v, e);
-				choose_the_size_of_your_map(v, e);
-			}
-			v->s.x = e.button.x / v->cases;
-			v->s.y = e.button.y / v->cases;
-		}
+			button_down(e, v);
 		else if (e.type == SDL_MOUSEBUTTONUP)
 		{
 			v->s.dir_x = e.motion.x / v->cases;
@@ -129,41 +112,6 @@ void		mouse_button_event(SDL_Event e, t_env *v)
 	else
 	{
 		if (e.button.button == SDL_BUTTON_LEFT && e.type == SDL_MOUSEBUTTONDOWN)
-		{
-			if (button_is_between(e, (t_between){804, 820, 282, 298}))
-				v->valid = 1;
-			if (button_is_between(e, (t_between){790, 820, 490, 522}))
-			{
-				if (v->form == 1 && v->nb_wall < 4)
-				{
-					v->nb_wall++;
-					v->button = 1;
-				}
-			}
-			if (button_is_between(e, (t_between){360, 390, 490, 522}))
-			{
-				if (v->form == 1 && v->nb_wall > 1)
-				{
-					v->nb_wall--;
-					v->button = 1;
-				}
-			}
-			if (button_is_between(e, (t_between){420, 455, 370, 395}))
-				v->button = 1;
-			else if (button_is_between(e, (t_between){420, 458, 420, 458}))
-				v->button = 2;
-			else if (button_is_between(e, (t_between){520, 558, 370, 398}))
-				v->button = 3;
-			else if (button_is_between(e, (t_between){520, 558, 420, 458}))
-				v->button = 4;
-			else if (button_is_between(e, (t_between){620, 658, 370, 398}))
-				v->button = 5;
-			else if (button_is_between(e, (t_between){620, 658, 420, 458}))
-				v->button = 6;
-			else if (button_is_between(e, (t_between){720, 758, 370, 398}))
-				v->button = 7;
-			else if (button_is_between(e, (t_between){720, 758, 420, 458}))
-				v->button = 8;
-		}
+			button_window(e, v);
 	}
 }

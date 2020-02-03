@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 11:11:18 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 15:32:57 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -134,6 +134,7 @@ typedef struct		s_env
 	int				valid;
 	int				plus;
 	int				middle;
+	int				tmp;
 }					t_env;
 
 /*
@@ -143,9 +144,8 @@ typedef struct		s_env
 /*
 ** --draw_tools--
 */
-Uint32			get_pixel(SDL_Surface *surface, int x, int y);
+Uint32	    	get_pixel(SDL_Surface *surface, int x, int y);
 void			pixel_put(t_env *v, int x, int y, t_rgb color);
-t_point			make_point(int x, int y);
 void			drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
 
 /*
@@ -157,6 +157,9 @@ void			background_menu(t_env *v);
 /*
 ** --events--
 */
+void			choose_the_size_of_your_map(t_env *v, SDL_Event e);
+void			button_down(SDL_Event e, t_env *v);
+void			button_window(SDL_Event e, t_env *v);
 int				button_is_between(SDL_Event e, t_between b);
 void		    init_button(t_env *v, SDL_Event e);
 void			mouse_button_event(SDL_Event event, t_env *v);
@@ -182,7 +185,11 @@ void			make_picture_tga(t_env *v, t_start start, int size, char *pic);
 void			make_grid_pattern(t_env *v, SDL_Event event);
 void			menu_text(t_env *v);
 void			menu_button(t_env *v);
-void			draw_in_grid_pattern(t_env *v, SDL_Event event);
+void			draw_in_grid_pattern(t_env *v);
+void        	show_tex(t_env *v, SDL_Event e);
+void    		choose_one_tex(t_env *v, int chosen);
+void			choosing_cube_tex_2(t_env *v);
+void    		choosing_cube_tex(t_env *v);
 void			open_window(t_env *v);
 
 /*
