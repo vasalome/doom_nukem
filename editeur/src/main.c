@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 11:50:37 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 16:01:13 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,21 +29,8 @@ void		init(t_env *v)
 		ft_error("ALLO CA MARCHE PAS");
 }
 
-// void			editeur_setup(t_env *v)
-// {
-	
-// }
-
-int			main(int argc, char **argv)
+void		editeur_setup(t_env *v)
 {
-	t_env	*v;
-	int		fd;
-
-	fd = 0;
-	if (!(v = ft_memalloc(sizeof(t_env))))
-		return (0);
-	argc = 1;
-	(void)argv;
 	v->form = 0;
 	v->cases = 30;
 	v->spawn_count = 0;
@@ -60,10 +47,22 @@ int			main(int argc, char **argv)
 	v->motion = 0;
 	v->button = 1;
 	v->plus = 0;
-	v->middle = 0;
+	v->tmp = 0;
+}
+
+int			main(int argc, char **argv)
+{
+	t_env	*v;
+	int		fd;
+
+	fd = 0;
+	if (!(v = ft_memalloc(sizeof(t_env))))
+		return (0);
+	argc = 1;
+	(void)argv;
+	editeur_setup(v);
 	make_map(v);
 	init(v);
-	//editeur_setup(env);
 	background_map(v);
 	background_menu(v);
 	display(v);
