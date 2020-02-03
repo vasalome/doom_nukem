@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 13:39:25 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 14:59:35 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 12:23:30 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -96,17 +96,24 @@ void		choose_the_size_of_your_map(t_env *v, SDL_Event e)
 
 void		mouse_button_event(SDL_Event e, t_env *v)
 {
+	//static int		tmp;
+
 	if (v->window == 0)
 	{
 		if (e.type == SDL_MOUSEBUTTONDOWN)
 		{
+			//if (e.button.button == SDL_BUTTON_RIGHT)
+			//{
+			//	tmp = v->form;
+			//	v->form = 9;
+			//}
 			if (e.button.button == SDL_BUTTON_LEFT)
 			{
+				//if (v->form == 9)
+				//	v->form = tmp;
 				init_button(v, e);
 				choose_the_size_of_your_map(v, e);
 			}
-			if (e.button.button == SDL_BUTTON_RIGHT)
-				v->form = 9;
 			v->s.x = e.button.x / v->cases;
 			v->s.y = e.button.y / v->cases;
 		}

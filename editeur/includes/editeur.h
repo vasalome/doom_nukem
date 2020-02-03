@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 14:02:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 11:11:18 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -133,6 +133,7 @@ typedef struct		s_env
 	int				button;
 	int				valid;
 	int				plus;
+	int				middle;
 }					t_env;
 
 /*
@@ -181,7 +182,7 @@ void			make_picture_tga(t_env *v, t_start start, int size, char *pic);
 void			make_grid_pattern(t_env *v, SDL_Event event);
 void			menu_text(t_env *v);
 void			menu_button(t_env *v);
-void			draw_in_grid_pattern(t_env *v);
+void			draw_in_grid_pattern(t_env *v, SDL_Event event);
 void			open_window(t_env *v);
 
 /*

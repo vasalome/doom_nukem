@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 14:59:23 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 12:23:28 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,12 +31,12 @@ void			draw_pro_frame(t_env *v, SDL_Event event)
 	{
 		if (v->plus == 2)
 		{
-			v->chosen_tex.est = 0;
-			v->chosen_tex.ouest = 0;
-			v->chosen_tex.nord = 0;
-			v->chosen_tex.sud = 0;
-			v->chosen_tex.flat_wall = 0;
-			v->chosen_tex.pillar = 0;
+			v->chosen_tex.est = 1;
+			v->chosen_tex.ouest = 1;
+			v->chosen_tex.nord = 1;
+			v->chosen_tex.sud = 1;
+			v->chosen_tex.flat_wall = 1;
+			v->chosen_tex.pillar = 1;
 			v->nb_wall = 1;
 			v->button = 1;
 			v->plus--;
@@ -46,7 +46,7 @@ void			draw_pro_frame(t_env *v, SDL_Event event)
 	else
 	{
 		make_grid_pattern(v, event);
-		draw_in_grid_pattern(v);
+		draw_in_grid_pattern(v, event);
 	}
 	menu_button(v);
 }
