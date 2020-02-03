@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 13:26:28 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 15:01:14 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ void	init_player(t_info *info)
 	info->player.fov = 2;
 	info->player.move_speed = 0.05;
 	info->player.tp_index = 0;
-	info->player.life = 11;
+	info->player.life = 100;
 	info->player.can_trap = 1;
 	info->floor.texId2 = 16;
 	info->floor.texId = 17;

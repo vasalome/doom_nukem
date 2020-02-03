@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 17:55:16 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 19:03:53 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,7 +74,12 @@ int		main(int argc, char **argv)
 	info.fps.rect.h = HEIGHT + 400;
     info.testHeight = 0;
 
+//hud
+    info.player.head = 1;
     info.item.key = 0;
+    info.item.ammo = 12;
+    info.item.reload = 0;
+
 
     //SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
     //SDL_Thread* threadID2 = SDL_CreateThread(threadAnim2, "wowThread2", (t_info*)&info);
@@ -112,27 +117,47 @@ int		main(int argc, char **argv)
                     if (event.key.keysym.sym == SDLK_ESCAPE)
                         info.quit = 1;
                     else if (event.key.keysym.sym == SDLK_w)
+                    {
                         info.player.move_up = 1;
+                        //info.player.head = 1;
+                    }
                     else if (event.key.keysym.sym == SDLK_s)
+                    {
                         info.player.move_down = 1;
+                        //info.player.head = 1;
+                    }
                     else if (event.key.keysym.sym == SDLK_d)
+                    {
                         info.player.move_right = 1;
+                        //info.player.head = 0;
+                    }
                     else if (event.key.keysym.sym == SDLK_a)
+                    {
                         info.player.move_left = 1;
-                    else if (event.key.keysym.sym == SDLK_e)
-                        info.player.turn_right = 1;
-                    else if (event.key.keysym.sym == SDLK_q)
-                        info.player.turn_left = 1;
+                        //info.player.head = 2;
+                    }
                     else if (event.key.keysym.sym == SDLK_b)
-                        info.player.height  += 0.1;
+                        info.player.height += 0.1;
                     else if (event.key.keysym.sym == SDLK_n)
-                        info.player.height  -= 0.1;
+                        info.player.height -= 0.1;
                     else if (event.key.keysym.sym == SDLK_LSHIFT)
                         info.player.move_speed = 0.1;
                     else if (event.key.keysym.sym == SDLK_f)
                         info.action = 1;
 					else if (event.key.keysym.sym == SDLK_e)
 						open_doors(&info);
+                    else if (event.key.keysym.sym == SDLK_r)
+                    {
+                        if (info.item.reload > 0)
+                        {
+                            if (info.item.ammo != 12)
+                            {
+                                info.item.reload -= 1;
+                                info.item.ammo = 12;
+                            }
+                        }
+	                    //bloquer le total de chargeur à 3 transportables. 
+                    }
 					else if (event.key.keysym.sym == SDLK_c)
                     {
                         //if (info.testHeight > -300)
@@ -182,10 +207,6 @@ int		main(int argc, char **argv)
                         info.player.move_right = 0;
                     else if (event.key.keysym.sym == SDLK_a)
                         info.player.move_left = 0;
-                    else if (event.key.keysym.sym == SDLK_e)
-                        info.player.turn_right = 0;
-                    else if (event.key.keysym.sym == SDLK_q)
-                        info.player.turn_left = 0;
                     else if (event.key.keysym.sym == SDLK_LSHIFT)
                         info.player.move_speed = 0.05;
                     else if (event.key.keysym.sym == SDLK_f)
@@ -275,7 +296,9 @@ int		main(int argc, char **argv)
                         }
                         case SDL_BUTTON_RIGHT:
                         {
-                            info.item.key = 1;
+                            // test d'affichage
+                            info.item.key += 1;
+                            info.player.life -= 10;
                             printf("CLICK RIGHT\n");
                             break;
                         }
@@ -345,7 +368,7 @@ int		main(int argc, char **argv)
             SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
             // RENDER HUD
             //SDL_RenderCopy(info.win.renderer, info.hud[0].texture, NULL, &info.hud[0].rect);
-            render_hud(&info);
+            render_hud(&info, &event);
         }
         else if (info.game == 3)
         {

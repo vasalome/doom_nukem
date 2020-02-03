@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 15:39:10 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/31 17:55:58 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -157,6 +157,9 @@ typedef struct		s_player
 	int				life;
 	int				can_trap;
 
+	// test animation head
+	int				head;
+	
 	//test collision
 	double			x_bef;
 	double			y_bef;
@@ -241,6 +244,8 @@ typedef struct		s_item
 	int				iconx;
 	int				icony;*/
 	int				key;
+	int				ammo;
+	int				reload;
 }					t_item;
 
 typedef struct		s_music
@@ -288,7 +293,7 @@ typedef struct		s_info
 	t_tex			fps;
 	t_tex			flash;
 	t_tex			wt[31];
-	t_tex			hud[11];
+	t_tex			hud[20];
 	t_music			music;
 	t_floor			floor;
 	//t_record		rec;
@@ -469,6 +474,6 @@ void	clip_10(t_info *info);
 void	clip_12(t_info *info);
 
 void	draw_hud(t_info *info);
-void	render_hud(t_info *info);
+void	render_hud(t_info *info, SDL_Event *event);
 
 #endif
