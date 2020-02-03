@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/31 17:55:58 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 17:18:37 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -243,9 +243,11 @@ typedef struct		s_item
 	SDL_Texture		*texture;/*
 	int				iconx;
 	int				icony;*/
+	int				weapon;
 	int				key;
 	int				ammo;
 	int				reload;
+	int				hp; // healthpack
 }					t_item;
 
 typedef struct		s_music
@@ -278,6 +280,26 @@ typedef	struct			s_floor
 	int				texId;
 	int				texId2;
 }					t_floor;
+
+typedef struct		s_rgb
+{
+	int				r;
+	int				g;
+	int				b;
+	int				a;
+}					t_rgb;
+
+typedef struct		s_start
+{
+	int				x;
+	int				y;
+}					t_start;
+
+typedef struct		s_size
+{
+	int				x;
+	int				y;
+}					t_size;
 
 typedef struct		s_info
 {
@@ -322,7 +344,19 @@ typedef struct		s_info
 	double			zoom;
 	int				raycast;
 	int				testHeight;
+
+
+	///
+	SDL_Texture		*textu;
+	Uint32			*pixels;
+	SDL_Renderer	*ren;
+	SDL_Surface		*sur_hud[20];
 }					t_info;
+
+void			pixel_put(t_info *v, int x, int y, t_rgb color);
+void			put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur);
+Uint32			get_pixel(SDL_Surface *surface, int x, int y);
+void			ft_error(char *str);
 
 /*
 ** srcs:			ft_init.c
@@ -475,5 +509,13 @@ void	clip_12(t_info *info);
 
 void	draw_hud(t_info *info);
 void	render_hud(t_info *info, SDL_Event *event);
+
+void	healthpack(t_info *info);
+void	munition(t_info *info);
+void	lifebar(t_info *info);
+
+void	reload(t_info *info);
+void    init_items(t_info *info);
+void	shot(t_info *info);
 
 #endif

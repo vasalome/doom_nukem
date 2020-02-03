@@ -6,12 +6,20 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/28 15:54:11 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/31 19:04:42 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 17:53:26 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
+
+void	healthpack(t_info *info)
+{
+	char	*pack = NULL;
+
+	pack = ft_itoa(info->item.hp);
+	// print les packs a droite en dessous des munitions
+}
 
 void	munition(t_info *info)
 {
@@ -35,61 +43,64 @@ void	render_hud(t_info *info, SDL_Event *event)
 	static int	backup = 0;
 	static int	hit = 0;
 
-	if (info->item.key >= 1)
-		SDL_RenderCopy(info->win.renderer, info->hud[1].texture, NULL, &info->hud[1].rect);
-	SDL_RenderCopy(info->win.renderer, info->hud[0].texture, NULL, &info->hud[0].rect);
+	// if (info->item.key >= 1)
+		// SDL_RenderCopy(info->win.renderer, info->hud[1].texture, NULL, &info->hud[1].rect);
+	// SDL_RenderCopy(info->win.renderer, info->hud[0].texture, NULL, &info->hud[0].rect);
 
 	if (info->player.life > 80)
 	{
-		if (event->motion.xrel == backup || event->motion.xrel == 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[3].texture, NULL, &info->hud[3].rect);
-		else if (event->motion.xrel < 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[4].texture, NULL, &info->hud[4].rect);
-		else if (event->motion.xrel > 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[5].texture, NULL, &info->hud[5].rect);
+		if (event->motion.xrel == backup || event->motion.xrel == 0){
+			// SDL_RenderCopy(info->win.renderer, info->hud[3].texture, NULL, &info->hud[3].rect);
+			put_texture(info, (t_start){75, 537}, (t_size){120, 145}, info->sur_hud[0]);
+			}
 	}
-	else if (info->player.life > 60)
-	{
-		if (event->motion.xrel == backup || event->motion.xrel == 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[6].texture, NULL, &info->hud[6].rect);
-		else if (event->motion.xrel < 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[7].texture, NULL, &info->hud[7].rect);
-		else if (event->motion.xrel > 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[8].texture, NULL, &info->hud[8].rect);
-	}
-	else if (info->player.life > 30)
-	{
-		if (event->motion.xrel == backup || event->motion.xrel == 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[9].texture, NULL, &info->hud[9].rect);
-		else if (event->motion.xrel < 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[10].texture, NULL, &info->hud[10].rect);
-		else if (event->motion.xrel > 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[11].texture, NULL, &info->hud[11].rect);
-	}
-	else if (info->player.life > 0)
-	{
-		if (event->motion.xrel == backup || event->motion.xrel == 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[12].texture, NULL, &info->hud[12].rect);
-		else if (event->motion.xrel < 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[13].texture, NULL, &info->hud[13].rect);
-		else if (event->motion.xrel > 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[14].texture, NULL, &info->hud[14].rect);
-	}
-	else if (info->player.life <= 0)
-		SDL_RenderCopy(info->win.renderer, info->hud[19].texture, NULL, &info->hud[19].rect);
+	// 	else if (event->motion.xrel < 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[4].texture, NULL, &info->hud[4].rect);
+	// 	else if (event->motion.xrel > 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[5].texture, NULL, &info->hud[5].rect);
+	// }
+	// else if (info->player.life > 60)
+	// {
+	// 	if (event->motion.xrel == backup || event->motion.xrel == 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[6].texture, NULL, &info->hud[6].rect);
+	// 	else if (event->motion.xrel < 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[7].texture, NULL, &info->hud[7].rect);
+	// 	else if (event->motion.xrel > 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[8].texture, NULL, &info->hud[8].rect);
+	// }
+	// else if (info->player.life > 30)
+	// {
+	// 	if (event->motion.xrel == backup || event->motion.xrel == 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[9].texture, NULL, &info->hud[9].rect);
+	// 	else if (event->motion.xrel < 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[10].texture, NULL, &info->hud[10].rect);
+	// 	else if (event->motion.xrel > 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[11].texture, NULL, &info->hud[11].rect);
+	// }
+	// else if (info->player.life > 0)
+	// {
+	// 	if (event->motion.xrel == backup || event->motion.xrel == 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[12].texture, NULL, &info->hud[12].rect);
+	// 	else if (event->motion.xrel < 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[13].texture, NULL, &info->hud[13].rect);
+	// 	else if (event->motion.xrel > 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[14].texture, NULL, &info->hud[14].rect);
+	// }
+	// else if (info->player.life <= 0)
+	// 	SDL_RenderCopy(info->win.renderer, info->hud[19].texture, NULL, &info->hud[19].rect);
 
-	// Quand le player prend des dégats. Allonger son affichage
-	if (info->player.life != hit)
-	{
-		if (info->player.life < 100 && info->player.life >= 80)
-			SDL_RenderCopy(info->win.renderer, info->hud[15].texture, NULL, &info->hud[15].rect);
-		else if (info->player.life < 80 && info->player.life >= 60)
-			SDL_RenderCopy(info->win.renderer, info->hud[16].texture, NULL, &info->hud[16].rect);
-		else if (info->player.life < 60 && info->player.life >= 30)
-			SDL_RenderCopy(info->win.renderer, info->hud[17].texture, NULL, &info->hud[17].rect);
-		else if (info->player.life < 30 && info->player.life >= 0)
-			SDL_RenderCopy(info->win.renderer, info->hud[18].texture, NULL, &info->hud[18].rect);
-	}
+	// // Quand le player prend des dégats. Allonger son affichage
+	// if (info->player.life != hit)
+	// {
+	// 	if (info->player.life < 100 && info->player.life >= 80)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[15].texture, NULL, &info->hud[15].rect);
+	// 	else if (info->player.life < 80 && info->player.life >= 60)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[16].texture, NULL, &info->hud[16].rect);
+	// 	else if (info->player.life < 60 && info->player.life >= 30)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[17].texture, NULL, &info->hud[17].rect);
+	// 	else if (info->player.life < 30 && info->player.life >= 0)
+	// 		SDL_RenderCopy(info->win.renderer, info->hud[18].texture, NULL, &info->hud[18].rect);
+	// }
 
 	hit = info->player.life;
 	backup = event->motion.xrel;
@@ -223,13 +234,14 @@ void	draw_head_lips(t_info *info)
 
 void	draw_head(t_info *info)
 {
-	info->hud[3].img = IMG_Load("hud/head/1/fst_m.png");
-	info->hud[3].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
-		info->hud[3].img);
-	info->hud[3].rect.x = 75;
-	info->hud[3].rect.y = 537;
-	info->hud[3].rect.w = 120;
-	info->hud[3].rect.h = 145;
+	info->sur_hud[0] = IMG_Load("hud/head/1/fst_m.png");
+	// info->hud[3].img = IMG_Load("hud/head/1/fst_m.png");
+	// info->hud[3].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	// 	info->hud[3].img);
+	// info->hud[3].rect.x = 75;
+	// info->hud[3].rect.y = 537;
+	// info->hud[3].rect.w = 120;
+	// info->hud[3].rect.h = 145;
 
 	info->hud[4].img = IMG_Load("hud/head/1/fst_r.png");
 	info->hud[4].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
@@ -255,6 +267,7 @@ void	draw_head(t_info *info)
 
 void    draw_hud(t_info *info)
 {
+	printf("bonjour\n");
     info->hud[0].img = IMG_Load("hud/hud_gen.png");
 	info->hud[0].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
 		info->hud[0].img);

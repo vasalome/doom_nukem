@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/31 15:01:14 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 17:19:35 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -90,17 +90,12 @@ void	init_window(t_info *info)
 		printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
 	}
 
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-	{
-		printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", IMG_GetError() );
-	}
-}
-
-void	init_music(t_info *info)
-{
-	info->music.sound = Mix_LoadMUS("music/scream.wav");
-	info->music.high = Mix_LoadWAV("music/scream.wav");
-	info->music.low = Mix_LoadWAV("music/elevator.wav");
+	if (!(info->textu = SDL_CreateTexture(info->win.renderer, SDL_PIXELFORMAT_RGBA8888,
+			SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT)))
+		//ft_error("Could not create a texture");
+		fprintf(stdout,"Échec de l'initialisation de la SDL (%s)\n",SDL_GetError());
+	if (!(info->pixels = malloc(sizeof(uint32_t) * (HEIGHT * WIDTH))))
+		ft_error("ALLO CA MARCHE PAS");
 }
 
 void	init_doors(t_info *info)
@@ -145,7 +140,6 @@ void	init(t_info *info)
 	init_player(info);
 	init_clip(info);
 	init_doors(info);
-	init_music(info);
 	icon(info);
 	//ray_casting_image(info);
 }

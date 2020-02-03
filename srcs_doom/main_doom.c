@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/31 19:03:53 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 17:48:06 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -76,9 +76,6 @@ int		main(int argc, char **argv)
 
 //hud
     info.player.head = 1;
-    info.item.key = 0;
-    info.item.ammo = 12;
-    info.item.reload = 0;
 
 
     //SDL_Thread* threadID = SDL_CreateThread(threadAnim, "wowThread", (t_info*)&info);
@@ -112,286 +109,281 @@ int		main(int argc, char **argv)
     
                 // check for keypresses
             case SDL_KEYDOWN:
+            {
+                // exit if ESCAPE is pressed
+                if (event.key.keysym.sym == SDLK_ESCAPE)
+                    info.quit = 1;
+                else if (event.key.keysym.sym == SDLK_w)
                 {
-                    // exit if ESCAPE is pressed
-                    if (event.key.keysym.sym == SDLK_ESCAPE)
-                        info.quit = 1;
-                    else if (event.key.keysym.sym == SDLK_w)
-                    {
-                        info.player.move_up = 1;
-                        //info.player.head = 1;
-                    }
-                    else if (event.key.keysym.sym == SDLK_s)
-                    {
-                        info.player.move_down = 1;
-                        //info.player.head = 1;
-                    }
-                    else if (event.key.keysym.sym == SDLK_d)
-                    {
-                        info.player.move_right = 1;
-                        //info.player.head = 0;
-                    }
-                    else if (event.key.keysym.sym == SDLK_a)
-                    {
-                        info.player.move_left = 1;
-                        //info.player.head = 2;
-                    }
-                    else if (event.key.keysym.sym == SDLK_b)
-                        info.player.height += 0.1;
-                    else if (event.key.keysym.sym == SDLK_n)
-                        info.player.height -= 0.1;
-                    else if (event.key.keysym.sym == SDLK_LSHIFT)
-                        info.player.move_speed = 0.1;
-                    else if (event.key.keysym.sym == SDLK_f)
-                        info.action = 1;
-					else if (event.key.keysym.sym == SDLK_e)
-						open_doors(&info);
-                    else if (event.key.keysym.sym == SDLK_r)
-                    {
-                        if (info.item.reload > 0)
-                        {
-                            if (info.item.ammo != 12)
-                            {
-                                info.item.reload -= 1;
-                                info.item.ammo = 12;
-                            }
-                        }
-	                    //bloquer le total de chargeur à 3 transportables. 
-                    }
-					else if (event.key.keysym.sym == SDLK_c)
-                    {
-                        //if (info.testHeight > -300)
-                        //{
-                            
-                            //while (info.testHeight != -300)
-                            //{
-                                info.testHeight = -250;
-                                ray_casting_image(&info);
-                            //}
-                        //}
-                    }
-                    else if (event.key.keysym.sym == SDLK_SPACE)
-					{
-                        //if (info.testHeight < 0)
-                        //{
-                            
-                            //while (info.testHeight != -300)
-                            //{
-                                info.testHeight = 300;
-                                ray_casting_image(&info);
-                            //}
-                        //}
-                    }
-                    else if (event.key.keysym.sym == SDLK_h)
-                    {
-                        info.testHeight -= 10;
-                    }
-                    else if (event.key.keysym.sym == SDLK_z)
-                    {
-                        SDL_Delay(10);
-                        info.wt[8].img = IMG_Load("wall/jojo2.png");
-	                    info.wt[9].img = IMG_Load("wall/jojo2.png");
-	                    info.wt[10].img = IMG_Load("wall/jojo2.png");
-	                    info.wt[11].img = IMG_Load("wall/jojo2.png");
-                    }
-                    break;
+                    info.player.move_up = 1;
+                    //info.player.head = 1;
                 }
-            
-            case SDL_KEYUP:
+                else if (event.key.keysym.sym == SDLK_s)
                 {
-                    if (event.key.keysym.sym == SDLK_w)
-                        info.player.move_up = 0;
-                    else if (event.key.keysym.sym == SDLK_s)
-                        info.player.move_down = 0;
-                    else if (event.key.keysym.sym == SDLK_d)
-                        info.player.move_right = 0;
-                    else if (event.key.keysym.sym == SDLK_a)
-                        info.player.move_left = 0;
-                    else if (event.key.keysym.sym == SDLK_LSHIFT)
-                        info.player.move_speed = 0.05;
-                    else if (event.key.keysym.sym == SDLK_f)
-                        info.action = 0;
-                    else if (event.key.keysym.sym == SDLK_c)
-                    {
-                        //if (info.testHeight < 0)
+                    info.player.move_down = 1;
+                    //info.player.head = 1;
+                }
+                else if (event.key.keysym.sym == SDLK_d)
+                {
+                    info.player.move_right = 1;
+                    //info.player.head = 0;
+                }
+                else if (event.key.keysym.sym == SDLK_a)
+                {
+                    info.player.move_left = 1;
+                    //info.player.head = 2;
+                }
+                else if (event.key.keysym.sym == SDLK_b)
+                    info.player.height += 0.1;
+                else if (event.key.keysym.sym == SDLK_n)
+                    info.player.height -= 0.1;
+                else if (event.key.keysym.sym == SDLK_LSHIFT)
+                    info.player.move_speed = 0.1;
+                else if (event.key.keysym.sym == SDLK_f)
+                    info.action = 1;
+                else if (event.key.keysym.sym == SDLK_e)
+                    open_doors(&info);
+                else if (event.key.keysym.sym == SDLK_r)
+                    reload(&info);
+                else if (event.key.keysym.sym == SDLK_c)
+                {
+                    //if (info.testHeight > -300)
+                    //{
+                        
+                        //while (info.testHeight != -300)
+                        //{
+                            info.testHeight = -250;
+                            ray_casting_image(&info);
+                        //}
+                    //}
+                }
+                else if (event.key.keysym.sym == SDLK_SPACE)
+                {
+                    //if (info.testHeight < 0)
+                    //{
+                        
+                        //while (info.testHeight != -300)
+                        //{
+                            info.testHeight = 300;
+                            ray_casting_image(&info);
+                        //}
+                    //}
+                }
+                else if (event.key.keysym.sym == SDLK_h)
+                {
+                    info.testHeight -= 10;
+                }
+                else if (event.key.keysym.sym == SDLK_z)
+                {
+                    SDL_Delay(10);
+                    info.wt[8].img = IMG_Load("wall/jojo2.png");
+                    info.wt[9].img = IMG_Load("wall/jojo2.png");
+                    info.wt[10].img = IMG_Load("wall/jojo2.png");
+                    info.wt[11].img = IMG_Load("wall/jojo2.png");
+                }
+                break;
+            }
+            case SDL_KEYUP:
+            {
+                if (event.key.keysym.sym == SDLK_w)
+                    info.player.move_up = 0;
+                else if (event.key.keysym.sym == SDLK_s)
+                    info.player.move_down = 0;
+                else if (event.key.keysym.sym == SDLK_d)
+                    info.player.move_right = 0;
+                else if (event.key.keysym.sym == SDLK_a)
+                    info.player.move_left = 0;
+                else if (event.key.keysym.sym == SDLK_LSHIFT)
+                    info.player.move_speed = 0.05;
+                else if (event.key.keysym.sym == SDLK_f)
+                    info.action = 0;
+                else if (event.key.keysym.sym == SDLK_c)
+                {
+                    //if (info.testHeight < 0)
+                    //{
+                        info.testHeight = 0;
+                        ray_casting_image(&info);
+                    //}
+                }
+                else if (event.key.keysym.sym == SDLK_SPACE)
+                {
+                    //if (info.testHeight < 0)
+                    //{
+                        
+                        //while (info.testHeight != -300)
                         //{
                             info.testHeight = 0;
                             ray_casting_image(&info);
                         //}
-                    }
-                    else if (event.key.keysym.sym == SDLK_SPACE)
-					{
-                        //if (info.testHeight < 0)
-                        //{
-                            
-                            //while (info.testHeight != -300)
-                            //{
-                                info.testHeight = 0;
-                                ray_casting_image(&info);
-                            //}
-                        //}
-                    }
-                    else if (event.key.keysym.sym == SDLK_z)
-                    {
-                        SDL_Delay(10);
-                        info.wt[8].img = IMG_Load("wall/jojo.png");
-	                    info.wt[9].img = IMG_Load("wall/jojo.png");
-	                    info.wt[10].img = IMG_Load("wall/jojo.png");
-	                    info.wt[11].img = IMG_Load("wall/jojo.png");
-                    }
-                    break;
+                    //}
                 }
+                else if (event.key.keysym.sym == SDLK_z)
+                {
+                    SDL_Delay(10);
+                    info.wt[8].img = IMG_Load("wall/jojo.png");
+                    info.wt[9].img = IMG_Load("wall/jojo.png");
+                    info.wt[10].img = IMG_Load("wall/jojo.png");
+                    info.wt[11].img = IMG_Load("wall/jojo.png");
+                }
+                break;
+            }
             case SDL_MOUSEMOTION:
+            {
+                if (info.game == 2)
                 {
-                    if (info.game == 2)
-                    {
-                        
-                        SDL_ShowCursor(SDL_DISABLE);
-                        info.player.turn_right = 1;
-                        info.player.turn_left = 1;
-                        info.player.turn_rate = -event.motion.xrel * 0.002;
-                        info.player.turn_rate_y = event.motion.yrel * 0.002;
-                        SDL_WarpMouseInWindow(info.win.win, info.win.w/2, info.win.h/2);
-                        info.raycast = 1;
-                    }
-                    else if(info.game == 3)
-                    {
-                        info.xrel = event.motion.xrel;
-                        info.yrel = event.motion.yrel;
-                        break;
-                    }
-                    else
-                    {
-                        int i = 2;
-                        while (i <= 5)
-                        {
-                            loadButton(&info, i);
-                            i++;
-                        }
-                        break;
-                    }                 
                     
+                    SDL_ShowCursor(SDL_DISABLE);
+                    info.player.turn_right = 1;
+                    info.player.turn_left = 1;
+                    info.player.turn_rate = -event.motion.xrel * 0.002;
+                    info.player.turn_rate_y = event.motion.yrel * 0.002;
+                    SDL_WarpMouseInWindow(info.win.win, info.win.w/2, info.win.h/2);
+                    info.raycast = 1;
                 }
+                else if(info.game == 3)
+                {
+                    info.xrel = event.motion.xrel;
+                    info.yrel = event.motion.yrel;
+                    break;
+                }
+                else
+                {
+                    int i = 2;
+                    while (i <= 5)
+                    {
+                        loadButton(&info, i);
+                        i++;
+                    }
+                    break;
+                }                 
+                
+            }
             case SDL_MOUSEBUTTONDOWN:
+            {
+                switch (event.button.button)
                 {
-                    switch (event.button.button)
+                    case SDL_BUTTON_LEFT:
                     {
-                        case SDL_BUTTON_LEFT:
+                        if (info.button == 0 && info.game != 2 && info.game != 3)
                         {
-                            if (info.button == 0 && info.game != 2 && info.game != 3)
-                            {
-                                info.game = 1;
-                                SDL_ShowCursor(SDL_DISABLE);
-                                SDL_WarpMouseInWindow(info.win.win, info.win.w/2, info.win.h/2);
-                            }
-                            else if (info.button == 1 && info.game != 2)
-                            {
-                                info.game = 3;
-                            }
-                            else
-                            {
-                                
-                            }
-                            break;
+                            info.game = 1;
+                            SDL_ShowCursor(SDL_DISABLE);
+                            SDL_WarpMouseInWindow(info.win.win, info.win.w/2, info.win.h/2);
+                            init_items(&info);
                         }
-                        case SDL_BUTTON_RIGHT:
+                        else if (info.button == 1 && info.game != 2)
                         {
-                            // test d'affichage
-                            info.item.key += 1;
-                            info.player.life -= 10;
-                            printf("CLICK RIGHT\n");
-                            break;
+                            info.game = 3;
                         }
-                        case SDL_BUTTON_MIDDLE:
+                        else
                         {
-                            info.xOffsetMenu += info.xrel;
-                            info.yOffsetMenu += info.yrel;
-                            printf("xrel = %f\nyrel = %f\n\n", info.xOffsetMenu, info.yOffsetMenu);
-                            break;
+                            shot(&info);
                         }
+                        break;
                     }
-                    break;
+                    case SDL_BUTTON_RIGHT:
+                    {
+                        // test d'affichage
+                        info.item.key += 1;
+                        info.player.life -= 10;
+                        printf("CLICK RIGHT\n");
+                        break;
+                    }
+                    case SDL_BUTTON_MIDDLE:
+                    {
+                        info.xOffsetMenu += info.xrel;
+                        info.yOffsetMenu += info.yrel;
+                        printf("xrel = %f\nyrel = %f\n\n", info.xOffsetMenu, info.yOffsetMenu);
+                        break;
+                    }
                 }
+                break;
+            }
             case SDL_MOUSEBUTTONUP:
+            {
+                /*switch (event.button.button)
                 {
-                    /*switch (event.button.button)
-                    {
-                        case SDL_BUTTON_WHEELUP:
-                            if (info.game == 3)
-                            {
-                                info.zoom += 0.1;
-                            }
-                            break;
-                        case SDL_BUTTON_WHEELDOWN:
-                            if (info.game == 3)
-                            {
-                                info.zoom -= 0.1;
-                            }
-                            break;
-                    }*/
-                    break;
-                }
+                    case SDL_BUTTON_WHEELUP:
+                        if (info.game == 3)
+                        {
+                            info.zoom += 0.1;
+                        }
+                        break;
+                    case SDL_BUTTON_WHEELDOWN:
+                        if (info.game == 3)
+                        {
+                            info.zoom -= 0.1;
+                        }
+                        break;
+                }*/
+                break;
+            }
             case SDL_MOUSEWHEEL:
+            {
+                if (info.game == 3)
                 {
-                    if (info.game == 3)
+                    if (event.wheel.y > 0)
                     {
-                        if (event.wheel.y > 0)
-                        {
-                            if (info.zoom < 3)
-                                info.zoom += 0.1;
-                        }
-                        else if (event.wheel.y < 0)
-                        {
-                            if (info.zoom > 0.2)
-                                info.zoom -= 0.1;
-                        }
+                        if (info.zoom < 3)
+                            info.zoom += 0.1;
                     }
-                    /*if (event.wheel.y > 0)
-                        printf("CLICK WHEELUP\n");
-                    //printf("event.wheel.y 111111-> %d\n", event.wheel.y);
-                    if (event.wheel.y < 0)
-                        printf("CLICK WHEELDOWN\n");*/
-                    //printf("event.wheel.y 222222-> %d\n", event.wheel.y);
-                    break;
+                    else if (event.wheel.y < 0)
+                    {
+                        if (info.zoom > 0.2)
+                            info.zoom -= 0.1;
+                    }
                 }
+                /*if (event.wheel.y > 0)
+                    printf("CLICK WHEELUP\n");
+                //printf("event.wheel.y 111111-> %d\n", event.wheel.y);
+                if (event.wheel.y < 0)
+                    printf("CLICK WHEELDOWN\n");*/
+                //printf("event.wheel.y 222222-> %d\n", event.wheel.y);
+                break;
+            }
         } // end switch
+
     } // end of message processing
             
-        if (info.game == 2)
-        {
-            SDL_SetTextureBlendMode(info.fps.texture, SDL_BLENDMODE_BLEND);
-            SDL_UnlockTexture(info.fps.texture);
+        // if (info.game == 2)
+        // {
+        //     SDL_SetTextureBlendMode(info.fps.texture, SDL_BLENDMODE_BLEND);
+        //     SDL_UnlockTexture(info.fps.texture);
         
-            SDL_RenderClear(info.win.renderer);
-            render_skybox(&info);
+        //     SDL_RenderClear(info.win.renderer);
+        //     render_skybox(&info);
 
-            SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
-            // RENDER HUD
-            //SDL_RenderCopy(info.win.renderer, info.hud[0].texture, NULL, &info.hud[0].rect);
-            render_hud(&info, &event);
-        }
-        else if (info.game == 3)
-        {
-            //menu(&info);
-            SDL_RenderClear(info.win.renderer);
-            SDL_RenderCopy(info.win.renderer, info.head[1].texture, NULL, &info.head[1].rect);
-            SDL_RenderCopy(info.win.renderer, info.head[2].texture, NULL, &info.head[2].rect);
-        }
-        else
-        {    
+        //     SDL_RenderCopy(info.win.renderer, info.fps.texture, NULL, &info.fps.rect);
+        //     // RENDER HUD
+        //     //SDL_RenderCopy(info.win.renderer, info.hud[0].texture, NULL, &info.hud[0].rect);
+		//info.sur_hud[0] = IMG_Load("hud/head/1/fst_r.png");
+    	render_hud(&info, &event);
+        // }
+        // else if (info.game == 3)
+        // {
+        //     //menu(&info);
+        //     SDL_RenderClear(info.win.renderer);
+        //     // SDL_RenderCopy(info.win.renderer, info.head[1].texture, NULL, &info.head[1].rect);
+        //     // SDL_RenderCopy(info.win.renderer, info.head[2].texture, NULL, &info.head[2].rect);
+        // }
+        // else
+        // {    
             
             
-            SDL_RenderClear(info.win.renderer);
-            //menu(&info);
+        //     SDL_RenderClear(info.win.renderer);
+        //     menu(&info);
             
-            SDL_RenderCopy(info.win.renderer, info.head[0].texture, NULL, NULL);  
+        //     SDL_RenderCopy(info.win.renderer, info.head[0].texture, NULL, NULL);  
             
-            SDL_RenderCopy(info.win.renderer, info.head[1].texture, NULL, &info.head[1].rect);
-            SDL_RenderCopy(info.win.renderer, info.head[2].texture, NULL, &info.head[2].rect);
-            SDL_RenderCopy(info.win.renderer, info.head[3].texture, NULL, &info.head[3].rect);
-            SDL_RenderCopy(info.win.renderer, info.head[4].texture, NULL, &info.head[4].rect);
-            SDL_RenderCopy(info.win.renderer, info.head[5].texture, NULL, &info.head[5].rect);
-        }
+        //     SDL_RenderCopy(info.win.renderer, info.head[1].texture, NULL, &info.head[1].rect);
+        //     SDL_RenderCopy(info.win.renderer, info.head[2].texture, NULL, &info.head[2].rect);
+        //     SDL_RenderCopy(info.win.renderer, info.head[3].texture, NULL, &info.head[3].rect);
+        //     SDL_RenderCopy(info.win.renderer, info.head[4].texture, NULL, &info.head[4].rect);
+        //     SDL_RenderCopy(info.win.renderer, info.head[5].texture, NULL, &info.head[5].rect);
+        // }
+		
+		SDL_UpdateTexture(info.textu, NULL, info.pixels, sizeof(uint32_t) * WIDTH);
+		SDL_RenderCopy(info.win.renderer, info.textu, NULL, NULL);
 		SDL_RenderPresent(info.win.renderer);
 
         info.frame++;

@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/01/28 16:26:46 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/03 17:37:31 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,7 +25,7 @@ CFLAGS		=	-Wall -Wextra #-Werror -g
 #CFLAGS		+=	-Wunused-command-line-argument
 #CFLAGS		+=	-Wno-error
 #CFLAGS		+=	--cflags --glibs
-#CFLAGS		+=	-ggdb -g -fsanitize=address
+CFLAGS		+=	-ggdb -g -fsanitize=address
 #FLAG_SDL	=	$(shell sdl2-config --libs) -lSDL2_ttf -lSDL2_image -lSDL2_mixer -O3
 
 #	Directory:
@@ -57,6 +57,8 @@ SRCS		+=	ft_usage.c
 SRCS		+=	ft_doors.c
 SRCS		+=	ft_clip.c
 SRCS		+=	ft_hud.c
+SRCS		+=	ft_items.c
+SRCS		+=	ft_put_texture.c
 
 HEADERS		=	doom.h
 HEADERS		+=	keys.h

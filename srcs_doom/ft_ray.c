@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 17:36:55 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 17:27:41 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -416,12 +416,14 @@ void	ray_casting_image(t_info *info)
 {
 	if (!(info->player.life - 1 <= 0))
 	{
+		
 		create_img(info);
 		
 		ray_casting(info);
 
 		//move_doors(info);
 		// draw_skybox(info);
+		
 		draw_hud(info);
 		
 		/* Main frame */
