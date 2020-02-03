@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 16:28:59 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 17:52:58 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 19:10:59 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,7 +63,7 @@ void			put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur)
 		{
 			SDL_GetRGBA(get_pixel(sur, x * sur->w / size.x, y * sur->h / size.y),
 					sur->format, &col.r, &col.g, &col.b, &col.a);
-			if (col.a != 0)
+			if (col.a > 65)
 				pixel_put(v, s.x + x, s.y + y, (t_rgb){col.r, col.g, col.b,
 						col.a});
 		}

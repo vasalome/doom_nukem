@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 13:52:14 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 16:13:25 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 21:03:10 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,7 @@
 
 void	reload(t_info *info)
 {
+	// bloquer le nombre de munition max a ?? 50 ?
 	if (info->item.ammo != 6 && info->item.reload > 0)
 	{
 		if (info->item.reload >= 6)
@@ -43,7 +44,7 @@ void	shot(t_info *info)
 	}
 	else if (info->item.weapon == 2)
 	{
-		if (info->item.hp != 0)
+		if (info->item.hp > 0 && info->player.life > 0 && info->player.life < 100)
 		{
 			info->item.hp -= 1;
 			info->player.life += 50;
