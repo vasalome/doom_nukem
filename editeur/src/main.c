@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 16:01:13 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 16:20:39 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ void		init(t_env *v)
 			SDL_TEXTUREACCESS_STREAMING, v->w, v->h)))
 		ft_error("Could not create a texture");
 	if (!(v->pixels = malloc(sizeof(uint32_t) * (v->h * v->w))))
-		ft_error("ALLO CA MARCHE PAS");
+		ft_error("Could not create pixels data");
 }
 
 void		editeur_setup(t_env *v)
@@ -50,11 +50,28 @@ void		editeur_setup(t_env *v)
 	v->tmp = 0;
 }
 
+void		free_env(t_env *v)
+{
+	if (v)
+	{
+		if (v->sur)
+			SDL_FreeSurface(v->sur);
+		if (v->tex)
+			free(v->tex);
+		if (v->tab)
+			free_tab(v, v->tab);
+		if (v->pixels)
+			free(v->pixels);
+		free(v);
+	}
+}
+
 int			main(int argc, char **argv)
 {
 	t_env	*v;
 	int		fd;
 
+	sleep(5);
 	fd = 0;
 	if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
