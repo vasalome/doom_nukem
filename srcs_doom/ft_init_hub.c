@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 13:53:37 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 13:13:27 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 13:19:02 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,10 +25,8 @@ void	hub_life(t_info *info)
 	// info->menu[10].img = IMG_Load("hub/100_hub_2.png");
 
 	info->menu[0].button = IMG_Load("menu/doom_menu.xpm");
-	info->menu[0].button = IMG_Load("menu/button_menu.xpm");
-	info->menu[0].button = IMG_Load("menu/doom_logo.xpm");
-	info->menu[0].button = IMG_Load("menu/doom_logo.xpm");
-	info->menu[0].button = IMG_Load("menu/doom_logo.xpm");
+	info->menu[1].button = IMG_Load("menu/button_menu.xpm");
+	info->menu[2].button = IMG_Load("menu/doom_logo.xpm");
 }
 
 void	icon_2(t_info *info)
