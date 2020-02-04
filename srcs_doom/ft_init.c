@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_init.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 17:19:35 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 18:37:06 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -92,8 +92,7 @@ void	init_window(t_info *info)
 
 	if (!(info->textu = SDL_CreateTexture(info->win.renderer, SDL_PIXELFORMAT_RGBA8888,
 			SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT)))
-		//ft_error("Could not create a texture");
-		fprintf(stdout,"Échec de l'initialisation de la SDL (%s)\n",SDL_GetError());
+		ft_error("Could not create a texture");
 	if (!(info->pixels = malloc(sizeof(uint32_t) * (HEIGHT * WIDTH))))
 		ft_error("ALLO CA MARCHE PAS");
 }

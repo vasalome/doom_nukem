@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   doom.h                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 17:18:37 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 13:06:29 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -266,7 +266,7 @@ typedef struct		s_music
 	const int 		RECORDING_BUFFER_SECONDS = MAX_RECORDING_SECONDS + 1;
 }					t_record;*/
 
-typedef	struct			s_floor
+typedef	struct		s_floor
 {
 	double			dist;
 	double			weight;
@@ -301,6 +301,11 @@ typedef struct		s_size
 	int				y;
 }					t_size;
 
+typedef struct		s_menu
+{
+	SDL_Surface		*button;
+}					t_menu;
+
 typedef struct		s_info
 {
 	t_tex			tex;
@@ -310,7 +315,7 @@ typedef struct		s_info
 	t_map			map;
 	t_wall			wall;
 	t_item			wp[11];
-	t_item			head[11];
+	t_menu			menu[5];
 	t_item			item;
 	t_tex			fps;
 	t_tex			flash;
@@ -353,10 +358,22 @@ typedef struct		s_info
 	SDL_Surface		*sur_hud[20];
 }					t_info;
 
-void			pixel_put(t_info *v, int x, int y, t_rgb color);
-void			put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur);
-Uint32			get_pixel(SDL_Surface *surface, int x, int y);
-void			ft_error(char *str);
+void				pixel_put(t_info *v, int x, int y, t_rgb color);
+void				put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur);
+Uint32				get_pixel(SDL_Surface *surface, int x, int y);
+void				ft_error(char *str);
+
+/*
+** events
+*/
+void				mouse_wheel_event(t_info *info, SDL_Event event);
+void		    	mouse_motion_event(t_info *info, SDL_Event event);
+void				mouse_button_up(t_info *info, SDL_Event event);
+void				mouse_button_down(t_info *info, SDL_Event event);
+void				key_up(t_info *info, const Uint8 *keyboard_state);
+void				key_down(t_info *info, const Uint8 *keyboard_state);
+
+void				display_doom(t_info *info);
 
 /*
 ** srcs:			ft_init.c

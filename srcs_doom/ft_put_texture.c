@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_put_texture.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 16:28:59 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 17:52:58 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 18:34:54 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,8 +69,6 @@ void			put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur)
 		}
 	}
 }
-
-//put_texture(v, (t_start){x, y}, (t_size){size_x, size_y}, t_tex *tex)
 /*
 void			make_picture_tga(t_env *v, t_start s, int size, char *pic)
 {

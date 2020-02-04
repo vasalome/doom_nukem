@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_init_hub.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 13:53:37 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/28 15:34:37 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 13:13:27 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,28 +15,20 @@
 
 void	hub_life(t_info *info)
 {
-	info->head[0].img = IMG_Load("hub/doombg.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/0_hub_2.xpm", &info->head[0].xhud, &info->head[0].yhud);*/
-	info->head[1].img = IMG_Load("hub/Doom_logo.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/10_hub_2.xpm", &info->head[1].xhud, &info->head[1].yhud);*/
-	info->head[2].img = IMG_Load("hub/square.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/20_hub_2.xpm", &info->head[2].xhud, &info->head[2].yhud);*/
-	info->head[3].img = IMG_Load("hub/square.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/30_hub_2.xpm", &info->head[3].xhud, &info->head[3].yhud);*/
-	info->head[4].img = IMG_Load("hub/40_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/40_hub_2.xpm", &info->head[4].xhud, &info->head[4].yhud);*/
-	info->head[5].img = IMG_Load("hub/50_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/50_hub_2.xpm", &info->head[5].xhud, &info->head[5].yhud);*/
-	info->head[6].img = IMG_Load("hub/60_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/60_hub_2.xpm", &info->head[6].xhud, &info->head[6].yhud);*/
-	info->head[7].img = IMG_Load("hub/70_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/70_hub_2.xpm", &info->head[7].xhud, &info->head[7].yhud);*/
-	info->head[8].img = IMG_Load("hub/80_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/80_hub_2.xpm", &info->head[8].xhud, &info->head[8].yhud);*/
-	info->head[9].img = IMG_Load("hub/90_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/90_hub_2.xpm", &info->head[9].xhud, &info->head[9].yhud);*/
-	info->head[10].img = IMG_Load("hub/100_hub_2.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-		"hub/100_hub_2.xpm", &info->head[10].xhud, &info->head[10].yhud);*/
+	// info->menu[1].img = IMG_Load("hub/Doom_logo.png");
+	// info->menu[4].img = IMG_Load("hub/40_hub_2.png");
+	// info->menu[5].img = IMG_Load("hub/50_hub_2.png");
+	// info->menu[6].img = IMG_Load("hub/60_hub_2.png");
+	// info->menu[7].img = IMG_Load("hub/70_hub_2.png");
+	// info->menu[8].img = IMG_Load("hub/80_hub_2.png");
+	// info->menu[9].img = IMG_Load("hub/90_hub_2.png");
+	// info->menu[10].img = IMG_Load("hub/100_hub_2.png");
+
+	info->menu[0].button = IMG_Load("menu/doom_menu.xpm");
+	info->menu[0].button = IMG_Load("menu/button_menu.xpm");
+	info->menu[0].button = IMG_Load("menu/doom_logo.xpm");
+	info->menu[0].button = IMG_Load("menu/doom_logo.xpm");
+	info->menu[0].button = IMG_Load("menu/doom_logo.xpm");
 }
 
 void	icon_2(t_info *info)
