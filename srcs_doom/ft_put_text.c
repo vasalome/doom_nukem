@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 19:39:37 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 20:12:55 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 15:13:27 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,9 +24,8 @@ SDL_Surface		*write_text(char *text, int size_font)
 	font = TTF_OpenFont("./hud/DS-DIGIT.TTF", size_font);
 	if (!font)
 		ft_error("font error");
-	// sur = TTF_RenderText_Shaded(font, text, (SDL_Color){0, 255, 100, 0},
-	// 		(SDL_Color){255, 0, 0, 255});
-    sur = TTF_RenderText_Solid(font, text, (SDL_Color){0, 255, 100});
+	sur = TTF_RenderText_Shaded(font, text, (SDL_Color){0, 255, 100, 0},
+		(SDL_Color){0, 0, 0, 255});
 	TTF_CloseFont(font);
 	TTF_Quit();
 	return (sur);

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 17:18:37 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 19:21:29 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -155,6 +155,8 @@ typedef struct		s_player
 	int				tp[9999];
 	int				tp_index;
 	int				life;
+	int				backup;
+	int				hit;
 	int				can_trap;
 
 	// test animation head
@@ -192,6 +194,7 @@ typedef	struct		s_form
 	int				tp_y;
 	int				tp;
 	int				clip;
+	int				sp;
 }					t_form;
 
 typedef struct		s_map
@@ -315,7 +318,7 @@ typedef struct		s_info
 	t_tex			fps;
 	t_tex			flash;
 	t_tex			wt[31];
-	t_tex			hud[20];
+	//t_tex			oldhud[20];
 	t_music			music;
 	t_floor			floor;
 	//t_record		rec;
@@ -350,13 +353,17 @@ typedef struct		s_info
 	SDL_Texture		*textu;
 	Uint32			*pixels;
 	SDL_Renderer	*ren;
-	SDL_Surface		*sur_hud[20];
+	SDL_Surface		*hud[20];
+
+	SDL_Surface		*sky[4];
 }					t_info;
 
 void			pixel_put(t_info *v, int x, int y, t_rgb color);
 void			put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur);
 Uint32			get_pixel(SDL_Surface *surface, int x, int y);
 void			ft_error(char *str);
+SDL_Surface		*write_text(char *text, int size_font);
+void			put_text(t_info *v, SDL_Surface *sur, int s_x, int s_y);
 
 /*
 ** srcs:			ft_init.c
@@ -510,9 +517,7 @@ void	clip_12(t_info *info);
 void	draw_hud(t_info *info);
 void	render_hud(t_info *info, SDL_Event *event);
 
-void	healthpack(t_info *info);
-void	munition(t_info *info);
-void	lifebar(t_info *info);
+void	info_hud(t_info *info);
 
 void	reload(t_info *info);
 void    init_items(t_info *info);

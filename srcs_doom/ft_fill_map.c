@@ -6,24 +6,13 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:40:07 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 19:52:36 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 18:33:58 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
-/*
-void	fill_map_plus(t_fillmap *fill, t_info *info)
-{
-	if (fill->line[fill->i] == '0' || fill->line[fill->i] == '1'
-	|| fill->line[fill->i] == '2' || fill->line[fill->i] == '3'
-	|| fill->line[fill->i] == '4' || fill->line[fill->i] == '5'
-	|| fill->line[fill->i] == '6' || fill->line[fill->i] == '7'
-	|| fill->line[fill->i] == '8')
-		info->use = fill->line[fill->i];
-	if (fill->line[fill->i] == '3');
-		//tp_destination(fill, info, fill->line, &fill->i);
-}*/
+
 /*
 int		pars_bin(t_fillmap *fill, t_info *info)
 {
@@ -66,13 +55,9 @@ int		request_value(t_fillmap *fill, int x)
 
 int		parsing(t_fillmap *fill, t_info *info)
 {
-	// type de case
 	info->map.map[fill->x][fill->y].wall = request_value(fill, 1);
-	// tex plafond
 	info->map.map[fill->x][fill->y].ceilTexId = request_value(fill, 2);
-	// tex sol
 	info->map.map[fill->x][fill->y].floorTexId = request_value(fill, 3);
-	// tex mur  !!  !!
 	
 	info->map.map[fill->x][fill->y].e_tex = 0; //est
 	info->map.map[fill->x][fill->y].s_tex = 0; //sud
@@ -83,28 +68,19 @@ int		parsing(t_fillmap *fill, t_info *info)
 	info->map.map[fill->x][fill->y].s_tex = request_value(fill, 5); //sud
 	info->map.map[fill->x][fill->y].n_tex = request_value(fill, 6); //nord
 	info->map.map[fill->x][fill->y].w_tex = request_value(fill, 7); //ouest
-	// cliping
-	info->map.map[fill->x][fill->y].clip = request_value(fill, 8);
-	// teleport
-	if (request_value(fill, 9) == 1)
+	info->map.map[fill->x][fill->y].clip = request_value(fill, 8); // cliping
+	if (request_value(fill, 9) == 1)// teleport
 	{
 		info->map.map[fill->x][fill->y].tp = request_value(fill, 9);
 		info->map.map[fill->x][fill->y].tp_x = request_value(fill, 10);
 		info->map.map[fill->x][fill->y].tp_y = request_value(fill, 11);
 	}
-	// alpha
-	info->map.map[fill->x][fill->y].wall_h = (request_value(fill, 12));
-	// sprites
-	// info->? = request_value(fill, 13);
-	// 
-	// info->map.map[fill->x][fill->y]. = request_value(fill, 13);
+	info->map.map[fill->x][fill->y].wall_h = (request_value(fill, 12)); // alpha
+	//info->map.map[fill->x][fill->y].sp = request_value(fill, 13); // sprites
 
 
-
-	//printf("%d ", info->map.map[fill->x][fill->y].wall);
 	while (fill->line[fill->i] != ']')
 		fill->i++;
-	//printf("wall x = %d y = %d -----> %d\n\n", fill->x - 1, fill->y, info->map.map[fill->x][fill->y].wall);
 	fill->x++;
 	return(0);
 }
@@ -119,7 +95,6 @@ int		read_map(t_info *info, t_fillmap *fill)
 		fill->i = 0;
 		while (fill->line[fill->i] != '\0')
 		{
-			//fill_map_plus(fill, info);
 			if (fill->line[fill->i] == '[')
 				parsing(fill, info);
 				/* preparation du parsing des fichiers

@@ -6,14 +6,14 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 16:28:59 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 19:10:59 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 17:21:29 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 
-void	ft_error(char *str)
+void			ft_error(char *str)
 {
 	ft_putendl(str);
 	exit(0);
@@ -50,6 +50,27 @@ Uint32			get_pixel(SDL_Surface *surface, int x, int y)
 }
 
 void			put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur)
+{
+	SDL_Color	col;
+	int			x;
+	int			y;
+
+	y = -1;
+	while (++y < size.y)
+	{
+		x = -1;
+		while (++x < size.x)
+		{
+			SDL_GetRGBA(get_pixel(sur, x * sur->w / size.x, y * sur->h / size.y),
+					sur->format, &col.r, &col.g, &col.b, &col.a);
+			if (col.a > 65)
+				pixel_put(v, s.x + x, s.y + y, (t_rgb){col.r, col.g, col.b,
+						col.a});
+		}
+	}
+}
+// set with draw_start draw_end for the wall
+void			put_tex_ray(t_info *v, t_start s, t_size size, SDL_Surface *sur)
 {
 	SDL_Color	col;
 	int			x;

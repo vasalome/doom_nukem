@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:39:26 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 17:27:58 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 17:36:30 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,7 +50,6 @@ int		get_spawn(t_info *info)
 	int		y;
 
 	def_spawn(info);
-	//printf("x = %f   y = %f\n", info->map.x_spawn, info->map.y_spawn);
 	x = 0;
 	while (x < info->map.width)
 	{
@@ -67,6 +66,5 @@ int		get_spawn(t_info *info)
 		}
 		x++;
 	}
-	//printf("x = %f   y = %f\n", info->map.x_spawn, info->map.y_spawn);
 	return (0);
 }
