@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 19:12:05 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 12:30:38 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 15:07:03 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ void			mouse_button_down(t_info *info, SDL_Event event)
 		{
 		    info->game = 1;
 		    SDL_ShowCursor(SDL_DISABLE);
-		    SDL_WarpMouseInWindow(info->win.win, info->win.w / 2, info->win.h / 2);
+		    SDL_WarpMouseInWindow(info->win.win, WIDTH / 2, HEIGHT / 2);
 		    init_items(&info);
 		}
 		else if (info->button == 1 && info->game != 2)

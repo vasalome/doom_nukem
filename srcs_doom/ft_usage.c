@@ -3,21 +3,15 @@
 /*                                                              /             */
 /*   ft_usage.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/24 19:19:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 17:27:38 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 14:39:04 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
-
-int		red_cross(void)
-{
-	exit(0);
-	return (0);
-}
 
 int		ft_usage(char *error)
 {
@@ -38,5 +32,4 @@ int		ft_usage(char *error)
 	write(1, ".etc, ou crée ta propre carte  \n", 35);
 	write(1, "\033[0m\n", 5);
 	exit(0);
-	return (64);
 }

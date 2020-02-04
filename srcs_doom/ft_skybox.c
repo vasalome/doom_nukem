@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_skybox.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/28 15:09:36 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 15:14:36 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,27 +59,27 @@ void	layer_1(double front_offset, t_info *info)
 
 void	init_sky_2(t_info *info)
 {
-	info->wt[20].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[20].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[20].img);
-	info->wt[21].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[21].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[21].img);
-	info->wt[22].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[22].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[22].img);
-	info->wt[23].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[23].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[23].img);
-	info->wt[24].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[24].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[24].img);
-	info->wt[25].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[25].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[25].img);
-	info->wt[26].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[26].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[26].img);
-	info->wt[27].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[27].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[27].img);
-	info->wt[28].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[28].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[28].img);
-	info->wt[29].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[29].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[29].img);
-	info->wt[30].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
+	info->wt[30].texture = SDL_CreateTextureFromSurface(info->win.ren,\
 			info->wt[30].img);
 }
 

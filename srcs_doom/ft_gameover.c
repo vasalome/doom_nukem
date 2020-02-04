@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_gameover.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 17:28:49 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 15:07:03 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,10 +23,10 @@
 	info->flash.img = mlx_new_image(info->win.mlx, WIDTH, HEIGHT);
 	info->flash.data = mlx_get_data_addr(info->flash.img, &info->flash.bpp,\
 			&info->flash.sizeline, &info->flash.endian);
-	while (y < info->win.h)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x < info->win.w)
+		while (x < WIDTH)
 		{
 			info->flash.data[x * 4 + 4 * WIDTH * y] = (char)255;
 			info->flash.data[x * 4 + 4 * WIDTH * y + 1] = (char)255;
@@ -57,10 +57,10 @@ void	game_over(t_info *info)
 	y = 0;
 	//img = mlx_xpm_file_to_image(info->win.mlx, "img/game_over_p.xpm", &w, &h);
 	//create_img(info);
-	while (y < info->win.h)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x < info->win.w)
+		while (x < WIDTH)
 		{
 			/*info->fps.data[x * 4 + 4 * WIDTH * y] = (char)27;
 			info->fps.data[x * 4 + 4 * WIDTH * y + 1] = (char)27;
@@ -72,5 +72,5 @@ void	game_over(t_info *info)
 	}
 	/*mlx_put_image_to_window(info->win.mlx, info->win.win, info->fps.img, 0, 0);
 	mlx_put_image_to_window(info->win.mlx, info->win.win,
-			img, info->win.w / 2 - w / 2, info->win.h / 2 - h / 2);*/
+			img, WIDTH / 2 - w / 2, HEIGHT / 2 - h / 2);*/
 }

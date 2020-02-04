@@ -6,14 +6,14 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 16:28:59 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 18:34:54 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 14:29:41 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../include_doom/doom.h"
+#include "../../include_doom/doom.h"
 
-void	ft_error(char *str)
+void			ft_error(char *str)
 {
 	ft_putendl(str);
 	exit(0);

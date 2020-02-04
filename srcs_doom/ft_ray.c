@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_ray.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 17:27:41 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 15:14:36 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,7 +55,7 @@ void	intersectLine(t_inter *inter)
 void	ray_casting_init(t_info *info, int x)
 {
 	//int angleSide = 0;
-	info->player.x_camera = 2 * x / (double)(info->win.w) - 1;
+	info->player.x_camera = 2 * x / (double)(WIDTH) - 1;
 	info->ray.x_ray_position = info->player.x_pos;
 	info->ray.y_ray_position = info->player.y_pos;
 	info->ray.x_ray_direction = info->player.x_dir + info->player.x_plane *\
@@ -318,16 +318,16 @@ void	ray_casting_init(t_info *info, int x)
 int		ray_casting(t_info *info)
 {
 	info->wall.x = -1;
-	while (++info->wall.x < info->win.w)
+	while (++info->wall.x < WIDTH)
 	{
 		info->min = 255;
 		ray_casting_init(info, info->wall.x);
 			
-		info->wall.line_height = (int)( info->win.h / info->wall.wall_distance);
-		info->wall.draw_end = (info->win.h / 2 + info->testHeight + info->wall.line_height / 2);
-		if (info->wall.draw_end >= info->win.h)\
-			info->wall.draw_end = info->win.h - 1;
-		info->wall.draw_start = (info->win.h / 2 + info->testHeight - (info->wall.line_height / 2));
+		info->wall.line_height = (int)( HEIGHT / info->wall.wall_distance);
+		info->wall.draw_end = (HEIGHT / 2 + info->testHeight + info->wall.line_height / 2);
+		if (info->wall.draw_end >= HEIGHT)\
+			info->wall.draw_end = HEIGHT - 1;
+		info->wall.draw_start = (HEIGHT / 2 + info->testHeight - (info->wall.line_height / 2));
 		if (info->wall.draw_start < 0)
 			info->wall.draw_start = 0;
 		
@@ -344,7 +344,7 @@ int		ray_casting(t_info *info)
 /*int		threadAnim(void*	data)
 {
 	t_info *info = data;
-	info->win.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->ii].img);
+	info->win.texture2 = SDL_CreateTextureFromSurface(info->win.ren, info->head[info->ii].img);
 		SDL_QueryTexture(info->win.texture2, NULL, NULL, &info->head[2].w, &info->head[2].h);
 		info->head[2].rect.x = info->head[2].w;
 		info->head[2].rect.y = 0;
@@ -362,7 +362,7 @@ int		ray_casting(t_info *info)
 int		threadAnim2(void*	data)
 {
 	t_info *info = data;
-	info->win.texture3 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->iii].img);
+	info->win.texture3 = SDL_CreateTextureFromSurface(info->win.ren, info->head[info->iii].img);
 		SDL_QueryTexture(info->win.texture3, NULL, NULL, &info->head[4].w, &info->head[4].h);
 		info->head[4].rect.x = info->head[4].w * 2;
 		info->head[4].rect.y = 0;
@@ -382,7 +382,7 @@ void	hud(t_info *info)
 {
 	
 
-		info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
+		info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.ren, info->head[info->i].img);
 		SDL_QueryTexture(info->fps.texture2, NULL, NULL, &info->head[3].w, &info->head[3].h);
 		info->head[3].rect.x = 0;
 		info->head[3].rect.y = 0;
@@ -432,7 +432,7 @@ void	ray_casting_image(t_info *info)
 		[(int)info->player.y_pos].wall == 4 && info->action)
 		/* Victory image */
 		{
-			/*info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
+			/*info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.ren, info->head[info->i].img);
 			SDL_QueryTexture(info->fps.texture2, NULL, NULL, &info->head[3].w, &info->head[3].h);
 			
 			info->head[3].rect.x = 0;

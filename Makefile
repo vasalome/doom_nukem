@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/04 12:43:45 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/04 16:58:07 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,11 +25,12 @@ CFLAGS		=	-Wall -Wextra #-Werror -g
 #CFLAGS		+=	-Wunused-command-line-argument
 #CFLAGS		+=	-Wno-error
 #CFLAGS		+=	--cflags --glibs
-#CFLAGS		+=	-ggdb -g -fsanitize=address
+CFLAGS		+=	-ggdb -g -fsanitize=address
 #FLAG_SDL	=	$(shell sdl2-config --libs) -lSDL2_ttf -lSDL2_image -lSDL2_mixer -O3
 
 #	Directory:
 SRCS_DIR	=	./srcs_doom/
+DIR			=	{events,draw_tools}
 OBJ_DIR		=	./objs_doom/
 INC_DIR		=	./include_doom/
 #INC_DIR_SDL	=	./SDL_include/
@@ -37,7 +38,6 @@ INC_DIR		=	./include_doom/
 #	Sources:
 SRCS		=	main_doom.c
 SRCS		+=	ft_init.c
-SRCS		+=	ft_init_hub.c
 SRCS		+=	ft_init_weapon.c
 SRCS		+=	ft_init_texture.c
 SRCS		+=	ft_fill_map.c
@@ -58,12 +58,15 @@ SRCS		+=	ft_doors.c
 SRCS		+=	ft_clip.c
 SRCS		+=	ft_hud.c
 SRCS		+=	ft_items.c
-SRCS		+=	ft_put_texture.c
-SRCS		+=	/events/display_doom.c
-SRCS		+=	/events/key_event.c
-SRCS		+=	/events/mouse_button_event.c
-SRCS		+=	/events/mouse_motion_event.c
-SRCS		+=	/events/mouse_wheel_event.c
+
+SRCS		+=	events/display_doom.c
+SRCS		+=	events/key_event.c
+SRCS		+=	events/mouse_button_event.c
+SRCS		+=	events/mouse_motion_event.c
+SRCS		+=	events/mouse_wheel_event.c
+SRCS		+=	draw_tools/put_text.c
+SRCS		+=	draw_tools/ft_put_texture.c
+SRCS		+=	ft_init_textures.c
 
 HEADERS		=	doom.h
 HEADERS		+=	keys.h
@@ -125,7 +128,7 @@ $(OBJ_DIR)%.o:$(SRCS_DIR)%.c $(INC_DIR)*.h
 
 all:
 	@echo "$(RED)$(UNDERLINE)DOOM_NUKEM:$(R_UNDERLINE)$(_STOP)		$(BOLD)COMPILATION OBJECTS: IN PROGRESS..$(_STOP)\n		OBJECTS DIRECTORY: CREATION || ->\n"
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/$(DIR)
 	@$(MAKE) $(NAME) --no-print-directory
 
 make_libft:

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_fill_map.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:40:07 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 19:52:36 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 17:15:55 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,11 +38,11 @@ int		pars_bin(t_fillmap *fill, t_info *info)
 	return(0);
 }*/
 
-int		request_value(t_fillmap *fill, int x)
+int			request_value(t_fillmap *fill, int x)
 {
-	int i;
-	int	count;
-	int	ret;
+	int		i;
+	int		count;
+	int		ret;
 
 	i = fill->i;
 	count = 0;
@@ -50,7 +50,7 @@ int		request_value(t_fillmap *fill, int x)
 	x--;
 	while (count != x)
 	{
-		if(fill->line[i++] == ',')
+		if (fill->line[i++] == ',')
 			count++;
 	}
 	while (fill->line[i] < '0' || fill->line[i] > '9')
@@ -109,7 +109,7 @@ int		parsing(t_fillmap *fill, t_info *info)
 	return(0);
 }
 
-int		read_map(t_info *info, t_fillmap *fill)
+int				read_map(t_info *info, t_fillmap *fill)
 {
 	int			ret;
 
@@ -137,7 +137,7 @@ int		read_map(t_info *info, t_fillmap *fill)
 	return (0);
 }
 
-int		fill_map(t_info *info)
+int				fill_map(t_info *info)
 {
 	t_fillmap	fill;
 

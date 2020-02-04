@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 13:06:29 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 16:54:25 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,32 +32,6 @@
 # define SKY 3.14159265
 # define WIDTH 1600
 # define HEIGHT 900
-
-struct SDL_Texture
-{
-    const void *magic;
-    Uint32 format;              /**< The pixel format of the texture */
-    int access;                 /**< SDL_TextureAccess */
-    int w;                      /**< The width of the texture */
-    int h;                      /**< The height of the texture */
-    int modMode;                /**< The texture modulation mode */
-    SDL_BlendMode blendMode;    /**< The texture blend mode */
-    Uint8 r, g, b, a;           /**< Texture modulation values */
- 
-    SDL_Renderer *renderer;
- 
-    /* Support for formats not supported directly by the renderer */
-    SDL_Texture *native;
-    void *yuv; // chez moiil connait pas la struture SDL_SW_YUVTexture 
-    void *pixels;
-    int pitch;
-    SDL_Rect locked_rect;
- 
-    void *driverdata;           /**< Driver specific texture representation */
- 
-    SDL_Texture *prev;
-    SDL_Texture *next;
-};
 
 typedef	struct		s_intersect
 {
@@ -169,15 +143,6 @@ typedef struct		s_player
 	double			y_lim;
 }					t_player;
 
-typedef struct		s_win
-{
-	int				w;
-	int				h;
-	SDL_Renderer	*renderer;
-	SDL_Surface		*screen;
-	SDL_Window		*win;
-}					t_win;
-
 typedef	struct		s_form
 {
 	int				wall;
@@ -259,13 +224,6 @@ typedef struct		s_music
 	Mix_Chunk		*low;
 }					t_music;
 
-/*typedef struct		s_record
-{
-	const int		MAX_RECORDING_DEVICES = 10;
-	const int 		MAX_RECORDING_SECONDS = 5;
-	const int 		RECORDING_BUFFER_SECONDS = MAX_RECORDING_SECONDS + 1;
-}					t_record;*/
-
 typedef	struct		s_floor
 {
 	double			dist;
@@ -280,6 +238,10 @@ typedef	struct		s_floor
 	int				texId;
 	int				texId2;
 }					t_floor;
+
+/*
+** ----------------------------------------------------------------------
+*/
 
 typedef struct		s_rgb
 {
@@ -301,10 +263,11 @@ typedef struct		s_size
 	int				y;
 }					t_size;
 
-typedef struct		s_menu
+typedef struct		s_win
 {
-	SDL_Surface		*button;
-}					t_menu;
+	SDL_Renderer	*ren;
+	SDL_Window		*win;
+}					t_win;
 
 typedef struct		s_info
 {
@@ -315,7 +278,6 @@ typedef struct		s_info
 	t_map			map;
 	t_wall			wall;
 	t_item			wp[11];
-	t_menu			menu[5];
 	t_item			item;
 	t_tex			fps;
 	t_tex			flash;
@@ -323,7 +285,7 @@ typedef struct		s_info
 	t_tex			hud[20];
 	t_music			music;
 	t_floor			floor;
-	//t_record		rec;
+
 	int				w_i;
 	int				w_j;
 	int				shot;
@@ -350,18 +312,49 @@ typedef struct		s_info
 	int				raycast;
 	int				testHeight;
 
-
 	///
 	SDL_Texture		*textu;
 	Uint32			*pixels;
-	SDL_Renderer	*ren;
 	SDL_Surface		*sur_hud[20];
+	SDL_Surface		*menu[2];
 }					t_info;
 
+/*
+** ----------------------------------------------------------------------
+*/
+
+/*
+** norminette ok
+*/
+
+/*
+** srcs:			ft_init.c
+*/
+void				init_window(t_info *info);
+void				load_textures(t_info *info);
+void				init_map(t_info *info);
+void				init_player(t_info *info);
+void				init_doors(t_info *info);
+
+/*
+** ----------------------------------------------------------------------
+*/
+
+void				init_textures(t_info *info);
+
+/*
+** put_text
+*/
+SDL_Surface			*write_text(char *text, int size_font);
+void				put_text(t_info *v, SDL_Surface *sur, int s_x, int s_y);
+
+/*
+** ft_put_texture
+*/
 void				pixel_put(t_info *v, int x, int y, t_rgb color);
-void				put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur);
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
 void				ft_error(char *str);
+void				put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur);
 
 /*
 ** events
@@ -376,22 +369,8 @@ void				key_down(t_info *info, const Uint8 *keyboard_state);
 void				display_doom(t_info *info);
 
 /*
-** srcs:			ft_init.c
+** ----------------------------------------------------------------------
 */
-
-void				init(t_info *info);
-void				init_window(t_info *info);
-void				load_textures(t_info *info);
-void				init_map(t_info *info);
-void				init_player(t_info *info);
-
-/*
-** srcs:			ft_init_hub.c
-*/
-
-void				icon(t_info *info);
-void				icon_2(t_info *info);
-void				hub_life(t_info *info);
 
 /*
 ** srcs:			ft_init_texture.c

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 18:39:09 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 19:20:35 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 15:19:35 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,9 +51,9 @@ void			key_down(t_info *info, const Uint8 *keyboard_state)
 	if (keyboard_state[SDL_SCANCODE_F])
 		info->action = 1;
 	if (keyboard_state[SDL_SCANCODE_E])
-		open_doors(&info);
+		open_doors(info);
 	if (keyboard_state[SDL_SCANCODE_R])
-		reload(&info);
+		reload(info);
 	if (keyboard_state[SDL_SCANCODE_C])
 	{
 	    //if (info->testHeight > -300)
@@ -62,7 +62,7 @@ void			key_down(t_info *info, const Uint8 *keyboard_state)
 	        //while (info->testHeight != -300)
 	        //{
 				info->testHeight = -250;
-				ray_casting_image(&info);
+				ray_casting_image(info);
 	        //}
 	    //}
 	}
@@ -74,7 +74,7 @@ void			key_down(t_info *info, const Uint8 *keyboard_state)
 	        //while (info->testHeight != -300)
 	        //{
 				info->testHeight = 300;
-				ray_casting_image(&info);
+				ray_casting_image(info);
 	        //}
 	    //}
 	}
@@ -106,7 +106,7 @@ void			key_up(t_info *info, const Uint8 *keyboard_state)
 		//if (info.testHeight < 0)
 		//{
 			info->testHeight = 0;
-			ray_casting_image(&info);
+			ray_casting_image(info);
 		//}
 	}
 	if (keyboard_state[SDL_SCANCODE_SPACE])
@@ -116,7 +116,7 @@ void			key_up(t_info *info, const Uint8 *keyboard_state)
 	    	//while (info->testHeight != -300)
 	    	//{
 				info->testHeight = 300;
-				ray_casting_image(&info);
+				ray_casting_image(info);
 	    	//}
 	    //}
 	}

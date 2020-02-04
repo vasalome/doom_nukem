@@ -6,18 +6,56 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 18:37:06 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 16:53:59 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 
-/*
-** Initate default variables when game start
-*/
+void		init_window(t_info *info)
+{
+	int		img_flags;
 
-void	init_player(t_info *info)
+	img_flags = IMG_INIT_PNG | IMG_INIT_JPG;
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_AUDIO) < 0)
+		ft_error("Échec de l'initialisation de la SDL");
+	if (!(info->win.win = SDL_CreateWindow("Doom_Nukem", SDL_WINDOWPOS_CENTERED,
+			SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN)))
+		ft_error("Échec de la création de la windows");
+	if (!(info->win.ren = SDL_CreateRenderer(info->win.win, -1,
+			SDL_RENDERER_ACCELERATED)))
+		ft_error("Échec de la création du renderer");
+	if (!(IMG_Init(img_flags) & img_flags))
+		ft_error("Échec de l'initialisation de la SDL_image");
+	if (!(info->textu = SDL_CreateTexture(info->win.ren,
+			SDL_PIXELFORMAT_RGBA8888,
+			SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT)))
+		ft_error("Échec de la création de la texture");
+	if (!(info->pixels = malloc(sizeof(uint32_t) * (HEIGHT * WIDTH))))
+		ft_error("Échec du malloc de info->pixels");
+}
+
+void		load_textures(t_info *info)
+{
+	info->w_i = 0;
+	info->w_j = 0;
+	weapons(info);
+	init_textures(info);
+	textures_list(info);
+}
+
+void		init_map(t_info *info)
+{
+	if (set_map_size(info) == -1)
+		ft_usage("Fichier corrompu !");
+	create_map(info);
+	if (fill_map(info) == -1)
+		ft_usage("Fichier corrompu !");
+	get_spawn(info);
+}
+
+void		init_player(t_info *info)
 {
 	info->player.x_pos = info->map.x_spawn;
 	info->player.y_pos = info->map.y_spawn;
@@ -43,102 +81,30 @@ void	init_player(t_info *info)
 	info->floor.texId = 17;
 }
 
-void	init_map(t_info *info)
+void		init_doors(t_info *info)
 {
-	if (set_map_size(info) == -1)
-		ft_usage("Fichier corrompu !");
-	create_map(info);
-	if (fill_map(info) == -1)
-		ft_usage("Fichier corrompu !");
-	get_spawn(info);
-}
+	int		i;
+	int		j;
 
-void	load_textures(t_info *info)
-{
-	info->w_i = 0;
-	info->w_j = 0;
-	weapons(info);
-	hub_life(info);
-	textures_list(info);
-}
-
-void	init_window(t_info *info)
-{
-	info->win.w = WIDTH;
-	info->win.h = HEIGHT;
-	
-	int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
-	
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_AUDIO) < 0 )
-    {
-        fprintf(stdout,"Échec de l'initialisation de la SDL (%s)\n",SDL_GetError());
-    }
-	else
-	{
-		info->win.win = SDL_CreateWindow("Ma première application SDL2",
-            SDL_WINDOWPOS_CENTERED,
-			SDL_WINDOWPOS_CENTERED,
-			info->win.w, info->win.h,
-			SDL_WINDOW_SHOWN/* | SDL_WINDOW_FULLSCREEN*/);
-																  
-		info->win.renderer = SDL_CreateRenderer(info->win.win, -1, SDL_RENDERER_ACCELERATED);
-		SDL_SetRenderDrawColor( info->win.renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-	}
-	
-	if	(!(IMG_Init(imgFlags) & imgFlags))
-	{
-		printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
-	}
-
-	if (!(info->textu = SDL_CreateTexture(info->win.renderer, SDL_PIXELFORMAT_RGBA8888,
-			SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT)))
-		ft_error("Could not create a texture");
-	if (!(info->pixels = malloc(sizeof(uint32_t) * (HEIGHT * WIDTH))))
-		ft_error("ALLO CA MARCHE PAS");
-}
-
-void	init_doors(t_info *info)
-{
-	int			i;
-	int			j;
-
-	j = 0;
-	i = 0;
+	i = -1;
 	if (!(info->map.door_state = (int**)malloc(sizeof(int*) * info->map.width)) ||
 		!(info->map.door_offset = (double**)malloc(sizeof(double*) * info->map.width)))
 		return ;
-	while (i < info->map.width)
+	while (++i < info->map.width)
 	{
 		if (!(info->map.door_state[i] = (int*)malloc(sizeof(int) * info->map.height)))
 			return ;
 		if (!(info->map.door_offset[i] = (double*)malloc(sizeof(double) * info->map.height)))
 			return ;
-		i++;
 	}
-	i = 0;
-	while (i < info->map.width)
+	i = -1;
+	while (++i < info->map.width)
 	{
-		while (j < info->map.height)
+		j = -1;
+		while (++j < info->map.height)
 		{
 			info->map.door_state[i][j] = 0;
 			info->map.door_offset[i][j] = 0;
-			j++;
 		}
-		j = 0;
-		i++;
 	}
-}
-
-void	init(t_info *info)
-{
-	info->shot = 1;
-	info->action = 0;
-	init_window(info);
-	load_textures(info);
-	init_map(info);
-	init_player(info);
-	init_clip(info);
-	init_doors(info);
-	icon(info);
-	//ray_casting_image(info);
 }

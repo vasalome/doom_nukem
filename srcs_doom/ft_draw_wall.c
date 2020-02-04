@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_draw_wall.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 11:42:11 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 15:07:03 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -167,7 +167,7 @@ void	draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	
 	while (++draw_start < draw_end)
 	{
-		d = draw_start * 256 - (info->win.h + info->testHeight * 2) * 128 + info->wall.line_height * 128;
+		d = draw_start * 256 - (HEIGHT + info->testHeight * 2) * 128 + info->wall.line_height * 128;
 		tex_y = ((d * info->wt[info->w_j].img->h) / info->wall.line_height) / 256;
 		draw_wall_plus(x, draw_start, info, tex_y);
 	}

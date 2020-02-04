@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/04 12:31:45 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 12:42:04 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 15:17:23 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,10 +56,10 @@ void				display_doom(t_info *info)
 			info->quit = 1;
         which_window_to_display(info);
 		SDL_UpdateTexture(info->textu, NULL, info->pixels, sizeof(uint32_t) * WIDTH);
-		SDL_RenderCopy(info->win.renderer, info->textu, NULL, NULL);
-		SDL_RenderPresent(info->win.renderer);
+		SDL_RenderCopy(info->win.ren, info->textu, NULL, NULL);
+		SDL_RenderPresent(info->win.ren);
 	}
-	SDL_DestroyRenderer(info->win.renderer);
+	SDL_DestroyRenderer(info->win.ren);
 	SDL_DestroyWindow(info->win.win);
 	SDL_Quit();
 }
