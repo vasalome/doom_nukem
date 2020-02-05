@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 16:58:47 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 17:59:20 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,8 +26,6 @@
 # include <SDL_timer.h>
 # include <SDL2_ttf/SDL_ttf.h>
 # include <SDL2_mixer/SDL_mixer.h>
-
-
 
 # define SKY 3.14159265
 # define WIDTH 1600
@@ -278,7 +276,7 @@ typedef struct		s_info
 	t_map			map;
 	t_wall			wall;
 	t_item			item;
-	t_tex			fps;
+	//t_tex			fps;
 	t_tex			flash;
 	t_tex			hud[20];
 	t_music			music;

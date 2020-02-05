@@ -6,12 +6,26 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/04 12:31:45 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 16:30:43 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 17:56:40 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../include_doom/doom.h"
+
+// if (info.game == 2)
+// {
+//     SDL_SetTextureBlendMode(info.fps.texture, SDL_BLENDMODE_BLEND);
+//     SDL_UnlockTexture(info.fps.texture);
+
+//     SDL_RenderClear(info.win.ren);
+//     render_skybox(&info);
+//     SDL_RenderCopy(info.win.ren, info.fps.texture, NULL, &info.fps.rect);
+//     // RENDER HUD
+//     //SDL_RenderCopy(info.win.ren, info.hud[0].texture, NULL, &info.hud[0].rect);
+// 	info.sur_hud[0] = IMG_Load("hud/head/1/fst_r.png");
+// 	render_hud(&info, &event);
+// }
 
 void                which_window_to_display(t_info *info)
 {
@@ -20,7 +34,8 @@ void                which_window_to_display(t_info *info)
 	i = -1;
 	if (info->game == 2)
 	{
-		
+		// render_skybox(info);
+		// put_texture(info, )
 	}
 	else if (info->game == 3)
 	{

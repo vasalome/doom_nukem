@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 17:04:26 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 18:00:50 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,20 +53,7 @@
 //     //SDL_SetWindowIcon(info.win.win, info.win.screen);
 //     //Mix_PlayMusic(info.music.sound, -1);
 
-//         // if (info.game == 2)
-//         // {
-//         //     SDL_SetTextureBlendMode(info.fps.texture, SDL_BLENDMODE_BLEND);
-//         //     SDL_UnlockTexture(info.fps.texture);
-        
-//         //     SDL_RenderClear(info.win.ren);
-//         //     render_skybox(&info);
 
-//         //     SDL_RenderCopy(info.win.ren, info.fps.texture, NULL, &info.fps.rect);
-//         //     // RENDER HUD
-//         //     //SDL_RenderCopy(info.win.ren, info.hud[0].texture, NULL, &info.hud[0].rect);
-// 		//info.sur_hud[0] = IMG_Load("hud/head/1/fst_r.png");
-//     	//render_hud(&info, &event);
-//         // }
 //         // else if (info.game == 3)
 //         // {
 //         //     //menu(&info);
@@ -136,10 +123,10 @@ static void		init_info(t_info *info, char **argv)
     info->quit = 0;
     info->door = 0;
     info->game = 0;
-    info->fps.rect.x = 0;
-    info->fps.rect.y = -200;
-    info->fps.rect.w = WIDTH;
-    info->fps.rect.h = HEIGHT + 400;
+    // info->fps.rect.x = 0;
+    // info->fps.rect.y = -200;
+    // info->fps.rect.w = WIDTH;
+    // info->fps.rect.h = HEIGHT + 400;
     info->testHeight = 0;
     info->player.head = 1;
     info->shot = 1;

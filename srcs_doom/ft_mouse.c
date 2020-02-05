@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_mouse.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/22 18:23:52 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 16:48:36 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 18:01:10 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,12 +17,12 @@ void	turn_left(t_info *info)
 {
 	if (info->player.turn_left == 1)
 	{
-		info->fps.rect.y += 500 * info->player.turn_rate_y;
-		if (info->fps.rect.y > 0)
-			info->fps.rect.y = 0;
-		if (info->fps.rect.y < -400)
-			info->fps.rect.y = -400;
-		info->player.turn_left = 0;	
+		// info->fps.rect.y += 500 * info->player.turn_rate_y;
+		// if (info->fps.rect.y > 0)
+		// 	info->fps.rect.y = 0;
+		// if (info->fps.rect.y < -400)
+		// 	info->fps.rect.y = -400;
+		// info->player.turn_left = 0;	
 	}
 }
 

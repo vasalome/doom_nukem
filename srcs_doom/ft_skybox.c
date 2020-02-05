@@ -6,56 +6,56 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 15:14:36 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 18:02:39 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 
-void	layer_2(double front_offset, t_info *info)
-{
-	info->wt[25].rect.x = front_offset * 2;
-	info->wt[25].rect.y = (info->fps.rect.y) - 200;
-	info->wt[25].rect.w = WIDTH;
-	info->wt[25].rect.h = HEIGHT;
-	info->wt[26].rect.x = (front_offset * 2) - WIDTH;
-	info->wt[26].rect.y = (info->fps.rect.y) - 200;
-	info->wt[26].rect.w = WIDTH;
-	info->wt[26].rect.h = HEIGHT;
-	info->wt[27].rect.x = (front_offset * 2) - (WIDTH * 2);
-	info->wt[27].rect.y = (info->fps.rect.y)- 200;
-	info->wt[27].rect.w = WIDTH;
-	info->wt[27].rect.h = HEIGHT;
-	info->wt[28].rect.x = (front_offset * 2) - (WIDTH * 3);
-	info->wt[28].rect.y = (info->fps.rect.y)- 200;
-	info->wt[28].rect.w = WIDTH;
-	info->wt[28].rect.h = HEIGHT;
-}
+// void	layer_2(double front_offset, t_info *info)
+// {
+// 	info->wt[25].rect.x = front_offset * 2;
+// 	info->wt[25].rect.y = (info->fps.rect.y) - 200;
+// 	info->wt[25].rect.w = WIDTH;
+// 	info->wt[25].rect.h = HEIGHT;
+// 	info->wt[26].rect.x = (front_offset * 2) - WIDTH;
+// 	info->wt[26].rect.y = (info->fps.rect.y) - 200;
+// 	info->wt[26].rect.w = WIDTH;
+// 	info->wt[26].rect.h = HEIGHT;
+// 	info->wt[27].rect.x = (front_offset * 2) - (WIDTH * 2);
+// 	info->wt[27].rect.y = (info->fps.rect.y)- 200;
+// 	info->wt[27].rect.w = WIDTH;
+// 	info->wt[27].rect.h = HEIGHT;
+// 	info->wt[28].rect.x = (front_offset * 2) - (WIDTH * 3);
+// 	info->wt[28].rect.y = (info->fps.rect.y)- 200;
+// 	info->wt[28].rect.w = WIDTH;
+// 	info->wt[28].rect.h = HEIGHT;
+// }
 
-void	layer_1(double front_offset, t_info *info)
-{
-	info->wt[20].rect.x = front_offset * 4;
-	info->wt[20].rect.y = (info->fps.rect.y) - 200;
-	info->wt[20].rect.w = WIDTH;
-	info->wt[20].rect.h = HEIGHT;
-	info->wt[21].rect.x = (front_offset * 4) - WIDTH;
-	info->wt[21].rect.y = (info->fps.rect.y) - 200;
-	info->wt[21].rect.w = WIDTH;
-	info->wt[21].rect.h = HEIGHT;
-	info->wt[22].rect.x = (front_offset * 4) - (WIDTH * 2);
-	info->wt[22].rect.y = (info->fps.rect.y) - 200;
-	info->wt[22].rect.w = WIDTH;
-	info->wt[22].rect.h = HEIGHT;
-	info->wt[23].rect.x = (front_offset * 4) - (WIDTH * 3);
-	info->wt[23].rect.y = (info->fps.rect.y) - 200;
-	info->wt[23].rect.w = WIDTH;
-	info->wt[23].rect.h = HEIGHT;
-	info->wt[24].rect.x = (front_offset * 4) - (WIDTH * 4);
-	info->wt[24].rect.y = (info->fps.rect.y) - 200;
-	info->wt[24].rect.w = WIDTH;
-	info->wt[24].rect.h = HEIGHT;
-}
+// void	layer_1(double front_offset, t_info *info)
+// {
+// 	info->wt[20].rect.x = front_offset * 4;
+// 	info->wt[20].rect.y = (info->fps.rect.y) - 200;
+// 	info->wt[20].rect.w = WIDTH;
+// 	info->wt[20].rect.h = HEIGHT;
+// 	info->wt[21].rect.x = (front_offset * 4) - WIDTH;
+// 	info->wt[21].rect.y = (info->fps.rect.y) - 200;
+// 	info->wt[21].rect.w = WIDTH;
+// 	info->wt[21].rect.h = HEIGHT;
+// 	info->wt[22].rect.x = (front_offset * 4) - (WIDTH * 2);
+// 	info->wt[22].rect.y = (info->fps.rect.y) - 200;
+// 	info->wt[22].rect.w = WIDTH;
+// 	info->wt[22].rect.h = HEIGHT;
+// 	info->wt[23].rect.x = (front_offset * 4) - (WIDTH * 3);
+// 	info->wt[23].rect.y = (info->fps.rect.y) - 200;
+// 	info->wt[23].rect.w = WIDTH;
+// 	info->wt[23].rect.h = HEIGHT;
+// 	info->wt[24].rect.x = (front_offset * 4) - (WIDTH * 4);
+// 	info->wt[24].rect.y = (info->fps.rect.y) - 200;
+// 	info->wt[24].rect.w = WIDTH;
+// 	info->wt[24].rect.h = HEIGHT;
+// }
 
 void	init_sky_2(t_info *info)
 {
@@ -113,7 +113,7 @@ void	draw_skybox(t_info *info)
 	init_sky_1(info);
 	init_sky_2(info);
 	//layer_1(front_offset, info);
-	layer_2(front_offset, info);
+	//layer_2(front_offset, info);
 	// info->wt[29].rect.x = front_offset;
 	// info->wt[29].rect.y = (info->fps.rect.y) - 200;
 	// info->wt[29].rect.w = WIDTH;
