@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/05 14:04:58 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/05 16:54:28 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -38,7 +38,6 @@ INC_DIR		=	./include_doom/
 #	Sources:
 SRCS		=	main_doom.c
 SRCS		+=	ft_init.c
-SRCS		+=	ft_init_weapon.c
 SRCS		+=	ft_fill_map.c
 SRCS		+=	ft_map.c
 SRCS		+=	ft_keys.c

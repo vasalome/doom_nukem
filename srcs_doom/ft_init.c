@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 14:33:33 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 17:12:02 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -76,8 +76,8 @@ void		init_player(t_info *info)
 	info->player.tp_index = 0;
 	info->player.life = 100;
 	info->player.can_trap = 1;
-	info->floor.texId2 = 16;
-	info->floor.texId = 17;
+	info->floor.texId = 9;
+	info->floor.texId2 = 10;
 }
 
 void		init_doors(t_info *info)

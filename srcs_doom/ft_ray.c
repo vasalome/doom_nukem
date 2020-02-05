@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 17:21:17 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 17:05:27 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -322,22 +322,16 @@ int			ray_casting(t_info *info)
 	{
 		info->min = 255;
 		ray_casting_init(info, info->wall.x);
-			
-		info->wall.line_height = (int)( HEIGHT / info->wall.wall_distance);
+		info->wall.line_height = (int)(HEIGHT / info->wall.wall_distance);
 		info->wall.draw_end = (HEIGHT / 2 + info->testHeight + info->wall.line_height / 2);
-		if (info->wall.draw_end >= HEIGHT)\
+		if (info->wall.draw_end >= HEIGHT)
 			info->wall.draw_end = HEIGHT - 1;
 		info->wall.draw_start = (HEIGHT / 2 + info->testHeight - (info->wall.line_height / 2));
 		if (info->wall.draw_start < 0)
 			info->wall.draw_start = 0;
-		
 		texture_calc(info);
-		
-		//printf("asdfghjkl        %f\n", info->wall.wall_x);
-		draw_wall(info->wall.x, info->wall.draw_start - 1,\
-				info->wall.draw_end, info);
+		draw_wall(info->wall.x, info->wall.draw_start - 1, info->wall.draw_end, info);
 	}
-	
 	return (0);
 }
 

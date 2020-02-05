@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 15:09:14 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 17:04:26 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -136,9 +136,6 @@ static void		init_info(t_info *info, char **argv)
     info->quit = 0;
     info->door = 0;
     info->game = 0;
-    info->xOffsetMenu = 0;
-    info->yOffsetMenu = 0;
-    info->zoom = 1;
     info->fps.rect.x = 0;
     info->fps.rect.y = -200;
     info->fps.rect.w = WIDTH;
@@ -147,7 +144,6 @@ static void		init_info(t_info *info, char **argv)
     info->player.head = 1;
     info->shot = 1;
 	info->action = 0;
-
 }
 
 int				main(int argc, char **argv)
@@ -163,6 +159,6 @@ int				main(int argc, char **argv)
 	init_player(&info);
 	init_clip(&info);
 	init_doors(&info);
-	//ray_casting(&info);
+	ray_casting(&info);
 	display_doom(&info);
 }

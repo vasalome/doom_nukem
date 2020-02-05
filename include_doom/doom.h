@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 15:28:52 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 16:58:47 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -301,12 +301,7 @@ typedef struct		s_info
 	int				door;
 	double			delta_time;
 	int				button;	
-	int				game;	
-	double			xOffsetMenu;
-	double			yOffsetMenu;
-	double			xrel;
-	double			yrel;
-	double			zoom;
+	int				game;
 	int				raycast;
 	int				testHeight;
 
@@ -340,6 +335,7 @@ void				init_doors(t_info *info);
 /*
 ** srcs:			ft_init_texture.c
 */
+void				weapons(t_info *info);;
 void				init_textures(t_info *info);
 
 /*
@@ -377,12 +373,6 @@ void				display_doom(t_info *info);
 /*
 ** ----------------------------------------------------------------------
 */
-
-/*
-** srcs:			ft_init_weapon.c
-*/
-
-void				weapons(t_info *info);
 
 /*
 ** srcs:			ft_fill_map.c
@@ -488,8 +478,6 @@ void				game_over(t_info *info);
 /*
 ** srcs:			ft_usage.c
 */
-
-int					red_cross(void);
 int					f_exist(t_info *info);
 int					ft_usage(char *error);
 

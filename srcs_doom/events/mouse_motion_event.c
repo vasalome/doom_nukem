@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 19:21:06 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 16:35:17 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 17:03:53 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,8 +21,8 @@ void			load_button(t_info *info, int i, SDL_Event e)
 
 	start.x = WIDTH - (WIDTH / 5 + WIDTH / 8);
 	start.y = HEIGHT - (HEIGHT - (HEIGHT / 4 * i + HEIGHT / 32));
-	size.x = info->menu[1]->w / 1.5 * info->zoom;
-	size.y = info->menu[1]->h / 5 * info->zoom;
+	size.x = info->menu[1]->w / 1.5;
+	size.y = info->menu[1]->h / 5;
 	if (e.motion.x >= start.x && e.motion.x <= (start.x + size.x)
 			&& e.motion.y >= start.y && e.motion.y <= (start.y + size.y))
 	{
@@ -30,6 +30,7 @@ void			load_button(t_info *info, int i, SDL_Event e)
 		put_text(info, write_text(str, size.y / 1.34),
 				start.x + 5, start.y + 5);
 		free(str);
+		info->button = i - 1;
 	}
 	else
 		put_texture(info, start, size, info->menu[1]);
@@ -52,8 +53,7 @@ void			mouse_motion_event(t_info *info, SDL_Event event)
 	}
 	else if (info->game == 3)
 	{
-		info->xrel = event.motion.xrel;
-		info->yrel = event.motion.yrel;
+
 	}
 	else
 		while (++i <= 4)
