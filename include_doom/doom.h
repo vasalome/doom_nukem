@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 16:54:25 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 15:28:52 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -277,11 +277,9 @@ typedef struct		s_info
 	t_win			win;
 	t_map			map;
 	t_wall			wall;
-	t_item			wp[11];
 	t_item			item;
 	t_tex			fps;
 	t_tex			flash;
-	t_tex			wt[31];
 	t_tex			hud[20];
 	t_music			music;
 	t_floor			floor;
@@ -316,7 +314,10 @@ typedef struct		s_info
 	SDL_Texture		*textu;
 	Uint32			*pixels;
 	SDL_Surface		*sur_hud[20];
-	SDL_Surface		*menu[2];
+	SDL_Surface		*menu[3];
+	t_item			wp[11];
+	SDL_Surface		*pistol[3];
+	t_tex			wt[31];
 }					t_info;
 
 /*
@@ -337,10 +338,15 @@ void				init_player(t_info *info);
 void				init_doors(t_info *info);
 
 /*
+** srcs:			ft_init_texture.c
+*/
+void				init_textures(t_info *info);
+
+/*
 ** ----------------------------------------------------------------------
 */
 
-void				init_textures(t_info *info);
+
 
 /*
 ** put_text
@@ -371,12 +377,6 @@ void				display_doom(t_info *info);
 /*
 ** ----------------------------------------------------------------------
 */
-
-/*
-** srcs:			ft_init_texture.c
-*/
-
-void				textures_list(t_info *info);
 
 /*
 ** srcs:			ft_init_weapon.c

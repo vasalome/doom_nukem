@@ -6,52 +6,69 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 13:53:37 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 16:57:46 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 15:29:15 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 
-void		init_textures(t_info *info)
+// void	textures_list(t_info *info)
+// {
+// 	info->wt[0].img = IMG_Load("wall/scpwall.png");
+// 	info->wt[1].img = IMG_Load("wall/scpwall3.png");
+// 	info->wt[2].img = IMG_Load("wall/scpwall3-1.png");
+// 	info->wt[3].img = IMG_Load("wall/scpwall3.png");
+// 	info->wt[4].img = IMG_Load("wall/floor2.png");
+// 	info->wt[5].img = 0;
+// 	info->wt[6].img = IMG_Load("wall/door.png");
+// 	info->wt[7].img = 0;
+// 	info->wt[8].img = 0;
+// 	info->wt[9].img = 0;
+
+// 	//sol et transparent
+// 	info->wt[16].img = IMG_Load("wall/scpfloor2.png");
+// 	info->wt[17].img = IMG_Load("wall/scpfloor.png");
+// 	info->wt[18].img = IMG_Load("wall/transparent.png");
+// 	info->wt[19].img = 0;
+
+// 	20 a 30 dans skybox pour l'instant
+// 	info->wt[20].img = ;
+// 	info->wt[21].img = ;
+// 	info->wt[22].img = ;
+// 	info->wt[23].img = ;
+// 	info->wt[24].img = ;
+// 	info->wt[25].img = ;
+// 	info->wt[26].img = ;
+// 	info->wt[27].img = ;
+// 	info->wt[28].img = ;
+// 	info->wt[29].img = ;
+// 	info->wt[30].img = ;
+// }
+
+void			init_textures(t_info *info)
 {
 	info->menu[0] = IMG_Load("menu/doom_menu.xpm");
 	info->menu[1] = IMG_Load("menu/button_menu.xpm");
 	info->menu[2] = IMG_Load("menu/doom_logo.xpm");
+
+	info->pistol[0] = IMG_Load("weapon/pistol/pistol_1.xpm");
+	info->pistol[1] = IMG_Load("weapon/pistol/pistol_2_shot.xpm");
+	info->pistol[2] = IMG_Load("weapon/pistol/pistol_icon.xpm");
+
+	info->wt[0].img = IMG_Load("wall/tex/wall1.xpm");
+	info->wt[1].img = IMG_Load("wall/tex/wall2.xpm");
+	info->wt[2].img = IMG_Load("wall/tex/wall3.xpm");
+	info->wt[3].img = IMG_Load("wall/tex/wall4.xpm");
+	info->wt[4].img = IMG_Load("wall/tex/wall5.xpm");
+	info->wt[5].img = IMG_Load("wall/tex/wall6.xpm");
+	info->wt[6].img = IMG_Load("wall/tex/wall7.xpm");
+	info->wt[7].img = IMG_Load("wall/tex/wall8.xpm");
+	info->wt[8].img = IMG_Load("wall/tex/grillage.xpm");
+
+	info->wt[9].img = IMG_Load("wall/tex/floor_1.xpm");
+	info->wt[10].img = IMG_Load("wall/tex/floor_2.xpm");
+	info->wt[11].img = IMG_Load("wall/tex/floor_3.xpm");
+	
+	info->wt[12].img = IMG_Load("wall/tex/door.xpm");
 }
-
-// void	icon_2(t_info *info)
-// {
-// 	info->wp[5].icon = IMG_Load("weapon/pistol/pistol_icon.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-// 		"weapons/icon/cg_icon.xpm", &info->wp[5].iconx,\
-// 		&info->wp[5].icony);*/
-// 	info->wp[6].icon = IMG_Load("weapon/pistol/pistol_icon.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-// 		"weapons/icon/pl_icon.xpm", &info->wp[6].iconx,\
-// 		&info->wp[6].icony);*/
-// 	info->wp[8].icon = IMG_Load("weapon/pistol/pistol_icon.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-// 		"weapons/icon/rock_icon.xpm", &info->wp[8].iconx,\
-// 		&info->wp[8].icony);*/
-// 	info->wp[9].icon = IMG_Load("weapon/pistol/pistol_icon.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-// 		"weapons/icon/bfg_icon.xpm", &info->wp[9].iconx,\
-// 		&info->wp[9].icony);*/
-// }
-
-// void	icon(t_info *info)
-// {
-// 	info->wp[0].icon = IMG_Load("weapon/pistol/pistol_icon.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-// 		"weapons/icon/finger_icon.xpm", &info->wp[0].iconx,\
-// 		&info->wp[0].icony);*/
-// 	info->wp[1].icon = IMG_Load("weapon/pistol/pistol_icon.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-// 		"weapons/icon/p_icon.xpm", &info->wp[1].iconx,\
-// 		&info->wp[1].icony);*/
-// 	info->wp[2].icon = IMG_Load("weapon/pistol/pistol_icon.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-// 		"weapons/icon/cs_icon.xpm", &info->wp[2].iconx,\
-// 		&info->wp[2].icony);*/
-// 	info->wp[3].icon = IMG_Load("weapon/pistol/pistol_icon.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-// 		"weapons/icon/shot_icon.xpm", &info->wp[3].iconx,\
-// 		&info->wp[3].icony);*/
-// 	info->wp[4].icon = IMG_Load("weapon/pistol/pistol_icon.png");/*mlx_xpm_file_to_image(info->win.mlx,\
-// 		"weapons/icon/s_s_icon.xpm", &info->wp[4].iconx,\
-// 		&info->wp[4].icony);*/
-// 	icon_2(info);
-// }

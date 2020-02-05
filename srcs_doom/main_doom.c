@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 16:54:59 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 15:09:14 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -126,30 +126,6 @@
 //    SDL_Quit();
 // }
 
-// void    loadButton(t_info *info, int i)
-// {
-//     int     x;
-//     int     y;
-
-//     SDL_GetMouseState(&x, &y);
-//     info->head[i].texture = SDL_CreateTextureFromSurface(info->win.ren, info->head[2].img);
-//     SDL_QueryTexture(info->head[i].texture, NULL, NULL, &info->head[i].w, &info->head[i].h);
-    
-//     info->head[i].rect.x = ((WIDTH / 4) * 3 - (info->head[i].w/ 1.5) / 2) + info->xOffsetMenu;
-//     info->head[i].rect.y = (info->head[1].h / 1.4  + ((info->head[i].h / 5 + 10) * (i - 2))) + info->yOffsetMenu;
-//     info->head[i].rect.w = (info->head[i].w / 1.5) * info->zoom;
-//     info->head[i].rect.h = (info->head[i].h / 5) * info->zoom; 
-    
-//     if (x > info->head[i].rect.x && x < (info->head[i].rect.x + info->head[i].rect.w))
-//     {
-//         if (y > info->head[i].rect.y && y < (info->head[i].rect.y + info->head[i].rect.h))
-//         {
-//             info->head[i].texture = SDL_CreateTextureFromSurface(info->win.ren, info->head[4].img);
-//             info->button = i - 2;
-//         }
-//     }
-// }
-
 static void		init_info(t_info *info, char **argv)
 {
     info->map.name = argv[1];
@@ -181,12 +157,12 @@ int				main(int argc, char **argv)
 	if (argc != 2)
 		ft_usage("Mauvais nombre d'arguments !");
 	init_info(&info, argv);
-    init_window(&info);
+	init_window(&info);
 	load_textures(&info);
 	init_map(&info);
 	init_player(&info);
 	init_clip(&info);
 	init_doors(&info);
-    //ray_casting(&info);
+	//ray_casting(&info);
 	display_doom(&info);
 }

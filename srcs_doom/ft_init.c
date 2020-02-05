@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 16:53:59 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 14:33:33 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,6 @@ void		load_textures(t_info *info)
 	info->w_j = 0;
 	weapons(info);
 	init_textures(info);
-	textures_list(info);
 }
 
 void		init_map(t_info *info)

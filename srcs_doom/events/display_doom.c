@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/04 12:31:45 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 15:17:23 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 16:30:43 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,9 @@
 
 void                which_window_to_display(t_info *info)
 {
+	int				i;
+
+	i = -1;
 	if (info->game == 2)
 	{
 		
@@ -25,8 +28,34 @@ void                which_window_to_display(t_info *info)
 	}
 	else
 	{
-		
+
 	}
+}
+
+void			menu_button(t_info *info, int i)
+{
+	t_start		start;
+	t_size		size;
+
+	start.x = WIDTH - (WIDTH / 5 + WIDTH / 8);
+	start.y = HEIGHT - (HEIGHT - (HEIGHT / 4 * i + HEIGHT / 32));
+	size.x = info->menu[1]->w / 1.5;
+	size.y = info->menu[1]->h / 5;
+	put_texture(info, start, size, info->menu[1]);
+}
+
+void				menu(t_info *info)
+{
+	int				i;
+
+	i = 0;
+	put_texture(info, (t_start){0, 0}, (t_size){WIDTH, HEIGHT}, info->menu[0]);
+	put_texture(info, (t_start){WIDTH - (WIDTH / 5 + WIDTH / 8),
+			HEIGHT - (HEIGHT - (HEIGHT / 16))},
+			(t_size){info->menu[2]->w / 1.5, info->menu[2]->h / 2},
+			info->menu[2]);
+	while (++i <= 4)
+		menu_button(info, i);
 }
 
 void				display_doom(t_info *info)
@@ -34,6 +63,7 @@ void				display_doom(t_info *info)
 	const Uint8*	keyboard_state;
 	SDL_Event		event;
 
+	menu(info);
 	while (!info->quit)
 	{
 	    while (SDL_PollEvent(&event))

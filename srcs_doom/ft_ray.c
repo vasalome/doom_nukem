@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 15:14:36 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/04 17:21:17 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -315,7 +315,7 @@ void	ray_casting_init(t_info *info, int x)
 
 }
 
-int		ray_casting(t_info *info)
+int			ray_casting(t_info *info)
 {
 	info->wall.x = -1;
 	while (++info->wall.x < WIDTH)
