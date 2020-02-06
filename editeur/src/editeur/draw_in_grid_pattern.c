@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:55:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 13:41:48 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 14:22:56 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,9 +35,9 @@ static void		choose_your_form_from_1_to_9(t_env *v, int g, int t)
 	if (v->tab[t][g].form == 6)
 		draw_void_circle(v, x + v->cases / 2, y + v->cases / 2, v->cases / 3);
 	if (v->tab[t][g].form == 7)
-		put_picture(v, s, v->cases - 7, "./src/img/door.xpm");
+		put_picture(v, s, v->cases - 7, v->img[1]);
 	if (v->tab[t][g].form == 8)
-		put_picture(v, s, v->cases - 7, "./src/img/stickman.xpm");
+		put_picture(v, s, v->cases - 7, v->img[5]);
 	if (v->tab[t][g].form == 9)
 		v->tab[t][g].form = 0;
 }

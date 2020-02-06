@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/27 17:28:48 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 15:12:24 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 14:28:45 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,7 @@ static void		make_window(t_env *v)
 		while (++x < 820)
 			pixel_put(v, x, y, (t_rgb){217, 217, 217, 255});
 	}
-	put_picture(v, (t_start){803, 284}, 16, "./src/img/accept.xpm");
+	put_picture(v, (t_start){803, 284}, 16, v->img[0]);
 }
 
 void			open_window(t_env *v)

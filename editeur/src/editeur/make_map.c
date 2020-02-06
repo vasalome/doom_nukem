@@ -6,22 +6,12 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/24 14:07:12 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 15:02:39 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 16:05:25 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
-
-void		free_tab(t_env *v, t_map **tab)
-{
-	int		i;
-
-	i = -1;
-	while (++i < v->h / v->cases)
-		free(tab[i]);
-	free(tab);
-}
 
 void		make_map(t_env *v)
 {

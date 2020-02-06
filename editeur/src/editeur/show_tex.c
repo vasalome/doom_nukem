@@ -6,20 +6,12 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 13:37:42 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 14:02:32 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 15:41:22 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
-
-static char		*img(int ori)
-{
-	char		*str;
-
-	str = ft_strjoin(ft_strjoin("./src/tex/wall", ft_itoa(ori)), ".xpm");
-	return (str);
-}
 
 static void		show_tex_cube(t_env *v, t_start s, int t, int g)
 {
@@ -35,16 +27,16 @@ static void		show_tex_cube(t_env *v, t_start s, int t, int g)
 	}
 	put_text(v, write_text("est", 7), s.x + 21, s.y + 6);
 	put_picture(v, (t_start){s.x + 14, s.y + 15}, 27,
-			img(v->tab[t][g].texture.est));
+			v->wall[v->tab[t][g].texture.est - 1]);
 	put_text(v, write_text("sud", 7), s.x + 68, s.y + 6);
 	put_picture(v, (t_start){s.x + 62, s.y + 15}, 27,
-			img(v->tab[t][g].texture.sud));
+			v->wall[v->tab[t][g].texture.sud - 1]);
 	put_text(v, write_text("ouest", 7), s.x + 18, s.y + 55);
 	put_picture(v, (t_start){s.x + 14, s.y + 63}, 27,
-			img(v->tab[t][g].texture.ouest));
+			v->wall[v->tab[t][g].texture.ouest - 1]);
 	put_text(v, write_text("nord", 7), s.x + 67, s.y + 55);
 	put_picture(v, (t_start){s.x + 62, s.y + 63}, 27,
-			img(v->tab[t][g].texture.nord));
+			v->wall[v->tab[t][g].texture.nord - 1]);
 }
 
 static void		show_flat_wall_tex(t_env *v, t_start s, int t, int g)
@@ -62,10 +54,10 @@ static void		show_flat_wall_tex(t_env *v, t_start s, int t, int g)
 	put_text(v, write_text("texture", 7), s.x + 10, s.y + 4);
 	if (v->tab[t][g].form > 1 && v->tab[t][g].form < 6)
 		put_picture(v, (t_start){s.x + 11, s.y + 15}, 29,
-				img(v->tab[t][g].texture.flat_wall));
+				v->wall[v->tab[t][g].texture.flat_wall - 1]);
 	else if (v->tab[t][g].form > 1 && v->tab[t][g].form == 6)
 		put_picture(v, (t_start){s.x + 11, s.y + 15}, 29,
-				img(v->tab[t][g].texture.pillar));
+				v->wall[v->tab[t][g].texture.pillar - 1]);
 }
 
 void			show_tex(t_env *v, SDL_Event e)

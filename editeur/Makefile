@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/03 16:05:08 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/06 17:28:14 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,12 +22,13 @@ NAME = editeur
 # SRC_SUP = {dossiers dans src qui seront separe par une virgule}
 SRC_SUP = editeur
 SRC_PATH = src
-SRC_NAME =  main.c \
+SRC_NAME =  main.c\
 			editeur/display.c\
 			editeur/draw_circle.c\
 			editeur/drawline.c\
 			editeur/tga_parser.c\
 			editeur/tga_parser_body.c\
+			editeur/tga_swap.c\
 			editeur/draw_form.c\
 			editeur/get_pixel.c\
 			editeur/put_picture.c\
@@ -45,6 +46,7 @@ SRC_NAME =  main.c \
 			editeur/show_tex.c\
 			editeur/button_window.c\
 			editeur/choose_texture.c\
+			editeur/free_env.c
 
 #	Objects
 OBJ_PATH = .objects
@@ -53,7 +55,7 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 #	Includes
 INC_PATH = includes
-INC_NAME = editeur.h tga_parser.h
+INC_NAME = editeur.h
 INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
 
 CPPFLAGS = -I $(INC_PATH)
