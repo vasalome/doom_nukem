@@ -6,13 +6,13 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/28 15:09:36 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 19:39:31 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
-
+/*
 void	layer_2(double front_offset, t_info *info)
 {
 	info->wt[25].rect.x = front_offset * 2;
@@ -24,11 +24,11 @@ void	layer_2(double front_offset, t_info *info)
 	info->wt[26].rect.w = WIDTH;
 	info->wt[26].rect.h = HEIGHT;
 	info->wt[27].rect.x = (front_offset * 2) - (WIDTH * 2);
-	info->wt[27].rect.y = (info->fps.rect.y)- 200;
+	info->wt[27].rect.y = (info->fps.rect.y) - 200;
 	info->wt[27].rect.w = WIDTH;
 	info->wt[27].rect.h = HEIGHT;
 	info->wt[28].rect.x = (front_offset * 2) - (WIDTH * 3);
-	info->wt[28].rect.y = (info->fps.rect.y)- 200;
+	info->wt[28].rect.y = (info->fps.rect.y) - 200;
 	info->wt[28].rect.w = WIDTH;
 	info->wt[28].rect.h = HEIGHT;
 }
@@ -81,21 +81,14 @@ void	init_sky_2(t_info *info)
 			info->wt[29].img);
 	info->wt[30].texture = SDL_CreateTextureFromSurface(info->win.renderer,\
 			info->wt[30].img);
-}
+}*/
 
 void	init_sky_1(t_info *info)
 {
-	info->wt[20].img = IMG_Load("wall/skybox1.png");
-	info->wt[21].img = info->wt[20].img;
-	info->wt[22].img = info->wt[20].img;
-	info->wt[23].img = info->wt[20].img;
-	info->wt[24].img = info->wt[20].img;
-	info->wt[25].img = IMG_Load("wall/testciel3.png");
-	info->wt[26].img = info->wt[25].img;
-	info->wt[27].img = info->wt[25].img;
-	info->wt[28].img = info->wt[25].img;
-	info->wt[29].img = IMG_Load("wall/testciel3.png");
-	info->wt[30].img = info->wt[29].img;
+	info->sky[0] = IMG_Load("wall/testciel3.png");
+	info->sky[1] = info->sky[0];
+	info->sky[2] = info->sky[0];
+	info->sky[3] = info->sky[0];
 }
 
 void	draw_skybox(t_info *info)
@@ -104,16 +97,28 @@ void	draw_skybox(t_info *info)
 	double fore_offset;
 	double front_offset;
 
-	dir_offset = (atan2(info->player.y_dir, info->player.x_dir) + 3.14159265) / 3.14159265;
-	printf("atan2 = %f\n",(atan2(info->player.y_dir, info->player.x_dir)));
-	printf("y = %f\n",info->player.y_dir);
-	printf("x = %f\n\n",info->player.x_dir);
+	dir_offset = (atan2(info->player.y_dir, info->player.x_dir) + SKY) / SKY;
 	fore_offset = floor(dir_offset * WIDTH);
 	front_offset = floor(fore_offset / 2);
 	init_sky_1(info);
-	init_sky_2(info);
+	//init_sky_2(info);
 	//layer_1(front_offset, info);
-	layer_2(front_offset, info);
+	// layer_2(front_offset, info);
+	info->sky[0] = IMG_Load("wall/testciel3.png");
+	info->sky[1] = info->sky[0];
+	//info->sky[2] = info->sky[0];
+	//info->sky[3] = info->sky[0];
+
+	// put_texture(info, (t_start){front_offset * 2, (info->fps.rect.y) - 200}, (t_size){WIDTH, HEIGHT}, info->sky[0]);
+	// put_texture(info, (t_start){(front_offset * 2) - WIDTH, (info->fps.rect.y) - 200}, (t_size){WIDTH, HEIGHT}, info->sky[1]);
+	// put_texture(info, (t_start){(front_offset * 2) - (WIDTH * 2), (info->fps.rect.y) - 200}, (t_size){WIDTH, HEIGHT}, info->sky[2]);
+	// put_texture(info, (t_start){(front_offset * 2) - (WIDTH * 3), (info->fps.rect.y) - 200}, (t_size){WIDTH, HEIGHT}, info->sky[3]);
+
+	put_texture(info, (t_start){front_offset, (info->fps.rect.y) - 200},\
+		(t_size){WIDTH, HEIGHT}, info->sky[0]);
+	put_texture(info, (t_start){front_offset - WIDTH, (info->fps.rect.y) - 200},\
+		(t_size){WIDTH, HEIGHT}, info->sky[1]);
+	
 	// info->wt[29].rect.x = front_offset;
 	// info->wt[29].rect.y = (info->fps.rect.y) - 200;
 	// info->wt[29].rect.w = WIDTH;

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:40:07 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 19:52:36 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 19:39:19 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,11 +93,9 @@ int		parsing(t_fillmap *fill, t_info *info)
 		info->map.map[fill->x][fill->y].tp_y = request_value(fill, 11);
 	}
 	// alpha
-	info->map.map[fill->x][fill->y].wall_h = (request_value(fill, 12));
-	// sprites
-	// info->? = request_value(fill, 13);
-	// 
-	// info->map.map[fill->x][fill->y]. = request_value(fill, 13);
+	info->map.map[fill->x][fill->y].wall_h = (request_value(fill, 12)); // alpha
+	info->map.map[fill->x][fill->y].sp = request_value(fill, 13); // sprites
+	//info->map.map[fill->x][fill->y]. = ; //
 
 
 

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/29 17:36:55 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 19:06:19 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -344,7 +344,7 @@ int		ray_casting(t_info *info)
 /*int		threadAnim(void*	data)
 {
 	t_info *info = data;
-	info->win.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->ii].img);
+	info->win.texture2 = SDL_CreateTextureFromSurface(info->win.ren, info->head[info->ii].img);
 		SDL_QueryTexture(info->win.texture2, NULL, NULL, &info->head[2].w, &info->head[2].h);
 		info->head[2].rect.x = info->head[2].w;
 		info->head[2].rect.y = 0;
@@ -362,7 +362,7 @@ int		ray_casting(t_info *info)
 int		threadAnim2(void*	data)
 {
 	t_info *info = data;
-	info->win.texture3 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->iii].img);
+	info->win.texture3 = SDL_CreateTextureFromSurface(info->win.ren, info->head[info->iii].img);
 		SDL_QueryTexture(info->win.texture3, NULL, NULL, &info->head[4].w, &info->head[4].h);
 		info->head[4].rect.x = info->head[4].w * 2;
 		info->head[4].rect.y = 0;

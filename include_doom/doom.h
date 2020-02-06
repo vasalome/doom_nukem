@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/31 17:55:58 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 19:41:06 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,37 +27,9 @@
 # include <SDL2_ttf/SDL_ttf.h>
 # include <SDL2_mixer/SDL_mixer.h>
 
-
-
 # define SKY 3.14159265
 # define WIDTH 1600
 # define HEIGHT 900
-
-struct SDL_Texture
-{
-    const void *magic;
-    Uint32 format;              /**< The pixel format of the texture */
-    int access;                 /**< SDL_TextureAccess */
-    int w;                      /**< The width of the texture */
-    int h;                      /**< The height of the texture */
-    int modMode;                /**< The texture modulation mode */
-    SDL_BlendMode blendMode;    /**< The texture blend mode */
-    Uint8 r, g, b, a;           /**< Texture modulation values */
- 
-    SDL_Renderer *renderer;
- 
-    /* Support for formats not supported directly by the renderer */
-    SDL_Texture *native;
-    void *yuv; // chez moiil connait pas la struture SDL_SW_YUVTexture 
-    void *pixels;
-    int pitch;
-    SDL_Rect locked_rect;
- 
-    void *driverdata;           /**< Driver specific texture representation */
- 
-    SDL_Texture *prev;
-    SDL_Texture *next;
-};
 
 typedef	struct		s_intersect
 {
@@ -155,6 +127,8 @@ typedef struct		s_player
 	int				tp[9999];
 	int				tp_index;
 	int				life;
+	int				backup;
+	int				hit;
 	int				can_trap;
 
 	// test animation head
@@ -168,15 +142,6 @@ typedef struct		s_player
 	double			x_lim;
 	double			y_lim;
 }					t_player;
-
-typedef struct		s_win
-{
-	int				w;
-	int				h;
-	SDL_Renderer	*renderer;
-	SDL_Surface		*screen;
-	SDL_Window		*win;
-}					t_win;
 
 typedef	struct		s_form
 {
@@ -192,6 +157,7 @@ typedef	struct		s_form
 	int				tp_y;
 	int				tp;
 	int				clip;
+	int				sp;
 }					t_form;
 
 typedef struct		s_map
@@ -243,19 +209,12 @@ typedef struct		s_item
 	SDL_Texture		*texture;/*
 	int				iconx;
 	int				icony;*/
+	int				weapon;
 	int				key;
 	int				ammo;
 	int				reload;
+	int				hp; // healthpack
 }					t_item;
-
-typedef struct		s_music
-{
-	Mix_Music		*sound;
-	Mix_Chunk		*scratch;
-	Mix_Chunk		*high;
-	Mix_Chunk		*medium;
-	Mix_Chunk		*low;
-}					t_music;
 
 /*typedef struct		s_record
 {
@@ -279,6 +238,40 @@ typedef	struct			s_floor
 	int				texId2;
 }					t_floor;
 
+
+
+/*
+** ----------------------------------------------------------------------
+*/
+
+typedef struct		s_rgb
+{
+	int				r;
+	int				g;
+	int				b;
+	int				a;
+}					t_rgb;
+
+typedef struct		s_start
+{
+	int				x;
+	int				y;
+}					t_start;
+
+typedef struct		s_size
+{
+	int				x;
+	int				y;
+}					t_size;
+
+typedef struct		s_win
+{
+	SDL_Renderer	*ren;
+	SDL_Window		*win;
+	int				w;
+	int				h;
+}					t_win;
+
 typedef struct		s_info
 {
 	t_tex			tex;
@@ -287,14 +280,10 @@ typedef struct		s_info
 	t_win			win;
 	t_map			map;
 	t_wall			wall;
-	t_item			wp[11];
-	t_item			head[11];
+	// t_item			head[11];
 	t_item			item;
 	t_tex			fps;
 	t_tex			flash;
-	t_tex			wt[31];
-	t_tex			hud[20];
-	t_music			music;
 	t_floor			floor;
 	//t_record		rec;
 	int				w_i;
@@ -322,17 +311,76 @@ typedef struct		s_info
 	double			zoom;
 	int				raycast;
 	int				testHeight;
+
+	//
+	SDL_Texture		*textu;
+	// SDL_Texture		*texhud;
+	Uint32			*pixels;
+	SDL_Surface		*hud[20];
+	SDL_Surface		*menu[3];
+	t_item			wp[11];
+	SDL_Surface		*pistol[3];
+	t_tex			wt[31];
+	SDL_Surface		*sky[4];
 }					t_info;
+
+/*
+** ----------------------------------------------------------------------
+*/
+
+/*
+** put_text
+*/
+SDL_Surface			*write_text(char *text, int size_font);
+SDL_Surface			*write_text_hud(char *text, int size_font);
+void				put_text(t_info *v, SDL_Surface *sur, int s_x, int s_y);
+
+/*
+** ft_put_texture
+*/
+void				pixel_put(t_info *v, int x, int y, t_rgb color);
+Uint32				get_pixel(SDL_Surface *surface, int x, int y);
+void				ft_error(char *str);
+void				put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur);
+
+/*
+** events
+*/
+void				mouse_wheel_event(t_info *info, SDL_Event event);
+void		    	mouse_motion_event(t_info *info, SDL_Event event);
+void				mouse_button_up(t_info *info, SDL_Event event);
+void				mouse_button_down(t_info *info, SDL_Event event);
+void				key_up(t_info *info, const Uint8 *keyboard_state);
+void				key_down(t_info *info, const Uint8 *keyboard_state);
+
+void				display_doom(t_info *info);
+
+/*
+** ----------------------------------------------------------------------
+*/
+
+/*
+** norminette ok
+*/
 
 /*
 ** srcs:			ft_init.c
 */
-
-void				init(t_info *info);
 void				init_window(t_info *info);
 void				load_textures(t_info *info);
 void				init_map(t_info *info);
 void				init_player(t_info *info);
+void				init_doors(t_info *info);
+
+/*
+** srcs:			ft_init_texture.c
+*/
+void				weapons(t_info *info);;
+void				init_textures(t_info *info);
+
+/*
+** ----------------------------------------------------------------------
+*/
 
 /*
 ** srcs:			ft_init_hub.c
@@ -341,18 +389,6 @@ void				init_player(t_info *info);
 void				icon(t_info *info);
 void				icon_2(t_info *info);
 void				hub_life(t_info *info);
-
-/*
-** srcs:			ft_init_texture.c
-*/
-
-void				textures_list(t_info *info);
-
-/*
-** srcs:			ft_init_weapon.c
-*/
-
-void				weapons(t_info *info);
 
 /*
 ** srcs:			ft_fill_map.c
@@ -475,5 +511,11 @@ void	clip_12(t_info *info);
 
 void	draw_hud(t_info *info);
 void	render_hud(t_info *info, SDL_Event *event);
+
+void	info_hud(t_info *info);
+
+void	reload(t_info *info);
+void    init_items(t_info *info);
+void	shot(t_info *info);
 
 #endif

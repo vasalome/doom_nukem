@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:37:11 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 18:19:22 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 19:06:20 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 void	create_img(t_info *info)
 {
-	info->fps.texture = SDL_CreateTexture(info->win.renderer, SDL_PIXELFORMAT_RGBA8888, \
+	info->fps.texture = SDL_CreateTexture(info->win.ren, SDL_PIXELFORMAT_RGBA8888, \
 		SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT);
 	info->fps.format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
 	SDL_LockTexture(info->fps.texture, NULL, &info->fps.tmp, &info->fps.pitch);
