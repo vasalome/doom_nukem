@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 16:28:59 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 18:53:22 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 18:28:39 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,12 +31,14 @@ void			pixel_put(t_info *v, int x, int y, t_rgb color)
 	// int		b_out = (bA * aA / 255) + (bB * aB * (255 - aA) / (255*255));
 	// int		a_out = aA + (aB * (255 - aA) / 255);
 
+
+
     // printf("x  = %d\n", x);
     // printf("y  = %d\n", y);
     // printf("before %d -> \n", v->pixels[y * WIDTH + x] & 0xFF);
     // printf("1 r= %d\n", color.r);
     // printf("1 g= %d\n", color.g);
-    // printf("1 b= %d\n", color.b);
+	
     // printf("1 a= %d\n", color.a);
 	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
 		return ;

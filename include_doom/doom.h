@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 19:21:29 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 17:32:40 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -351,6 +351,7 @@ typedef struct		s_info
 
 	///
 	SDL_Texture		*textu;
+	// SDL_Texture		*texhud;
 	Uint32			*pixels;
 	SDL_Renderer	*ren;
 	SDL_Surface		*hud[20];
