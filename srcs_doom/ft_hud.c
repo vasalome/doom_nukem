@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/28 15:54:11 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 15:14:36 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 11:34:02 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,7 +38,7 @@ void	lifebar(t_info *info)
 	// print la vie a gauche
 }
 
-void	render_hud(t_info *info, SDL_Event *event)
+void	render_hud(t_info *info, SDL_Event event)
 {
 	static int	backup = 0;
 	static int	hit = 0;
@@ -49,7 +49,7 @@ void	render_hud(t_info *info, SDL_Event *event)
 
 	if (info->player.life > 80)
 	{
-		if (event->motion.xrel == backup || event->motion.xrel == 0){
+		if (event.motion.xrel == backup || event.motion.xrel == 0){
 			// SDL_RenderCopy(info->win.ren, info->hud[3].texture, NULL, &info->hud[3].rect);
 			put_texture(info, (t_start){75, 537}, (t_size){120, 145}, info->sur_hud[0]);
 			}
@@ -103,7 +103,7 @@ void	render_hud(t_info *info, SDL_Event *event)
 	// }
 
 	hit = info->player.life;
-	backup = event->motion.xrel;
+	backup = event.motion.xrel;
 	lifebar(info);
 	munition(info);
 }

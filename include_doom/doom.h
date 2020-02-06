@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 17:59:20 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 11:34:27 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -340,8 +340,6 @@ void				init_textures(t_info *info);
 ** ----------------------------------------------------------------------
 */
 
-
-
 /*
 ** put_text
 */
@@ -490,7 +488,7 @@ void	clip_10(t_info *info);
 void	clip_12(t_info *info);
 
 void	draw_hud(t_info *info);
-void	render_hud(t_info *info, SDL_Event *event);
+void	render_hud(t_info *info, SDL_Event event);
 
 void	healthpack(t_info *info);
 void	munition(t_info *info);

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 18:02:55 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 12:23:34 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,8 +35,8 @@ void	calc_floor_ceil(t_info *info, int idtext)
 	//printf("floorx = %d\n floory = %d\n\n", (int)(info->floor.currentFloorX), (int)(info->floor.currentFloorY));
 	
 	/*---pour recuperer a partir du parsing la texture du sol, mais je pense qu'on va en mettre une par defaut---*/
-	info->floor.texId = info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)].ceilTexId;
-	info->floor.texId2 = info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)].floorTexId;
+	//info->floor.texId = info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)].ceilTexId;
+	//info->floor.texId2 = info->map.map[(int)(info->floor.currentFloorX)][(int)(info->floor.currentFloorY)].floorTexId;
 }
 
 void			choose_your_floor_tex(t_info *info, int draw_start, int semiH, int draw_end, int x)
@@ -51,7 +51,6 @@ void			choose_your_floor_tex(t_info *info, int draw_start, int semiH, int draw_e
 		while (++y <= draw_start)
 		{
 			info->floor.dist = HEIGHT / (((semiH) - y) * 2);
-			
 			calc_floor_ceil(info, info->floor.texId);
 			data = get_pixel(info->wt[info->floor.texId].img, info->floor.floorTexX, info->floor.floorTexY);
 			SDL_GetRGBA(data, info->wt[info->floor.texId].img->format, &col.r, &col.g, &col.b, &col.a);
@@ -67,7 +66,6 @@ void			choose_your_floor_tex(t_info *info, int draw_start, int semiH, int draw_e
 
 		// 	calc_floor_ceil(info, 10);
 
-		// 	//printf("%d , %d\n", info->floor.floorTexX, info->floor.floorTexY);
 		// 	data = get_pixel(info->wt[info->floor.texId2].img, info->floor.floorTexX, info->floor.floorTexY);
 		// 	SDL_GetRGBA(data, info->wt[info->floor.texId2].img->format, &col.r, &col.g, &col.b, &col.a);
 		// 	pixel_put(info, x, y, (t_rgb){col.r, col.g, col.b, col.a});
@@ -109,9 +107,11 @@ void		draw_wall(int x, int draw_start, int draw_end, t_info *info)
 	Uint32	data;
 	SDL_Color	col;
 	double	semiH = HEIGHT * (0.5 + (info->testHeight * 0.00111111));
+	void	*tmp;
 
 	y = info->player.fov;
 	tex_y = 0;
+	//info->pixels = tmp;
 	if (info->min != -1)
 	{
 		if (info->floor.side == 0 && info->ray.x_ray_direction > 0)
@@ -134,7 +134,7 @@ void		draw_wall(int x, int draw_start, int draw_end, t_info *info)
 			info->floor.floorXWall = info->map.x + info->wall.floor_x;
 			info->floor.floorYWall = info->map.y + 1;
 		}
-		choose_your_floor_tex(info, draw_start, semiH, draw_end, x);
+		//choose_your_floor_tex(info, draw_start, semiH, draw_end, x);
 	}
 	while (++draw_start < draw_end)
 	{
@@ -143,7 +143,7 @@ void		draw_wall(int x, int draw_start, int draw_end, t_info *info)
 		//draw_wall_plus(x, draw_start, info, tex_y);
 		
 		data = get_pixel(info->wt[info->w_j].img, info->wt[info->w_j].tex_x , tex_y);
-		SDL_GetRGBA(data, info->wt[info->floor.texId].img->format, &col.r, &col.g, &col.b, &col.a);
+		SDL_GetRGBA(data, info->wt[info->w_j].img->format, &col.r, &col.g, &col.b, &col.a);
 		pixel_put(info, x, y, (t_rgb){col.r, col.g, col.b, col.a});
 	}
 }
