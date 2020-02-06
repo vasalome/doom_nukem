@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 15:09:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 15:13:16 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 15:38:09 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,17 +16,17 @@
 static void		make_cube_tex(t_env *v, int chosen)
 {
 	if (v->nb_wall < 4)
-		put_picture(v, (t_start){790, 490}, 24, "./src/img/r_arrow.xpm");
+		put_picture(v, (t_start){790, 490}, 24, v->img[4]);
 	if (v->nb_wall > 1)
-		put_picture(v, (t_start){360, 490}, 24, "./src/img/l_arrow.xpm");
-	put_picture(v, (t_start){420, 370}, 35, "./src/tex/wall1.xpm");
-	put_picture(v, (t_start){420, 420}, 35, "./src/tex/wall2.xpm");
-	put_picture(v, (t_start){520, 370}, 35, "./src/tex/wall3.xpm");
-	put_picture(v, (t_start){520, 420}, 35, "./src/tex/wall4.xpm");
-	put_picture(v, (t_start){620, 370}, 35, "./src/tex/wall5.xpm");
-	put_picture(v, (t_start){620, 420}, 35, "./src/tex/wall6.xpm");
-	put_picture(v, (t_start){720, 370}, 35, "./src/tex/wall7.xpm");
-	put_picture(v, (t_start){720, 420}, 35, "./src/tex/wall8.xpm");
+		put_picture(v, (t_start){360, 490}, 24, v->img[3]);
+	put_picture(v, (t_start){420, 370}, 35, v->wall[0]);
+	put_picture(v, (t_start){420, 420}, 35, v->wall[1]);
+	put_picture(v, (t_start){520, 370}, 35, v->wall[2]);
+	put_picture(v, (t_start){520, 420}, 35, v->wall[3]);
+	put_picture(v, (t_start){620, 370}, 35, v->wall[4]);
+	put_picture(v, (t_start){620, 420}, 35, v->wall[5]);
+	put_picture(v, (t_start){720, 370}, 35, v->wall[6]);
+	put_picture(v, (t_start){720, 420}, 35, v->wall[7]);
 	if (v->motion % 2 == 0 && v->motion > 0)
 		draw_form_cube(v, (t_start){319 + 100 * (v->motion - v->motion * 0.5),
 				419}, 36, (t_rgb){179, 0, 0, 255});
@@ -82,14 +82,14 @@ void			choose_one_tex(t_env *v, int chosen)
 {
 	put_text(v, write_text("Choisissez votre texture pour le mur", 15),
 			400, 300);
-	put_picture(v, (t_start){420, 370}, 35, "./src/tex/wall1.xpm");
-	put_picture(v, (t_start){420, 420}, 35, "./src/tex/wall2.xpm");
-	put_picture(v, (t_start){520, 370}, 35, "./src/tex/wall3.xpm");
-	put_picture(v, (t_start){520, 420}, 35, "./src/tex/wall4.xpm");
-	put_picture(v, (t_start){620, 370}, 35, "./src/tex/wall5.xpm");
-	put_picture(v, (t_start){620, 420}, 35, "./src/tex/wall6.xpm");
-	put_picture(v, (t_start){720, 370}, 35, "./src/tex/wall7.xpm");
-	put_picture(v, (t_start){720, 420}, 35, "./src/tex/wall8.xpm");
+	put_picture(v, (t_start){420, 370}, 35, v->wall[0]);
+	put_picture(v, (t_start){420, 420}, 35, v->wall[1]);
+	put_picture(v, (t_start){520, 370}, 35, v->wall[2]);
+	put_picture(v, (t_start){520, 420}, 35, v->wall[3]);
+	put_picture(v, (t_start){620, 370}, 35, v->wall[4]);
+	put_picture(v, (t_start){620, 420}, 35, v->wall[5]);
+	put_picture(v, (t_start){720, 370}, 35, v->wall[6]);
+	put_picture(v, (t_start){720, 420}, 35, v->wall[7]);
 	if (v->motion % 2 == 0 && v->motion > 0)
 		draw_form_cube(v, (t_start){319 + 100 * (v->motion - v->motion * 0.5),
 				419}, 36, (t_rgb){179, 0, 0, 255});

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 12:23:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 13:50:44 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -111,7 +111,6 @@ void		draw_wall(int x, int draw_start, int draw_end, t_info *info)
 
 	y = info->player.fov;
 	tex_y = 0;
-	//info->pixels = tmp;
 	if (info->min != -1)
 	{
 		if (info->floor.side == 0 && info->ray.x_ray_direction > 0)
@@ -141,7 +140,7 @@ void		draw_wall(int x, int draw_start, int draw_end, t_info *info)
 		d = draw_start * 256 - (HEIGHT + info->testHeight * 2) * 128 + info->wall.line_height * 128;
 		tex_y = ((d * info->wt[info->w_j].img->h) / info->wall.line_height) / 256;
 		//draw_wall_plus(x, draw_start, info, tex_y);
-		
+		//printf("%d %d %d\n", info->w_j, info->wt[info->w_j].tex_x, tex_y);
 		data = get_pixel(info->wt[info->w_j].img, info->wt[info->w_j].tex_x , tex_y);
 		SDL_GetRGBA(data, info->wt[info->w_j].img->format, &col.r, &col.g, &col.b, &col.a);
 		pixel_put(info, x, y, (t_rgb){col.r, col.g, col.b, col.a});

@@ -6,22 +6,19 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:22:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/27 17:09:57 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 15:29:31 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/editeur.h"
 
-void			put_picture(t_env *v, t_start s, int size, char *picture)
+void			put_picture(t_env *v, t_start s, int size, SDL_Surface *sur)
 {
-	SDL_Surface	*sur;
 	SDL_Color	col;
 	int			x;
 	int			y;
 
-	if (!(sur = IMG_Load(picture)))
-		ft_error((char*)SDL_GetError());
 	y = -1;
 	while (++y < size)
 	{
@@ -35,21 +32,16 @@ void			put_picture(t_env *v, t_start s, int size, char *picture)
 						col.a});
 		}
 	}
-	SDL_FreeSurface(sur);
 }
 
-void			make_picture_tga(t_env *v, t_start s, int size, char *pic)
+void			make_picture_tga(t_env *v, t_start s, int size, t_tga *tga)
 {
-	t_tga		*tga;
 	int			y;
 	int			x;
 	int			px;
 	int			py;
 
 	y = -1;
-	tga = tga_parser(pic);
-	if (!tga)
-		ft_error("tga_parser did not work");
 	while (++y < size)
 	{
 		x = -1;

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:22:24 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 14:33:40 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 14:02:23 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,8 +18,6 @@ SDL_Surface		*write_text(char *text, int size_font)
 	TTF_Font	*font;
 	SDL_Surface	*sur;
 
-	if (TTF_Init() == -1)
-		ft_error("Initialisation error of TFT_Init");
 	font = NULL;
 	font = TTF_OpenFont("./src/font/h.ttf", size_font);
 	if (!font)
@@ -27,7 +25,6 @@ SDL_Surface		*write_text(char *text, int size_font)
 	sur = TTF_RenderText_Shaded(font, text, (SDL_Color){0, 0, 0, 255},
 			(SDL_Color){204, 203, 205, 255});
 	TTF_CloseFont(font);
-	TTF_Quit();
 	return (sur);
 }
 

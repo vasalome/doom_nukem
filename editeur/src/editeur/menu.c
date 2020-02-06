@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:55:48 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 14:32:59 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 17:30:02 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,9 +15,13 @@
 
 void			menu_text(t_env *v)
 {
+	char		*tmp;
+
 	put_text(v, write_text("Taille des cases:", 10), v->w - 30 * 5, 10);
 	put_text(v, write_text("-", 10), v->w - 45, 10);
-	put_text(v, write_text(ft_itoa(v->cases), 10), v->w - 33, 10);
+	tmp = ft_itoa(v->cases);
+	put_text(v, write_text(tmp, 10), v->w - 33, 10);
+	free(tmp);
 	put_text(v, write_text("+", 10), v->w - 15, 10);
 	put_text(v, write_text("Forme", 20), v->w - 30 * 6, 30);
 	put_text(v, write_text("Cube", 12), v->w - 30 * 5 + 5, 70);
@@ -43,10 +47,7 @@ void			menu_button(t_env *v)
 	draw_diagonal_d(v, v->w - 30 * 6 + 5, 155, 20);
 	draw_diagonal_g(v, v->w - 30 * 6 + 5, 185, 20);
 	draw_void_circle(v, v->w - 30 * 6 + 15, 215 + 11, 10);
-	make_picture_tga(v, (t_start){v->w - 30 * 6 + 2, 245}, 25,
-			"./src/img/door.tga");
-	put_picture(v, (t_start){v->w - 30 * 6 + 5, 275}, 22,
-			"./src/img/stickman.xpm");
-	make_picture_tga(v, (t_start){v->w - 30 * 6 + 5, 590}, 22,
-			"./src/img/gomme.tga");
+	make_picture_tga(v, (t_start){v->w - 30 * 6 + 2, 245}, 25, v->tga[0]);
+	put_picture(v, (t_start){v->w - 30 * 6 + 5, 275}, 22, v->img[5]);
+	make_picture_tga(v, (t_start){v->w - 30 * 6 + 5, 590}, 22, v->tga[1]);
 }

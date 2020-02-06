@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/07 15:57:04 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 15:40:13 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 15:38:06 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,6 +57,7 @@ static void		quit(t_env *v)
 	SDL_DestroyRenderer(v->ren);
 	SDL_DestroyWindow(v->win);
 	SDL_Quit();
+	TTF_Quit();
 }
 
 void			display(t_env *v)

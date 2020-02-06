@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 19:21:06 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 18:07:43 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 12:29:20 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,12 +43,12 @@ void			mouse_motion_event(t_info *info, SDL_Event event)
 	i = 0;
 	if (info->game == 1)
 	{
-		SDL_ShowCursor(SDL_DISABLE);
+		//SDL_ShowCursor(SDL_DISABLE);
 		info->player.turn_right = 1;
 		info->player.turn_left = 1;
 		info->player.turn_rate = -event.motion.xrel * 0.002;
 		info->player.turn_rate_y = event.motion.yrel * 0.002;
-		SDL_WarpMouseInWindow(info->win.win, WIDTH / 2, HEIGHT / 2);
+		//SDL_WarpMouseInWindow(info->win.win, WIDTH / 2, HEIGHT / 2);
 		info->raycast = 1;
 	}
 	else if (info->game == 2)

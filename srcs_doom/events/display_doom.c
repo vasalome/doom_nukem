@@ -6,12 +6,26 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/04 12:31:45 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 12:20:12 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 14:00:30 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../include_doom/doom.h"
+
+void				clear_pixels(t_info *info)
+{
+	int				i;
+	int				j;
+
+	i = -1;
+	while (++j < HEIGHT)
+	{
+		i = -1;
+		while (++i < WIDTH)
+			info->pixels[j * WIDTH + i] = 0;
+	}
+}
 
 void                which_window_to_display(t_info *info, SDL_Event event)
 {
@@ -20,7 +34,7 @@ void                which_window_to_display(t_info *info, SDL_Event event)
 	i = -1;
 	if (info->game == 1)
 	{
-		//SDL_RenderClear(info->win.ren);
+		//clear_pixels(info);
 		ray_casting(info);
 	}
 	else if (info->game == 3)

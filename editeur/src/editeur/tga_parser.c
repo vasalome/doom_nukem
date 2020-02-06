@@ -6,12 +6,12 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 09:31:49 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/25 17:03:54 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/06 17:37:24 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../includes/tga_parser.h"
+#include "../../includes/editeur.h"
 
 char				*get_chunk(char chunk)
 {
@@ -43,12 +43,27 @@ static void			check_error_header(t_header h)
 		ft_error("Can only handle colour map types of 0 and 1");
 }
 
-static t_header		save_header_tga(t_header h, int fd)
+int					find_size(char first, char second)
 {
-	int				ret;
+	int				size;
+	char			*tmp;
+	char			*a;
+	char			*b;
+
+	a = get_chunk(first);
+	b = get_chunk(second);
+	tmp = ft_strjoin(a, b);
+	free(a);
+	free(b);
+	size = ft_atoi_base(tmp, 16);
+	free(tmp);
+	return (size);
+}
+
+static t_header		save_header_tga(t_header h, int fd, int ret)
+{
 	char			buff[18];
 
-	ret = 0;
 	while ((ret = read(fd, buff, 18)))
 	{
 		h.idlength = buff[0];
@@ -59,10 +74,8 @@ static t_header		save_header_tga(t_header h, int fd)
 		h.colourmapdepth = buff[7];
 		h.x_origin = buff[8];
 		h.y_origin = buff[10];
-		h.width = ft_atoi_base(ft_strjoin(get_chunk(buff[11]),
-					get_chunk(buff[12])), 16);
-		h.height = ft_atoi_base(ft_strjoin(get_chunk(buff[13]),
-					get_chunk(buff[14])), 16);
+		h.width = find_size(buff[11], buff[12]);
+		h.height = find_size(buff[13], buff[14]);
 		h.bitsperpixel = buff[16];
 		h.imagedescriptor = buff[17];
 		break ;
@@ -75,13 +88,15 @@ t_tga				*tga_parser(char *img)
 {
 	t_tga			*tga;
 	int				fd;
+	int				ret;
 
+	ret = 0;
 	fd = open(img, O_RDONLY);
 	if (fd < 0)
 		return (0);
 	if (!(tga = ft_memalloc(sizeof(tga))))
 		return (0);
-	tga->h = save_header_tga(tga->h, fd);
+	tga->h = save_header_tga(tga->h, fd, ret);
 	if (!(tga->px = malloc(sizeof(t_px) * (tga->h.width * tga->h.height))))
 		ft_error("The malloc of the pixel struct didn't work.");
 	tga->px = save_tga_rgba(fd, tga->px, tga->h, tga->h.bitsperpixel / 8);
