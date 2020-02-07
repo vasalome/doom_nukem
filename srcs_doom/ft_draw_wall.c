@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_draw_wall.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 16:06:44 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 18:24:49 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ void			draw_floor(t_info *info, int draw_start, int draw_end, int x)
 	Uint32		data;
 	int			semi_height;
 
-	semi_height = HEIGHT * (0.5 + (info->testHeight * 0.00111111));
+	semi_height = HEIGHT * (0.5 + 2);//(info->testHeight * 0.00111111));
 	y = info->player.fov;
 	if (info->floor.texId != 0)
 		while (++y <= draw_start)

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 17:18:43 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 17:21:32 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 19:53:45 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,64 +24,32 @@ int				get_hex_rgba(int r, int g, int b, int a)
 	return ((r << 24) | (g << 16) | (b << 8) | (a));
 }
 
-/*
 void			pixel_put(t_info *v, int x, int y, t_rgb color)
 {
-    // int		r_out = (rA * aA / 255) + (rB * aB * (255 - aA) / (255*255));
-	// int		g_out = (gA * aA / 255) + (gB * aB * (255 - aA) / (255*255));
-	// int		b_out = (bA * aA / 255) + (bB * aB * (255 - aA) / (255*255));
-	// int		a_out = aA + (aB * (255 - aA) / 255);
+	int		mix_r;
+	int		mix_g;
+	int		mix_b;
+	int		a_bef;
+	int		new_alpha;
 
-
-
-    // printf("x  = %d\n", x);
-    // printf("y  = %d\n", y);
-    // printf("before %d -> \n", v->pixels[y * WIDTH + x] & 0xFF);
-    // printf("1 r= %d\n", color.r);
-    // printf("1 g= %d\n", color.g);
-	
-    // printf("1 a= %d\n", color.a);
+	a_bef = (v->pixels[y * WIDTH + x] & 0xFF) / 1.2;
+	mix_r = (color.r * color.a / 255) + (((v->pixels[y * WIDTH + x] >> 8)\
+		& 0xFF) * a_bef * (255 - color.a) / (255 * 255));
+	mix_g = (color.g * color.a / 255) + (((v->pixels[y * WIDTH + x] >> 16)\
+		& 0xFF) * a_bef * (255 - color.a) / (255 * 255));
+	mix_b = (color.b * color.a / 255) + (((v->pixels[y * WIDTH + x] >> 24)\
+		& 0xFF) * a_bef * (255 - color.a) / (255 * 255));
+	new_alpha = color.a + (a_bef * (255 - color.a) / 255);
+	// if (v->game == 1 && x == 400 && y == 400){
+	// 	printf("x %d\n", x);
+	// 	printf("y %d\n", y);
+	// 	printf("mix_r %d\n", mix_r);
+	// 	printf("mix_g %d\n", mix_g);
+	// 	printf("mix_b %d\n\n", mix_b);}
 	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
 		return ;
-
-	v->pixels[y * WIDTH + x] = get_hex_rgba(color.r, color.g, color.b, color.a);
-	//if ((v->pixels[y * WIDTH + x] & 0xFF) == 0)
-       //printf("%d -> ", v->pixels[y * WIDTH + x] & 0xFF);
-	if ((get_hex_rgba(color.r, color.g, color.b, color.a) & 0xFF) == 0)
-    	v->pixels[y * WIDTH + x] = get_hex_rgba(color.r, color.g, color.b, color.a);
-    // printf("after %d -> \n", v->pixels[y * WIDTH + x] & 0xFF);
-}*/
-
-
-int				get_hex_test(int mix, int a)
-{
-	return (mix | (a));
-}
-
-void			pixel_put(t_info *v, int x, int y, t_rgb color)
-{
-	int		r = (v->pixels[y * WIDTH + x] >> 8) & 0xFF;
-	int		g = (v->pixels[y * WIDTH + x] >> 16) & 0xFF;
-	int		b = (v->pixels[y * WIDTH + x] >> 24) & 0xFF;
-	int		a_bef = (v->pixels[y * WIDTH + x] & 0xFF);
-	// if (a_bef != 255){
-	// 	printf("AAAAAA %x -> ", (v->pixels[y * WIDTH + x]));
-	// 	printf("%x \n", (v->pixels[y * WIDTH + x] >> 16) & 0xFF);}
-	// int		mix = (rgb_actu * color.a_actu / 255) + (rgb_bef * color.a_bef * (255 - color.a_actu) / (255*255));
-	// int		new_alpha = color.a_actu + (color.a_bef * (255 - color.a_actu) / 255);
-	int		mix_r = (color.r * color.a / 255) + (r * a_bef * (255 - color.a) / (255*255));
-	int		mix_g = (color.g * color.a / 255) + (g * a_bef * (255 - color.a) / (255*255));
-	int		mix_b = (color.b * color.a / 255) + (b * a_bef * (255 - color.a) / (255*255));
-	int		new_alpha = color.a + (a_bef * (255 - color.a) / 255);
 	v->pixels[y * WIDTH + x] = get_hex_rgba(mix_r, mix_g, mix_b, new_alpha);
 }
-/*
-void			pixel_put(t_info *v, int x, int y, t_rgb color)
-{
-	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
-		return ;
-	v->pixels[y * WIDTH + x] = get_hex_rgba(color.r, color.g, color.b, color.a);
-}*/
 
 Uint32			get_pixel(SDL_Surface *surface, int x, int y)
 {
@@ -113,8 +81,8 @@ void			put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur)
 		x = -1;
 		while (++x < size.x)
 		{
-			SDL_GetRGBA(get_pixel(sur, x * sur->w / size.x, y * sur->h / size.y),
-					sur->format, &col.r, &col.g, &col.b, &col.a);
+			SDL_GetRGBA(get_pixel(sur, x * sur->w / size.x, y * sur->h /
+				size.y), sur->format, &col.r, &col.g, &col.b, &col.a);
 			if (col.a != 0)
 				pixel_put(v, s.x + x, s.y + y, (t_rgb){col.r, col.g, col.b,
 						col.a});
