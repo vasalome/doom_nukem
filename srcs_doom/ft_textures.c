@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 18:15:07 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 12:41:13 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,14 +41,6 @@ void	choose_texture_2(t_info *info)
 
 void	choose_texture_1(t_info *info)
 {
-	// Problème de surimpression des textures
-
-
-	//printf("x = %d, y = %d\n", (int)info->map.x, (int)info->map.y);
-	//printf("ok8\n");
-	//printf("n=%d\n", info->map.map[10][5].n_tex);
-	//fflush(stdout);
-
 	info->w_j = 0;
 		if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
 		{

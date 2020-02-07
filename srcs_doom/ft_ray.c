@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_ray.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:30:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 12:56:46 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,9 +30,7 @@ int     ray_circ(t_inter *inter, double p1x, double p1y, double p2x, double p2y,
     c -= r * r;
     bb4ac = b * b - 4 * a * c;
     if (bb4ac < 0)
-	{
     	return(0);
-	}
     inter->x = (-b + sqrt(bb4ac)) / (2 * a);
     inter->y = (-b - sqrt(bb4ac)) / (2 * a);
     return(1);
@@ -265,27 +263,27 @@ void	ray_casting_init(t_info *info, int x)
 		choose_texture_1(info);
 		
 	}
-		if(info->map.hit == 0)
-		info->wall.alpha = 0;
-		if (info->map.x < 0)
-		info->map.x = 0;
-		if (info->map.x >= info->map.width)
-		info->map.x = info->map.width - 1;
-		if (info->map.y < 0)
-		info->map.y = 0;
-		if (info->map.y >= info->map.height)
-		info->map.y = info->map.height - 1;
-		info->map.hit = 1;
-		if (info->wall.side == 0)
-		{
-			info->wall.wall_distance = (info->map.x - info->ray.x_ray_position + info->map.xOffset +
-			(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
-		}
-		else if (info->wall.side == 1)
-		{
-			info->wall.wall_distance = (info->map.y - info->ray.y_ray_position + info->map.yOffset +
-			(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
-		}
+	if(info->map.hit == 0)
+	info->wall.alpha = 0;
+	if (info->map.x < 0)
+	info->map.x = 0;
+	if (info->map.x >= info->map.width)
+	info->map.x = info->map.width - 1;
+	if (info->map.y < 0)
+	info->map.y = 0;
+	if (info->map.y >= info->map.height)
+	info->map.y = info->map.height - 1;
+	info->map.hit = 1;
+	if (info->wall.side == 0)
+	{
+		info->wall.wall_distance = (info->map.x - info->ray.x_ray_position + info->map.xOffset +
+		(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
+	}
+	else if (info->wall.side == 1)
+	{
+		info->wall.wall_distance = (info->map.y - info->ray.y_ray_position + info->map.yOffset +
+		(1 - info->map.y_step) / 2) / info->ray.y_ray_direction;
+	}
 	//	if (info->map.map[info->map.x][info->map.y].wall == 11)
 			//printf("wall distance ap = %f\n", info->wall.wall_distance);
 	/*	else
@@ -377,25 +375,7 @@ int		threadAnim2(void*	data)
 		threadAnim2((t_info*)info);
 	return (0);
 }*/
-/*
-void	hud(t_info *info)
-{
-	
 
-		info->fps.texture2 = SDL_CreateTextureFromSurface(info->win.renderer, info->head[info->i].img);
-		SDL_QueryTexture(info->fps.texture2, NULL, NULL, &info->head[3].w, &info->head[3].h);
-		info->head[3].rect.x = 0;
-		info->head[3].rect.y = 0;
-		info->head[3].rect.w = info->head[3].w;
-		info->head[3].rect.h = info->head[3].h;
-		if (info->i < 10)
-			info->i++;
-		else
-			info->i = 0;
-	//SDL_UpdateWindowSurface(info->win.win);
-	//SDL_Delay(2000);
-}
-*/
 void	its_a_trap(t_info *info)
 {
 	if (info->map.map[(int)info->player.x_pos][(int)info->player.y_pos].wall == 5)
@@ -421,7 +401,7 @@ void	ray_casting_image(t_info *info)
 		ray_casting(info);
 
 		//move_doors(info);
-		// draw_skybox(info);
+		draw_skybox(info);
 		
 		/* Main frame */
 

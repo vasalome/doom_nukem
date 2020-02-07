@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   doom.h                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:31:11 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 15:01:03 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -311,6 +311,8 @@ typedef struct		s_info
 	SDL_Surface		*pistol[3];
 	t_tex			wt[31];
 	SDL_Surface		*sky[4];
+
+	Uint32			*pixhud;
 }					t_info;
 
 /*

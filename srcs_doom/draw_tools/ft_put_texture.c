@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 16:28:59 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:39:26 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 17:13:41 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,15 +50,38 @@ void			pixel_put(t_info *v, int x, int y, t_rgb color)
 	if ((get_hex_rgba(color.r, color.g, color.b, color.a) & 0xFF) == 0)
     	v->pixels[y * WIDTH + x] = get_hex_rgba(color.r, color.g, color.b, color.a);
     // printf("after %d -> \n", v->pixels[y * WIDTH + x] & 0xFF);
-}
-*/
+}*/
 
+
+int				get_hex_test(int mix, int a)
+{
+	return (mix | (a));
+}
+
+void			pixel_put(t_info *v, int x, int y, t_rgb color)
+{
+	int		r = (v->pixels[y * WIDTH + x] >> 8) & 0xFF;
+	int		g = 0;//v->pixels[y * WIDTH + x] & 0xFF;
+	int		b = 255;//v->pixels[y * WIDTH + x] & 0xFF;
+	int		a_bef = (v->pixels[y * WIDTH + x] & 0xFF);
+	if (a_bef != 255){
+		printf("AAAAAA %x -> ", (v->pixels[y * WIDTH + x]));
+		printf("%x \n", (v->pixels[y * WIDTH + x] >> 16) & 0xFF);}
+	// int		mix = (rgb_actu * color.a_actu / 255) + (rgb_bef * color.a_bef * (255 - color.a_actu) / (255*255));
+	// int		new_alpha = color.a_actu + (color.a_bef * (255 - color.a_actu) / 255);
+	int		mix_r = (color.r * color.a / 255) + (r * a_bef * (255 - color.a) / (255*255));
+	int		mix_g = (color.g * color.a / 255) + (g * a_bef * (255 - color.a) / (255*255));
+	int		mix_b = (color.b * color.a / 255) + (b * a_bef * (255 - color.a) / (255*255));
+	int		new_alpha = color.a + (a_bef * (255 - color.a) / 255);
+	v->pixels[y * WIDTH + x] = get_hex_rgba(mix_r, mix_g, mix_b, new_alpha);
+}
+/*
 void			pixel_put(t_info *v, int x, int y, t_rgb color)
 {
 	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
 		return ;
 	v->pixels[y * WIDTH + x] = get_hex_rgba(color.r, color.g, color.b, color.a);
-}
+}*/
 
 Uint32			get_pixel(SDL_Surface *surface, int x, int y)
 {
