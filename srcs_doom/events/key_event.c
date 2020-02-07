@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 18:39:09 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 16:55:48 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 18:04:49 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -106,325 +106,330 @@
 ** Movements
 */
 
-void	move_plus_4(t_info *info)
-{
-	if (info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
-		info->player.x_pos += info->player.y_dir * info->player.move_speed;
-	else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir
-		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
-	{
-		if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
-		{
-			info->player.x_pos += info->player.y_dir * info->player.move_speed;
+// void	move_plus_4(t_info *info)
+// {
+// 	if (info->map.map[(int)(info->player.x_pos + info->player.y_dir
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
+// 		info->player.x_pos += info->player.y_dir * info->player.move_speed;
+// 	else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
+// 	{
+// 		if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
+// 		{
+// 			info->player.x_pos += info->player.y_dir * info->player.move_speed;
 			
-		}
-		else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 9)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 9)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 10)
-		{
-			info->player.x_pos += info->player.y_dir * info->player.move_speed;
-		}
-		else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 12)
-		{
-			info->player.x_pos += info->player.y_dir * info->player.move_speed;
-		}
-	}
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 10)
+// 		{
+// 			info->player.x_pos += info->player.y_dir * info->player.move_speed;
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos + info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 12)
+// 		{
+// 			info->player.x_pos += info->player.y_dir * info->player.move_speed;
+// 		}
+// 	}
 
-	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.x_dir * info->player.move_speed)].clip == 1)
-		info->player.y_pos -= info->player.x_dir * info->player.move_speed;
-	else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.x_dir * info->player.move_speed)].clip == 0)
-	{
-		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.x_dir * info->player.move_speed)].wall == 7)
-		{
-			info->player.y_pos -= info->player.x_dir * info->player.move_speed;
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.x_dir * info->player.move_speed)].wall == 8)
-		{
+// 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.x_dir * info->player.move_speed)].clip == 1)
+// 		info->player.y_pos -= info->player.x_dir * info->player.move_speed;
+// 	else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.x_dir * info->player.move_speed)].clip == 0)
+// 	{
+// 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.x_dir * info->player.move_speed)].wall == 7)
+// 		{
+// 			info->player.y_pos -= info->player.x_dir * info->player.move_speed;
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.x_dir * info->player.move_speed)].wall == 8)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.x_dir * info->player.move_speed)].wall == 9)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.x_dir * info->player.move_speed)].wall == 9)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.x_dir * info->player.move_speed)].wall == 10)
-		{
-			info->player.y_pos -= info->player.x_dir * info->player.move_speed;
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.x_dir * info->player.move_speed)].wall == 12)
-		{
-			info->player.y_pos -= info->player.x_dir * info->player.move_speed;
-		}
-	}
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.x_dir * info->player.move_speed)].wall == 10)
+// 		{
+// 			info->player.y_pos -= info->player.x_dir * info->player.move_speed;
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.x_dir * info->player.move_speed)].wall == 12)
+// 		{
+// 			info->player.y_pos -= info->player.x_dir * info->player.move_speed;
+// 		}
+// 	}
 
-	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
-		teleport_2(info);
-}
+// 	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
+// 		teleport_2(info);
+// }
 
-void	move_plus_3(t_info *info)
-{
-	if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
-		info->player.x_pos -= info->player.y_dir * info->player.move_speed;
-	else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
-	{
-		if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
-		{
-			info->player.x_pos -= info->player.y_dir * info->player.move_speed;
+// void	move_plus_3(t_info *info)
+// {
+// 	if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
+// 		info->player.x_pos -= info->player.y_dir * info->player.move_speed;
+// 	else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
+// 	{
+// 		if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
+// 		{
+// 			info->player.x_pos -= info->player.y_dir * info->player.move_speed;
 			
-		}
-		else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 9)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 9)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 10)
-		{
-			info->player.x_pos -= info->player.y_dir * info->player.move_speed;
-		}
-		else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 12)
-		{
-			info->player.x_pos -= info->player.y_dir * info->player.move_speed;
-		}
-	}
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 10)
+// 		{
+// 			info->player.x_pos -= info->player.y_dir * info->player.move_speed;
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos - info->player.y_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 12)
+// 		{
+// 			info->player.x_pos -= info->player.y_dir * info->player.move_speed;
+// 		}
+// 	}
 
-	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.x_dir * info->player.move_speed)].clip == 1)
-		info->player.y_pos += info->player.x_dir * info->player.move_speed;
-	else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.x_dir * info->player.move_speed)].clip == 0)
-	{
-		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.x_dir * info->player.move_speed)].wall == 7)
-		{
-			info->player.y_pos += info->player.x_dir * info->player.move_speed;
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.x_dir * info->player.move_speed)].wall == 8)
-		{
+// 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		+ info->player.x_dir * info->player.move_speed)].clip == 1)
+// 		info->player.y_pos += info->player.x_dir * info->player.move_speed;
+// 	else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		+ info->player.x_dir * info->player.move_speed)].clip == 0)
+// 	{
+// 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		+ info->player.x_dir * info->player.move_speed)].wall == 7)
+// 		{
+// 			info->player.y_pos += info->player.x_dir * info->player.move_speed;
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		+ info->player.x_dir * info->player.move_speed)].wall == 8)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.x_dir * info->player.move_speed)].wall == 9)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		+ info->player.x_dir * info->player.move_speed)].wall == 9)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.x_dir * info->player.move_speed)].wall == 10)
-		{
-			info->player.y_pos += info->player.x_dir * info->player.move_speed;
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.x_dir * info->player.move_speed)].wall == 12)
-		{
-			info->player.y_pos += info->player.x_dir * info->player.move_speed;
-		}
-	}
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		+ info->player.x_dir * info->player.move_speed)].wall == 10)
+// 		{
+// 			info->player.y_pos += info->player.x_dir * info->player.move_speed;
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		+ info->player.x_dir * info->player.move_speed)].wall == 12)
+// 		{
+// 			info->player.y_pos += info->player.x_dir * info->player.move_speed;
+// 		}
+// 	}
 
-	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
-		teleport(info);
-}
+// 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
+// 		teleport(info);
+// }
 
-void	move_plus_2(t_info *info)
-{
-	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
-		info->player.x_pos -= info->player.x_dir * info->player.move_speed;
-	else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
-	{
-		if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
-		{
-			info->player.x_pos -= info->player.x_dir * info->player.move_speed;
+// void	move_plus_2(t_info *info)
+// {
+// 	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
+// 		info->player.x_pos -= info->player.x_dir * info->player.move_speed;
+// 	else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
+// 	{
+// 		if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
+// 		{
+// 			info->player.x_pos -= info->player.x_dir * info->player.move_speed;
 			
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 9)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 9)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 10)
-		{
-			info->player.x_pos -= info->player.x_dir * info->player.move_speed;
-		}
-		else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 12)
-		{
-			info->player.x_pos -= info->player.x_dir * info->player.move_speed;
-		}
-	}
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 10)
+// 		{
+// 			info->player.x_pos -= info->player.x_dir * info->player.move_speed;
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 12)
+// 		{
+// 			info->player.x_pos -= info->player.x_dir * info->player.move_speed;
+// 		}
+// 	}
 
-	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.y_dir * info->player.move_speed)].clip == 1)
-		info->player.y_pos -= info->player.y_dir * info->player.move_speed;
-	else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.y_dir * info->player.move_speed)].clip == 0)
-	{
-		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.y_dir * info->player.move_speed)].wall == 7)
-		{
-			info->player.y_pos -= info->player.y_dir * info->player.move_speed;
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.y_dir * info->player.move_speed)].wall == 8)
-		{
+// 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.y_dir * info->player.move_speed)].clip == 1)
+// 		info->player.y_pos -= info->player.y_dir * info->player.move_speed;
+// 	else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.y_dir * info->player.move_speed)].clip == 0)
+// 	{
+// 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.y_dir * info->player.move_speed)].wall == 7)
+// 		{
+// 			info->player.y_pos -= info->player.y_dir * info->player.move_speed;
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.y_dir * info->player.move_speed)].wall == 8)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.y_dir * info->player.move_speed)].wall == 9)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.y_dir * info->player.move_speed)].wall == 9)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.y_dir * info->player.move_speed)].wall == 10)
-		{
-			info->player.y_pos -= info->player.y_dir * info->player.move_speed;
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		- info->player.y_dir * info->player.move_speed)].wall == 12)
-		{
-			info->player.y_pos -= info->player.y_dir * info->player.move_speed;
-		}
-	}
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.y_dir * info->player.move_speed)].wall == 10)
+// 		{
+// 			info->player.y_pos -= info->player.y_dir * info->player.move_speed;
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
+// 		- info->player.y_dir * info->player.move_speed)].wall == 12)
+// 		{
+// 			info->player.y_pos -= info->player.y_dir * info->player.move_speed;
+// 		}
+// 	}
 
-	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
-		teleport_2(info);
-}
+// 	if (info->map.map[(int)(info->player.x_pos - info->player.x_dir\
+// 		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
+// 		teleport_2(info);
+// }
 
-void	move_plus_1(t_info *info)
-{
-	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 1
-		/*&& (info->player.x_pos + info->player.x_dir * info->player.move_speed) >= 0\
-		&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height*/)
-			info->player.x_pos += info->player.x_dir * info->player.move_speed;
-	else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
-	{	
-		if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
-		{
-			// hypotenuse_2 = cote1_2 + cote2_2
-		}
-		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
-		{
+// void	move_plus_1(t_info *info)
+// {
+// 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
+// 		/*&& (info->player.x_pos + info->player.x_dir * info->player.move_speed) >= 0\
+// 		&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height)*/
+// 			info->player.x_pos += info->player.x_dir * info->player.move_speed;
+// 	else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 0)
+// 	{	
+// 		if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall == 7)
+// 		{
+// 			// hypotenuse_2 = cote1_2 + cote2_2
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall == 8)
+// 		{
 			
-		}
-		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 9)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall == 9)
+// 		{
 			
-		}
-		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 10)
-		{
-			clip_10(info);
-		}
-		
-		
-		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 12)
-		{
-			clip_12(info);
-		}
-	}
-	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.y_dir * info->player.move_speed)].clip == 1
-		/*&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) >= 0\
-		&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height*/)
-			info->player.y_pos += info->player.y_dir * info->player.move_speed;
-	else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.y_dir * info->player.move_speed)].clip == 0)
-	{
-		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.y_dir * info->player.move_speed)].wall == 7)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall == 10)
+// 		{
+// 			clip_10(info);
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall == 12)
+// 		{
+// 			clip_12(info);
+// 		}
+// 	}
+// 	if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos + info->player.y_dir * info->player.move_speed)].clip == 1)
+// 		/*&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) >= 0\
+// 		&& (info->player.y_pos + info->player.y_dir * info->player.move_speed) < info->map.height)*/
+// 		info->player.y_pos += info->player.y_dir * info->player.move_speed;
+// 	else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos + info->player.y_dir * info->player.move_speed)].clip == 0)
+// 	{
+// 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos + info->player.y_dir * info->player.move_speed)].wall == 7)
+// 		{
 
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.y_dir * info->player.move_speed)].wall == 8)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos + info->player.y_dir * info->player.move_speed)].wall == 8)
+// 		{
 			
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.y_dir * info->player.move_speed)].wall == 9)
-		{
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos + info->player.y_dir * info->player.move_speed)].wall == 9)
+// 		{
 			
-		}
-		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos\
-		+ info->player.y_dir * info->player.move_speed)].wall == 10)
-		{
-			clip_10(info);
-		}
-		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].wall == 12)
-		{
-			clip_12(info);
-		}
-	}
-	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir\
-		* info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
-		teleport(info);
-}
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos + info->player.y_dir * info->player.move_speed)].wall == 10)
+// 		{
+// 			clip_10(info);
+// 		}
+// 		else if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].wall == 12)
+// 		{
+// 			clip_12(info);
+// 		}
+// 	}
+// 	if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].tp == 1)
+// 		teleport(info);
+// }
 
 static void		mouvement_on(t_info *info, const Uint8 *keyboard_state)
 {
 	if (keyboard_state[SDL_SCANCODE_W] || keyboard_state[SDL_SCANCODE_UP])
 	{
-		move_plus_1(info);
+		//move_plus_1(info);
+		printf("up %f %f\n", info->player.x_dir, info->player.y_dir);
+		if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
+			info->player.x_pos += info->player.x_dir * info->player.move_speed;
+		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos + info->player.y_dir * info->player.move_speed)].clip == 1)
+			info->player.y_pos += info->player.y_dir * info->player.move_speed;
 		info->raycast = 1;
 	}
 	if (keyboard_state[SDL_SCANCODE_S] || keyboard_state[SDL_SCANCODE_DOWN])
 	{
-		move_plus_2(info);
+		//move_plus_2(info);
 		info->raycast = 1;
+		printf("down %f %f\n", info->player.x_dir, info->player.y_dir);
+		if (info->map.map[(int)(info->player.x_pos - info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
+			info->player.x_pos -= info->player.x_dir * info->player.move_speed;
+		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos - info->player.y_dir * info->player.move_speed)].clip == 1)
+			info->player.y_pos -= info->player.y_dir * info->player.move_speed;
 	}
 	if (keyboard_state[SDL_SCANCODE_D] || keyboard_state[SDL_SCANCODE_RIGHT])
 	{
-		move_plus_4(info);
+		//move_plus_4(info);
+		printf("right %f %f\n", info->player.x_dir, info->player.y_dir);
 		info->raycast = 1;
+		if (info->map.map[(int)(info->player.x_pos + info->player.y_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
+			info->player.x_pos += info->player.y_dir * info->player.move_speed;
+		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos - info->player.x_dir * info->player.move_speed)].clip == 1)
+			info->player.y_pos -= info->player.x_dir * info->player.move_speed;
 	}
 	if (keyboard_state[SDL_SCANCODE_A] || keyboard_state[SDL_SCANCODE_LEFT])
 	{
-		move_plus_3(info);
+		//move_plus_3(info);
+		printf("left %f %f\n", info->player.x_dir, info->player.y_dir);
 		info->raycast = 1;
+		if (info->map.map[(int)(info->player.x_pos - info->player.y_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
+			info->player.x_pos -= info->player.y_dir * info->player.move_speed;
+		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos + info->player.x_dir * info->player.move_speed)].clip == 1)
+			info->player.y_pos += info->player.x_dir * info->player.move_speed;
 	}
 }
 

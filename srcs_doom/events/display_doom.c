@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   display_doom.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 17:17:13 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 17:17:17 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 17:28:32 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,9 +36,8 @@ void                which_window_to_display(t_info *info, SDL_Event event)
 	{
 		clear_pixels(info);
 		//draw_skybox(info);
-		//ray_casting(info);
+		ray_casting(info);
 		render_hud(info, &event);
-		
 	}
 	else if (info->game == 3)
 	{

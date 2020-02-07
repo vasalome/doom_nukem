@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:22:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 16:06:44 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 18:27:49 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ void			draw_floor(t_info *info, int draw_start, int draw_end, int x)
 	Uint32		data;
 	int			semi_height;
 
-	semi_height = HEIGHT * (0.5 + (info->testHeight * 0.00111111));
+	semi_height = HEIGHT * 2.5;//(0.5 + (info->testHeight * 0.00111111));
 	y = info->player.fov;
 	if (info->floor.texId != 0)
 		while (++y <= draw_start)
@@ -98,7 +98,6 @@ void			init_and_draw_floor(t_info *info, int draw_s, int draw_e, int x)
 
 // void	draw_wall_plus(int x, int draw_start, t_info *info, int tex_y)
 // {
-
 // 	Uint32 data = get_pixel(info->wt[info->w_j].img, info->wt[info->w_j].tex_x , tex_y);
 // 	SDL_GetRGB(data, info->wt[info->w_j].img->format, &info->rgb.r, &info->rgb.g, &info->rgb.b);
 // 	//Uint32 data = get_pixel(info->fps, info->wt[info->w_j].tex_x , tex_y);

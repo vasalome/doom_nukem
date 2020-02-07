@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   doom.h                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 17:18:19 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 17:18:23 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 18:27:23 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -309,8 +309,8 @@ typedef struct		s_info
 	t_item			wp[11];
 	SDL_Surface		*pistol[3];
 	t_tex			wt[31];
-	SDL_Surface		*wall_tex[8];
-	SDL_Surface		*floor_tex[2];
+	//SDL_Surface		*wall_tex[8];
+	//SDL_Surface		*floor_tex[2];
 	SDL_Surface		*sky[4];
 
 	t_player		player;
