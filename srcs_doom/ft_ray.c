@@ -6,7 +6,11 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
+<<<<<<< HEAD
 /*   Updated: 2020/02/07 12:56:46 by vasalome    ###    #+. /#+    ###.fr     */
+=======
+/*   Updated: 2020/02/07 14:38:45 by nrivoire    ###    #+. /#+    ###.fr     */
+>>>>>>> 06d87c9eb70c648ae3bf6f0539e0e98328fde281
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,6 +54,22 @@ void	intersectLine(t_inter *inter)
 	inter->y = (A1 * C2 - A2 * C1) / denominator;
 }
 
+void	dda(t_info *info)
+{
+	if (info->ray.x_side_distance < info->ray.y_side_distance)
+	{
+		info->ray.x_side_distance += info->ray.x_delta_distance;
+		info->map.x += info->map.x_step;
+		info->wall.side = 0;
+	}
+	else
+	{
+		info->ray.y_side_distance += info->ray.y_delta_distance;
+		info->map.y += info->map.y_step;
+		info->wall.side = 1;
+	}
+}
+
 void	ray_casting_init(t_info *info, int x)
 {
 	//int angleSide = 0;
@@ -69,26 +89,10 @@ void	ray_casting_init(t_info *info, int x)
 	
 	while((info->map.hit == 0) && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height)))
 	{
-		/*printf("pass\n");
-	fflush(stdout);*/
 		info->map.hit = 0;
 		info->map.yOffset = 0;
 		info->map.xOffset = 0;
-		if (info->ray.x_side_distance < info->ray.y_side_distance)
-		{
-			info->ray.x_side_distance += info->ray.x_delta_distance;
-			info->map.x += info->map.x_step;
-			info->wall.side = 0;
-			
-		}
-		else
-		{
-			info->ray.y_side_distance += info->ray.y_delta_distance;
-			info->map.y += info->map.y_step;
-			info->wall.side = 1;
-		}
-	/*printf("%d %d\n", info->map.x, info->map.y);
-	fflush(stdout);*/
+		dda(info);
 		int rayTex = info->map.map[info->map.x][info->map.y].wall;
 		
 		if (rayTex == 11 && info->map.door_state[info->map.x][info->map.y] != 2)// Et que doorState != ouverte // Portes
@@ -124,11 +128,7 @@ void	ray_casting_init(t_info *info, int x)
 			//	info->wall.wall_distance = fabs((info->map.x - info->ray.x_ray_position+ .5)  / fabs(info->ray.x_ray_direction)); Jean-Michel A peu pres (ouverture inversee dans un cas)
 				info->wall.wall_distance = (info->map.x - info->ray.x_ray_position + info->map.xOffset)  / 2 / info->ray.x_ray_direction;
 				info->wall.wall_x = info->ray.y_ray_position + info->wall.wall_distance * info->ray.y_ray_direction;
-			//	printf("ypos = %f ydir = %f dist = %f\n", info->ray.y_ray_position, info->ray.y_ray_direction, info->wall.wall_distance);
-			//	printf("BEFORE // wallx = %f\n", info->wall.wall_x);
 				info->wall.wall_x -= floor(info->wall.wall_x);
-	//			printf("ypos = %f dist = %f ydir = %f\n", info->ray.y_ray_position, info->wall.wall_distance, info->ray.y_ray_direction);
-			//	printf("AFTER // wall x = %f\n", info->wall.wall_x);
 				if (info->ray.x_side_distance - (info->ray.x_delta_distance / 2) < info->ray.y_side_distance)
 				{
 					if (info->wall.wall_x < info->map.door_offset[info->map.x][info->map.y]) // piti soucy ici
@@ -320,7 +320,6 @@ int		ray_casting(t_info *info)
 	{
 		info->min = 255;
 		ray_casting_init(info, info->wall.x);
-			
 		info->wall.line_height = (int)( info->win.h / info->wall.wall_distance);
 		info->wall.draw_end = (info->win.h / 2 + info->testHeight + info->wall.line_height / 2);
 		if (info->wall.draw_end >= info->win.h)\
@@ -328,10 +327,7 @@ int		ray_casting(t_info *info)
 		info->wall.draw_start = (info->win.h / 2 + info->testHeight - (info->wall.line_height / 2));
 		if (info->wall.draw_start < 0)
 			info->wall.draw_start = 0;
-		
 		texture_calc(info);
-		
-		//printf("asdfghjkl        %f\n", info->wall.wall_x);
 		draw_wall(info->wall.x, info->wall.draw_start - 1,\
 				info->wall.draw_end, info);
 	}

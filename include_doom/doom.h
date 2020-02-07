@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 15:01:03 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/07 17:18:19 by vasalome     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/07 17:18:23 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -266,8 +266,6 @@ typedef struct		s_info
 {
 	t_tex			tex;
 	t_ray			ray;
-	t_player		player;
-	t_win			win;
 	t_map			map;
 	t_wall			wall;
 	t_item			item;
@@ -302,6 +300,7 @@ typedef struct		s_info
 	t_tex			fps;
 
 	//
+	t_win			win;
 	SDL_Texture		*textu;
 	// SDL_Texture		*texhud;
 	Uint32			*pixels;
@@ -310,9 +309,12 @@ typedef struct		s_info
 	t_item			wp[11];
 	SDL_Surface		*pistol[3];
 	t_tex			wt[31];
+	SDL_Surface		*wall_tex[8];
+	SDL_Surface		*floor_tex[2];
 	SDL_Surface		*sky[4];
 
-	Uint32			*pixhud;
+	t_player		player;
+	int				tex_x;
 }					t_info;
 
 /*
@@ -434,14 +436,6 @@ void				reset_weapon(t_info *info);
 int					key_press(int keycode, t_info *info);
 void				press_weapon(t_info *info);
 void				press_weapon_2(t_info *info);
-
-/*
-** srcs:			ft_move.c
-*/
-
-int					move(t_info *info);
-void				move_plus_1(t_info *info);
-void				move_plus_2(t_info *info);
 
 /*
 ** srcs:			ft_teleport.c

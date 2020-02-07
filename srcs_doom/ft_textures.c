@@ -3,10 +3,14 @@
 /*                                                              /             */
 /*   ft_textures.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
+<<<<<<< HEAD
 /*   Updated: 2020/02/07 12:41:13 by vasalome    ###    #+. /#+    ###.fr     */
+=======
+/*   Updated: 2020/02/07 15:48:10 by nrivoire    ###    #+. /#+    ###.fr     */
+>>>>>>> 06d87c9eb70c648ae3bf6f0539e0e98328fde281
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -108,8 +112,7 @@ void	texture_calc(t_info *info)
 							 info->wall.floor_distance * info->ray.x_ray_direction;
 	info->wall.floor_x -= floor((info->wall.floor_x));
 
-	info->wt[info->w_j].tex_x = (int)(info->wall.wall_x * \
-			(double)info->wt[info->w_j].img->w);
+	info->wt[info->w_j].tex_x = (int)(info->wall.wall_x * (double)info->wt[info->w_j].img->w);
 	if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
 		info->wt[info->w_j].tex_x = info->wt[info->w_j].img->w - \
 									info->wt[info->w_j].tex_x - 1;
