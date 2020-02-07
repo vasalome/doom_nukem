@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_textures.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/08 18:15:07 by ztrouill    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 15:48:10 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -116,8 +116,7 @@ void	texture_calc(t_info *info)
 							 info->wall.floor_distance * info->ray.x_ray_direction;
 	info->wall.floor_x -= floor((info->wall.floor_x));
 
-	info->wt[info->w_j].tex_x = (int)(info->wall.wall_x * \
-			(double)info->wt[info->w_j].img->w);
+	info->wt[info->w_j].tex_x = (int)(info->wall.wall_x * (double)info->wt[info->w_j].img->w);
 	if (info->wall.side == 0 && info->ray.x_ray_direction > 0)
 		info->wt[info->w_j].tex_x = info->wt[info->w_j].img->w - \
 									info->wt[info->w_j].tex_x - 1;

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 13:53:37 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 12:26:45 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 15:49:28 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,11 +33,24 @@ void			init_textures(t_info *info)
 	info->wt[7].img = IMG_Load("wall/tex/wall8.xpm");
 	info->wt[8].img = IMG_Load("wall/tex/grillage.xpm");
 
-	info->wt[9].img = IMG_Load("wall/tex/floor_1.xpm");
-	info->wt[10].img = IMG_Load("wall/tex/floor_2.xpm");
-	info->wt[11].img = IMG_Load("wall/tex/floor_3.xpm");
+	info->wt[9].img = IMG_Load("wall/tex/floor1.xpm");
+	info->wt[10].img = IMG_Load("wall/tex/floor2.xpm");
 	
 	info->wt[12].img = IMG_Load("wall/tex/door.xpm");
+
+	////
+	info->wall_tex[0] = IMG_Load("wall/tex/wall1.xpm");
+	info->wall_tex[1] = IMG_Load("wall/tex/wall2.xpm");
+	info->wall_tex[2] = IMG_Load("wall/tex/wall3.xpm");
+	info->wall_tex[3] = IMG_Load("wall/tex/wall4.xpm");
+	info->wall_tex[4] = IMG_Load("wall/tex/wall5.xpm");
+	info->wall_tex[5] = IMG_Load("wall/tex/wall6.xpm");
+	info->wall_tex[6] = IMG_Load("wall/tex/wall7.xpm");
+	info->wall_tex[7] = IMG_Load("wall/tex/wall8.xpm");
+	info->wall_tex[8] = IMG_Load("wall/tex/grillage.xpm");
+
+	info->floor_tex[9] = IMG_Load("wall/tex/floor1.xpm");
+	info->floor_tex[10] = IMG_Load("wall/tex/floor2.xpm");
 }
 
 // void	textures_list(t_info *info)
