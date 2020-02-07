@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/07 17:17:13 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 17:28:32 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/07 20:03:26 by nrivoire     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/07 20:03:48 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@ void                which_window_to_display(t_info *info, SDL_Event event)
 	if (info->game == 1)
 	{
 		clear_pixels(info);
-		//draw_skybox(info);
+		draw_skybox(info);
 		ray_casting(info);
 		render_hud(info, &event);
 	}
