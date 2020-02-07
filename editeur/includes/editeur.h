@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:21:37 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 17:41:24 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:34:10 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,9 +17,7 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <math.h>
-# include <stdlib.h>
 # include <fcntl.h>
-# include <pthread.h>
 # include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL.h"
 # include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_surface.h"
 # include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_video.h"

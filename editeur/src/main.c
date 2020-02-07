@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/28 15:26:14 by ebourgeo     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 17:42:45 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:34:53 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -102,7 +102,6 @@ int				main(int argc, char **argv)
 	t_env	*v;
 	int		fd;
 
-	sleep(5);
 	fd = 0;
 	if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);

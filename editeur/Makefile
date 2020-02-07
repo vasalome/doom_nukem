@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/06 17:28:14 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/07 11:34:33 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -69,11 +69,10 @@ PWD := $(shell pwd)
 INC_SDL		=	-I ../frameworks/SDL2.framework/Versions/A/Headers
 INC_SDL		+=	-I ../frameworks/SDL2_ttf.framework/Versions/A/Headers
 INC_SDL		+=	-I ../frameworks/SDL2_image.framework/Versions/A/Headers
-INC_SDL		+=	-I ../frameworks/SDL2_mixer.framework/Headers
 INC_SDL		+=	-I ../frameworks/SDL2_net.framework/Headers
 INC_SDL		+=	-F ../frameworks
 FRAMEWORKSDIR := ../frameworks
-SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -framework SDL2_mixer -rpath $(FRAMEWORKSDIR)
+SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath $(FRAMEWORKSDIR)
 
 #	Compiler
 CC = clang
