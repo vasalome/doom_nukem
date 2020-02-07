@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/04 12:31:45 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:07:03 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 12:32:21 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@ void                which_window_to_display(t_info *info, SDL_Event event)
 	if (info->game == 1)
 	{
 		clear_pixels(info);
-		//ray_casting(info);
+		ray_casting(info);
 		render_hud(info, &event);
 	}
 	else if (info->game == 3)

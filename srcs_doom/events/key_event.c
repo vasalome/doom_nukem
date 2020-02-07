@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 18:39:09 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:11:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 13:12:00 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -118,21 +118,25 @@ static void		mouvement_on(t_info *info, const Uint8 *keyboard_state)
 	{
 	    info->player.move_up = 1;
 	    //info->player.head = 1;
+		printf("up\n");
 	}
 	if (keyboard_state[SDL_SCANCODE_S] || keyboard_state[SDL_SCANCODE_DOWN])
 	{
 	    info->player.move_down = 1;
 	    //info->player.head = 1;
+		printf("down\n");
 	}
 	if (keyboard_state[SDL_SCANCODE_D] || keyboard_state[SDL_SCANCODE_RIGHT])
 	{
 	    info->player.move_right = 1;
 	    //info->player.head = 0;
+		printf("right\n");
 	}
 	if (keyboard_state[SDL_SCANCODE_A] || keyboard_state[SDL_SCANCODE_LEFT])
 	{
 	    info->player.move_left = 1;
 	    //info->player.head = 2;
+		printf("left\n");
 	}
 }
 
