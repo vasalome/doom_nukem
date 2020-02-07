@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 17:18:43 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 17:18:45 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 17:21:32 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,12 +61,12 @@ int				get_hex_test(int mix, int a)
 void			pixel_put(t_info *v, int x, int y, t_rgb color)
 {
 	int		r = (v->pixels[y * WIDTH + x] >> 8) & 0xFF;
-	int		g = 0;//v->pixels[y * WIDTH + x] & 0xFF;
-	int		b = 255;//v->pixels[y * WIDTH + x] & 0xFF;
+	int		g = (v->pixels[y * WIDTH + x] >> 16) & 0xFF;
+	int		b = (v->pixels[y * WIDTH + x] >> 24) & 0xFF;
 	int		a_bef = (v->pixels[y * WIDTH + x] & 0xFF);
-	if (a_bef != 255){
-		printf("AAAAAA %x -> ", (v->pixels[y * WIDTH + x]));
-		printf("%x \n", (v->pixels[y * WIDTH + x] >> 16) & 0xFF);}
+	// if (a_bef != 255){
+	// 	printf("AAAAAA %x -> ", (v->pixels[y * WIDTH + x]));
+	// 	printf("%x \n", (v->pixels[y * WIDTH + x] >> 16) & 0xFF);}
 	// int		mix = (rgb_actu * color.a_actu / 255) + (rgb_bef * color.a_bef * (255 - color.a_actu) / (255*255));
 	// int		new_alpha = color.a_actu + (color.a_bef * (255 - color.a_actu) / 255);
 	int		mix_r = (color.r * color.a / 255) + (r * a_bef * (255 - color.a) / (255*255));
