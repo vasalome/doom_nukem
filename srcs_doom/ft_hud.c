@@ -3,15 +3,38 @@
 /*                                                              /             */
 /*   ft_hud.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/28 15:54:11 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:39:21 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:31:21 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
+
+void	init_hud(t_info *info)
+{
+	info->hud[0] = IMG_Load("hud/hud_gen.png");
+	info->hud[1] = IMG_Load("hud/hud_key.png");
+	info->hud[3] = IMG_Load("hud/head/1/fst_m.png");
+	info->hud[4] = IMG_Load("hud/head/1/fst_r.png");
+	info->hud[5] = IMG_Load("hud/head/1/fst_l.png");
+	info->hud[6] = IMG_Load("hud/head/2/fst_m.png");
+	info->hud[7] = IMG_Load("hud/head/2/fst_r.png");
+	info->hud[8] = IMG_Load("hud/head/2/fst_l.png");
+	info->hud[9] = IMG_Load("hud/head/3/fst_m.png");
+	info->hud[10] = IMG_Load("hud/head/3/fst_r.png");
+	info->hud[11] = IMG_Load("hud/head/3/fst_l.png");
+	info->hud[12] = IMG_Load("hud/head/4/fst_m.png");
+	info->hud[13] = IMG_Load("hud/head/4/fst_r.png");
+	info->hud[14] = IMG_Load("hud/head/4/fst_l.png");
+	info->hud[15] = IMG_Load("hud/head/h/1.png");
+	info->hud[16] = IMG_Load("hud/head/h/2.png");
+	info->hud[17] = IMG_Load("hud/head/h/3.png");
+	info->hud[18] = IMG_Load("hud/head/h/4.png");
+	info->hud[19] = IMG_Load("hud/head/h/dead.png");
+}
 
 void	info_hud(t_info *info)
 {
@@ -109,27 +132,4 @@ void	render_hud(t_info *i, SDL_Event *event)
 	i->player.hit = i->player.life;
 	i->player.backup = event->motion.xrel;
 	info_hud(i);
-}
-
-void	draw_hud(t_info *info)
-{
-	info->hud[0] = IMG_Load("hud/hud_gen.png");
-	info->hud[1] = IMG_Load("hud/hud_key.png");
-	info->hud[3] = IMG_Load("hud/head/1/fst_m.png");
-	info->hud[4] = IMG_Load("hud/head/1/fst_r.png");
-	info->hud[5] = IMG_Load("hud/head/1/fst_l.png");
-	info->hud[6] = IMG_Load("hud/head/2/fst_m.png");
-	info->hud[7] = IMG_Load("hud/head/2/fst_r.png");
-	info->hud[8] = IMG_Load("hud/head/2/fst_l.png");
-	info->hud[9] = IMG_Load("hud/head/3/fst_m.png");
-	info->hud[10] = IMG_Load("hud/head/3/fst_r.png");
-	info->hud[11] = IMG_Load("hud/head/3/fst_l.png");
-	info->hud[12] = IMG_Load("hud/head/4/fst_m.png");
-	info->hud[13] = IMG_Load("hud/head/4/fst_r.png");
-	info->hud[14] = IMG_Load("hud/head/4/fst_l.png");
-	info->hud[15] = IMG_Load("hud/head/h/1.png");
-	info->hud[16] = IMG_Load("hud/head/h/2.png");
-	info->hud[17] = IMG_Load("hud/head/h/3.png");
-	info->hud[18] = IMG_Load("hud/head/h/4.png");
-	info->hud[19] = IMG_Load("hud/head/h/dead.png");
 }

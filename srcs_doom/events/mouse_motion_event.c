@@ -6,12 +6,48 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 19:21:06 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:05:50 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:26:49 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../include_doom/doom.h"
+
+// void	turn_left(t_info *info)
+// {
+// 	if (info->player.turn_left == 1)
+// 	{
+// 		info->fps.rect.y += 500 * info->player.turn_rate_y;
+// 		if (info->fps.rect.y > 0)
+// 			info->fps.rect.y = 0;
+// 		if (info->fps.rect.y < -400)
+// 			info->fps.rect.y = -400;
+// 		info->player.turn_left = 0;	
+// 	}
+// }
+
+// void	turn_right(t_info *info)
+// {
+// 	if (info->player.turn_right == 1)
+// 	{
+// 		info->player.x_old_direction = info->player.x_dir;
+// 		info->player.x_dir = info->player.x_dir *\
+// 			cos(-info->player.turn_rate) - info->player.y_dir *\
+// 			sin(-info->player.turn_rate);
+// 		info->player.y_dir = info->player.x_old_direction *\
+// 			sin(-info->player.turn_rate) + info->player.y_dir *\
+// 			cos(-info->player.turn_rate);
+// 		info->player.x_old_plane = info->player.x_plane;
+// 		info->player.x_plane = info->player.x_plane *\
+// 			cos(-info->player.turn_rate) - info->player.y_plane *\
+// 			sin(-info->player.turn_rate);
+// 		info->player.y_plane = info->player.x_old_plane *\
+// 			sin(-info->player.turn_rate) + info->player.y_plane *\
+// 			cos(-info->player.turn_rate);
+// 		info->player.turn_right = 0;
+// 	}
+// 	turn_left(info);
+// }
 
 void			load_button(t_info *info, int i, SDL_Event e)
 {
@@ -27,8 +63,8 @@ void			load_button(t_info *info, int i, SDL_Event e)
 			&& e.motion.y >= start.y && e.motion.y <= (start.y + size.y))
 	{
 		str = ft_strjoin(" Level ", ft_itoa(i));
-		put_text(info, write_text(str, size.y / 1.34),
-				start.x + 5, start.y + 5);
+		put_text(info, write_text(str, size.y / 1.95),
+				start.x + 5, start.y + 15);
 		free(str);
 		info->button = i - 1;
 	}

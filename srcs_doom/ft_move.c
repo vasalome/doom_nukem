@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_move.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:33:41 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/23 18:56:30 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:15:31 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -384,7 +384,7 @@ int		move(t_info *info)
 		move_plus_4(info);
 		info->raycast = 1;
 	}
-	turn_right(info);
+	//turn_right(info);
 
 	// printf("x = %d\nY = %d\n\n", info->player.x_pos, info->player.y_pos);
 	// if ((info->player.move_up || info->player.move_down ||

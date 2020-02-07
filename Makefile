@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/07 11:09:04 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/07 11:13:28 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -37,12 +37,9 @@ INC_DIR		=	./include_doom/
 
 #	Sources:
 SRCS		=	main_doom.c
-SRCS		+=	ft_init.c
 SRCS		+=	ft_fill_map.c
 SRCS		+=	ft_map.c
-SRCS		+=	ft_keys.c
 SRCS		+=	ft_move.c
-SRCS		+=	ft_mouse.c
 SRCS		+=	ft_teleport.c
 SRCS		+=	ft_ray.c
 SRCS		+=	ft_wall.c
@@ -67,9 +64,9 @@ SRCS		+=	events/mouse_wheel_event.c
 SRCS		+=	draw_tools/put_text.c
 SRCS		+=	draw_tools/ft_put_texture.c
 SRCS		+=	ft_init_texture.c
+SRCS		+=	ft_init.c
 
 HEADERS		=	doom.h
-HEADERS		+=	keys.h
 
 PWD := $(shell pwd)
 

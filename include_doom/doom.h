@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:09:50 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:31:11 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -440,8 +440,6 @@ void				press_weapon_2(t_info *info);
 int					move(t_info *info);
 void				move_plus_1(t_info *info);
 void				move_plus_2(t_info *info);
-void				turn_right(t_info *info);
-void				turn_left(t_info *info);
 
 /*
 ** srcs:			ft_teleport.c
@@ -488,7 +486,7 @@ void				init_clip(t_info *info);
 void	clip_10(t_info *info);
 void	clip_12(t_info *info);
 
-void	draw_hud(t_info *info);
+void	init_hud(t_info *info);
 void	render_hud(t_info *info, SDL_Event *event);
 
 void	info_hud(t_info *info);

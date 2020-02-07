@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 10:05:07 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:30:34 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -422,7 +422,6 @@ void	ray_casting_image(t_info *info)
 
 		//move_doors(info);
 		// draw_skybox(info);
-		draw_hud(info);
 		
 		/* Main frame */
 

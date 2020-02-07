@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:22:24 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:06:55 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:26:57 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ SDL_Surface		*write_text(char *text, int size_font)
 	SDL_Surface	*sur;
 
 	font = NULL;
-	font = TTF_OpenFont("./srcs_doom/draw_tools/bit.ttf", size_font);
+	font = TTF_OpenFont("./srcs_doom/draw_tools/doom.ttf", size_font);
 	if (!font)
 		ft_error("font error");
 	sur = TTF_RenderText_Shaded(font, text, (SDL_Color){0, 0, 0, 255},
