@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 10:31:18 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:09:50 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,6 @@
 # include <SDL_thread.h>
 # include <SDL_timer.h>
 # include <SDL2_ttf/SDL_ttf.h>
-# include <SDL2_mixer/SDL_mixer.h>
 
 # define SKY 3.14159265
 # define WIDTH 1600
@@ -216,13 +215,6 @@ typedef struct		s_item
 	int				hp; // healthpack
 }					t_item;
 
-/*typedef struct		s_record
-{
-	const int		MAX_RECORDING_DEVICES = 10;
-	const int 		MAX_RECORDING_SECONDS = 5;
-	const int 		RECORDING_BUFFER_SECONDS = MAX_RECORDING_SECONDS + 1;
-}					t_record;*/
-
 typedef	struct			s_floor
 {
 	double			dist;
@@ -237,8 +229,6 @@ typedef	struct			s_floor
 	int				texId;
 	int				texId2;
 }					t_floor;
-
-
 
 /*
 ** ----------------------------------------------------------------------
@@ -280,11 +270,9 @@ typedef struct		s_info
 	t_win			win;
 	t_map			map;
 	t_wall			wall;
-	// t_item			head[11];
 	t_item			item;
 	t_tex			flash;
 	t_floor			floor;
-	//t_record		rec;
 	int				w_i;
 	int				w_j;
 	int				shot;

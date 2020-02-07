@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/04 12:31:45 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 10:33:28 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:07:03 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,14 +61,11 @@ void				menu(t_info *info)
 	int				i;
 
 	i = 0;
-	printf("--> %p\n", info->menu[0]);
 	put_texture(info, (t_start){0, 0}, (t_size){WIDTH, HEIGHT}, info->menu[0]);
-	//printf("here\n");
 	put_texture(info, (t_start){WIDTH - (WIDTH / 5 + WIDTH / 8),
 			HEIGHT - (HEIGHT - (HEIGHT / 16))},
 			(t_size){info->menu[2]->w / 1.5, info->menu[2]->h / 2},
 			info->menu[2]);
-	printf("ici\n");
 	while (++i <= 4)
 		menu_button(info, i);
 }
@@ -106,5 +103,6 @@ void				display_doom(t_info *info)
 	}
 	SDL_DestroyRenderer(info->win.ren);
 	SDL_DestroyWindow(info->win.win);
+	TTF_Quit();
 	SDL_Quit();
 }

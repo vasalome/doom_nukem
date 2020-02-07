@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/07 10:01:11 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/07 11:09:04 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -77,11 +77,10 @@ PWD := $(shell pwd)
 INC_SDL		=	-I ./frameworks/SDL2.framework/Versions/A/Headers
 INC_SDL		+=	-I ./frameworks/SDL2_ttf.framework/Versions/A/Headers
 INC_SDL		+=	-I ./frameworks/SDL2_image.framework/Versions/A/Headers
-INC_SDL		+=	-I ./frameworks/SDL2_mixer.framework/Headers
 INC_SDL		+=	-I ./frameworks/SDL2_net.framework/Headers
 INC_SDL		+=	-F ./frameworks
 FRAMEWORKSDIR := $(PWD)/frameworks
-SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_ttf -framework SDL2_image -framework SDL2_mixer -rpath $(FRAMEWORKSDIR)
+SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_ttf -framework SDL2_image -rpath $(FRAMEWORKSDIR)
 DIRECTORY_SDL	=	~/sdl2#$(shell sdl2-config --libs)
 
 #	Objects:

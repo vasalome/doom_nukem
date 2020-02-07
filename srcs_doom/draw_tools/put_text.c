@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   put_text.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/23 11:22:24 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:39:24 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:06:55 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,8 +18,6 @@ SDL_Surface		*write_text(char *text, int size_font)
 	TTF_Font	*font;
 	SDL_Surface	*sur;
 
-	if (TTF_Init() == -1)
-		ft_error("Initialisation error of TFT_Init");
 	font = NULL;
 	font = TTF_OpenFont("./srcs_doom/draw_tools/bit.ttf", size_font);
 	if (!font)
@@ -27,7 +25,6 @@ SDL_Surface		*write_text(char *text, int size_font)
 	sur = TTF_RenderText_Shaded(font, text, (SDL_Color){0, 0, 0, 255},
 			(SDL_Color){255, 255, 255, 255});
 	TTF_CloseFont(font);
-	TTF_Quit();
 	return (sur);
 }
 

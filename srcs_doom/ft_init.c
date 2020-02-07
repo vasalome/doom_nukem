@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 10:30:33 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 11:06:49 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,6 +34,8 @@ void		init_window(t_info *info)
 		ft_error("Échec de la création de la texture");
 	if (!(info->pixels = malloc(sizeof(uint32_t) * (HEIGHT * WIDTH))))
 		ft_error("Échec du malloc de info->pixels");
+	if (TTF_Init() == -1)
+		ft_error("Échec de l'initialisation de la SDL TTF");
 }
 
 void		load_textures(t_info *info)
