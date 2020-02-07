@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_ray.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:35:35 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:06:19 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 10:05:07 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -416,7 +416,7 @@ void	ray_casting_image(t_info *info)
 {
 	if (!(info->player.life - 1 <= 0))
 	{
-		create_img(info);
+		//create_img(info);
 		
 		ray_casting(info);
 

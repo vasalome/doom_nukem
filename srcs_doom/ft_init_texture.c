@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_init_texture.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 13:53:37 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:49:19 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 10:33:13 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,7 @@
 void			init_textures(t_info *info)
 {
 	info->menu[0] = IMG_Load("menu/doom_menu.xpm");
+	printf("%p\n", info->menu[0]);
 	info->menu[1] = IMG_Load("menu/button_menu.xpm");
 	info->menu[2] = IMG_Load("menu/doom_logo.xpm");
 

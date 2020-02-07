@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   display_doom.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/04 12:31:45 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:42:11 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 10:33:28 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,11 +61,14 @@ void				menu(t_info *info)
 	int				i;
 
 	i = 0;
+	printf("--> %p\n", info->menu[0]);
 	put_texture(info, (t_start){0, 0}, (t_size){WIDTH, HEIGHT}, info->menu[0]);
+	//printf("here\n");
 	put_texture(info, (t_start){WIDTH - (WIDTH / 5 + WIDTH / 8),
 			HEIGHT - (HEIGHT - (HEIGHT / 16))},
 			(t_size){info->menu[2]->w / 1.5, info->menu[2]->h / 2},
 			info->menu[2]);
+	printf("ici\n");
 	while (++i <= 4)
 		menu_button(info, i);
 }

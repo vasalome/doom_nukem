@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/06 19:37:41 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/07 10:01:11 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -38,8 +38,6 @@ INC_DIR		=	./include_doom/
 #	Sources:
 SRCS		=	main_doom.c
 SRCS		+=	ft_init.c
-SRCS		+=	ft_init_weapon.c
-SRCS		+=	ft_init_texture.c
 SRCS		+=	ft_fill_map.c
 SRCS		+=	ft_map.c
 SRCS		+=	ft_keys.c

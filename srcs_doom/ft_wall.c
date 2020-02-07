@@ -3,26 +3,26 @@
 /*                                                              /             */
 /*   ft_wall.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:37:11 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:06:20 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 10:02:27 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 
-void	create_img(t_info *info)
-{
-	info->fps.texture = SDL_CreateTexture(info->win.ren, SDL_PIXELFORMAT_RGBA8888, \
-		SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT);
-	info->fps.format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
-	SDL_LockTexture(info->fps.texture, NULL, &info->fps.tmp, &info->fps.pitch);
-	/*info->fps.img = mlx_new_image(info->win.mlx, WIDTH, HEIGHT);
-	info->fps.data = mlx_get_data_addr(info->fps.img, &info->fps.bpp,\
-		&info->fps.sizeline, &info->fps.endian);*/
-}
+// void	create_img(t_info *info)
+// {
+// 	info->fps.texture = SDL_CreateTexture(info->win.ren, SDL_PIXELFORMAT_RGBA8888, \
+// 		SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT);
+// 	info->fps.format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
+// 	SDL_LockTexture(info->fps.texture, NULL, &info->fps.tmp, &info->fps.pitch);
+// 	/*info->fps.img = mlx_new_image(info->win.mlx, WIDTH, HEIGHT);
+// 	info->fps.data = mlx_get_data_addr(info->fps.img, &info->fps.bpp,\
+// 		&info->fps.sizeline, &info->fps.endian);*/
+// }
 
 void	wall_detection_init_y(t_info *info)
 {

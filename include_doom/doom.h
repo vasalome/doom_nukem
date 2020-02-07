@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   doom.h                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 18:02:24 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 20:02:50 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 10:31:18 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -282,7 +282,6 @@ typedef struct		s_info
 	t_wall			wall;
 	// t_item			head[11];
 	t_item			item;
-	t_tex			fps;
 	t_tex			flash;
 	t_floor			floor;
 	//t_record		rec;
@@ -311,6 +310,8 @@ typedef struct		s_info
 	double			zoom;
 	int				raycast;
 	int				testHeight;
+
+	t_tex			fps;
 
 	//
 	SDL_Texture		*textu;
@@ -364,6 +365,11 @@ void				display_doom(t_info *info);
 */
 
 /*
+** srcs:			ft_init_texture.c
+*/
+void				init_textures(t_info *info);
+
+/*
 ** srcs:			ft_init.c
 */
 void				init_window(t_info *info);
@@ -373,22 +379,8 @@ void				init_player(t_info *info);
 void				init_doors(t_info *info);
 
 /*
-** srcs:			ft_init_texture.c
-*/
-void				weapons(t_info *info);;
-void				init_textures(t_info *info);
-
-/*
 ** ----------------------------------------------------------------------
 */
-
-/*
-** srcs:			ft_init_hub.c
-*/
-
-void				icon(t_info *info);
-void				icon_2(t_info *info);
-void				hub_life(t_info *info);
 
 /*
 ** srcs:			ft_fill_map.c
@@ -426,7 +418,7 @@ void				wall_detection(t_info *info);
 void				wall_detection_plus(t_info *info);
 void				wall_detection_init_x(t_info *info);
 void				wall_detection_init_y(t_info *info);
-void				create_img(t_info *info);
+//void				create_img(t_info *info);
 
 /*
 ** srcs:			ft_draw_wall.c
@@ -495,7 +487,6 @@ void				game_over(t_info *info);
 ** srcs:			ft_usage.c
 */
 
-int					red_cross(void);
 int					f_exist(t_info *info);
 int					ft_usage(char *error);
 

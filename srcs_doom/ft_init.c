@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_init.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 20:02:55 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 10:30:33 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,6 @@ void		load_textures(t_info *info)
 {
 	info->w_i = 0;
 	info->w_j = 0;
-	weapons(info);
 	init_textures(info);
 }
 

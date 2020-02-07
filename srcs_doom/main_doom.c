@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main_doom.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:39:34 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 10:32:19 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -596,10 +596,10 @@ static void		init_info(t_info *info, char **argv)
     info->quit = 0;
     info->door = 0;
     info->game = 0;
-    // info->fps.rect.x = 0;
-    // info->fps.rect.y = -200;
-    // info->fps.rect.w = WIDTH;
-    // info->fps.rect.h = HEIGHT + 400;
+    info->fps.rect.x = 0;
+    info->fps.rect.y = -200;
+    info->fps.rect.w = WIDTH;
+    info->fps.rect.h = HEIGHT + 400;
     info->testHeight = 0;
     info->player.head = 1;
     info->shot = 1;
