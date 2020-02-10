@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 20:04:09 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 14:57:14 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:27:53 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -106,7 +106,7 @@ void			draw_wall(int x, int draw_start, int draw_end, t_info *info)
 
 	y = info->player.fov;
 	tex_y = 0;
-	init_and_draw_floor(info, draw_start, draw_end, x);
+	//init_and_draw_floor(info, draw_start, draw_end, x);
 	while (++draw_start < draw_end)
 	{
 		d = draw_start * 256 - (info->win.h + info->testHeight * 2) * 128 +

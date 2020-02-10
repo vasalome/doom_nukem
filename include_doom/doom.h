@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 17:18:19 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 16:06:54 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:24:13 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -114,8 +114,6 @@ typedef struct		s_player
 	float			x_old_direction;
 	float			x_old_plane;
 	float			move_speed;
-	// float			turn_rate;
-	// float			turn_rate_y;
 	float			fov;
 	int				tp[9999];
 	int				tp_index;
@@ -388,8 +386,13 @@ void				draw_wall_plus(int x, int draw_start,
 /*
 ** make_pillar.c
 */
-int					ray_pillar(t_inter *inter, t_pillar p);
 void				make_pillar(t_info *info);
+
+/*
+** make_flat_wall.c
+*/
+void				make_flat_wall_7(t_info *info);
+void				make_flat_wall_8(t_info *info);
 
 /*
 ** ----------------------------------------------------------------------

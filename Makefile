@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/10 15:43:30 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/10 16:28:24 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -65,6 +65,7 @@ SRCS		+=	draw_tools/put_text.c
 SRCS		+=	draw_tools/ft_put_texture.c
 SRCS		+=	raytracing/ft_ray.c
 SRCS		+=	raytracing/make_pillar.c
+SRCS		+=	raytracing/make_flat_wall.c
 SRCS		+=	ft_init_texture.c
 SRCS		+=	ft_init.c
 
