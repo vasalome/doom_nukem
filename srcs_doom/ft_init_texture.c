@@ -19,8 +19,8 @@ void			init_textures(t_info *info)
 	info->menu[1] = IMG_Load("menu/button_menu.xpm");
 	info->menu[2] = IMG_Load("menu/doom_logo.xpm");
 
-	info->pistol[0] = IMG_Load("weapon/pistol/pistol_1.xpm");
-	info->pistol[1] = IMG_Load("weapon/pistol/pistol_2_shot.xpm");
+	info->pistol[0] = IMG_Load("hud/hud_gun.png");
+	info->pistol[1] = IMG_Load("hud/hud_leech.png");
 	info->pistol[2] = IMG_Load("weapon/pistol/pistol_icon.xpm");
 
 	info->wt[0].img = IMG_Load("wall/tex/wall1.xpm");

@@ -476,6 +476,10 @@ void			key_down(t_info *info, const Uint8 *keyboard_state)
 	}
 	if (keyboard_state[SDL_SCANCODE_H])
 		info->testHeight -= 10;
+	if (keyboard_state[SDL_SCANCODE_1])
+		info->item.weapon = 1;
+	if (keyboard_state[SDL_SCANCODE_2])
+		change_item(info);
 }
 
 static void		mouvement_off(t_info *info, const Uint8 *keyboard_state)

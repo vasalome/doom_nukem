@@ -57,6 +57,7 @@ void	info_hud(t_info *info)
 	put_text(info, write_text_hud("/ 6", 35), 1270, 790);
 	put_text(info, write_text_hud(reload, 35), 1270, 825);
 	put_text(info, write_text_hud("mun", 22), 1310, 836);
+	put_weapon(info);
 }
 
 void	render_head_low(t_info *i, SDL_Event *event)

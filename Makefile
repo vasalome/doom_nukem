@@ -55,6 +55,7 @@ SRCS		+=	ft_hud.c
 
 SRCS		+=	ft_items.c
 #SRCS		+=	ft_trigger.c
+SRCS		+=	ft_weapon.c
 
 SRCS		+=	events/display_doom.c
 SRCS		+=	events/key_event.c

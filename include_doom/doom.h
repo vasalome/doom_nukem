@@ -491,4 +491,9 @@ void	reload(t_info *info);
 void    init_items(t_info *info);
 void	shot(t_info *info);
 
+void    put_weapon(t_info *info);
+void    change_item(t_info *info);
+void    omg_he_got_a_gun(t_info *i);
+
+
 #endif

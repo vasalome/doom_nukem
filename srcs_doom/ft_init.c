@@ -80,6 +80,7 @@ void		init_player(t_info *info)
 	info->player.can_trap = 1;
 	info->floor.texId = 9;
 	info->floor.texId2 = 10;
+	info->item.weapon = 1;
 }
 
 void		init_doors(t_info *info)

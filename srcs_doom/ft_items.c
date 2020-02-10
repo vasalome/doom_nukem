@@ -61,6 +61,8 @@ void	shot(t_info *info)
 			info->player.life += 50;
 			if (info->player.life > 100)
 				info->player.life = 100;
+			if (info->item.hp == 0)
+				info->item.weapon = 1;
 		}
 	}
 }
