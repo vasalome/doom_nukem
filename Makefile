@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/10 16:28:24 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/10 17:09:37 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,7 +21,8 @@ NAME_EDITOR	=	editor
 
 #	Compiler:
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -O3 -flto -ffast-math -march=native #-Werror -g
+CFLAGS		=	-Wall -Wextra #-Werror -g
+CFLAGS		+=	-O3 -flto -ffast-math -march=native
 #CFLAGS		+=	-Wunused-command-line-argument
 #CFLAGS		+=	-Wno-error
 #CFLAGS		+=	--cflags --glibs

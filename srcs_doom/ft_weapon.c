@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/28 15:54:11 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 16:51:35 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 17:15:55 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,16 +15,13 @@
 
 void    change_item(t_info *info)
 {
-    if (info->item.hp == 0)
-    {
-        info->item.info_hp = 1;
-    }
-    else if (info->item.hp > 0)
+    if (info->item.hp > 0)
     {
         info->item.weapon = 2;
         info->item.info_hp = 0;
     }
-    
+    else if (info->item.hp == 0)
+        info->item.info_hp = 1;
 }
 
 void    put_weapon(t_info *info)

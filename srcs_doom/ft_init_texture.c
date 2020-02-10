@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 13:53:37 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 16:11:36 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 17:11:22 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,9 +19,9 @@ void			init_textures(t_info *info)
 	info->menu[1] = IMG_Load("menu/button_menu.xpm");
 	info->menu[2] = IMG_Load("menu/doom_logo.xpm");
 
-	info->pistol[0] = IMG_Load("hud/hud_gun.png");
-	info->pistol[1] = IMG_Load("hud/hud_leech.png");
-	info->pistol[2] = IMG_Load("hud/kick.png");
+	info->pistol[0] = IMG_Load("items/gun.png");
+	info->pistol[1] = IMG_Load("items/leech.png");
+	info->pistol[2] = IMG_Load("items/kick.png");
 
 	info->wt[0].img = IMG_Load("wall/tex/wall1.xpm");
 	info->wt[1].img = IMG_Load("wall/tex/wall2.xpm");
