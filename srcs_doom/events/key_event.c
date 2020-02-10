@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 16:46:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 16:46:20 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:47:44 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -453,13 +453,11 @@ void			key_up(t_info *info, const Uint8 *keyboard_state)
 		info->player.move_speed = 0.05;
 	if (keyboard_state[SDL_SCANCODE_F])
 		info->action = 0;
-<<<<<<< HEAD
 	if (keyboard_state[SDL_SCANCODE_C])
 	{
 		//if (info.testHeight < 0)
 		//{
 			info->testHeight = 0;
-			ray_casting_image(info);
 		//}
 	}
 	if (keyboard_state[SDL_SCANCODE_SPACE])
@@ -469,12 +467,9 @@ void			key_up(t_info *info, const Uint8 *keyboard_state)
 	    	//while (info->testHeight != -300)
 	    	//{
 				info->testHeight = 300;
-				ray_casting_image(info);
 	    	//}
 	    //}
 	}
 	if (keyboard_state[SDL_SCANCODE_V])
 		info->item.kick = 0;
-=======
->>>>>>> 54987a2e43935c67cf9bf423f16e817b3add51d5
 }
