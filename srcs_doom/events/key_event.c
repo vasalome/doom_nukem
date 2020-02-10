@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 16:46:18 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 16:47:44 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:57:00 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -421,7 +421,7 @@ void		keys_mouvements(t_info *info, const Uint8 *keyboard_state)
 	}
 }
 
-void			key_down(t_info *info, const Uint8 *keyboard_state)
+void			key(t_info *info, const Uint8 *keyboard_state)
 {
 	if (keyboard_state[SDL_SCANCODE_ESCAPE])
 		info->quit = 1;
@@ -445,31 +445,37 @@ void			key_down(t_info *info, const Uint8 *keyboard_state)
 		change_item(info);
 	if (keyboard_state[SDL_SCANCODE_V])
 		info->item.kick = 1;
-}
-
-void			key_up(t_info *info, const Uint8 *keyboard_state)
-{
-	if (keyboard_state[SDL_SCANCODE_LSHIFT])
-		info->player.move_speed = 0.05;
-	if (keyboard_state[SDL_SCANCODE_F])
-		info->action = 0;
-	if (keyboard_state[SDL_SCANCODE_C])
-	{
-		//if (info.testHeight < 0)
-		//{
-			info->testHeight = 0;
-		//}
-	}
-	if (keyboard_state[SDL_SCANCODE_SPACE])
-	{
-	    //if (info->testHeight < 0)
-	    //{
-	    	//while (info->testHeight != -300)
-	    	//{
-				info->testHeight = 300;
-	    	//}
-	    //}
-	}
-	if (keyboard_state[SDL_SCANCODE_V])
+	else
 		info->item.kick = 0;
 }
+
+// void			key_up(t_info *info, const Uint8 *keyboard_state)
+// {
+// 	printf("la\n");
+// 	if (!keyboard_state[SDL_SCANCODE_LSHIFT])
+// 		info->player.move_speed = 0.05;
+// 	if (!keyboard_state[SDL_SCANCODE_F])
+// 		info->action = 0;
+// 	if (!keyboard_state[SDL_SCANCODE_C])
+// 	{
+// 		//if (info.testHeight < 0)
+// 		//{
+// 			info->testHeight = 0;
+// 		//}
+// 	}
+// 	if (!keyboard_state[SDL_SCANCODE_SPACE])
+// 	{
+// 	    //if (info->testHeight < 0)
+// 	    //{
+// 	    	//while (info->testHeight != -300)
+// 	    	//{
+// 				info->testHeight = 300;
+// 	    	//}
+// 	    //}
+// 	}
+// 	if (!keyboard_state[SDL_SCANCODE_V])
+// 	{
+// 		info->item.kick = 0;
+// 		printf("are u there\n");
+// 	}
+// }

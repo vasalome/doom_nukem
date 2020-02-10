@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/28 15:54:11 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 16:39:34 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:51:35 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ void    kick(t_info *i)
     if (i->item.kick == 1)
     {
         put_texture(i, (t_start){450, 530}, (t_size){237*1.7, 219*1.7}, i->pistol[2]);
-        i->item.weapon = 3;
+        // i->item.weapon = 3; METTRE LE HIT DU KICK
     }
     else if (i->item.kick == 0)
         i->item.weapon = 1;

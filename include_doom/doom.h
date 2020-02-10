@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 16:45:42 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 16:46:32 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:56:36 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -350,8 +350,7 @@ void				mouse_wheel_event(t_info *info, SDL_Event event);
 void		    	mouse_motion_event(t_info *info, SDL_Event event);
 void				mouse_button_up(t_info *info, SDL_Event event);
 void				mouse_button_down(t_info *info, SDL_Event event);
-void				key_up(t_info *info, const Uint8 *keyboard_state);
-void				key_down(t_info *info, const Uint8 *keyboard_state);
+void				key(t_info *info, const Uint8 *keyboard_state);
 
 void				display_doom(t_info *info);
 

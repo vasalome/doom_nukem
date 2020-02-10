@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 16:45:56 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 16:46:03 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:56:53 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,10 +88,8 @@ void				display_doom(t_info *info)
 		keyboard_state = SDL_GetKeyboardState(NULL);
 	    while (SDL_PollEvent(&event))
 		{
-			if (event.type == SDL_KEYDOWN)
-				key_down(info, keyboard_state);
-			if (event.type == SDL_KEYUP)
-				key_up(info, keyboard_state);
+			if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
+				key(info, keyboard_state);
 			if (event.type == SDL_MOUSEBUTTONDOWN) 
 				mouse_button_down(info, event);
 			if (event.type == SDL_MOUSEBUTTONUP)
