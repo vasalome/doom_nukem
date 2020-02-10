@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 11:50:44 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:06:00 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,14 +65,8 @@ void		init_player(t_info *info)
 	info->player.y_dir = 0;
 	info->player.x_plane = 0;
 	info->player.y_plane = 0.66;
-	// info->player.move_down = 0;
-	// info->player.move_up = 0;
-	// info->player.move_left = 0;
-	// info->player.move_right = 0;
-	info->player.turn_rate = 0.1;
-	info->player.turn_rate_y = 0.1;
 	info->player.fov = 2;
-	info->player.move_speed = 0.05;
+	info->player.move_speed = 0.1;
 	info->player.tp_index = 0;
 	info->player.life = 100;
 	info->player.can_trap = 1;

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 20:03:26 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 12:03:39 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 15:06:46 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,13 +27,14 @@ void				clear_pixels(t_info *info)
 	}
 }
 
-void                which_window_to_display(t_info *info, SDL_Event event)
+void                which_window_to_display(t_info *info, SDL_Event event, const Uint8*	keyboard_state)
 {
 	int				i;
 
 	i = -1;
 	if (info->game == 1)
 	{
+		keys_mouvements(info, keyboard_state);
 		SDL_ShowCursor(SDL_DISABLE);
 		clear_pixels(info);
 		//draw_skybox(info);
@@ -101,7 +102,7 @@ void				display_doom(t_info *info)
 		}
 		if (event.type == SDL_QUIT)
 			info->quit = 1;
-        which_window_to_display(info, event);
+        which_window_to_display(info, event, keyboard_state);
 		SDL_UpdateTexture(info->textu, NULL, info->pixels, sizeof(uint32_t) * WIDTH);
 		SDL_RenderCopy(info->win.ren, info->textu, NULL, NULL);
 		SDL_RenderPresent(info->win.ren);

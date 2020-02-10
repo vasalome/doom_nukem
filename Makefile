@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/10 10:49:39 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/10 15:43:30 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -30,7 +30,7 @@ CFLAGS		=	-Wall -Wextra -O3 -flto -ffast-math -march=native #-Werror -g
 
 #	Directory:
 SRCS_DIR	=	./srcs_doom/
-DIR			=	{events,draw_tools}
+DIR			=	{events,draw_tools,raytracing}
 OBJ_DIR		=	./objs_doom/
 INC_DIR		=	./include_doom/
 #INC_DIR_SDL	=	./SDL_include/
@@ -41,7 +41,6 @@ SRCS		+=	ft_fill_map.c
 SRCS		+=	ft_map.c
 SRCS		+=	ft_move.c
 SRCS		+=	ft_teleport.c
-SRCS		+=	ft_ray.c
 SRCS		+=	ft_wall.c
 SRCS		+=	ft_draw_wall.c
 SRCS		+=	ft_skybox.c
@@ -64,6 +63,8 @@ SRCS		+=	events/mouse_motion_event.c
 SRCS		+=	events/mouse_wheel_event.c
 SRCS		+=	draw_tools/put_text.c
 SRCS		+=	draw_tools/ft_put_texture.c
+SRCS		+=	raytracing/ft_ray.c
+SRCS		+=	raytracing/make_pillar.c
 SRCS		+=	ft_init_texture.c
 SRCS		+=	ft_init.c
 
