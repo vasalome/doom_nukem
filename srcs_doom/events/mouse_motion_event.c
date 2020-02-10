@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 20:04:01 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 12:33:43 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 12:36:36 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,9 +30,9 @@
 
 void	turn(t_info *info, int xrel, int yrel)
 {
-	//info->player.x_old_direction = info->player.x_dir;
-	//info->player.x_dir = info->player.x_dir * cos(-info->player.turn_rate) - info->player.y_dir * sin(-info->player.turn_rate);
-	//info->player.y_dir = info->player.x_old_direction * sin(-info->player.turn_rate) + info->player.y_dir * cos(-info->player.turn_rate);
+	info->player.x_old_direction = info->player.x_dir;
+	info->player.x_dir = info->player.x_dir * cos(-info->player.turn_rate) - info->player.y_dir * sin(-info->player.turn_rate);
+	info->player.y_dir = info->player.x_old_direction * sin(-info->player.turn_rate) + info->player.y_dir * cos(-info->player.turn_rate);
 	info->player.x_old_plane = info->player.x_plane;
 	info->player.x_plane = info->player.x_plane * cos(-info->player.turn_rate) - info->player.y_plane * sin(-info->player.turn_rate);
 	info->player.y_plane = info->player.x_old_plane * sin(-info->player.turn_rate) + info->player.y_plane * cos(-info->player.turn_rate);
