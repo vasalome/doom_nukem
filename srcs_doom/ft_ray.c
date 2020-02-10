@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 17:20:23 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 11:32:14 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 13:59:04 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,7 +77,7 @@ void	ray_casting_init(t_info *info, int x)
 	info->ray.y_ray_direction = info->player.y_dir + info->player.y_plane *\
 		info->player.x_camera;
 //	printf("%f %f\n", info->ray.x_ray_direction, info->ray.x_ray_direction);
-	
+
 	info->map.x = (int)info->player.x_pos;
 	info->map.y = (int)info->player.y_pos;
 	info->wall.alpha = 0;

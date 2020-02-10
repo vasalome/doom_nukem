@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 20:04:01 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 12:36:36 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:29:10 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,27 +15,21 @@
 
 // void	turn_left(t_info *info, int xrel)
 // {
-// 	//info->fps.rect.y += 500 * (xrel * info->player.turn_rate_y);
-// 	//if (info->fps.rect.y > 0)
-// 	//	info->fps.rect.y = 0;
-// 	//if (info->fps.rect.y < -400)
-// 	//	info->fps.rect.y = -400;
-// 	info->player.x_old_direction = info->player.x_dir;
-// 	info->player.x_dir = info->player.x_dir * cos(-info->player.turn_rate * xrel) - info->player.y_dir * sin(-info->player.turn_rate * xrel);
-// 	info->player.y_dir = info->player.x_old_direction * sin(-info->player.turn_rate * xrel) + info->player.y_dir * cos(-info->player.turn_rate * xrel);
-// 	info->player.x_old_plane = info->player.x_plane;
-// 	info->player.x_plane = info->player.x_plane * cos(-info->player.turn_rate * xrel) - info->player.y_plane * sin(-info->player.turn_rate * xrel);
-// 	info->player.y_plane = info->player.x_old_plane * sin(-info->player.turn_rate * xrel) + info->player.y_plane * cos(-info->player.turn_rate * xrel);
+	// info->fps.rect.y += 500 * (xrel * info->player.turn_rate_y);
+	// if (info->fps.rect.y > 0)
+	// 	info->fps.rect.y = 0;
+	// if (info->fps.rect.y < -400)
+	// 	info->fps.rect.y = -400;
 // }
 
-void	turn(t_info *info, int xrel, int yrel)
+void	turn(t_info *info, int xrel)
 {
 	info->player.x_old_direction = info->player.x_dir;
-	info->player.x_dir = info->player.x_dir * cos(-info->player.turn_rate) - info->player.y_dir * sin(-info->player.turn_rate);
-	info->player.y_dir = info->player.x_old_direction * sin(-info->player.turn_rate) + info->player.y_dir * cos(-info->player.turn_rate);
+	info->player.x_dir = info->player.x_dir * cos(-xrel * 0.002) - info->player.y_dir * sin(-xrel * 0.002);
+	info->player.y_dir = info->player.x_old_direction * sin(-xrel * 0.002) + info->player.y_dir * cos(-xrel * 0.002);
 	info->player.x_old_plane = info->player.x_plane;
-	info->player.x_plane = info->player.x_plane * cos(-info->player.turn_rate) - info->player.y_plane * sin(-info->player.turn_rate);
-	info->player.y_plane = info->player.x_old_plane * sin(-info->player.turn_rate) + info->player.y_plane * cos(-info->player.turn_rate);
+	info->player.x_plane = info->player.x_plane * cos(-xrel * 0.002) - info->player.y_plane * sin(-xrel * 0.002);
+	info->player.y_plane = info->player.x_old_plane * sin(-xrel * 0.002) + info->player.y_plane * cos(-xrel * 0.002);
 }
 
 void			load_button(t_info *info, int i, SDL_Event e)
@@ -68,14 +62,14 @@ void			mouse_motion_event(t_info *info, SDL_Event event)
 	i = 0;
 	if (info->game == 1)
 	{
-		//info->player.turn_right = 1;
-		//info->player.turn_left = 1;
-		//info->player.turn_rate = -event.motion.xrel * 0.02;
-		//info->player.turn_rate_y = event.motion.yrel * 0.02;
-		if (event.motion.xrel > 0)
-			turn(info, event.motion.xrel, event.motion.yrel);
-		else if (event.motion.xrel < 0)
-			turn(info, -event.motion.xrel, event.motion.yrel);
+		if (event.motion.xrel != 0)
+		{
+			if (event.motion.xrel < 0)
+				turn(info, event.motion.xrel);
+			if (event.motion.xrel > 0)
+				turn(info, event.motion.xrel);
+		}
+		SDL_SetRelativeMouseMode(SDL_ENABLE);
 		SDL_WarpMouseInWindow(info->win.win, WIDTH / 2, HEIGHT / 2);
 	}
 	else if (info->game == 2)
