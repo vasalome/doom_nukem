@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   key_event.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 20:03:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 11:54:09 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:35:22 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -468,6 +468,8 @@ void			key_down(t_info *info, const Uint8 *keyboard_state)
 		info->item.weapon = 1;
 	if (keyboard_state[SDL_SCANCODE_2])
 		change_item(info);
+	if (keyboard_state[SDL_SCANCODE_V])
+		info->item.kick = 1;
 }
 
 void			key_up(t_info *info, const Uint8 *keyboard_state)
@@ -495,4 +497,6 @@ void			key_up(t_info *info, const Uint8 *keyboard_state)
 	    	//}
 	    //}
 	}
+	if (keyboard_state[SDL_SCANCODE_V])
+		info->item.kick = 0;
 }

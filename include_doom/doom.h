@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   doom.h                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 17:18:19 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 12:03:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:35:36 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -210,7 +210,9 @@ typedef struct		s_item
 	int				key;
 	int				ammo;
 	int				reload;
-	int				hp; // healthpack
+	int				hp;
+	int				info_hp;
+	int				kick;
 }					t_item;
 
 typedef	struct			s_floor
@@ -493,6 +495,6 @@ void	shot(t_info *info);
 void    put_weapon(t_info *info);
 void    change_item(t_info *info);
 void    omg_he_got_a_gun(t_info *i);
-
+void    kick(t_info *i);
 
 #endif

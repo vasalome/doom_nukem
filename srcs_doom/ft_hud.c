@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_hud.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/28 15:54:11 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 11:31:21 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:10:10 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,18 +66,18 @@ void	render_head_low(t_info *i, SDL_Event *event)
 	{
 		if (event->motion.xrel == i->player.backup || event->motion.xrel == 0)
 			put_texture(i, (t_start){75, 537}, (t_size){120, 145}, i->hud[9]);
-		else if (event->motion.xrel < 0)
-			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[10]);
 		else if (event->motion.xrel > 0)
+			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[10]);
+		else if (event->motion.xrel < 0)
 			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[11]);
 	}
 	else if (i->player.life > 0)
 	{
 		if (event->motion.xrel == i->player.backup || event->motion.xrel == 0)
 			put_texture(i, (t_start){75, 537}, (t_size){120, 145}, i->hud[12]);
-		else if (event->motion.xrel < 0)
-			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[13]);
 		else if (event->motion.xrel > 0)
+			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[13]);
+		else if (event->motion.xrel < 0)
 			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[14]);
 	}
 }
@@ -88,18 +88,18 @@ void	render_head(t_info *i, SDL_Event *event)
 	{
 		if (event->motion.xrel == i->player.backup || event->motion.xrel == 0)
 			put_texture(i, (t_start){75, 537}, (t_size){120, 145}, i->hud[3]);
-		else if (event->motion.xrel < 0)
-			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[4]);
 		else if (event->motion.xrel > 0)
+			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[4]);
+		else if (event->motion.xrel < 0)
 			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[5]);
 	}
 	else if (i->player.life > 60 && i->player.life == i->player.hit)
 	{
 		if (event->motion.xrel == i->player.backup || event->motion.xrel == 0)
 			put_texture(i, (t_start){75, 537}, (t_size){120, 145}, i->hud[6]);
-		else if (event->motion.xrel < 0)
-			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[7]);
 		else if (event->motion.xrel > 0)
+			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[7]);
+		else if (event->motion.xrel < 0)
 			put_texture(i, (t_start){75, 535}, (t_size){120, 145}, i->hud[8]);
 	}
 	else if (i->player.life > 0 && i->player.life == i->player.hit)

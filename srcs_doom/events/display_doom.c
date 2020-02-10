@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   display_doom.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 20:03:26 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 12:03:39 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:43:56 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,6 +38,7 @@ void                which_window_to_display(t_info *info, SDL_Event event)
 		clear_pixels(info);
 		//draw_skybox(info);
 		ray_casting(info);
+		kick(info);
 		omg_he_got_a_gun(info);
 		render_hud(info, &event);
 	}

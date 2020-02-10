@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_init_texture.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 13:53:37 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 18:27:14 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:11:36 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ void			init_textures(t_info *info)
 
 	info->pistol[0] = IMG_Load("hud/hud_gun.png");
 	info->pistol[1] = IMG_Load("hud/hud_leech.png");
-	info->pistol[2] = IMG_Load("weapon/pistol/pistol_icon.xpm");
+	info->pistol[2] = IMG_Load("hud/kick.png");
 
 	info->wt[0].img = IMG_Load("wall/tex/wall1.xpm");
 	info->wt[1].img = IMG_Load("wall/tex/wall2.xpm");

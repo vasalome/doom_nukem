@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 13:52:14 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:39:28 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:34:25 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,6 +72,7 @@ void	init_items(t_info *info)
 	info->item.weapon = 1;
 	info->item.ammo = 6;
 	info->item.reload = 0;
-	info->item.hp = 0;
+	info->item.hp = 1;
 	info->item.key = 0;
+	info->item.kick = 0;
 }
