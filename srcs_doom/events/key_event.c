@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 20:03:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 20:03:21 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 11:54:09 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -393,19 +393,13 @@ static void		mouvement_on(t_info *info, const Uint8 *keyboard_state)
 {
 	if (keyboard_state[SDL_SCANCODE_W] || keyboard_state[SDL_SCANCODE_UP])
 	{
-		//move_plus_1(info);
-		printf("up %f %f\n", info->player.x_dir, info->player.y_dir);
 		if (info->map.map[(int)(info->player.x_pos + info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
 			info->player.x_pos += info->player.x_dir * info->player.move_speed;
 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos + info->player.y_dir * info->player.move_speed)].clip == 1)
 			info->player.y_pos += info->player.y_dir * info->player.move_speed;
-		info->raycast = 1;
 	}
 	if (keyboard_state[SDL_SCANCODE_S] || keyboard_state[SDL_SCANCODE_DOWN])
 	{
-		//move_plus_2(info);
-		info->raycast = 1;
-		printf("down %f %f\n", info->player.x_dir, info->player.y_dir);
 		if (info->map.map[(int)(info->player.x_pos - info->player.x_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
 			info->player.x_pos -= info->player.x_dir * info->player.move_speed;
 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos - info->player.y_dir * info->player.move_speed)].clip == 1)
@@ -413,9 +407,6 @@ static void		mouvement_on(t_info *info, const Uint8 *keyboard_state)
 	}
 	if (keyboard_state[SDL_SCANCODE_D] || keyboard_state[SDL_SCANCODE_RIGHT])
 	{
-		//move_plus_4(info);
-		printf("right %f %f\n", info->player.x_dir, info->player.y_dir);
-		info->raycast = 1;
 		if (info->map.map[(int)(info->player.x_pos + info->player.y_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
 			info->player.x_pos += info->player.y_dir * info->player.move_speed;
 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos - info->player.x_dir * info->player.move_speed)].clip == 1)
@@ -423,9 +414,6 @@ static void		mouvement_on(t_info *info, const Uint8 *keyboard_state)
 	}
 	if (keyboard_state[SDL_SCANCODE_A] || keyboard_state[SDL_SCANCODE_LEFT])
 	{
-		//move_plus_3(info);
-		printf("left %f %f\n", info->player.x_dir, info->player.y_dir);
-		info->raycast = 1;
 		if (info->map.map[(int)(info->player.x_pos - info->player.y_dir * info->player.move_speed)][(int)(info->player.y_pos)].clip == 1)
 			info->player.x_pos -= info->player.y_dir * info->player.move_speed;
 		if (info->map.map[(int)(info->player.x_pos)][(int)(info->player.y_pos + info->player.x_dir * info->player.move_speed)].clip == 1)
@@ -482,21 +470,8 @@ void			key_down(t_info *info, const Uint8 *keyboard_state)
 		change_item(info);
 }
 
-static void		mouvement_off(t_info *info, const Uint8 *keyboard_state)
-{
-	if (keyboard_state[SDL_SCANCODE_W] || keyboard_state[SDL_SCANCODE_UP])
-	    info->player.move_up = 0;
-	if (keyboard_state[SDL_SCANCODE_S] || keyboard_state[SDL_SCANCODE_DOWN])
-	    info->player.move_down = 0;
-	if (keyboard_state[SDL_SCANCODE_D] || keyboard_state[SDL_SCANCODE_RIGHT])
-	    info->player.move_right = 0;
-	if (keyboard_state[SDL_SCANCODE_A] || keyboard_state[SDL_SCANCODE_LEFT])
-	    info->player.move_left = 0;
-}
-
 void			key_up(t_info *info, const Uint8 *keyboard_state)
 {
-	mouvement_off(info, keyboard_state);
 	if (keyboard_state[SDL_SCANCODE_LSHIFT])
 		info->player.move_speed = 0.05;
 	if (keyboard_state[SDL_SCANCODE_F])

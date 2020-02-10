@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/04 11:42:11 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/04/11 16:23:09 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/10 10:50:44 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,7 +22,7 @@ NAME		=	libft.a
 #	Compiler:
 CC			=	gcc
 CCG			=	clang
-CFLAGS		=	-Wall -Wextra -Werror# -ggdb -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror # -ggdb -fsanitize=address
 #CFLAGS		+=	-pedantic -std=c99 -03 -march=native -pipe -flto
 CSOFLAGS	=	-shared -fPIC
 

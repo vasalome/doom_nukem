@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 20:04:09 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 20:04:28 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 10:53:59 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -127,7 +127,7 @@ void			draw_wall(int x, int draw_start, int draw_end, t_info *info)
 
 	y = info->player.fov;
 	tex_y = 0;
-	init_and_draw_floor(info, draw_start, draw_end, x);
+	//init_and_draw_floor(info, draw_start, draw_end, x);
 	while (++draw_start < draw_end)
 	{
 		d = draw_start * 256 - (info->win.h + info->testHeight * 2) * 128 +
@@ -137,5 +137,7 @@ void			draw_wall(int x, int draw_start, int draw_end, t_info *info)
 		data = get_pixel(info->wt[info->w_j].img, info->wt[info->w_j].tex_x, tex_y);
 		SDL_GetRGBA(data, info->wt[info->w_j].img->format, &col.r, &col.g, &col.b, &col.a);
 		pixel_put(info, x, draw_start, (t_rgb){col.r, col.g, col.b, col.a});
+		//pixel_put(info, x, draw_start, (t_rgb){255, 255, 255, 255});
+
 	}
 }

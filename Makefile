@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/11/26 17:27:09 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/07 11:13:28 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/10 10:49:39 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,7 +21,7 @@ NAME_EDITOR	=	editor
 
 #	Compiler:
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra #-Werror -g
+CFLAGS		=	-Wall -Wextra -O3 -flto -ffast-math -march=native #-Werror -g
 #CFLAGS		+=	-Wunused-command-line-argument
 #CFLAGS		+=	-Wno-error
 #CFLAGS		+=	--cflags --glibs

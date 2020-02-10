@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 17:18:19 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 18:27:23 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 12:03:34 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,16 +32,16 @@
 
 typedef	struct		s_intersect
 {
-	double			p0x;
-	double			p0y;
-	double			p1x;
-	double			p1y;
-	double			p2x;
-	double			p2y;
-	double			p3x;
-	double			p3y;
-	double			x;
-	double			y;
+	float			p0x;
+	float			p0y;
+	float			p1x;
+	float			p1y;
+	float			p2x;
+	float			p2y;
+	float			p3x;
+	float			p3y;
+	float			x;
+	float			y;
 }					t_inter;
 
 typedef struct		s_fillmap
@@ -87,42 +87,40 @@ typedef struct		s_tex
 
 typedef struct		s_ray
 {
-	double			x_ray_position;
-	double			y_ray_position;
-	double			x_ray_direction;
-	double			y_ray_direction;
-	double			x_side_distance;
-	double			y_side_distance;
-	double			x_delta_distance;
-	double			y_delta_distance;
-	double			intersectDist1;
-	double			intersectDist2;
+	float			x_ray_position;
+	float			y_ray_position;
+	float			x_ray_direction;
+	float			y_ray_direction;
+	float			x_side_distance;
+	float			y_side_distance;
+	float			x_delta_distance;
+	float			y_delta_distance;
+	float			intersectDist1;
+	float			intersectDist2;
 }					t_ray;
 
 typedef struct		s_player
 {
-	double			x_camera;
-	double			height;
-	double			x_pos;
-	double			y_pos;
-	double			x_old_position;
-	double			y_old_position;
-	double			x_dir;
-	double			y_dir;
-	double			x_plane;
-	double			y_plane;
-	double			x_old_direction;
-	double			x_old_plane;
-	double			move_speed;
-	double			turn_rate;
-	double			turn_rate_y;
-	int				turn_right;
-	int				turn_left;
-	int				move_up;
-	int				move_down;
-	int				move_left;
-	int				move_right;
-	double			fov;
+	float			x_camera;
+	float			height;
+	float			x_pos;
+	float			y_pos;
+	float			x_old_position;
+	float			y_old_position;
+	float			x_dir;
+	float			y_dir;
+	float			x_plane;
+	float			y_plane;
+	float			x_old_direction;
+	float			x_old_plane;
+	float			move_speed;
+	float			turn_rate;
+	float			turn_rate_y;
+	// int				move_up;
+	// int				move_down;
+	// int				move_left;
+	// int				move_right;
+	float			fov;
 	int				tp[9999];
 	int				tp_index;
 	int				life;
@@ -134,12 +132,12 @@ typedef struct		s_player
 	int				head;
 	
 	//test collision
-	double			x_bef;
-	double			y_bef;
-	double			x_save;
-	double			y_save;
-	double			x_lim;
-	double			y_lim;
+	float			x_bef;
+	float			y_bef;
+	float			x_save;
+	float			y_save;
+	float			x_lim;
+	float			y_lim;
 }					t_player;
 
 typedef	struct		s_form
@@ -151,7 +149,7 @@ typedef	struct		s_form
 	int				e_tex;
 	int				s_tex;
 	int				w_tex;
-	double			wall_h;
+	float			wall_h;
 	int				tp_x;
 	int				tp_y;
 	int				tp;
@@ -168,14 +166,14 @@ typedef struct		s_map
 	int				hit;
 	int				width;
 	int				height;
-	double			x_spawn;
-	double			y_spawn;
-	double			xOffset;
-	double			yOffset;
+	float			x_spawn;
+	float			y_spawn;
+	float			xOffset;
+	float			yOffset;
 	char			*name;
 	t_form			**map;
 	int				**door_state;
-	double			**door_offset;
+	float			**door_offset;
 }					t_map;
 
 typedef struct		s_wall
@@ -189,11 +187,11 @@ typedef struct		s_wall
 	int				g;
 	int				b;
 	int				a;
-	double			wall_distance;
-	double			floor_distance;
+	float			wall_distance;
+	float			floor_distance;
 	int				x;
-	double			wall_x;
-	double			floor_x;
+	float			wall_x;
+	float			floor_x;
 	int				trap;
 	int				alpha;
 }					t_wall;
@@ -217,14 +215,14 @@ typedef struct		s_item
 
 typedef	struct			s_floor
 {
-	double			dist;
-	double			weight;
-	double			currentFloorX;
-	double			currentFloorY;
+	float			dist;
+	float			weight;
+	float			currentFloorX;
+	float			currentFloorY;
 	int				floorTexX;
 	int				floorTexY;
-	double			floorXWall;
-	double			floorYWall;
+	float			floorXWall;
+	float			floorYWall;
 	int				side;
 	int				texId;
 	int				texId2;
@@ -286,14 +284,14 @@ typedef struct		s_info
 	char			use;
 	int				min;
 	int				door;
-	double			delta_time;
+	float			delta_time;
 	int				button;	
 	int				game;	
-	double			xOffsetMenu;
-	double			yOffsetMenu;
-	double			xrel;
-	double			yrel;
-	double			zoom;
+	float			xOffsetMenu;
+	float			yOffsetMenu;
+	float			xrel;
+	float			yrel;
+	float			zoom;
 	int				raycast;
 	int				testHeight;
 
@@ -312,6 +310,7 @@ typedef struct		s_info
 	//SDL_Surface		*wall_tex[8];
 	//SDL_Surface		*floor_tex[2];
 	SDL_Surface		*sky[4];
+	uint32_t		fps_now;
 
 	t_player		player;
 	int				tex_x;

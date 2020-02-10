@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/08 17:53:57 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 14:37:28 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 10:48:46 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -401,7 +401,7 @@
 //             {
 //                 ray_casting_image(&info);
 //                 end = clock();
-// 		        info.delta_time = ((double)(end - start)) / CLOCKS_PER_SEC;
+// 		        info.delta_time = ((float)(end - start)) / CLOCKS_PER_SEC;
 //                 info.raycast = 0;
 //             }
             

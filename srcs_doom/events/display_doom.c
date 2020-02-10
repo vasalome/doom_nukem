@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 20:03:26 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 20:03:48 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 12:03:39 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,8 +34,9 @@ void                which_window_to_display(t_info *info, SDL_Event event)
 	i = -1;
 	if (info->game == 1)
 	{
+		SDL_ShowCursor(SDL_DISABLE);
 		clear_pixels(info);
-		draw_skybox(info);
+		//draw_skybox(info);
 		ray_casting(info);
 		omg_he_got_a_gun(info);
 		render_hud(info, &event);
@@ -65,10 +66,10 @@ void				menu(t_info *info)
 	i = 0;
 	put_texture(info, (t_start){0, 0}, (t_size){WIDTH, HEIGHT}, info->menu[0]);
 	put_texture(info, (t_start){WIDTH - (WIDTH / 5 + WIDTH / 8),
-			HEIGHT - (HEIGHT - (HEIGHT / 16))},
-			(t_size){info->menu[2]->w / 1.5, info->menu[2]->h / 2},
-			info->menu[2]);
-	while (++i <= 4)
+								HEIGHT - (HEIGHT - (HEIGHT / 16))},
+					(t_size){info->menu[2]->w / 1.5, info->menu[2]->h / 2},
+					info->menu[2]);
+	while (++i < 4)
 		menu_button(info, i);
 }
 
@@ -76,13 +77,15 @@ void				display_doom(t_info *info)
 {
 	const Uint8*	keyboard_state;
 	SDL_Event		event;
+	uint32_t		fps;
 
 	menu(info);
 	while (!info->quit)
 	{
+		fps = SDL_GetTicks();
+		keyboard_state = SDL_GetKeyboardState(NULL);
 	    while (SDL_PollEvent(&event))
 		{
-			keyboard_state = SDL_GetKeyboardState(NULL);
 			if (event.type == SDL_KEYDOWN)
 				key_down(info, keyboard_state);
 			if (event.type == SDL_KEYUP)
@@ -102,6 +105,12 @@ void				display_doom(t_info *info)
 		SDL_UpdateTexture(info->textu, NULL, info->pixels, sizeof(uint32_t) * WIDTH);
 		SDL_RenderCopy(info->win.ren, info->textu, NULL, NULL);
 		SDL_RenderPresent(info->win.ren);
+		info->fps_now += (SDL_GetTicks() - fps);
+        if (info->fps_now >= 1000)
+        {
+            info->fps_now = 0;
+            printf("%u\n", 1000 / (SDL_GetTicks() - fps));
+        }
 	}
 	SDL_DestroyRenderer(info->win.ren);
 	SDL_DestroyWindow(info->win.win);

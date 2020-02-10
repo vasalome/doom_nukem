@@ -3,17 +3,17 @@
 /*                                                              /             */
 /*   ft_skybox.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/19 14:00:48 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 19:39:31 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 10:48:46 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 /*
-void	layer_2(double front_offset, t_info *info)
+void	layer_2(float front_offset, t_info *info)
 {
 	info->wt[25].rect.x = front_offset * 2;
 	info->wt[25].rect.y = (info->fps.rect.y) - 200;
@@ -33,7 +33,7 @@ void	layer_2(double front_offset, t_info *info)
 	info->wt[28].rect.h = HEIGHT;
 }
 
-void	layer_1(double front_offset, t_info *info)
+void	layer_1(float front_offset, t_info *info)
 {
 	info->wt[20].rect.x = front_offset * 4;
 	info->wt[20].rect.y = (info->fps.rect.y) - 200;
@@ -93,9 +93,9 @@ void	init_sky_1(t_info *info)
 
 void	draw_skybox(t_info *info)
 {
-	double dir_offset;
-	double fore_offset;
-	double front_offset;
+	float dir_offset;
+	float fore_offset;
+	float front_offset;
 
 	dir_offset = (atan2(info->player.y_dir, info->player.x_dir) + SKY) / SKY;
 	fore_offset = floor(dir_offset * WIDTH);

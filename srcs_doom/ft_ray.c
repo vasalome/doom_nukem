@@ -3,22 +3,22 @@
 /*                                                              /             */
 /*   ft_ray.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 17:20:23 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 17:20:25 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 11:32:14 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include_doom/doom.h"
 
-int     ray_circ(t_inter *inter, double p1x, double p1y, double p2x, double p2y, double scx, double scy, double r)
+int     ray_circ(t_inter *inter, float p1x, float p1y, float p2x, float p2y, float scx, float scy, float r)
 {
-    double a, b, c;
-    double bb4ac;
-	double dp1 = 0;
-	double dp2 = 0;
+    float a, b, c;
+    float bb4ac;
+	float dp1 = 0;
+	float dp2 = 0;
 	
     dp1 = p2x - p1x;
     dp2 = p2y - p1y;
@@ -38,13 +38,13 @@ int     ray_circ(t_inter *inter, double p1x, double p1y, double p2x, double p2y,
 
 void	intersectLine(t_inter *inter)
 {
-	double	A1 = inter->p1y - inter->p0y;
-	double	B1 = inter->p0x - inter->p1x;
-	double	C1 = A1 * inter->p0x + B1 * inter->p0y;
-	double	A2 = inter->p3y - inter->p2y;
-	double	B2 = inter->p2x - inter->p3x;
-	double	C2 = A2 * inter->p2x + B2 * inter->p2y;
-	double	denominator = A1 * B2 - A2 * B1;
+	float	A1 = inter->p1y - inter->p0y;
+	float	B1 = inter->p0x - inter->p1x;
+	float	C1 = A1 * inter->p0x + B1 * inter->p0y;
+	float	A2 = inter->p3y - inter->p2y;
+	float	B2 = inter->p2x - inter->p3x;
+	float	C2 = A2 * inter->p2x + B2 * inter->p2y;
+	float	denominator = A1 * B2 - A2 * B1;
 
 	inter->x = (B2 * C1 - B1 * C2) / denominator;
 	inter->y = (A1 * C2 - A2 * C1) / denominator;
@@ -69,13 +69,14 @@ void	dda(t_info *info)
 void	ray_casting_init(t_info *info, int x)
 {
 	//int angleSide = 0;
-	info->player.x_camera = 2 * x / (double)(info->win.w) - 1;
+	info->player.x_camera = 2 * x / (float)(info->win.w) - 1;
 	info->ray.x_ray_position = info->player.x_pos;
 	info->ray.y_ray_position = info->player.y_pos;
 	info->ray.x_ray_direction = info->player.x_dir + info->player.x_plane *\
 		info->player.x_camera;
 	info->ray.y_ray_direction = info->player.y_dir + info->player.y_plane *\
 		info->player.x_camera;
+//	printf("%f %f\n", info->ray.x_ray_direction, info->ray.x_ray_direction);
 	
 	info->map.x = (int)info->player.x_pos;
 	info->map.y = (int)info->player.y_pos;
@@ -83,15 +84,16 @@ void	ray_casting_init(t_info *info, int x)
 	
 	wall_detection_init_x(info);
 	
-	while((info->map.hit == 0) && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height)))
+	while(info->map.hit == 0 && ((info->map.x >= 0 && info->map.x < info->map.width) && (info->map.y >= 0 && info->map.y < info->map.height)))
 	{
 		info->map.hit = 0;
 		info->map.yOffset = 0;
 		info->map.xOffset = 0;
 		dda(info);
 		int rayTex = info->map.map[info->map.x][info->map.y].wall;
-		
-		if (rayTex == 11 && info->map.door_state[info->map.x][info->map.y] != 2)// Et que doorState != ouverte // Portes
+		if (rayTex == 1)
+			info->map.hit = 1;
+		else if (rayTex == 11 && info->map.door_state[info->map.x][info->map.y] != 2)// Et que doorState != ouverte // Portes
 		{
 			info->map.hit = 1;
 			if (info->wall.side == 1)
@@ -144,12 +146,12 @@ void	ray_casting_init(t_info *info, int x)
 				}
 			}
 		}
-		if (rayTex == 7)
+		else if (rayTex == 7)
 		{
-			double wallX1 = info->map.x;
-			double wallY1 = info->map.y + 1;
-			double wallX2 = info->map.x + 1;
-			double wallY2 = info->map.y;
+			float wallX1 = info->map.x;
+			float wallY1 = info->map.y + 1;
+			float wallX2 = info->map.x + 1;
+			float wallY2 = info->map.y;
 			t_inter inter;
 			inter.p0x = info->ray.x_ray_position;
 			inter.p0y = info->ray.y_ray_position;
@@ -169,10 +171,10 @@ void	ray_casting_init(t_info *info, int x)
 		}
 		else if (rayTex == 8)
 		{
-			double wallX1 = info->map.x;
-			double wallY1 = info->map.y;
-			double wallX2 = info->map.x + 1;
-			double wallY2 = info->map.y + 1;
+			float wallX1 = info->map.x;
+			float wallY1 = info->map.y;
+			float wallX2 = info->map.x + 1;
+			float wallY2 = info->map.y + 1;
 			t_inter inter;
 			inter.p0x = info->ray.x_ray_position;
 			inter.p0y = info->ray.y_ray_position;
@@ -252,29 +254,28 @@ void	ray_casting_init(t_info *info, int x)
 		 		rayTex = 1;
 		 	info->map.hit = 1;
 		  }*/
-		else if (rayTex == 1)
-		{
-			info->map.hit = 1;
-		}
+		//else if (rayTex == 1)
+		//{
+		//	info->map.hit = 1;
+		//}
 		choose_texture_1(info);
 		
 	}
-	if(info->map.hit == 0)
-	info->wall.alpha = 0;
+	if (info->map.hit == 0)
+		info->wall.alpha = 0;
 	if (info->map.x < 0)
-	info->map.x = 0;
+		info->map.x = 0;
 	if (info->map.x >= info->map.width)
-	info->map.x = info->map.width - 1;
+		info->map.x = info->map.width - 1;
 	if (info->map.y < 0)
-	info->map.y = 0;
+		info->map.y = 0;
 	if (info->map.y >= info->map.height)
-	info->map.y = info->map.height - 1;
-	info->map.hit = 1;
-	if (info->wall.side == 0)
 	{
-		info->wall.wall_distance = (info->map.x - info->ray.x_ray_position + info->map.xOffset +
-		(1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
+		info->map.y = info->map.height - 1;
+		info->map.hit = 1;
 	}
+	if (info->wall.side == 0)
+		info->wall.wall_distance = (info->map.x - info->ray.x_ray_position + info->map.xOffset + (1 - info->map.x_step) / 2) / info->ray.x_ray_direction;
 	else if (info->wall.side == 1)
 	{
 		info->wall.wall_distance = (info->map.y - info->ray.y_ray_position + info->map.yOffset +

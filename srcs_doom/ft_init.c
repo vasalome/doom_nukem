@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/04/11 15:32:21 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 15:14:33 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 11:50:44 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,12 +65,10 @@ void		init_player(t_info *info)
 	info->player.y_dir = 0;
 	info->player.x_plane = 0;
 	info->player.y_plane = 0.66;
-	info->player.move_down = 0;
-	info->player.move_up = 0;
-	info->player.move_left = 0;
-	info->player.move_right = 0;
-	info->player.turn_left = 0;
-	info->player.turn_right = 0;
+	// info->player.move_down = 0;
+	// info->player.move_up = 0;
+	// info->player.move_left = 0;
+	// info->player.move_right = 0;
 	info->player.turn_rate = 0.1;
 	info->player.turn_rate_y = 0.1;
 	info->player.fov = 2;
@@ -90,13 +88,13 @@ void		init_doors(t_info *info)
 
 	i = -1;
 	if (!(info->map.door_state = (int**)malloc(sizeof(int*) * info->map.width)) ||
-		!(info->map.door_offset = (double**)malloc(sizeof(double*) * info->map.width)))
+		!(info->map.door_offset = (float**)malloc(sizeof(float*) * info->map.width)))
 		return ;
 	while (++i < info->map.width)
 	{
 		if (!(info->map.door_state[i] = (int*)malloc(sizeof(int) * info->map.height)))
 			return ;
-		if (!(info->map.door_offset[i] = (double*)malloc(sizeof(double) * info->map.height)))
+		if (!(info->map.door_offset[i] = (float*)malloc(sizeof(float) * info->map.height)))
 			return ;
 	}
 	i = -1;

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_put_texture.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 17:18:43 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 19:53:45 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 11:15:57 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,31 +24,33 @@ int				get_hex_rgba(int r, int g, int b, int a)
 	return ((r << 24) | (g << 16) | (b << 8) | (a));
 }
 
-void			pixel_put(t_info *v, int x, int y, t_rgb color)
+void			pixel_put(t_info *v, int x, int y, t_rgb col)
 {
-	int		mix_r;
-	int		mix_g;
-	int		mix_b;
-	int		a_bef;
-	int		new_alpha;
+	int			mix_r;
+	int			mix_g;
+	int			mix_b;
+	int			a_bef;
+	int			new_alpha;
 
-	a_bef = (v->pixels[y * WIDTH + x] & 0xFF) / 1.2;
-	mix_r = (color.r * color.a / 255) + (((v->pixels[y * WIDTH + x] >> 8)\
-		& 0xFF) * a_bef * (255 - color.a) / (255 * 255));
-	mix_g = (color.g * color.a / 255) + (((v->pixels[y * WIDTH + x] >> 16)\
-		& 0xFF) * a_bef * (255 - color.a) / (255 * 255));
-	mix_b = (color.b * color.a / 255) + (((v->pixels[y * WIDTH + x] >> 24)\
-		& 0xFF) * a_bef * (255 - color.a) / (255 * 255));
-	new_alpha = color.a + (a_bef * (255 - color.a) / 255);
+	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
+		return ;
+	if (v->pixels[y * WIDTH + x] != 0)
+	{
+		a_bef = (v->pixels[y * WIDTH + x] & 0xFF) / 1.2;
+		mix_r = col.r * col.a / 255 + (v->pixels[y * WIDTH + x] >> 8 & 0xFF) * a_bef * (255 - col.a) / 65025;
+		mix_g = col.g * col.a / 255 + (v->pixels[y * WIDTH + x] >> 16 & 0xFF) * a_bef * (255 - col.a) / 65025;
+		mix_b = col.b * col.a / 255 + (v->pixels[y * WIDTH + x] >> 24 & 0xFF) * a_bef * (255 - col.a) / 65025;
+		new_alpha = col.a + (a_bef * (255 - col.a) / 255);
+		v->pixels[y * WIDTH + x] = get_hex_rgba(mix_r, mix_g, mix_b, new_alpha);
+	}
+	else
+		v->pixels[y * WIDTH + x] = get_hex_rgba(col.r, col.g, col.b, col.a);
 	// if (v->game == 1 && x == 400 && y == 400){
 	// 	printf("x %d\n", x);
 	// 	printf("y %d\n", y);
 	// 	printf("mix_r %d\n", mix_r);
 	// 	printf("mix_g %d\n", mix_g);
 	// 	printf("mix_b %d\n\n", mix_b);}
-	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
-		return ;
-	v->pixels[y * WIDTH + x] = get_hex_rgba(mix_r, mix_g, mix_b, new_alpha);
 }
 
 Uint32			get_pixel(SDL_Surface *surface, int x, int y)
