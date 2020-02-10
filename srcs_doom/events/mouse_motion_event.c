@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/07 20:04:01 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 14:29:10 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:16:59 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@
 	// 	info->fps.rect.y = -400;
 // }
 
-void	turn(t_info *info, int xrel)
+void			turn(t_info *info, int xrel)
 {
 	info->player.x_old_direction = info->player.x_dir;
 	info->player.x_dir = info->player.x_dir * cos(-xrel * 0.002) - info->player.y_dir * sin(-xrel * 0.002);

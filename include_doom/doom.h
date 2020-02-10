@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/07 17:18:19 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 16:35:36 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/10 16:45:42 by vasalome     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/10 16:46:32 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -114,12 +114,6 @@ typedef struct		s_player
 	float			x_old_direction;
 	float			x_old_plane;
 	float			move_speed;
-	float			turn_rate;
-	float			turn_rate_y;
-	// int				move_up;
-	// int				move_down;
-	// int				move_left;
-	// int				move_right;
 	float			fov;
 	int				tp[9999];
 	int				tp_index;
@@ -262,6 +256,17 @@ typedef struct		s_win
 	int				h;
 }					t_win;
 
+typedef struct		s_pillar
+{
+	float			p1x;
+	float			p1y;
+	float			p2x;
+	float			p2y;
+	float			scx;
+	float			scy;
+	float			rayon;
+}					t_pillar;
+
 typedef struct		s_info
 {
 	t_tex			tex;
@@ -340,6 +345,7 @@ void				put_texture(t_info *v, t_start s, t_size size, SDL_Surface *sur);
 /*
 ** events
 */
+void				keys_mouvements(t_info *info, const Uint8 *keyboard_state);
 void				mouse_wheel_event(t_info *info, SDL_Event event);
 void		    	mouse_motion_event(t_info *info, SDL_Event event);
 void				mouse_button_up(t_info *info, SDL_Event event);
@@ -354,16 +360,16 @@ void				display_doom(t_info *info);
 */
 
 /*
-** norminette ok
+** checker
 */
 
 /*
-** srcs:			ft_init_texture.c
+** ft_init_texture.c
 */
 void				init_textures(t_info *info);
 
 /*
-** srcs:			ft_init.c
+** ft_init.c
 */
 void				init_window(t_info *info);
 void				load_textures(t_info *info);
@@ -372,8 +378,37 @@ void				init_player(t_info *info);
 void				init_doors(t_info *info);
 
 /*
+** ft_draw_wall.c
+*/
+void				draw_wall(int x, int draw_start, int draw_end,
+							t_info *info);
+void				draw_wall_plus(int x, int draw_start,
+							t_info *info, int tex_y);
+
+/*
+** make_pillar.c
+*/
+void				make_pillar(t_info *info);
+
+/*
+** make_flat_wall.c
+*/
+void				make_flat_wall_7(t_info *info);
+void				make_flat_wall_8(t_info *info);
+
+/*
 ** ----------------------------------------------------------------------
 */
+
+/*
+** srcs:			ft_ray.c
+*/
+void				its_a_trap(t_info *info);
+int					threadAnim(void* data);
+int					threadAnim2(void* data);
+void				hud(t_info *info);
+int					ray_casting(t_info *info);
+void				ray_casting_init(t_info *info, int x);
 
 /*
 ** srcs:			ft_fill_map.c
@@ -392,18 +427,6 @@ int					set_map_size(t_info *info);
 void				count_width(t_setmap *set);
 
 /*
-** srcs:			ft_ray.c
-*/
-
-void				ray_casting_image(t_info *info);
-void				its_a_trap(t_info *info);
-int					threadAnim(void* data);
-int					threadAnim2(void* data);
-void				hud(t_info *info);
-int					ray_casting(t_info *info);
-void				ray_casting_init(t_info *info, int x);
-
-/*
 ** srcs:			ft_wall.c
 */
 
@@ -414,29 +437,9 @@ void				wall_detection_init_y(t_info *info);
 //void				create_img(t_info *info);
 
 /*
-** srcs:			ft_draw_wall.c
-*/
-
-void				draw_wall(int x, int draw_start, int draw_end,\
-						t_info *info);
-void				draw_wall_plus(int x, int draw_start,\
-						t_info *info, int tex_y);
-
-/*
 ** srcs:			ft_spawn.c
 */
-
 int					get_spawn(t_info *info);
-
-/*
-** srcs:			ft_keys.c
-*/
-
-int					key_release(int key, t_info *info);
-void				reset_weapon(t_info *info);
-int					key_press(int keycode, t_info *info);
-void				press_weapon(t_info *info);
-void				press_weapon_2(t_info *info);
 
 /*
 ** srcs:			ft_teleport.c
